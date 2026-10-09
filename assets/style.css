@@ -478,3 +478,4 @@ table.bareme td:last-child:not(.m){white-space:normal;text-align:start}
 /* ---- page « Majels & puits » ---- */
 .mp-liens .lg{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.04em;color:var(--doux);border:1px solid var(--ligne);border-radius:6px;padding:0 4px;vertical-align:1px}
 .mp-points li{margin:8px 0}
+.pe-zone{margin:8px 0 0}.pe-zone:empty{display:none}.pe-zone.err{color:var(--rouge)}

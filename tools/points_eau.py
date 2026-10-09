@@ -9,7 +9,7 @@ Même Google Forms que les prix (aucun nouveau formulaire) :
   (jeton = identifiant anonyme du navigateur « pt:… » : une voix par navigateur et par point, la dernière compte)
 
 Garde-fous (un robot ne peut pas prouver qu'un point d'eau existe, il écarte l'invraisemblable) :
-  - type connu, position DANS la Tunisie, jeton présent ;
+  - type connu, position possible (partout dans le monde), jeton présent ;
   - nom nettoyé : 60 caractères, sans lien internet ni numéro de téléphone (pas de publicité, pas de données personnelles) ;
   - 10 points au plus par navigateur ;
   - un point du même type à moins de 40 m d'un point connu = une confirmation de celui-ci (pas de doublon) ;
@@ -25,7 +25,7 @@ OSM = ROOT / "donnees" / "points_osm.json"
 AJEM = ROOT / "donnees" / "points_ajem.json"          # majels de Djerba recensés par l'association AJEM (tools/points_ajem.py)
 SORTIE = ROOT / "donnees" / "points_eau.js"
 TYPES = ("source", "fontaine", "robinet", "majel", "puits")
-TUNISIE = (30.2, 37.6, 7.5, 11.7)          # lat min, lat max, lon min, lon max
+# partout dans le monde depuis le 09/10/2026 (demande d'Ahmed) : seule une position impossible est refusée
 MAX_PAR_JETON = 10
 RAYON_M = 40
 
@@ -58,8 +58,8 @@ def lire_point(r):
     if not m:
         return None, "position illisible"
     lat, lon = float(m.group(1)), float(m.group(2))
-    if not (TUNISIE[0] <= lat <= TUNISIE[1] and TUNISIE[2] <= lon <= TUNISIE[3]):
-        return None, "position hors de Tunisie"
+    if not (-85 <= lat <= 85 and -180 <= lon <= 180) or (abs(lat) < 0.01 and abs(lon) < 0.01):
+        return None, "position impossible"
     pid = "sig-" + hashlib.sha1(f"{t}|{lat:.5f}|{lon:.5f}".encode()).hexdigest()[:10]
     return {"id": pid, "type": t, "lat": round(lat, 6), "lon": round(lon, 6), "nom": nettoyer_nom(nom), "src": "visiteur",
             "date": (r.get("date") or r.get("horodateur") or "")[:10], "jeton": jeton}, None

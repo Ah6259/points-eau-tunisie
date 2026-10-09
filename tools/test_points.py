@@ -35,9 +35,12 @@ check("nom nettoyé : sans numéro de téléphone ni lien", m and "98" not in m[
 check("le point OpenStreetMap reste, statut « osm »", any(p["id"] == "osm-n1" and p["statut"] == "osm" for p in pts))
 
 # 2. rejets
-pts, rej = P.calculer([point("majel", "x", 48.85, 2.35, "pt:b"), point("piscine", "x", 36.8, 10.1, "pt:b"),
+pts, rej = P.calculer([point("majel", "x", 95.0, 2.35, "pt:b"), point("piscine", "x", 36.8, 10.1, "pt:b"),
                        point("source", "x", 36.8, 10.1, "sans-jeton"), {"format": "POINT", "marque": "source|x", "lieu": "abc|pt:b"}], [])
-check("rejetés : hors de Tunisie (Paris), type inconnu, sans jeton, position illisible", len(pts) == 0 and len(rej) == 4)
+check("rejetés : position impossible (latitude 95), type inconnu, sans jeton, position illisible", len(pts) == 0 and len(rej) == 4)
+
+pts, _ = P.calculer([point("fontaine", "Fontaine Wallace", 48.8530, 2.3499, "pt:paris")], [])
+check("monde entier : une fontaine signalée à Paris est publiée", len(pts) == 1 and pts[0]["type"] == "fontaine")
 
 # 3. doublon à moins de 40 m = confirmation ; 2 personnes → « confirmé »
 pid = P.lire_point(point("source", "Ain", 36.9, 10.2, "pt:c"))[0]["id"]

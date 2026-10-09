@@ -164,9 +164,9 @@ check("robots.txt (IA refusées, sitemap), sitemap avec les pages, LICENSE", /GP
 }
 {
   const { w, d, js } = await page("index.html", { lang: "en", stockage: {} });
-  check("accueil ?lang=en : anglais, de gauche à droite, nom « Water Points Tunisia », menu « Cisterns & wells », aucune erreur",
+  check("accueil ?lang=en : anglais, de gauche à droite, nom « Water Points Tunisia », menu « Majels & wells », aucune erreur",
     d.documentElement.lang === "en" && d.documentElement.dir === "ltr" && /Water Points Tunisia/.test(d.querySelector(".logo-nom").textContent)
-    && [...d.querySelectorAll(".menu a")].some(a => a.textContent === "Cisterns & wells") && js.length === 0);
+    && [...d.querySelectorAll(".menu a")].some(a => a.textContent === "Majels & wells") && js.length === 0);
   check("anglais : filtres, bulle AJEM et fenêtre de signalement en anglais",
     /Natural spring/.test(d.getElementById("pe-filtres").textContent) && /Surveyed by the AJEM association/.test(w.EAUX_BULLE(w.EAUX_POINTS.points.find(p => p.src === "ajem")))
     && (w.EAUX_SIGNALER(), /no water point reported|be the first/i.test(d.getElementById("pe-derniers").textContent)) && d.querySelector('#pe-type option[value="well"], #pe-type option[value="puits"]').textContent === "Well");
@@ -183,6 +183,29 @@ check("robots.txt (IA refusées, sitemap), sitemap avec les pages, LICENSE", /GP
   check("sans choix enregistré, téléphone dans une autre langue (anglais) → site en anglais", d.documentElement.lang === "en");
   const { d: d2 } = await page("index.html", { stockage: { langue: "ar" } });
   check("choix « arabe » fait sur un autre de nos sites → arabe", d2.documentElement.lang === "ar");
+}
+{
+  // monde entier : lecture en direct d'OpenStreetMap hors de Tunisie (faux serveurs : le 1er répond « vide + erreur cachée »)
+  const { w, d } = await page();
+  const appels = [];
+  w.fetch = async (url) => { appels.push(url); return appels.length === 1
+    ? { ok: true, json: async () => ({ elements: [], remark: "runtime error: Query timed out" }) }
+    : { ok: true, json: async () => ({ elements: [
+        { type: "node", id: 1, lat: 48.853, lon: 2.3499, tags: { amenity: "drinking_water", name: "Fontaine Wallace" } },
+        { type: "node", id: 2, lat: 48.854, lon: 2.35, tags: { man_made: "water_well", access: "private" } },
+        { type: "way", id: 3, center: { lat: 48.855, lon: 2.351 }, tags: { natural: "spring" } },
+        { type: "node", id: 4, lat: 48.856, lon: 2.352, tags: { amenity: "drinking_water", drinking_water: "no" } }] }) }; };
+  const total = d.getElementById("pe-total").textContent, avant = w.EAUX_POINTS.points.length;
+  const els = await w.EAUX_MONDE.lireZone(48.8, 2.3, 48.9, 2.4);
+  const n = w.EAUX_MONDE.ajouterZone(els), n2 = w.EAUX_MONDE.ajouterZone(els);
+  check("monde : serveur avec erreur cachée → serveur suivant ; fontaine et source de Paris ajoutées, puits privé et eau non potable écartés, pas de doublon",
+    appels.length === 2 && n === 2 && n2 === 0 && w.EAUX_POINTS.points.length === avant + 2
+    && w.EAUX_POINTS.points.some(p => p.id === "osm-n1" && p.type === "fontaine" && p.nom === "Fontaine Wallace" && p.monde)
+    && w.EAUX_POINTS.points.some(p => p.id === "osm-w3" && p.type === "source"));
+  w.dispatchEvent(new w.Event("resize")); d.dispatchEvent(new w.Event("langue"));
+  check("monde : le compteur du haut reste celui de la Tunisie ; CSP autorise les 5 serveurs OpenStreetMap",
+    d.getElementById("pe-total").textContent === total && ["overpass-api.de", "maps.mail.ru", "overpass.kumi.systems", "overpass.private.coffee", "overpass.openstreetmap.fr"]
+      .every(h => new RegExp("connect-src[^;]*" + h.replace(/\./g, "\\.")).test(lire("index.html"))));
 }
 {
   const publics = PAGES.map(lire).join("\n") + lire("assets/page.js");

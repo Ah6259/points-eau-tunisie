@@ -4,7 +4,7 @@ const MAJ = "09/10/2026";   // date de création ; les points sont datés par le
 const MENU_SITE = [
   ["", "Carte", "الخريطة", "Map"],
   ["#signaler", "Signaler un point d'eau", "أضف نقطة ماء", "Report a water point"],
-  ["majels-et-puits/", "Majels & puits", "المواجل والآبار", "Cisterns & wells"],
+  ["majels-et-puits/", "Majels et puits", "المواجل والآبار", "Majels & wells"],
   ["coran-et-eau/", "Le Coran et l'eau", "الماء في القرآن", "Quran & water"],
   ["a-propos/", "À propos", "من نحن", "About"]
 ];
@@ -51,7 +51,7 @@ const MENU_SITE = [
         <nav>
           <a href="${racine || "./"}">${T("Carte des points d'eau", "خريطة نقاط الماء", "Water points map")}</a>
           <a href="${racine}#signaler">${T("Signaler un point d'eau", "أضف نقطة ماء", "Report a water point")}</a>
-          <a href="${racine}majels-et-puits/">${T("Majels, puits et techniques de l'eau", "المواجل والآبار وتقنيات الماء", "Cisterns, wells and water techniques")}</a>
+          <a href="${racine}majels-et-puits/">${T("Majels et puits en Tunisie", "المواجل والآبار في تونس", "Majels and wells in Tunisia")}</a>
           <a href="${racine}coran-et-eau/">${T("Le Coran et la Sunna sur l'eau", "الماء في القرآن والسنة", "Water in the Quran and Sunnah")}</a>
           <a href="${racine}a-propos/">${T("À propos et méthode", "من نحن والمنهجية", "About and method")}</a>
           <a href="${racine}#avis">${T("Votre avis", "رأيك", "Your feedback")}</a>
