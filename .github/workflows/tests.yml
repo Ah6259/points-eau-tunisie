@@ -26,5 +26,6 @@ jobs:
       - run: node tools/test_site.mjs
       - run: node tools/test_sw.mjs
       - run: node tools/test_avis.mjs
+      - run: node tools/test_video.mjs
       - run: python tools/test_points.py
       - run: python tools/test_sabotage.py

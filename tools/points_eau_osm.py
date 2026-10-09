@@ -29,7 +29,13 @@ def requete(q, essais=10):
         try:
             req = urllib.request.Request(url, data=urllib.parse.urlencode({"data": q}).encode(), headers=UA)
             with urllib.request.urlopen(req, timeout=200) as r:
-                return json.loads(r.read())
+                d = json.loads(r.read())
+            remarque = str(d.get("remark", ""))
+            if "error" in remarque.lower() or "timed out" in remarque.lower():   # ex. serveur sans « aires » : réponse vide + erreur
+                raise RuntimeError(f"{url} : réponse incomplète ({remarque[:80]})")
+            if len(d.get("elements", [])) < MIN:                                  # vide ou presque : on essaie le serveur suivant
+                raise RuntimeError(f"{url} : seulement {len(d.get('elements', []))} éléments")
+            return d
         except Exception as e:
             dernier = e
             time.sleep(10 * (i + 1))

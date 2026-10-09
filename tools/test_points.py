@@ -70,5 +70,22 @@ check("12 points du même navigateur : 10 publiés, 2 refusés", len(pts) == 10 
 pts, rej = P.calculer([{"format": "VOTE", "marque": "Safia", "lieu": "vote:x"}, {"format": "1,5", "marque": "Safia", "prix": "0.8"}], [])
 check("lignes de prix et de vote ignorées", pts == [] and rej == [])
 
+# 7. relevé OpenStreetMap : un serveur qui répond vide avec une erreur cachée (« remark ») est sauté
+import json as _j, urllib.request as _u, points_eau_osm as O
+_rep = [b'{"elements":[],"remark":"runtime error: open64: No such file /data/areas"}',
+        _j.dumps({"elements": [{"type": "node", "id": i, "lat": 36.8, "lon": 10.1, "tags": {"natural": "spring"}} for i in range(60)]}).encode()]
+class _R:
+    def __init__(self, b): self.b = b
+    def __enter__(self): return self
+    def __exit__(self, *a): return False
+    def read(self): return self.b
+_vrai, _sleep = _u.urlopen, O.time.sleep
+_u.urlopen = lambda req, timeout=0: _R(_rep.pop(0)); O.time.sleep = lambda s: None
+try:
+    pts = O.lire()
+finally:
+    _u.urlopen, O.time.sleep = _vrai, _sleep
+check("relevé OSM : réponse vide avec erreur cachée → serveur suivant (60 sources lues)", len(pts) == 60)
+
 print(f"\n{'TOUT PASSE' if not erreurs else str(erreurs) + ' PROBLÈME(S)'} ({total} vérifications)")
 sys.exit(1 if erreurs else 0)

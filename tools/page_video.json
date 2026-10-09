@@ -1,0 +1,35 @@
+{
+ "site": "https://ah6259.github.io/points-eau-tunisie/",
+ "logo": "assets/logo.svg",
+ "defaut": "fr",
+ "modele": "a-propos/index.html",
+ "nom": {
+  "fr": "Points d'eau Tunisie",
+  "ar": "نقاط الماء في تونس"
+ },
+ "partager": {
+  "fr": "Partager la vidéo",
+  "ar": "شارك الفيديو"
+ },
+ "pages": [
+  {
+   "chemin": "video/",
+   "video": "presentation",
+   "couverture": "couverture.jpg",
+   "apercu": "apercu-video.jpg",
+   "site": "",
+   "titre": {
+    "fr": "Vidéo de présentation",
+    "ar": "الفيديو التقديمي"
+   },
+   "description": {
+    "fr": "Vidéo de présentation : la carte gratuite des sources, fontaines, robinets publics et majels de Tunisie.",
+    "ar": "فيديو تقديمي: الخريطة المجانية للعيون والحنفيات العمومية والمواجل في تونس."
+   },
+   "bouton": {
+    "fr": "Ouvrir le site",
+    "ar": "افتح الموقع"
+   }
+  }
+ ]
+}
