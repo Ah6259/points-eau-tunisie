@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#16A2AE"/><stop offset="1" stop-color="#08525A"/></linearGradient></defs><rect width="512" height="512" rx="112" fill="url(#bg)"/><g transform="translate(0 24)">
+<!-- repère de carte -->
+<path d="M256 74C170 74 104 140 104 226c0 112 152 214 152 214s152-102 152-214C408 140 342 74 256 74Z" fill="#FFFFFF"/>
+<path d="M256 74c86 0 152 66 152 152 0 112-152 214-152 214Z" fill="#D7EEF0"/>
+<!-- goutte d'eau dans le repère -->
+<path d="M256 140s-58 70-58 112a58 58 0 0 0 116 0c0-42-58-112-58-112Z" fill="#1597A3"/>
+<path d="M256 140s58 70 58 112a58 58 0 0 1-58 58Z" fill="#0B6E78"/>
+<!-- sol doré (le lieu) -->
+<ellipse cx="256" cy="452" rx="92" ry="20" fill="#F2B33D"/>
+<ellipse cx="300" cy="452" rx="48" ry="14" fill="#D9952A"/></g></svg>

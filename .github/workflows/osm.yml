@@ -1,0 +1,53 @@
+# Points d'eau d'OpenStreetMap (sources, fontaines, robinets, citernes, puits) : relus chaque semaine.
+# Panne ou réponse suspecte : l'ancien fichier est gardé et une alerte est ouverte (issue -> e-mail à Ahmed).
+name: Relevé OpenStreetMap
+on:
+  schedule:
+    - cron: "17 2 * * 1"       # chaque lundi, 3h17 à Tunis
+  workflow_dispatch:
+permissions:
+  contents: write
+  issues: write
+concurrency:
+  group: robot
+  cancel-in-progress: false
+env:
+  TZ: Africa/Tunis
+  PYTHONIOENCODING: utf-8
+jobs:
+  osm:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - name: Relever OpenStreetMap
+        id: releve
+        run: |
+          set +e
+          python tools/points_eau_osm.py
+          echo "code=$?" >> "$GITHUB_OUTPUT"
+      - name: Recalculer la carte et enregistrer
+        run: |
+          python tools/test_points.py
+          python tools/signalements_points.py
+          git config user.name "robot-points-eau"
+          git config user.email "robot-points-eau@users.noreply.github.com"
+          git add donnees/points_osm.json donnees/points_eau.js
+          if git diff --cached --quiet; then
+            git commit --allow-empty -m "Battement de coeur : relevé OpenStreetMap inchangé"
+          else
+            git commit -m "Relevé OpenStreetMap du $(date +%d/%m/%Y)"
+          fi
+          git pull -q --rebase --autostash
+          git push
+      - name: Alerte
+        if: steps.releve.outputs.code != '0' || failure()
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: |
+          gh label create alerte-robot --color B60205 --force >/dev/null 2>&1 || true
+          titre="Points d'eau : relevé OpenStreetMap en échec"
+          corps="Le relevé hebdomadaire n'a pas abouti (serveurs Overpass en panne ou réponse suspecte). Les anciens points sont gardés. Journal : ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          n=$(gh issue list --label alerte-robot --state open --search "$titre in:title" --json number -q '.[0].number')
+          if [ -n "$n" ]; then gh issue comment "$n" --body "Toujours vrai le $(date +%d/%m/%Y). $corps"; else gh issue create --title "$titre" --body "$corps" --label alerte-robot; fi
