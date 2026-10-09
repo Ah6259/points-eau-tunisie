@@ -407,9 +407,57 @@ table.bareme td:last-child:not(.m){white-space:normal;text-align:start}
 .pe-bulle{font:14px/1.45 Figtree,"Noto Kufi Arabic",sans-serif}
 .pe-voix{display:flex;gap:6px;margin-top:6px}
 .pe-voix button{font:inherit;font-size:12px;border:1px solid #cfdcdc;border-radius:8px;background:#fff;padding:4px 8px;cursor:pointer}
-.pe-signaler form{display:grid;gap:10px}
-.pe-signaler select{font-size:17px}
-.pe-signaler .avis-piege{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);opacity:0;border:0;padding:0}
+/* ---- « Signaler un point d'eau » : barre + fenêtre, comme « Signaler un prix » du site Prix des Eaux ---- */
+.sig-section{margin:0 0 16px}
+.sig-bar{width:100%;display:flex;align-items:center;gap:10px;cursor:pointer;text-align:start;padding:10px 12px;border-radius:14px;font:inherit;color:var(--texte);
+  background:var(--carte);border:1px solid var(--ligne);box-shadow:var(--ombre);transition:border-color .15s,transform .15s}
+.sig-bar:hover{border-color:var(--vert);transform:translateY(-1px)}
+.sig-bar h2{margin:0;font-size:18px;min-width:0}
+.sig-bar .sig-ico{width:34px;height:34px;border-radius:10px;flex:none;display:grid;place-items:center;background:var(--vert-clair);color:var(--vert)}
+.sig-bar .sig-ico svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.sum-cta{margin-inline-start:auto;flex:none;display:inline-flex;align-items:center;gap:6px;background:var(--vert);color:#fff;border-radius:999px;
+  padding:7px 16px;font-size:13.5px;font-weight:700;white-space:nowrap;box-shadow:0 1px 2px rgba(15,43,61,.15)}
+.sig-bar:hover .sum-cta{filter:brightness(1.1)}
+.sig-cta-fl{display:none}
+@media (max-width:560px){.sig-bar{gap:8px;padding-inline:10px}.sig-bar h2{white-space:nowrap;font-size:min(18px,4.4vw)}
+  .sig-cta-txt{display:none}.sig-cta-fl{display:inline;font-size:18px;line-height:1;padding:0 4px}}
+.help-pop{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;background:rgba(15,43,61,.45);padding:16px}
+.help-pop[hidden]{display:none}
+.help-box{position:relative;background:var(--carte);color:var(--texte);border:1px solid var(--ligne);border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,.25);
+  width:100%;max-width:520px;max-height:88vh;overflow:auto;padding:22px 20px;box-sizing:border-box}
+.help-box h2{margin:0 0 10px;font-size:18px;padding-inline-end:28px}
+.help-box .help-src{color:var(--doux);font-size:12.5px;line-height:1.5;margin:0 0 12px}
+.help-box form .help-src{border-top:1px solid var(--ligne);padding-top:10px;margin:12px 0 0}
+.help-close{position:absolute;top:8px;inset-inline-end:10px;border:0;background:none;color:var(--doux);font-size:26px;line-height:1;cursor:pointer;padding:4px 8px}
+.help-close:hover{color:var(--texte)}
+#pe-form{display:grid;gap:12px}
+#pe-form label{display:flex;flex-direction:column;gap:4px;font-size:13.5px;font-weight:700;color:var(--doux)}
+#pe-form select,#pe-form input[type=text]{font:inherit;font-size:16px;color:var(--texte);background:var(--bg);border:1px solid var(--ligne);border-radius:10px;padding:9px 10px;min-width:0}
+.sig-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media (max-width:400px){.sig-row{grid-template-columns:1fr}}
+.pe-geo{display:flex;flex-direction:column;gap:8px}
+.geo-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.geo-status{font-size:13px;font-weight:700;color:#128A52}
+.geo-status.err{color:var(--rouge)}
+.geo-hint{margin:0;font-size:12.5px;color:var(--doux)}
+.geo-map{height:240px;border:1px solid var(--ligne);border-radius:10px;overflow:hidden;background:var(--vert-tres-clair)}
+.pe-geo .chipbtn{font:inherit;font-size:14px;font-weight:700;border:1.5px solid var(--ligne);background:var(--carte);color:var(--texte);border-radius:999px;padding:7px 13px;cursor:pointer}
+.pe-geo .geo-confirm{align-self:flex-start;background:#128A52;border-color:#128A52;color:#fff}
+.pe-geo .geo-confirm.fait{opacity:.6}
+.avis-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.avis-send{font:inherit;font-weight:800;font-size:15px;border:0;border-radius:999px;background:var(--vert);color:#fff;padding:10px 26px;cursor:pointer}
+.avis-send:hover{filter:brightness(1.1)}
+#pe-statut{font-size:13.5px;color:var(--doux)}
+#pe-statut.ok{color:#128A52;font-weight:700}
+#pe-statut.err{color:var(--rouge);font-weight:700}
+#pe-sig-pop .avis-piege{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);opacity:0;border:0;padding:0}
+.sig-derniers{margin-top:16px;border-top:1px solid var(--ligne);padding-top:12px;font-size:13.5px}
+.sig-titre{margin:0 0 4px;font-weight:800;color:var(--vert)}
+.sig-derniers ul{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-direction:column;gap:6px}
+.sig-derniers li{padding:7px 10px;border-radius:10px;background:var(--vert-tres-clair)}
+.sig-derniers small{color:var(--doux)}
+.sig-derniers button{font:inherit;font-size:12.5px;font-weight:700;color:var(--vert);background:none;border:0;padding:0;cursor:pointer;text-decoration:underline}
+.sig-vide{color:var(--doux);margin:0}
 
 /* ===== Le Coran et la Sunna sur l'eau (repris du site Prix des Eaux, 09/10/2026) ===== */
 .coran-h3{font-family:"Amiri","Amiri Quran",serif;font-weight:700;color:var(--vert);font-size:21px;text-align:center;margin:16px 0 8px}

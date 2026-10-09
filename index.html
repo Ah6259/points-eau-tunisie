@@ -26,7 +26,7 @@
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&family=Noto+Kufi+Arabic:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20261009b">
+<link rel="stylesheet" href="assets/style.css?v=20261009c">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"Où trouver de l'eau gratuite en Tunisie ?","acceptedAnswer":{"@type":"Answer","text":"Sur la carte gratuite Points d'eau Tunisie : sources naturelles, fontaines d'eau potable, robinets publics, majels ouverts à tous et puits, venus d'OpenStreetMap et des signalements des visiteurs. Le bouton « Autour de moi » montre les plus proches."}},
@@ -34,8 +34,8 @@
 {"@type":"Question","name":"L'eau des sources et des majels est-elle potable ?","acceptedAnswer":{"@type":"Answer","text":"Elle n'est pas contrôlée : elle peut ne pas être potable. Faites-la bouillir ou filtrez-la en cas de doute et ne la donnez pas aux bébés."}}
 ]}
 </script>
-<script src="assets/page.js?v=20261009b"></script>
-<script src="assets/avis.js?v=20261009b" defer></script>
+<script src="assets/page.js?v=20261009c"></script>
+<script src="assets/avis.js?v=20261009c" defer></script>
 </head>
 <body>
 <header class="entete" id="entete"></header>
@@ -64,27 +64,13 @@
     <p class="aide pe-credit-ajem"><span data-l="fr">Les majels de Djerba sur la carte (leur nom, leur état et leurs photos) viennent du recensement de l'association <b>AJEM</b>, projet</span><span data-l="ar">مواجل جربة على الخريطة (أسماؤها وحالتها وصورها) مأخوذة من إحصاء جمعية <b>AJEM</b>، مشروع</span> <a href="https://www.ajem.tn/fesguietna" target="_blank" rel="noopener">Fesguietna</a><span data-l="fr"> : merci à eux.</span><span data-l="ar">: شكرًا لهم.</span></p>
   </section>
 
-  <section class="carte pe-signaler" id="signaler">
-    <h2><span data-l="fr">Signaler un point d'eau</span><span data-l="ar">أضف نقطة ماء</span></h2>
-    <p class="aide" style="margin:0 0 10px"><span data-l="fr">Une source, une fontaine, un robinet public, un majel ouvert à tous (Djerba, le Sud…) : aidez les autres à trouver de l'eau. Le point est publié automatiquement, « à confirmer » jusqu'à ce qu'un autre visiteur le confirme.</span><span data-l="ar">عين، حنفية، حنفية عمومية، ماجل مفتوح للجميع (جربة، الجنوب…): ساعد غيرك على إيجاد الماء. تُنشر النقطة آليًا، « في انتظار التأكيد » حتى يؤكّدها زائر آخر.</span></p>
-    <form id="pe-form" novalidate>
-      <div class="champ"><label for="pe-type"><span data-l="fr">Type</span><span data-l="ar">النوع</span></label>
-        <select id="pe-type" required><option value="" data-fr="— choisir —" data-ar="— اختر —">— choisir —</option>
-          <option value="source" data-fr="Source naturelle" data-ar="عين ماء">Source naturelle</option>
-          <option value="fontaine" data-fr="Fontaine d'eau potable" data-ar="حنفية ماء صالح للشرب">Fontaine d'eau potable</option>
-          <option value="robinet" data-fr="Robinet / point d'eau public" data-ar="حنفية عمومية">Robinet / point d'eau public</option>
-          <option value="majel" data-fr="Majel public" data-ar="ماجل عمومي">Majel public</option>
-          <option value="puits" data-fr="Puits" data-ar="بئر">Puits</option></select></div>
-      <div class="champ"><label for="pe-nom"><span data-l="fr">Nom ou repère (facultatif)</span><span data-l="ar">الاسم أو علامة مميّزة (اختياري)</span></label>
-        <input id="pe-nom" type="text" maxlength="60" data-ph-fr="Ex. : majel près de la mosquée" data-ph-ar="مثال: ماجل قرب الجامع"></div>
-      <input type="hidden" id="pe-pos">
-      <p class="pe-ligne"><button type="button" class="btn-clair pe-ma-pos" id="pe-ma-pos"><span data-l="fr">📍 Utiliser ma position</span><span data-l="ar">📍 استعمل موقعي</span></button>
-        <span class="aide"><span data-l="fr">ou touchez l'endroit sur la carte.</span><span data-l="ar">أو المس المكان على الخريطة.</span></span> <b id="pe-pos-txt" class="aide"></b></p>
-      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" class="avis-piege">
-      <button type="submit" class="btn-principal"><span data-l="fr">Envoyer</span><span data-l="ar">إرسال</span></button>
-      <p id="pe-statut" class="aide" role="status" aria-live="polite"></p>
-      <p class="aide"><span data-l="fr">Rien de personnel n'est envoyé : seulement le type, le nom du lieu et la position. Les numéros de téléphone et la publicité sont retirés automatiquement. Un point disparaît si plusieurs visiteurs disent qu'il n'existe plus.</span><span data-l="ar">لا يُرسل أي شيء شخصي: فقط النوع واسم المكان والموقع. تُحذف أرقام الهاتف والإشهار آليًا. تختفي النقطة إذا قال عدّة زوار إنها لم تعد موجودة.</span></p>
-    </form>
+  <!-- signaler un point d'eau : ouvre la fenêtre #pe-sig-pop (assets/points-eau.js), comme « Signaler un prix » du site Prix des Eaux -->
+  <section class="sig-section" id="signaler">
+    <button type="button" class="sig-bar" id="pe-sig-ouvrir" aria-haspopup="dialog">
+      <span class="sig-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s-6.5-6.2-6.5-11.2a6.5 6.5 0 0 1 13 0C18.5 14.8 12 21 12 21z"/><circle cx="12" cy="9.8" r="2.4"/></svg></span>
+      <h2><span data-l="fr">Signaler un point d'eau</span><span data-l="ar">أضف نقطة ماء</span></h2>
+      <span class="sum-cta"><span class="sig-cta-txt"><span data-l="fr">Voir</span><span data-l="ar">افتح</span></span><span class="sig-cta-fl" aria-hidden="true">›</span></span>
+    </button>
   </section>
 
   <section class="carte pe-liens" id="majels">
@@ -143,9 +129,47 @@
     </form>
   </section>
 </main>
+<!-- Signaler un point d'eau : envoyé au même Google Forms que les prix (format POINT) ; tools/points_eau.py décide et publie -->
+<div class="help-pop" id="pe-sig-pop" role="dialog" aria-modal="true" aria-labelledby="pe-sig-titre" hidden>
+  <div class="help-box">
+    <button type="button" class="help-close" id="pe-sig-fermer" aria-label="Fermer">×</button>
+    <h2 id="pe-sig-titre">📍 <span data-l="fr">Signaler un point d'eau</span><span data-l="ar">أضف نقطة ماء</span></h2>
+    <p class="help-src pe-sig-intro"><span data-l="fr">Une source, une fontaine, un robinet public, un majel ouvert à tous (Djerba, le Sud…) : aidez les autres à trouver de l'eau. Après une vérification automatique, le point est publié sur la carte, « à confirmer » jusqu'à ce qu'un autre visiteur le confirme.</span><span data-l="ar">عين، حنفية، حنفية عمومية، ماجل مفتوح للجميع (جربة، الجنوب…): ساعد غيرك على إيجاد الماء. بعد تثبّت آلي، تُنشر النقطة على الخريطة « في انتظار التأكيد » حتى يؤكّدها زائر آخر.</span></p>
+    <form id="pe-form" novalidate>
+      <div class="sig-row">
+        <label><span data-l="fr">Type</span><span data-l="ar">النوع</span>
+          <select id="pe-type" required><option value="" data-fr="— choisir —" data-ar="— اختر —">— choisir —</option>
+            <option value="source" data-fr="Source naturelle" data-ar="عين ماء">Source naturelle</option>
+            <option value="fontaine" data-fr="Fontaine d'eau potable" data-ar="حنفية ماء صالح للشرب">Fontaine d'eau potable</option>
+            <option value="robinet" data-fr="Robinet / point d'eau public" data-ar="حنفية عمومية">Robinet / point d'eau public</option>
+            <option value="majel" data-fr="Majel public" data-ar="ماجل عمومي">Majel public</option>
+            <option value="puits" data-fr="Puits" data-ar="بئر">Puits</option></select></label>
+        <label><span data-l="fr">Nom ou repère</span><span data-l="ar">الاسم أو علامة</span>
+          <input id="pe-nom" type="text" maxlength="60" data-ph-fr="Facultatif" data-ph-ar="اختياري" placeholder="Facultatif"></label>
+      </div>
+      <div class="pe-geo">
+        <div class="geo-row">
+          <button type="button" class="chipbtn" id="pe-ma-pos">📍 <span data-l="fr">Me localiser (GPS)</span><span data-l="ar">حدّد موقعي (GPS)</span></button>
+          <span class="geo-status" id="pe-pos-txt" role="status"></span>
+        </div>
+        <p class="geo-hint"><span data-l="fr">La position automatique n'est pas toujours exacte : déplacez le repère (ou touchez la carte) pour le mettre sur l'endroit précis du point d'eau, puis confirmez.</span><span data-l="ar">الموقع الآلي ليس دقيقًا دائمًا: حرّك العلامة (أو المس الخريطة) لوضعها في المكان الصحيح لنقطة الماء، ثم أكّد.</span></p>
+        <div class="geo-map" id="pe-sig-carte" role="region" aria-label="Carte pour placer le point d'eau"></div>
+        <button type="button" class="chipbtn geo-confirm" id="pe-pos-ok">✔ <span data-l="fr">Confirmer cette position</span><span data-l="ar">أكّد هذا الموقع</span></button>
+      </div>
+      <input type="hidden" id="pe-pos">
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" class="avis-piege">
+      <div class="avis-actions">
+        <button type="submit" class="avis-send" id="pe-envoyer"><span data-l="fr">Envoyer</span><span data-l="ar">إرسال</span></button>
+        <span id="pe-statut" role="status" aria-live="polite"></span>
+      </div>
+      <p class="help-src"><span data-l="fr">Rien de personnel n'est envoyé : seulement le type, le nom du lieu et la position. Les numéros de téléphone et la publicité sont retirés automatiquement. Un point disparaît si plusieurs visiteurs disent qu'il n'existe plus.</span><span data-l="ar">لا يُرسل أي شيء شخصي: فقط النوع واسم المكان والموقع. تُحذف أرقام الهاتف والإشهار آليًا. تختفي النقطة إذا قال عدّة زوار إنها لم تعد موجودة.</span></p>
+    </form>
+    <div class="sig-derniers" id="pe-derniers"></div>
+  </div>
+</div>
 <footer id="pied"></footer>
-<script src="donnees/points_eau.js?v=20261009b"></script>
-<script src="assets/points-eau.js?v=20261009b"></script>
+<script src="donnees/points_eau.js?v=20261009c"></script>
+<script src="assets/points-eau.js?v=20261009c"></script>
 <script data-goatcounter="https://prix-eaux-tunisie.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>

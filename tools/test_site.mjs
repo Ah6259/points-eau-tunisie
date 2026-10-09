@@ -69,6 +69,32 @@ check("robots.txt (IA refusées, sitemap), sitemap avec les pages, LICENSE", /GP
     && d.getElementById("pe-total").textContent === String(P.points.length) && d.querySelectorAll("#pe-filtres [data-type]").length === new Set(P.points.map(p => p.type)).size && ![...d.querySelectorAll("#pe-filtres b")].some(b => b.textContent === "0"));
   d.querySelector('#pe-filtres [data-type="puits"]').click();
   check("filtre : un clic désactive le type", d.querySelector('#pe-filtres [data-type="puits"]').getAttribute("aria-pressed") === "false");
+  // fenêtre « Signaler un point d'eau » (comme « Signaler un prix » du site Prix des Eaux)
+  const pop = d.getElementById("pe-sig-pop");
+  check("signaler : une barre « Signaler un point d'eau » (pas de grand formulaire dans la page), fenêtre fermée au départ, formulaire DANS la fenêtre",
+    !!d.querySelector("#signaler .sig-bar#pe-sig-ouvrir") && pop.hidden && !!pop.querySelector("#pe-form") && !d.querySelector("main #pe-form"));
+  d.getElementById("pe-sig-ouvrir").click();
+  check("barre → fenêtre ouverte, avec carte pour le repère, « Me localiser (GPS) », « Confirmer cette position », liste des derniers signalés",
+    !pop.hidden && !!pop.querySelector("#pe-sig-carte") && /Me localiser/.test(d.getElementById("pe-ma-pos").textContent)
+    && /Confirmer cette position/.test(d.getElementById("pe-pos-ok").textContent) && /soyez le premier/.test(d.getElementById("pe-derniers").textContent));
+  d.getElementById("pe-pos-ok").click();
+  check("« Confirmer » sans repère : message « Placez d'abord le repère », aucune position prise",
+    /Placez d'abord le repère/.test(d.getElementById("pe-pos-txt").textContent) && d.getElementById("pe-pos").value === "");
+  d.dispatchEvent(new w.KeyboardEvent("keydown", { key: "Escape" }));
+  check("Échap ferme la fenêtre ; le lien « Signaler un point d'eau » du menu la rouvre", pop.hidden && (() => {
+    const m = [...d.querySelectorAll(".menu a")].find(x => /#signaler$/.test(x.getAttribute("href"))); m && m.click(); return !!m && !pop.hidden; })());
+  w.EAUX_POINTS.points.push({ id: "sig-test1", type: "source", lat: 36.8, lon: 10.1, nom: "Ain Test", src: "visiteur", date: w.EAUX_POINTS.maj.slice(0, 10), ok: 2, ko: 0, statut: "confirme" },
+    { id: "sig-vieux", type: "source", lat: 36.8, lon: 10.1, nom: "Trop vieux", src: "visiteur", date: "2020-01-01", ok: 1, ko: 0, statut: "signale" });
+  d.getElementById("pe-sig-fermer").click(); w.EAUX_SIGNALER();
+  check("derniers signalés : le point récent (nom, « confirmé par 2 visiteurs », « voir sur la carte »), pas celui de plus de 30 jours",
+    /Ain Test/.test(d.getElementById("pe-derniers").textContent) && /confirmé par 2 visiteurs/.test(d.getElementById("pe-derniers").textContent)
+    && !!d.querySelector('#pe-derniers [data-voir="sig-test1"]') && !/Trop vieux/.test(d.getElementById("pe-derniers").textContent));
+  w.EAUX_POINTS.points.splice(-2);
+  d.getElementById("pe-type").value = "source"; d.getElementById("pe-pos").value = "";
+  d.getElementById("pe-form").dispatchEvent(new w.Event("submit", { bubbles: true, cancelable: true }));
+  await new Promise(r => setTimeout(r, 20));
+  check("sans position confirmée : rien n'est envoyé, message « Placez le repère … Confirmer cette position »",
+    w.__envois.length === 0 && /Placez le repère/.test(d.getElementById("pe-statut").textContent));
   d.getElementById("pe-type").value = "majel"; d.getElementById("pe-nom").value = "Majel | près de la mosquée"; d.getElementById("pe-pos").value = "33.80760,10.84510";
   d.getElementById("pe-form").dispatchEvent(new w.Event("submit", { bubbles: true, cancelable: true }));
   await new Promise(r => setTimeout(r, 20));

@@ -23,7 +23,8 @@
   if (!/^pt:[a-z0-9]{6,40}$/.test(jeton || "")) { jeton = "pt:" + Math.random().toString(36).slice(2) + Date.now().toString(36); ecrire("point-jeton", jeton); }
   const esc = s => String(s || "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const actifs = new Set(Object.keys(TYPES));
-  let carte = null, calque = null, ici = null, nouveau = null;
+  let carte = null, calque = null, ici = null;
+  const marqueurs = {};
 
   function distance(a, b) {
     const R = 6371, r = x => x * Math.PI / 180, dLa = r(b.lat - a.lat), dLo = r(b.lon - a.lon);
@@ -58,7 +59,7 @@
     if (!carte) return;
     calque.clearLayers();
     D.points.filter(p => actifs.has(p.type)).forEach(p => {
-      L.circleMarker([p.lat, p.lon], { radius: p.src === "visiteur" ? 8 : 6, color: "#fff", weight: 2, fillColor: TYPES[p.type].c,
+      marqueurs[p.id] = L.circleMarker([p.lat, p.lon], { radius: p.src === "visiteur" ? 8 : 6, color: "#fff", weight: 2, fillColor: TYPES[p.type].c,
         fillOpacity: p.statut === "signale" ? .6 : .95 }).bindPopup(bulle(p)).addTo(calque);
     });
   }
@@ -84,23 +85,20 @@
     L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 18,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">contributeurs OpenStreetMap</a>' }).addTo(carte);
     calque = L.layerGroup().addTo(carte);
-    carte.on("click", e => placer(e.latlng.lat, e.latlng.lng));
     dessiner();
   }
-  function chargerLeaflet() {
-    if (window.L) return demarrerCarte();
+  const apresLeaflet = [];
+  function chargerLeaflet(fin) {
+    if (fin) apresLeaflet.push(fin);
+    const suite = () => { demarrerCarte(); apresLeaflet.splice(0).forEach(f => f()); };
+    if (window.L) return suite();
+    if (document.getElementById("leaflet-js")) return;          // déjà en cours de chargement
     const css = document.createElement("link"); css.rel = "stylesheet"; css.href = "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css";
     document.head.appendChild(css);
-    const js = document.createElement("script"); js.src = "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js";
-    js.onload = demarrerCarte; document.head.appendChild(js);
+    const js = document.createElement("script"); js.id = "leaflet-js"; js.src = "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js";
+    js.onload = suite; document.head.appendChild(js);
   }
 
-  // position du point à signaler : clic sur la carte ou « ma position »
-  function placer(lat, lon) {
-    $("pe-pos").value = lat.toFixed(5) + "," + lon.toFixed(5);
-    $("pe-pos-txt").textContent = L2("Position choisie : ", "الموقع المختار: ") + lat.toFixed(5) + ", " + lon.toFixed(5);
-    if (carte) { if (nouveau) nouveau.setLatLng([lat, lon]); else nouveau = L.marker([lat, lon]).addTo(carte); }
-  }
   function maPosition(fin) {
     if (!navigator.geolocation) { fin && fin(null); return; }
     navigator.geolocation.getCurrentPosition(g => fin({ lat: g.coords.latitude, lon: g.coords.longitude }), () => fin(null), { enableHighAccuracy: true, timeout: 15000 });
@@ -113,7 +111,12 @@
     if (v) {
       const ok = v.hasAttribute("data-ok"), id = ok ? v.dataset.ok : v.dataset.ko;
       envoyer(ok ? "POINT-OK" : "POINT-KO", id, "|" + jeton).then(() => { v.parentNode.innerHTML = `<small>${L2("Merci ! Pris en compte dans 2 heures environ.", "شكرًا! يُحتسب خلال ساعتين تقريبًا.")}</small>`; }, () => {});
+      return;
     }
+    const voir = e.target.closest("[data-voir]");
+    if (voir) { voirSurCarte(voir.dataset.voir); return; }
+    const lien = e.target.closest('a[href$="#signaler"]');
+    if (lien && lien.pathname === location.pathname) { e.preventDefault(); ouvrirSig(); }
   });
   $("pe-autour").addEventListener("click", () => {
     $("pe-autour-txt").textContent = L2("Recherche de votre position…", "جارٍ تحديد موقعك…");
@@ -125,22 +128,110 @@
       $("pe-google").href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("source d'eau")}%20${p.lat},${p.lon}`;
     });
   });
-  $("pe-ma-pos").addEventListener("click", () => maPosition(p => p ? (placer(p.lat, p.lon), carte && carte.setView([p.lat, p.lon], 16))
-    : ($("pe-pos-txt").textContent = L2("Position indisponible : touchez plutôt l'endroit sur la carte.", "الموقع غير متاح: المس المكان على الخريطة."))));
+  // ---- « Signaler un point d'eau » : fenêtre, comme « Signaler un prix » du site Prix des Eaux ----
+  // petite carte dans la fenêtre : « Me localiser (GPS) » ou toucher la carte pose un repère déplaçable,
+  // puis « Confirmer cette position » (la position n'est prise qu'une fois confirmée).
+  const pop = $("pe-sig-pop");
+  let mini = null, repere = null;
+  const etat = (txt, err) => { const t = $("pe-pos-txt"); t.textContent = txt; t.className = "geo-status" + (err ? " err" : ""); };
+  function nonConfirme() {
+    $("pe-pos").value = ""; $("pe-pos-ok").classList.remove("fait");
+    etat(L2("Repère placé : vérifiez-le, puis « Confirmer cette position ».", "تم وضع العلامة: تحقّق منها ثم « أكّد هذا الموقع »."));
+  }
+  function placerRepere(lat, lon, zoom) {
+    if (!mini) return;
+    if (repere) repere.setLatLng([lat, lon]);
+    else { repere = L.marker([lat, lon], { draggable: true, autoPan: true }).addTo(mini); repere.on("dragend", nonConfirme); }
+    if (zoom) mini.setView([lat, lon], zoom);
+    nonConfirme();
+  }
+  function demarrerMini() {
+    if (mini || !window.L) return;
+    const c = carte ? carte.getCenter() : { lat: 34.2, lng: 9.6 };
+    mini = L.map("pe-sig-carte", { scrollWheelZoom: false }).setView([c.lat, c.lng], carte ? Math.max(carte.getZoom(), 6) : 6);
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(mini);
+    mini.on("click", e => placerRepere(e.latlng.lat, e.latlng.lng));
+  }
+  function ouvrirSig() {
+    pop.hidden = false;
+    $("pe-statut").textContent = ""; $("pe-statut").className = "";
+    derniers();
+    chargerLeaflet(() => { demarrerMini(); setTimeout(() => mini && mini.invalidateSize(), 60); });
+  }
+  function fermerSig() {
+    pop.hidden = true;
+    if (location.hash === "#signaler") history.replaceState(null, "", location.pathname + location.search);
+  }
+  window.EAUX_SIGNALER = ouvrirSig;           // pour les tests
+
+  // derniers points signalés par les visiteurs (30 jours), comme « Derniers prix signalés »
+  function derniers() {
+    const box = $("pe-derniers");
+    const ref = new Date(String(D.maj || "").slice(0, 10) + "T12:00:00");
+    const age = p => (ref - new Date(p.date + "T12:00:00")) / 864e5;
+    const l = D.points.filter(p => p.src === "visiteur" && /^\d{4}-\d\d-\d\d$/.test(p.date || "") && (isNaN(ref) || age(p) <= 30))
+      .sort((x, y) => y.date.localeCompare(x.date)).slice(0, 10);
+    if (!l.length) {
+      box.innerHTML = `<p class="sig-vide">${L2("Aucun point d'eau signalé ces 30 derniers jours : soyez le premier !", "لم تُضف أي نقطة ماء خلال الثلاثين يومًا الأخيرة: كن الأول!")}</p>`;
+      return;
+    }
+    const ar = document.documentElement.lang === "ar";
+    box.innerHTML = `<p class="sig-titre">${L2("Derniers points d'eau signalés par les visiteurs", "آخر نقاط الماء التي أضافها الزوار")}</p><ul>` + l.map(p => {
+      const vu = new Date(p.date + "T12:00:00").toLocaleDateString(ar ? "ar-TN" : "fr-FR", { day: "numeric", month: "short" });
+      const st = p.statut === "confirme" ? L2(`confirmé par ${p.ok} visiteurs`, `أكّده ${p.ok} زوار`) : L2("à confirmer", "في انتظار التأكيد");
+      return `<li><b>${esc(p.nom) || nomT(p.type)}</b> · ${nomT(p.type)} <small>· ${L2("signalé le", "أُضيف في")} ${vu} · ${st}</small>
+        <button type="button" data-voir="${esc(p.id)}">${L2("voir sur la carte", "اعرض على الخريطة")}</button></li>`;
+    }).join("") + `</ul>`;
+  }
+  function voirSurCarte(id) {
+    const p = D.points.find(x => x.id === id);
+    if (!p) return;
+    fermerSig();
+    if (!actifs.has(p.type)) { actifs.add(p.type); filtres(); dessiner(); }
+    $("pe-carte").scrollIntoView({ behavior: "smooth", block: "center" });
+    chargerLeaflet(() => { carte.setView([p.lat, p.lon], 16); if (marqueurs[p.id]) marqueurs[p.id].openPopup(); });
+  }
+
+  $("pe-sig-ouvrir").addEventListener("click", ouvrirSig);
+  $("pe-sig-fermer").addEventListener("click", fermerSig);
+  pop.addEventListener("click", e => { if (e.target === pop) fermerSig(); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape" && !pop.hidden) fermerSig(); });
+  if (location.hash === "#signaler") ouvrirSig();            // lien « Signaler un point d'eau » du menu, depuis une autre page
+
+  $("pe-ma-pos").addEventListener("click", () => {
+    etat(L2("Recherche de votre position…", "جارٍ تحديد موقعك…"));
+    maPosition(p => {
+      if (!p) { etat(L2("Position indisponible : touchez plutôt l'endroit sur la carte.", "الموقع غير متاح: المس المكان على الخريطة."), true); return; }
+      chargerLeaflet(() => { demarrerMini(); placerRepere(p.lat, p.lon, 17); });
+    });
+  });
+  $("pe-pos-ok").addEventListener("click", () => {
+    if (!repere) { etat(L2("Placez d'abord le repère : « Me localiser (GPS) » ou touchez la carte.", "ضع العلامة أولًا: « حدّد موقعي » أو المس الخريطة."), true); return; }
+    const g = repere.getLatLng();
+    $("pe-pos").value = g.lat.toFixed(5) + "," + g.lng.toFixed(5);
+    $("pe-pos-ok").classList.add("fait");
+    etat(L2("✔ Position confirmée", "✔ تم تأكيد الموقع") + " : " + g.lat.toFixed(5) + ", " + g.lng.toFixed(5));
+  });
   $("pe-form").addEventListener("submit", e => {
     e.preventDefault();
     const st = $("pe-statut"), type = $("pe-type").value, pos = $("pe-pos").value, nom = $("pe-nom").value.replace(/\|/g, " ").trim().slice(0, 60);
-    if (!TYPES[type]) { st.textContent = L2("Choisissez le type de point d'eau.", "اختر نوع نقطة الماء."); return; }
-    if (!/^-?\d+\.\d+,-?\d+\.\d+$/.test(pos)) { st.textContent = L2("Indiquez la position : touchez l'endroit sur la carte ou « Utiliser ma position ».", "حدّد الموقع: المس المكان على الخريطة أو « استعمل موقعي »."); return; }
+    const dire = (txt, cls) => { st.textContent = txt; st.className = cls || ""; };
+    if (!TYPES[type]) { dire(L2("Choisissez le type de point d'eau.", "اختر نوع نقطة الماء."), "err"); return; }
+    if (!/^-?\d+\.\d+,-?\d+\.\d+$/.test(pos)) { dire(L2("Placez le repère sur la carte, puis « Confirmer cette position ».", "ضع العلامة على الخريطة، ثم « أكّد هذا الموقع »."), "err"); return; }
     if ($("pe-form").querySelector("[name=_gotcha]").value) return;
+    const btn = $("pe-envoyer"); btn.disabled = true; dire(L2("Envoi…", "جارٍ الإرسال…"));
     envoyer("POINT", type + "|" + nom, pos + "|" + jeton).then(() => {
-      st.textContent = L2("Merci ! Le point apparaîtra sur la carte dans 2 heures environ (« à confirmer » jusqu'à ce qu'un autre visiteur le confirme).", "شكرًا! ستظهر النقطة على الخريطة خلال ساعتين تقريبًا (« في انتظار التأكيد » حتى يؤكّدها زائر آخر).");
-      $("pe-form").reset(); $("pe-pos").value = ""; $("pe-pos-txt").textContent = "";
-    }, () => { st.textContent = L2("Échec de l'envoi — vérifiez votre connexion et réessayez.", "تعذّر الإرسال — تحقّق من الاتصال وأعد المحاولة."); });
+      dire(L2("Merci ! Le point apparaîtra sur la carte dans 2 heures environ (« à confirmer » jusqu'à ce qu'un autre visiteur le confirme).", "شكرًا! ستظهر النقطة على الخريطة خلال ساعتين تقريبًا (« في انتظار التأكيد » حتى يؤكّدها زائر آخر)."), "ok");
+      $("pe-form").reset(); $("pe-pos").value = ""; $("pe-pos-ok").classList.remove("fait"); etat("");
+      if (repere && mini) { mini.removeLayer(repere); repere = null; }
+      setTimeout(fermerSig, 3500);
+    }, () => dire(L2("Échec de l'envoi — vérifiez votre connexion et réessayez.", "تعذّر الإرسال — تحقّق من الاتصال وأعد المحاولة."), "err"))
+      .then(() => { btn.disabled = false; });
   });
 
   filtres();
-  document.addEventListener("langue", () => { filtres(); proches(); dessiner(); });
+  document.addEventListener("langue", () => { filtres(); proches(); dessiner(); if (!pop.hidden) derniers(); });
   if ("IntersectionObserver" in window) {
     const o = new IntersectionObserver(es => { if (es.some(x => x.isIntersecting)) { o.disconnect(); chargerLeaflet(); } });
     o.observe($("pe-carte"));
