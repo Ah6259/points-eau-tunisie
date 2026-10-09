@@ -22,6 +22,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 OSM = ROOT / "donnees" / "points_osm.json"
+AJEM = ROOT / "donnees" / "points_ajem.json"          # majels de Djerba recensés par l'association AJEM (tools/points_ajem.py)
 SORTIE = ROOT / "donnees" / "points_eau.js"
 TYPES = ("source", "fontaine", "robinet", "majel", "puits")
 TUNISIE = (30.2, 37.6, 7.5, 11.7)          # lat min, lat max, lon min, lon max
@@ -100,19 +101,23 @@ def calculer(reponses, osm_points):
     sortie = []
     for q in points.values():
         ok, ko = len(q.pop("ok")), len(q.pop("ko"))
-        seuil = 3 if q["src"] == "osm" else 2
+        externe = q["src"] in ("osm", "ajem")          # point venu d'un recensement (OpenStreetMap, AJEM)
+        seuil = 3 if externe else 2
         if ko >= seuil and ko > ok:
             continue
         q["ok"], q["ko"] = ok, ko
-        q["statut"] = "osm" if q["src"] == "osm" and ok < 1 else ("confirme" if ok >= 2 or (q["src"] == "osm" and ok >= 1) else "signale")
+        q["statut"] = q["src"] if externe and ok < 1 else ("confirme" if ok >= 2 or (externe and ok >= 1) else "signale")
         sortie.append(q)
     return sorted(sortie, key=lambda p: p["id"]), rejets
 
 
 def ecrire_points(reponses):
     osm = json.loads(OSM.read_text(encoding="utf-8")) if OSM.exists() else {"points": []}
-    points, rejets = calculer(reponses, osm.get("points", []))
-    SORTIE.write_text("// GÉNÉRÉ par tools/points_eau.py (via signalements.py) — points d'eau : OpenStreetMap + visiteurs\n"
+    ajem = json.loads(AJEM.read_text(encoding="utf-8")).get("points", []) if AJEM.exists() else []
+    # un majel AJEM et un puits/majel OpenStreetMap à moins de RAYON_M : le même ouvrage, on garde la fiche AJEM (plus riche)
+    base = [p for p in osm.get("points", []) if not (p["type"] in ("majel", "puits") and any(distance_m(p, a) <= RAYON_M for a in ajem))]
+    points, rejets = calculer(reponses, base + ajem)
+    SORTIE.write_text("// GÉNÉRÉ par tools/points_eau.py (via signalements.py) — points d'eau : OpenStreetMap + AJEM (majels de Djerba) + visiteurs\n"
                       "window.EAUX_POINTS = " + json.dumps({"maj": datetime.now().isoformat(timespec="minutes"),
                                                             "osm_maj": osm.get("maj", ""), "points": points},
                                                            ensure_ascii=False, separators=(",", ":")) + ";\n",

@@ -13,7 +13,7 @@
     puits: { fr: "Puits", ar: "بئر", c: "#6B5B95" }
   };
   const L2 = (fr, ar) => (window.T ? window.T(fr, ar) : fr);
-  const STATUT = { osm: ["OpenStreetMap", "OpenStreetMap"], confirme: ["Confirmé par les visiteurs", "أكّده الزوار"], signale: ["Signalé par un visiteur, à confirmer", "أضافه زائر، في انتظار التأكيد"] };
+  const STATUT = { osm: ["OpenStreetMap", "OpenStreetMap"], ajem: ["Recensé par l'association AJEM (Fesguietna)", "أحصته جمعية AJEM (فسقيتنا)"], confirme: ["Confirmé par les visiteurs", "أكّده الزوار"], signale: ["Signalé par un visiteur, à confirmer", "أضافه زائر، في انتظار التأكيد"] };
   const nomT = t => L2(TYPES[t].fr, TYPES[t].ar);
   const D = window.EAUX_POINTS || { points: [] };
   const $ = id => document.getElementById(id);
@@ -41,13 +41,18 @@
     return fetch(FORM, { method: "POST", mode: "no-cors", body: corps });
   }
 
+  const ETAT = { bon: ["Bon état", "حالة جيدة"], moyen: ["État moyen", "حالة متوسطة"], mauvais: ["Mauvais état", "حالة سيئة"], "tres-mauvais": ["Très mauvais état", "حالة سيئة جدًا"] };
+  const ficheAjem = p => /^https:\/\/www\.ajem\.tn\/fesguietna\/citerne\/[\w-]+$/.test(p.lien || "")
+    ? `<br><a href="${esc(p.lien)}" target="_blank" rel="noopener">${L2("Fiche et photos sur le site AJEM", "البطاقة والصور على موقع AJEM")}</a>` : "";
+
   function bulle(p) {
-    const t = TYPES[p.type];
     return `<div class="pe-bulle"><b>${esc(p.nom) || nomT(p.type)}</b><br><span>${nomT(p.type)}</span><br>
-      <small>${STATUT[p.statut] ? L2(...STATUT[p.statut]) : ""}${p.ok ? ` · ${p.ok} ${L2("confirmation(s)", "تأكيد")}` : ""}</small><br>
+      <small>${STATUT[p.statut] ? L2(...STATUT[p.statut]) : ""}${ETAT[p.etat] ? ` · ${L2(...ETAT[p.etat])}` : ""}${p.ok ? ` · ${p.ok} ${L2("confirmation(s)", "تأكيد")}` : ""}</small>${ficheAjem(p)}<br>
       <a href="${itineraire(p)}" target="_blank" rel="noopener">${L2("Itinéraire (Google Maps)", "الطريق (خرائط Google)")}</a>
       <div class="pe-voix"><button type="button" data-ok="${esc(p.id)}">✓ ${L2("C'est vrai", "صحيح")}</button><button type="button" data-ko="${esc(p.id)}">✗ ${L2("N'existe plus", "لم يعد موجودًا")}</button></div></div>`;
   }
+
+  window.EAUX_BULLE = bulle;                // pour les tests
 
   function dessiner() {
     if (!carte) return;

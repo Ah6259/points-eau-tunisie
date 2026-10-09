@@ -26,7 +26,7 @@
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&family=Noto+Kufi+Arabic:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=20261009a">
+<link rel="stylesheet" href="assets/style.css?v=20261009b">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"Où trouver de l'eau gratuite en Tunisie ?","acceptedAnswer":{"@type":"Answer","text":"Sur la carte gratuite Points d'eau Tunisie : sources naturelles, fontaines d'eau potable, robinets publics, majels ouverts à tous et puits, venus d'OpenStreetMap et des signalements des visiteurs. Le bouton « Autour de moi » montre les plus proches."}},
@@ -34,8 +34,8 @@
 {"@type":"Question","name":"L'eau des sources et des majels est-elle potable ?","acceptedAnswer":{"@type":"Answer","text":"Elle n'est pas contrôlée : elle peut ne pas être potable. Faites-la bouillir ou filtrez-la en cas de doute et ne la donnez pas aux bébés."}}
 ]}
 </script>
-<script src="assets/page.js?v=20261009a"></script>
-<script src="assets/avis.js?v=20261009a" defer></script>
+<script src="assets/page.js?v=20261009b"></script>
+<script src="assets/avis.js?v=20261009b" defer></script>
 </head>
 <body>
 <header class="entete" id="entete"></header>
@@ -61,6 +61,7 @@
     <div id="pe-proches" class="pe-proches"></div>
     <p class="avert pe-djerba"><span data-l="fr"><b>À Djerba :</b> l'association AJEM a recensé 212 citernes publiques (fesguias et majels) dans son projet « Fesguietna » —</span><span data-l="ar"><b>في جربة:</b> أحصت جمعية جليج للبيئة البحرية ⁦212⁩ فسقية وماجلًا عموميًا في مشروع « فسقيتنا » —</span> <a href="https://www.ajem.tn/fesguietna" target="_blank" rel="noopener"><span data-l="fr">voir leur carte</span><span data-l="ar">شاهد خريطتهم</span></a>.</p>
     <p class="aide"><span data-l="fr">Touchez un point pour l'itinéraire, ou pour dire s'il existe toujours. Pas trouvé ?</span><span data-l="ar">المس نقطة لمعرفة الطريق، أو لتقول إن كانت ما تزال موجودة. لم تجد؟</span> <a id="pe-google" href="https://www.google.com/maps/search/?api=1&amp;query=source%20d%27eau%20Tunisie" target="_blank" rel="noopener"><span data-l="fr">Chercher aussi sur Google Maps</span><span data-l="ar">ابحث أيضًا في خرائط Google</span></a>.</p>
+    <p class="aide pe-credit-ajem"><span data-l="fr">Les majels de Djerba sur la carte (leur nom, leur état et leurs photos) viennent du recensement de l'association <b>AJEM</b>, projet</span><span data-l="ar">مواجل جربة على الخريطة (أسماؤها وحالتها وصورها) مأخوذة من إحصاء جمعية <b>AJEM</b>، مشروع</span> <a href="https://www.ajem.tn/fesguietna" target="_blank" rel="noopener">Fesguietna</a><span data-l="fr"> : merci à eux.</span><span data-l="ar">: شكرًا لهم.</span></p>
   </section>
 
   <section class="carte pe-signaler" id="signaler">
@@ -84,6 +85,19 @@
       <p id="pe-statut" class="aide" role="status" aria-live="polite"></p>
       <p class="aide"><span data-l="fr">Rien de personnel n'est envoyé : seulement le type, le nom du lieu et la position. Les numéros de téléphone et la publicité sont retirés automatiquement. Un point disparaît si plusieurs visiteurs disent qu'il n'existe plus.</span><span data-l="ar">لا يُرسل أي شيء شخصي: فقط النوع واسم المكان والموقع. تُحذف أرقام الهاتف والإشهار آليًا. تختفي النقطة إذا قال عدّة زوار إنها لم تعد موجودة.</span></p>
     </form>
+  </section>
+
+  <section class="carte pe-liens" id="majels">
+    <h2><span data-l="fr">Majels et techniques pour avoir de l'eau</span><span data-l="ar">المواجل وتقنيات الحصول على الماء</span></h2>
+    <p class="aide"><span data-l="fr">Pour en savoir plus, construire ou restaurer un majel, et découvrir les techniques tunisiennes de récolte de l'eau de pluie :</span><span data-l="ar">لمعرفة المزيد، أو لبناء ماجل أو ترميمه، واكتشاف التقنيات التونسية لتجميع مياه الأمطار:</span></p>
+    <ul class="sources">
+      <li><a href="https://www.ajem.tn/fesguietna" target="_blank" rel="noopener">AJEM — Fesguietna</a> : <span data-l="fr">recensement, cartes et restauration des citernes (majels, fesguias) de Djerba.</span><span data-l="ar">إحصاء وخرائط وترميم مواجل وفسقيات جربة.</span></li>
+      <li><a href="https://www.webmanagercenter.com/2023/05/21/508019/la-gestion-de-leau-en-tunisie-les-majels-un-tresor-ancestral/" target="_blank" rel="noopener">Webmanagercenter</a> : <span data-l="fr">« Les majels, un trésor ancestral » — comment ils fonctionnent.</span><span data-l="ar">« المواجل، كنز الأجداد » — كيف تعمل.</span></li>
+      <li><a href="https://www.webmanagercenter.com/2024/10/18/532307/projet-loi-de-finances-2025-stress-hydrique-les-incitations-pour-la-construction-de-majels-reconduites/" target="_blank" rel="noopener">Webmanagercenter</a> : <span data-l="fr">crédit sans intérêt de l'État pour construire un majel (loi de finances).</span><span data-l="ar">قرض دون فائدة من الدولة لبناء ماجل (قانون المالية).</span></li>
+      <li><a href="https://fr.allafrica.com/stories/202512030389.html" target="_blank" rel="noopener">AllAfrica</a> : <span data-l="fr">les citernes ancestrales de Djerba face au climat.</span><span data-l="ar">مواجل جربة القديمة في مواجهة تغيّر المناخ.</span></li>
+      <li><a href="https://qcat.wocat.net/fr/wocat/technologies/view/permalink/3495/" target="_blank" rel="noopener">WOCAT</a> : <span data-l="fr">les jessour du Sud tunisien (terrasses qui récoltent l'eau de ruissellement), fiche technique.</span><span data-l="ar">الجسور في الجنوب التونسي (مدرّجات تجمع مياه السيلان)، بطاقة تقنية.</span></li>
+      <li><a href="https://www.fao.org/3/cc4551en/cc4551en.pdf" target="_blank" rel="noopener">FAO</a> : <span data-l="fr">les techniques de récolte de l'eau en Tunisie (Institut des Régions Arides de Médenine), en anglais.</span><span data-l="ar">تقنيات تجميع المياه في تونس (معهد المناطق القاحلة بمدنين)، بالإنجليزية.</span></li>
+    </ul>
   </section>
 
   <div class="outils">
@@ -130,8 +144,8 @@
   </section>
 </main>
 <footer id="pied"></footer>
-<script src="donnees/points_eau.js?v=20261009a"></script>
-<script src="assets/points-eau.js?v=20261009a"></script>
+<script src="donnees/points_eau.js?v=20261009b"></script>
+<script src="assets/points-eau.js?v=20261009b"></script>
 <script data-goatcounter="https://prix-eaux-tunisie.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>

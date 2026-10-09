@@ -82,6 +82,14 @@ check("robots.txt (IA refusées, sitemap), sitemap avec les pages, LICENSE", /GP
   const b = d.createElement("div"); b.innerHTML = `<div class="pe-voix"><button type="button" data-ok="osm-n1">✓</button></div>`; d.body.appendChild(b);
   b.querySelector("button").click(); await new Promise(r => setTimeout(r, 20));
   check("« c'est vrai » : format POINT-OK, id du point, jeton", w.__envois[1] && w.__envois[1]["entry.1939823394"] === "POINT-OK" && w.__envois[1]["entry.897098257"] === "osm-n1");
+  const aj = P.points.find(p => p.src === "ajem" && p.etat === "mauvais");
+  check(`majels AJEM : au moins 150 sur la carte (${P.points.filter(p => p.src === "ajem").length}), crédit « AJEM … Fesguietna » sous la carte`,
+    P.points.filter(p => p.src === "ajem").length >= 150 && !!d.querySelector('.pe-credit-ajem a[href="https://www.ajem.tn/fesguietna"]'));
+  check("bulle d'un majel AJEM : « Recensé par l'association AJEM », état, lien vers sa fiche AJEM", !!aj && (() => {
+    const h = w.EAUX_BULLE(aj); return /Recensé par l'association AJEM/.test(h) && /Mauvais état/.test(h) && h.includes(`href="${aj.lien}"`); })());
+  check("bulle : un lien qui n'est pas une fiche AJEM n'est jamais affiché", !/evil/.test(w.EAUX_BULLE({ ...(aj || {}), lien: "https://evil.example/x" })));
+  check("rubrique « Majels et techniques pour avoir de l'eau » : au moins 5 liens, dont AJEM, tous dans un nouvel onglet",
+    d.querySelectorAll("#majels li a").length >= 5 && !!d.querySelector('#majels a[href="https://www.ajem.tn/fesguietna"]') && [...d.querySelectorAll("#majels a")].every(a => a.target === "_blank" && /noopener/.test(a.rel)));
   check("menu : Carte, Signaler, Le Coran et l'eau, À propos ; lien vers Prix des Eaux (carte de l'accueil + pied de page)", d.querySelectorAll(".menu a").length === 4
     && !!d.querySelector('footer a[href="https://ah6259.github.io/prix-eaux-tunisie/"]') && !!d.querySelector('main a.outil[href="https://ah6259.github.io/prix-eaux-tunisie/"]'));
 }
