@@ -4,7 +4,7 @@
    Un texte français ajouté ou modifié doit être traduit ici dans les 5 langues (tools/test_site.mjs le vérifie). */
 window.TRADUCTIONS = {
 "tr": {
- "Points d'eau — Tunisie et monde": "Su noktaları — Tunus ve dünya",
+ "Points d'eau de Tunisie et du monde": "Tunus ve dünya su noktaları",
  "Le monde entier est sur la carte": "Tüm dünya haritada",
  "Exemples :": "Örnekler:",
  "La Mecque": "Mekke",
@@ -198,7 +198,7 @@ window.TRADUCTIONS = {
  "Hadiths en anglais :": "İngilizce hadisler:"
 },
 "id": {
- "Points d'eau — Tunisie et monde": "Titik air — Tunisia dan dunia",
+ "Points d'eau de Tunisie et du monde": "Titik air Tunisia dan dunia",
  "Le monde entier est sur la carte": "Seluruh dunia ada di peta",
  "Exemples :": "Contoh:",
  "La Mecque": "Mekah",
@@ -392,7 +392,7 @@ window.TRADUCTIONS = {
  "Hadiths en anglais :": "Hadis dalam bahasa Inggris:"
 },
 "ur": {
- "Points d'eau — Tunisie et monde": "پانی کے مقامات — تیونس اور دنیا",
+ "Points d'eau de Tunisie et du monde": "تیونس اور دنیا کے پانی کے مقامات",
  "Le monde entier est sur la carte": "پوری دنیا نقشے پر ہے",
  "Exemples :": "مثالیں:",
  "La Mecque": "مکہ مکرمہ",
@@ -586,7 +586,7 @@ window.TRADUCTIONS = {
  "Hadiths en anglais :": "انگریزی میں احادیث:"
 },
 "de": {
- "Points d'eau — Tunisie et monde": "Wasserstellen — Tunesien & Welt",
+ "Points d'eau de Tunisie et du monde": "Wasserstellen Tunesien & Welt",
  "Le monde entier est sur la carte": "Die ganze Welt ist auf der Karte",
  "Exemples :": "Beispiele:",
  "La Mecque": "Mekka",
@@ -780,7 +780,7 @@ window.TRADUCTIONS = {
  "Hadiths en anglais :": "Hadithe auf Englisch:"
 },
 "es": {
- "Points d'eau — Tunisie et monde": "Puntos de agua — Túnez y el mundo",
+ "Points d'eau de Tunisie et du monde": "Puntos de agua de Túnez y del mundo",
  "Le monde entier est sur la carte": "El mundo entero está en el mapa",
  "Exemples :": "Ejemplos:",
  "La Mecque": "La Meca",

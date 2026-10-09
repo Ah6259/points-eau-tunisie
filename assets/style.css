@@ -530,7 +530,7 @@ html[lang="ur"] [data-t="ur"],html[lang="de"] [data-t="de"],html[lang="es"] [dat
 .monde-info{margin:8px 0 0}.monde-info:empty{display:none}
 /* nom du site sur deux lignes sur téléphone (09/10/2026 : « Tunisie et monde » était coupé sous les boutons de partage) */
 @media (max-width:560px){
-  .logo-nom{white-space:normal;overflow:hidden;text-overflow:clip;line-height:1.15;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow-wrap:anywhere}
+  .logo-nom{white-space:normal;overflow:hidden;text-overflow:clip;line-height:1.15;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow-wrap:anywhere}
   .logo-nom small{display:none}
 }
 @media (max-width:380px){ .logo{font-size:13.5px;gap:6px} .entete-boutons{gap:4px} }
