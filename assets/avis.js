@@ -9,7 +9,7 @@
   var MAX = 1000;
   var ar = function () { return document.documentElement.lang === "ar"; };
   var en = function () { return document.documentElement.lang === "en"; };
-  var T = function (fr, a, e) { return ar() ? a : en() && e ? e : fr; };
+  var T = function (fr, a, e) { return window.T ? window.T(fr, a, e) : ar() ? a : en() && e ? e : fr; };   // page.js : 8 langues
 
   // textes d'aide (placeholder) dans la langue de la page : data-ph-fr / data-ph-ar
   function placeholders() {
@@ -28,7 +28,7 @@
     var bouton = form.querySelector("button[type=submit]");
     var message = form.querySelector("[name=message]");
     var compte = document.getElementById("avis-compte");
-    var dire = function (classe, fr, a, e) { statut.className = classe; statut.textContent = T(fr, a, e); };
+    var dire = function (classe, fr, a, e) { statut.className = classe; statut.textContent = T(fr, a, e).replace("{n}", MAX); };
 
     placeholders();
     if (window.MutationObserver)
@@ -49,7 +49,7 @@
         return;
       }
       if (texte.length > MAX) {
-        dire("err", "Message trop long : " + MAX + " caractères au maximum.", "الرسالة طويلة جدًا: " + MAX + " حرف على الأكثر.", "Message too long: " + MAX + " characters maximum.");
+        dire("err", "Message trop long : {n} caractères au maximum.", "الرسالة طويلة جدًا: {n} حرف على الأكثر.", "Message too long: {n} characters maximum.");
         return;
       }
       var piege = form.querySelector("[name=_gotcha]");

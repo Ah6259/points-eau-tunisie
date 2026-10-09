@@ -1,30 +1,54 @@
-/* Langue (français / arabe / anglais), en-tête, menu et pied de page communs, partage, protections — repris de Ma voiture Tunisie */
+/* Langue (8 langues : français, arabe, anglais + turc, indonésien, ourdou, allemand, espagnol), en-tête, menu et pied de page communs, partage, protections — repris de Ma voiture Tunisie */
 const MAJ = "09/10/2026";   // date de création ; les points sont datés par le robot (donnees/points_eau.js)
 // Menu de l'en-tête (toutes les pages)
 const MENU_SITE = [
   ["", "Carte", "الخريطة", "Map"],
   ["#signaler", "Signaler un point d'eau", "أضف نقطة ماء", "Report a water point"],
-  ["majels-et-puits/", "Majels et puits", "المواجل والآبار", "Majels & wells"],
+  ["majels-et-puits/", "Majels et puits en Tunisie", "المواجل والآبار في تونس", "Majels and wells in Tunisia"],
   ["coran-et-eau/", "Le Coran et l'eau", "الماء في القرآن", "Quran & water"],
   ["a-propos/", "À propos", "من نحن", "About"]
 ];
 
-// Trois langues (anglais ajouté le 09/10/2026 : site pour le monde entier).
-// La mémoire « langue » est PARTAGÉE par tous les sites d'ah6259.github.io : on n'y lit / écrit que « fr » ou « ar » ;
-// le choix complet (fr / ar / en) est gardé sous la clé propre au site « langue-points-eau » (règle commune).
-// Sans choix : arabe ou français selon le téléphone, sinon anglais (visiteurs du monde entier).
+// Huit langues (anglais le 09/10/2026, puis turc, indonésien, ourdou, allemand, espagnol : site pour le monde entier).
+// fr / ar / en sont écrits dans les pages ; les 5 autres viennent de assets/langues.js (window.TRADUCTIONS, clé = texte français),
+// et à défaut l'anglais. La mémoire « langue » est PARTAGÉE par tous les sites d'ah6259.github.io : on n'y lit / écrit que « fr » ou « ar » ;
+// le choix complet est gardé sous la clé propre au site « langue-points-eau » (règle commune).
+// Sans choix : la langue du téléphone si le site la parle, sinon anglais (visiteurs du monde entier).
 (function () {
   const html = document.documentElement;
   const racine = html.dataset.racine || "";
-  const LANGUES = ["fr", "ar", "en"];
+  const LANGUES = [["fr", "FR", "Français"], ["ar", "ع", "العربية"], ["en", "EN", "English"], ["tr", "TR", "Türkçe"],
+    ["id", "ID", "Bahasa Indonesia"], ["ur", "UR", "اردو"], ["de", "DE", "Deutsch"], ["es", "ES", "Español"]];
+  const CODES = LANGUES.map(x => x[0]), NOUVELLES = ["tr", "id", "ur", "de", "es"], DROITE = ["ar", "ur"];
   const lireCle = k => { try { return localStorage.getItem(k) || ""; } catch (e) { return ""; } };
-  const nav = (navigator.language || "").slice(0, 2);
-  let langue = [lireCle("langue-points-eau")].find(l => LANGUES.includes(l))
-    || ["fr", "ar"].find(l => l === lireCle("langue")) || (nav === "ar" || nav === "fr" ? nav : "en");
+  const nav = (navigator.language || "").slice(0, 2).toLowerCase();
+  let langue = [lireCle("langue-points-eau")].find(l => CODES.includes(l))
+    || ["fr", "ar"].find(l => l === lireCle("langue")) || (CODES.includes(nav) ? nav : "en");
   const demande = new URLSearchParams(location.search).get("lang");
-  if (LANGUES.includes(demande)) langue = demande;
+  if (CODES.includes(demande)) langue = demande;
 
-  window.T = (fr, ar, en) => html.lang === "ar" ? ar : html.lang === "en" ? (en === undefined ? fr : en) : fr;
+  const cle = s => String(s).replace(/\s+/g, " ").trim();
+  const trad = (l, fr) => { const t = ((window.TRADUCTIONS || {})[l] || {})[cle(fr)]; return t ? t : null; };
+  window.T = (fr, ar, en) => {
+    const l = html.lang;
+    if (l === "ar") return ar;
+    if (l === "en" || NOUVELLES.includes(l)) return (l !== "en" && trad(l, fr)) || (en === undefined ? fr : en);
+    return fr;
+  };
+
+  // textes des pages dans une des 5 nouvelles langues : les éléments data-l="en" sont montrés (CSS) et reçoivent la traduction
+  // du texte français voisin ; l'anglais d'origine est gardé dans data-en-origine pour revenir en arrière.
+  function traduirePage(l) {
+    const nouv = NOUVELLES.includes(l);
+    document.querySelectorAll('[data-l="en"]').forEach(en => {
+      if (en.dataset.enOrigine === undefined) { if (!nouv) return; en.dataset.enOrigine = en.innerHTML; }
+      en.innerHTML = en.dataset.enOrigine;
+      const fr = en.previousElementSibling && en.previousElementSibling.previousElementSibling;
+      if (!nouv || !fr || fr.dataset.l !== "fr") return;
+      if (en.tagName === "UL") [...fr.children].forEach((li, i) => { const t = trad(l, li.innerHTML); if (t && en.children[i]) en.children[i].innerHTML = t; });
+      else { const t = trad(l, fr.innerHTML); if (t) en.innerHTML = t; }
+    });
+  }
 
   function cadre() {
     const ici = location.pathname.replace(/index\.html$/, "");
@@ -38,8 +62,9 @@ const MENU_SITE = [
         </a>
         <div class="entete-boutons">
           <button class="partager" type="button" aria-label="${T("Partager cette page", "شارك هذه الصفحة", "Share this page")}" title="${T("Partager", "شارك", "Share")}"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg></button>
-          <div class="langues" role="group" aria-label="${T("Langue", "اللغة", "Language")}">${[["fr", "FR", "Français"], ["ar", "ع", "العربية"], ["en", "EN", "English"]].map(([l, c, n]) =>
-            `<button type="button" data-lang="${l}" lang="${l}" title="${n}" aria-label="${n}" aria-pressed="${html.lang === l}">${c}</button>`).join("")}</div>
+          <div class="langues">${(([l, c, n]) => `<button type="button" class="langues-bouton" aria-haspopup="true" aria-expanded="false" aria-controls="langues-liste" aria-label="${T("Langue", "اللغة", "Language")} : ${n}" title="${T("Langue", "اللغة", "Language")}"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 3.8 5.6 3.8 9s-1.2 6.4-3.8 9c-2.6-2.6-3.8-5.6-3.8-9S9.4 5.6 12 3z"/></svg><span lang="${l}">${c}</span><i aria-hidden="true">▾</i></button>`)(LANGUES.find(x => x[0] === html.lang) || LANGUES[0])}
+            <ul class="langues-liste" id="langues-liste" hidden>${LANGUES.map(([l, c, n]) =>
+            `<li><button type="button" data-lang="${l}" lang="${l}" dir="${DROITE.includes(l) ? "rtl" : "ltr"}" aria-pressed="${html.lang === l}">${n}</button></li>`).join("")}</ul></div>
         </div>
       </div>
       <nav class="menu" aria-label="${T("Rubriques", "الأبواب", "Sections")}"><div class="wrap">${MENU_SITE.map(([h, fr, ar, en]) =>
@@ -65,8 +90,12 @@ const MENU_SITE = [
                "Points: © OpenStreetMap contributors (ODbL), the AJEM association (Djerba majels) and site visitors. Photo: Wikimedia Commons —")} <a href="${racine}a-propos/#photos">${T("crédits", "الحقوق", "credits")}</a>.</p>
         <p>© 2026 Points d'eau Tunisie — ${T("tous droits réservés.", "جميع الحقوق محفوظة.", "all rights reserved.")}</p>
       </div>`;
+    // menu défilant (téléphone) : la rubrique de la page reste visible
+    const actuel = document.querySelector('.menu [aria-current="page"]');
+    if (actuel && actuel.scrollIntoView) try { actuel.scrollIntoView({ block: "nearest", inline: "center" }); } catch (x) {}
     document.querySelectorAll(".langues [data-lang]").forEach(b =>
-      b.addEventListener("click", () => appliquer(b.dataset.lang)));
+      b.addEventListener("click", () => { appliquer(b.dataset.lang); const o = document.querySelector(".langues-bouton"); if (o) o.focus(); }));
+    document.querySelectorAll(".langues-bouton").forEach(b => b.addEventListener("click", () => liste(b.getAttribute("aria-expanded") !== "true")));
     // bouton Partager (règle commune) : menu de partage du téléphone, sinon WhatsApp, avec la page vidéo + l'adresse du site
     document.querySelectorAll(".partager").forEach(b => b.addEventListener("click", () => {
       try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: "partage" + location.pathname.replace("/points-eau-tunisie/", "/"), title: "Partage", event: true }); } catch (e) {}
@@ -81,9 +110,26 @@ const MENU_SITE = [
     document.querySelectorAll("option[data-fr]").forEach(o => { o.textContent = T(o.dataset.fr, o.dataset.ar, o.dataset.en); });
   }
 
+  // liste des langues : s'ouvre sous le bouton, se ferme par Échap, un clic dehors ou un choix
+  function liste(ouvrir) {
+    const b = document.querySelector(".langues-bouton"), u = document.getElementById("langues-liste");
+    if (!b || !u) return;
+    b.setAttribute("aria-expanded", String(ouvrir)); u.hidden = !ouvrir;
+    if (ouvrir) { const c = u.querySelector('[aria-pressed="true"]') || u.querySelector("button"); if (c) c.focus(); }
+  }
+  document.addEventListener("keydown", e => {
+    const u = document.getElementById("langues-liste");
+    if (e.key === "Escape" && u && !u.hidden) { liste(false); const b = document.querySelector(".langues-bouton"); if (b) b.focus(); }
+  });
+  document.addEventListener("click", e => {
+    const u = document.getElementById("langues-liste");
+    if (u && !u.hidden && !(e.target.closest && e.target.closest(".langues"))) liste(false);
+  });
+
   function appliquer(l) {
-    html.lang = l; html.dir = l === "ar" ? "rtl" : "ltr";
-    try { localStorage.setItem("langue-points-eau", l); if (l !== "en") localStorage.setItem("langue", l); } catch (e) {}
+    html.lang = l; html.dir = DROITE.includes(l) ? "rtl" : "ltr";
+    try { localStorage.setItem("langue-points-eau", l); if (l === "fr" || l === "ar") localStorage.setItem("langue", l); } catch (e) {}
+    traduirePage(l);
     cadre();
     document.dispatchEvent(new Event("langue"));
   }
@@ -103,7 +149,7 @@ document.addEventListener("click", e => {
 });
 
 /* Nombres : « 1 234,500 DT », isolés dans un texte arabe (U+2066…U+2069) */
-const iso = s => document.documentElement.lang === "ar" ? "⁦" + s + "⁩" : String(s);
+const iso = s => ["ar", "ur"].includes(document.documentElement.lang) ? "⁦" + s + "⁩" : String(s);
 function nombre(v, dec) {
   const n = Number(v) || 0, d = dec === undefined ? 3 : dec;
   const [e, f] = Math.abs(n).toFixed(d).split(".");
@@ -169,7 +215,7 @@ window.VIDEO_SITE = {"base": "/points-eau-tunisie/", "defaut": "fr", "nom": {"fr
 (function () {
   var S = window.VIDEO_SITE, ORIGINE = "https://ah6259.github.io";
   function langue() { return document.documentElement.lang || S.defaut; }
-  function M(o) { return o[langue()] || o[S.defaut] || o.fr; }
+  function M(o) { return o[langue()] || (window.T && window.T(o.fr, o.ar, o.en)) || o[S.defaut] || o.fr; }
   window.pageVideo = function () {
     var l = langue(), q = l !== S.defaut ? "?lang=" + l : "";
     return { page: ORIGINE + S.base + "video/" + q, site: ORIGINE + S.base + q, titre: M(S.nom) };
@@ -189,7 +235,7 @@ window.VIDEO_SITE = {"base": "/points-eau-tunisie/", "defaut": "fr", "nom": {"fr
   function traduire() {
     var l = langue();
     var el = document.querySelectorAll("[data-vfr]");
-    for (var i = 0; i < el.length; i++) { var t = el[i].getAttribute("data-v" + l) || el[i].getAttribute("data-v" + S.defaut); if (t && el[i].textContent !== t) el[i].textContent = t; }
+    for (var i = 0; i < el.length; i++) { var t = el[i].getAttribute("data-v" + l) || (window.T && window.T(el[i].getAttribute("data-vfr"), el[i].getAttribute("data-var"), el[i].getAttribute("data-ven"))) || el[i].getAttribute("data-v" + S.defaut); if (t && el[i].textContent !== t) el[i].textContent = t; }
     var v = document.querySelector(".video-lecteur");
     if (v) {
       var s = v.getAttribute("data-src-" + l) || v.getAttribute("data-src-defaut") || v.getAttribute("src");

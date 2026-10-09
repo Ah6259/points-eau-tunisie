@@ -6,7 +6,8 @@ Nouveau PC : `git config user.name Ah6259` et `git config user.email 200752748+A
 Règles communes : `../../regles communes a tous les sites.md`.
 
 ## Le site (créé le 09/10/2026, idée d'Ahmed : « où trouver les sources d'eau, robinets publics, majels de Djerba et du Sud »)
-- https://ah6259.github.io/points-eau-tunisie/ — FR + AR. Site SÉPARÉ de Prix des Eaux (décision d'Ahmed : sinon les
+- https://ah6259.github.io/points-eau-tunisie/ — 8 langues (09/10/2026) : FR, AR, EN écrits dans les pages ; turc, indonésien,
+  ourdou, allemand, espagnol dans `assets/langues.js` (clé = texte français exact ; tout nouveau texte y est traduit, le test le vérifie). Site SÉPARÉ de Prix des Eaux (décision d'Ahmed : sinon les
   visiteurs ne comprennent pas le lien) ; liens dans les deux sens (carte sur l'accueil + pied de page).
 - Accueil : carte Leaflet (fond OpenStreetMap, cdnjs) des points (`donnees/points_eau.js`), filtres par type (jamais un filtre
   à 0), « Autour de moi » (5 plus proches, itinéraire Google Maps par lien), signalement, « c'est vrai » / « n'existe plus ».
@@ -16,7 +17,7 @@ Règles communes : `../../regles communes a tous les sites.md`.
 - Partie payante : AUCUNE (décision prise sans Ahmed, à lui confirmer : un site d'entraide / sadaqa).
 
 ## Données et robots
-- `tools/points_eau_osm.py` (robot `osm.yml`, chaque lundi) : OpenStreetMap, 5 serveurs Overpass, aire du pays admin_level=2 ;
+- `tools/points_eau_osm.py` (robot `osm.yml`, tous les 3 mois : 1er janvier, avril, juillet, octobre) : OpenStreetMap, 5 serveurs Overpass, aire du pays admin_level=2 ;
   sources, fontaines, robinets/points d'eau, citernes, puits (privés exclus) → `donnees/points_osm.json` (ancien gardé en panne).
 - `tools/signalements_points.py` (robot `signalements.yml`, toutes les 2 h) : lit le CSV PUBLIC du Google Forms du site Prix des
   Eaux (même formulaire : format POINT / POINT-OK / POINT-KO, marque = « type|nom » ou id, lieu = « lat,lon|jeton »).
@@ -25,5 +26,5 @@ Règles communes : `../../regles communes a tous les sites.md`.
 
 ## Fabrication et tests
 - Pages : `python tools/construire.py` (gabarits `tools/gabarits/`, une seule version `VERSION`) ; accueil écrit à la main.
-- Tests : `node tools/test_site.mjs`, `python tools/test_points.py`, `python tools/test_sabotage.py` (5 sabotages),
+- Tests : `node tools/test_site.mjs`, `python tools/test_points.py`, `python tools/test_sabotage.py` (9 sabotages),
   `node tools/test_sw.mjs`, `node tools/test_avis.mjs` ; tous dans `tests.yml`.

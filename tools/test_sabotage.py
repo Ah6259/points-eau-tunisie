@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Sabotage volontaire (règle commune) : on abîme une COPIE du site de 6 façons ; chaque fois, tools/test_site.mjs doit échouer.
+"""Sabotage volontaire (règle commune) : on abîme une COPIE du site de plusieurs façons ; chaque fois, tools/test_site.mjs doit échouer.
   python tools/test_sabotage.py      (lancé aussi par .github/workflows/tests.yml)
 Ancres courtes et stables (règle du 08/10/2026) : si une ancre n'est plus trouvée, le test le dit (à adapter dans le même commit)."""
 import os, shutil, subprocess, sys, tempfile
@@ -11,6 +11,10 @@ SABOTAGES = [
     ("assets/page.js", '<button class="partager"', '<button class="x-partager"', "bouton Partager retiré"),
     ("index.html", "Eau non contrôlée.", "Eau.", "avertissement « eau non contrôlée » retiré"),
     ("coran-et-eau/index.html", "سورة الأنبياء", "سورة", "un verset du Coran perdu"),
+    ("assets/langues.js", '"Accueil": "Ana sayfa"', '"Accueil": ""', "une traduction turque manquante"),
+    ("coran-et-eau/index.html", 'data-t="de" lang="de" dir="ltr">… und aus', 'data-t="xx" lang="de" dir="ltr">… und aus', "traduction allemande d'un verset perdue"),
+    (".github/workflows/osm.yml", '"17 2 1 1,4,7,10 *"', '"17 2 * * 1"', "robot OpenStreetMap remis chaque semaine"),
+    ("index.html", "photo-type-puits.jpg", "photo-type-absente.jpg", "photo d'un type de point d'eau manquante"),
 ]
 IGNORER = shutil.ignore_patterns("node_modules", ".git", "_icone", "__pycache__")
 

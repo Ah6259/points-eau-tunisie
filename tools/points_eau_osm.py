@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """Points d'eau de Tunisie connus d'OpenStreetMap (idée d'Ahmed, 09/10/2026 : « où trouver une source d'eau »).
-Lit une fois par semaine (workflow points-eau.yml) les sources, fontaines d'eau potable, robinets publics, points
+Lit tous les 3 mois (workflow osm.yml : 1er janvier, avril, juillet, octobre) les sources, fontaines d'eau potable, robinets publics, points
 d'eau, puits et citernes (majels) de la Tunisie, et écrit donnees/points_osm.json. Les points signalés par les visiteurs
 sont ajoutés par tools/signalements.py (même formulaire que les prix, format = POINT).
 Données © contributeurs OpenStreetMap, licence ODbL (citée sur la page). Lecture polie (User-Agent, 3 serveurs, essais).

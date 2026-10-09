@@ -8,7 +8,7 @@ L'accueil (index.html) est écrit à la main ; sa version ?v= est remplacée ici
 import json, os, re, sys
 
 ICI = os.path.dirname(os.path.abspath(__file__)); RACINE = os.path.dirname(ICI)
-VERSION = "20261009e"           # à changer à chaque modification des fichiers assets/ (le test vérifie une seule version)
+VERSION = "20261009f"           # à changer à chaque modification des fichiers assets/ (le test vérifie une seule version)
 BASE = "https://ah6259.github.io/points-eau-tunisie/"
 CSP = ("default-src 'self'; script-src 'self' https://gc.zgo.at https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; "
        "font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://tile.openstreetmap.org https://*.tile.openstreetmap.org https://cdnjs.cloudflare.com https://prix-eaux-tunisie.goatcounter.com; "
@@ -30,8 +30,8 @@ def lire_gabarit(chemin):
 def page(chemin_page, meta, corps):
     profondeur = chemin_page.count("/")
     r = "../" * profondeur
-    # en-tête : règles, page commune (+ « tete », ex. pass.js) ; bas de page : les scripts propres à la page (« scripts »)
-    tete = ["page.js"] + [s.strip() for s in meta.get("tete", "").split(",") if s.strip()]
+    # en-tête : traductions (langues.js, avant page.js), règles, page commune (+ « tete », ex. pass.js) ; bas de page : les scripts propres à la page (« scripts »)
+    tete = ["langues.js", "page.js"] + [s.strip() for s in meta.get("tete", "").split(",") if s.strip()]
     bas = [s.strip() for s in meta.get("scripts", "").split(",") if s.strip()]
     faq = ""
     if meta.get("faq"):
@@ -55,6 +55,11 @@ def page(chemin_page, meta, corps):
 <link rel="alternate" hreflang="fr" href="{BASE}{chemin_page.rsplit('index.html', 1)[0]}">
 <link rel="alternate" hreflang="ar" href="{BASE}{chemin_page.rsplit('index.html', 1)[0]}?lang=ar">
 <link rel="alternate" hreflang="en" href="{BASE}{chemin_page.rsplit('index.html', 1)[0]}?lang=en">
+<link rel="alternate" hreflang="tr" href="{BASE}{chemin_page.rsplit('index.html', 1)[0]}?lang=tr">
+<link rel="alternate" hreflang="id" href="{BASE}{chemin_page.rsplit('index.html', 1)[0]}?lang=id">
+<link rel="alternate" hreflang="ur" href="{BASE}{chemin_page.rsplit('index.html', 1)[0]}?lang=ur">
+<link rel="alternate" hreflang="de" href="{BASE}{chemin_page.rsplit('index.html', 1)[0]}?lang=de">
+<link rel="alternate" hreflang="es" href="{BASE}{chemin_page.rsplit('index.html', 1)[0]}?lang=es">
 <link rel="alternate" hreflang="x-default" href="{BASE}{chemin_page.rsplit('index.html', 1)[0]}">
 <link rel="icon" href="{r}assets/logo.svg" type="image/svg+xml">
 <link rel="manifest" href="{r}manifest.webmanifest">

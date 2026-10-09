@@ -83,7 +83,7 @@
 
 
   // ---- Le monde entier (demande d'Ahmed du 09/10/2026 : « toute personne dans le monde doit trouver un point d'eau à côté d'elle »).
-  // La Tunisie est déjà chargée (robot de la semaine + AJEM + visiteurs). Ailleurs, les points d'eau d'OpenStreetMap de la zone
+  // La Tunisie est déjà chargée (robot trimestriel + AJEM + visiteurs). Ailleurs, les points d'eau d'OpenStreetMap de la zone
   // affichée sont lus EN DIRECT (zoom ≥ 11), auprès des 5 copies d'OpenStreetMap (règle commune), avec les mêmes règles que le robot.
   // ordre : le plus fiable en direct d'abord (maps.mail.ru, testé le 09/10/2026), 25 s au plus par serveur
   const OVERPASS = ["https://maps.mail.ru/osm/tools/overpass/api/interpreter", "https://overpass-api.de/api/interpreter",
@@ -138,7 +138,7 @@
       const n = ajouterZone(await lireZone(zone.getSouth(), zone.getWest(), zone.getNorth(), zone.getEast()));
       zonesLues.push(zone); filtres(); dessiner(); proches();
       const total = D.points.filter(p => zone.contains([p.lat, p.lon])).length;
-      zoneTxt(total ? L2(`${total} points d'eau dans cette zone (OpenStreetMap).`, `${total} نقطة ماء في هذه المنطقة (OpenStreetMap).`, `${total} water points in this area (OpenStreetMap).`)
+      zoneTxt(total ? L2("{n} points d'eau dans cette zone (OpenStreetMap).", "{n} نقطة ماء في هذه المنطقة (OpenStreetMap).", "{n} water points in this area (OpenStreetMap).").replace("{n}", total)
         : L2("Aucun point d'eau connu ici : vous en connaissez un ? Signalez-le.", "لا توجد نقطة ماء معروفة هنا: تعرف واحدة؟ أضفها.", "No known water point here: do you know one? Report it."));
       return n;
     } catch (x) {
@@ -248,8 +248,8 @@
     }
     const lg = document.documentElement.lang;
     box.innerHTML = `<p class="sig-titre">${L2("Derniers points d'eau signalés par les visiteurs", "آخر نقاط الماء التي أضافها الزوار", "Latest water points reported by visitors")}</p><ul>` + l.map(p => {
-      const vu = new Date(p.date + "T12:00:00").toLocaleDateString(lg === "ar" ? "ar-TN" : lg === "en" ? "en-GB" : "fr-FR", { day: "numeric", month: "short" });
-      const st = p.statut === "confirme" ? L2(`confirmé par ${p.ok} visiteurs`, `أكّده ${p.ok} زوار`, `confirmed by ${p.ok} visitors`) : L2("à confirmer", "في انتظار التأكيد", "to be confirmed");
+      const vu = new Date(p.date + "T12:00:00").toLocaleDateString({ ar: "ar-TN", en: "en-GB", tr: "tr-TR", id: "id-ID", ur: "ur-PK", de: "de-DE", es: "es-ES" }[lg] || "fr-FR", { day: "numeric", month: "short" });
+      const st = p.statut === "confirme" ? L2("confirmé par {n} visiteurs", "أكّده {n} زوار", "confirmed by {n} visitors").replace("{n}", p.ok) : L2("à confirmer", "في انتظار التأكيد", "to be confirmed");
       return `<li><b>${esc(p.nom) || nomT(p.type)}</b> · ${nomT(p.type)} <small>· ${L2("signalé le", "أُضيف في", "reported on")} ${vu} · ${st}</small>
         <button type="button" data-voir="${esc(p.id)}">${L2("voir sur la carte", "اعرض على الخريطة", "see on the map")}</button></li>`;
     }).join("") + `</ul>`;
