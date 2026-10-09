@@ -586,7 +586,7 @@ window.TRADUCTIONS = {
  "Hadiths en anglais :": "انگریزی میں احادیث:"
 },
 "de": {
- "Points d'eau — Tunisie et monde": "Wasserstellen — Tunesien und die Welt",
+ "Points d'eau — Tunisie et monde": "Wasserstellen — Tunesien & Welt",
  "Le monde entier est sur la carte": "Die ganze Welt ist auf der Karte",
  "Exemples :": "Beispiele:",
  "La Mecque": "Mekka",
