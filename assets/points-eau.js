@@ -6,15 +6,16 @@
   const FORM = "https://docs.google.com/forms/d/e/1FAIpQLSd7sR4KmzqrCi-Yjw0WV9SmT_3sZfKJtPmkGnDjMRHl4Q78PA/formResponse";
   const CH = { marque: "entry.897098257", format: "entry.1939823394", lieu: "entry.506707149", date: "entry.1622032670" };
   const TYPES = {
-    source: { fr: "Source naturelle", ar: "عين ماء", c: "#1797C4" },
-    fontaine: { fr: "Fontaine d'eau potable", ar: "حنفية ماء صالح للشرب", c: "#128A52" },
-    robinet: { fr: "Robinet / point d'eau public", ar: "حنفية عمومية", c: "#0E7FA8" },
-    majel: { fr: "Majel public", ar: "ماجل عمومي", c: "#C27C14" },
-    puits: { fr: "Puits", ar: "بئر", c: "#6B5B95" }
+    source: { fr: "Source naturelle", ar: "عين ماء", en: "Natural spring", c: "#1797C4" },
+    fontaine: { fr: "Fontaine d'eau potable", ar: "حنفية ماء صالح للشرب", en: "Drinking fountain", c: "#128A52" },
+    robinet: { fr: "Robinet / point d'eau public", ar: "حنفية عمومية", en: "Public tap / water point", c: "#0E7FA8" },
+    majel: { fr: "Majel public", ar: "ماجل عمومي", en: "Public majel (cistern)", c: "#C27C14" },
+    puits: { fr: "Puits", ar: "بئر", en: "Well", c: "#6B5B95" }
   };
-  const L2 = (fr, ar) => (window.T ? window.T(fr, ar) : fr);
-  const STATUT = { osm: ["OpenStreetMap", "OpenStreetMap"], ajem: ["Recensé par l'association AJEM (Fesguietna)", "أحصته جمعية AJEM (فسقيتنا)"], confirme: ["Confirmé par les visiteurs", "أكّده الزوار"], signale: ["Signalé par un visiteur, à confirmer", "أضافه زائر، في انتظار التأكيد"] };
-  const nomT = t => L2(TYPES[t].fr, TYPES[t].ar);
+  const L2 = (fr, ar, en) => (window.T ? window.T(fr, ar, en) : fr);
+  const STATUT = { osm: ["OpenStreetMap", "OpenStreetMap", "OpenStreetMap"], ajem: ["Recensé par l'association AJEM (Fesguietna)", "أحصته جمعية AJEM (فسقيتنا)", "Surveyed by the AJEM association (Fesguietna)"],
+    confirme: ["Confirmé par les visiteurs", "أكّده الزوار", "Confirmed by visitors"], signale: ["Signalé par un visiteur, à confirmer", "أضافه زائر، في انتظار التأكيد", "Reported by a visitor, to be confirmed"] };
+  const nomT = t => L2(TYPES[t].fr, TYPES[t].ar, TYPES[t].en);
   const D = window.EAUX_POINTS || { points: [] };
   const $ = id => document.getElementById(id);
   const lire = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
@@ -42,15 +43,16 @@
     return fetch(FORM, { method: "POST", mode: "no-cors", body: corps });
   }
 
-  const ETAT = { bon: ["Bon état", "حالة جيدة"], moyen: ["État moyen", "حالة متوسطة"], mauvais: ["Mauvais état", "حالة سيئة"], "tres-mauvais": ["Très mauvais état", "حالة سيئة جدًا"] };
+  const ETAT = { bon: ["Bon état", "حالة جيدة", "Good condition"], moyen: ["État moyen", "حالة متوسطة", "Fair condition"], mauvais: ["Mauvais état", "حالة سيئة", "Poor condition"],
+    "tres-mauvais": ["Très mauvais état", "حالة سيئة جدًا", "Very poor condition"] };
   const ficheAjem = p => /^https:\/\/www\.ajem\.tn\/fesguietna\/citerne\/[\w-]+$/.test(p.lien || "")
-    ? `<br><a href="${esc(p.lien)}" target="_blank" rel="noopener">${L2("Fiche et photos sur le site AJEM", "البطاقة والصور على موقع AJEM")}</a>` : "";
+    ? `<br><a href="${esc(p.lien)}" target="_blank" rel="noopener">${L2("Fiche et photos sur le site AJEM", "البطاقة والصور على موقع AJEM", "Record and photos on the AJEM website")}</a>` : "";
 
   function bulle(p) {
     return `<div class="pe-bulle"><b>${esc(p.nom) || nomT(p.type)}</b><br><span>${nomT(p.type)}</span><br>
-      <small>${STATUT[p.statut] ? L2(...STATUT[p.statut]) : ""}${ETAT[p.etat] ? ` · ${L2(...ETAT[p.etat])}` : ""}${p.ok ? ` · ${p.ok} ${L2("confirmation(s)", "تأكيد")}` : ""}</small>${ficheAjem(p)}<br>
-      <a href="${itineraire(p)}" target="_blank" rel="noopener">${L2("Itinéraire (Google Maps)", "الطريق (خرائط Google)")}</a>
-      <div class="pe-voix"><button type="button" data-ok="${esc(p.id)}">✓ ${L2("C'est vrai", "صحيح")}</button><button type="button" data-ko="${esc(p.id)}">✗ ${L2("N'existe plus", "لم يعد موجودًا")}</button></div></div>`;
+      <small>${STATUT[p.statut] ? L2(...STATUT[p.statut]) : ""}${ETAT[p.etat] ? ` · ${L2(...ETAT[p.etat])}` : ""}${p.ok ? ` · ${p.ok} ${L2("confirmation(s)", "تأكيد", "confirmation(s)")}` : ""}</small>${ficheAjem(p)}<br>
+      <a href="${itineraire(p)}" target="_blank" rel="noopener">${L2("Itinéraire (Google Maps)", "الطريق (خرائط Google)", "Directions (Google Maps)")}</a>
+      <div class="pe-voix"><button type="button" data-ok="${esc(p.id)}">✓ ${L2("C'est vrai", "صحيح", "It's true")}</button><button type="button" data-ko="${esc(p.id)}">✗ ${L2("N'existe plus", "لم يعد موجودًا", "No longer exists")}</button></div></div>`;
   }
 
   window.EAUX_BULLE = bulle;                // pour les tests
@@ -68,8 +70,8 @@
     const box = $("pe-proches");
     if (!ici) { box.innerHTML = ""; return; }
     const l = D.points.filter(p => actifs.has(p.type)).map(p => ({ p, d: distance(ici, p) })).sort((a, b) => a.d - b.d).slice(0, 5);
-    box.innerHTML = l.length ? `<h3>${L2("Les plus proches de vous", "الأقرب إليك")}</h3><ol>` + l.map(({ p, d }) =>
-      `<li><b>${km(d)}</b> · ${esc(p.nom) || nomT(p.type)} <small>(${nomT(p.type)})</small> · <a href="${itineraire(p)}" target="_blank" rel="noopener">${L2("y aller", "اذهب")}</a></li>`).join("") + "</ol>" : "";
+    box.innerHTML = l.length ? `<h3>${L2("Les plus proches de vous", "الأقرب إليك", "Nearest to you")}</h3><ol>` + l.map(({ p, d }) =>
+      `<li><b>${km(d)}</b> · ${esc(p.nom) || nomT(p.type)} <small>(${nomT(p.type)})</small> · <a href="${itineraire(p)}" target="_blank" rel="noopener">${L2("y aller", "اذهب", "go")}</a></li>`).join("") + "</ol>" : "";
   }
 
   function filtres() {
@@ -110,7 +112,7 @@
     const v = e.target.closest("[data-ok],[data-ko]");
     if (v) {
       const ok = v.hasAttribute("data-ok"), id = ok ? v.dataset.ok : v.dataset.ko;
-      envoyer(ok ? "POINT-OK" : "POINT-KO", id, "|" + jeton).then(() => { v.parentNode.innerHTML = `<small>${L2("Merci ! Pris en compte dans 2 heures environ.", "شكرًا! يُحتسب خلال ساعتين تقريبًا.")}</small>`; }, () => {});
+      envoyer(ok ? "POINT-OK" : "POINT-KO", id, "|" + jeton).then(() => { v.parentNode.innerHTML = `<small>${L2("Merci ! Pris en compte dans 2 heures environ.", "شكرًا! يُحتسب خلال ساعتين تقريبًا.", "Thank you! Counted within about 2 hours.")}</small>`; }, () => {});
       return;
     }
     const voir = e.target.closest("[data-voir]");
@@ -119,9 +121,9 @@
     if (lien && lien.pathname === location.pathname) { e.preventDefault(); ouvrirSig(); }
   });
   $("pe-autour").addEventListener("click", () => {
-    $("pe-autour-txt").textContent = L2("Recherche de votre position…", "جارٍ تحديد موقعك…");
+    $("pe-autour-txt").textContent = L2("Recherche de votre position…", "جارٍ تحديد موقعك…", "Finding your position…");
     maPosition(p => {
-      if (!p) { $("pe-autour-txt").textContent = L2("Position indisponible : autorisez la localisation, ou cherchez sur la carte.", "الموقع غير متاح: اسمح بتحديد الموقع، أو ابحث في الخريطة."); return; }
+      if (!p) { $("pe-autour-txt").textContent = L2("Position indisponible : autorisez la localisation, ou cherchez sur la carte.", "الموقع غير متاح: اسمح بتحديد الموقع، أو ابحث في الخريطة.", "Position unavailable: allow location access, or look on the map."); return; }
       ici = p; $("pe-autour-txt").textContent = "";
       if (carte) carte.setView([p.lat, p.lon], 11);
       proches();
@@ -136,7 +138,7 @@
   const etat = (txt, err) => { const t = $("pe-pos-txt"); t.textContent = txt; t.className = "geo-status" + (err ? " err" : ""); };
   function nonConfirme() {
     $("pe-pos").value = ""; $("pe-pos-ok").classList.remove("fait");
-    etat(L2("Repère placé : vérifiez-le, puis « Confirmer cette position ».", "تم وضع العلامة: تحقّق منها ثم « أكّد هذا الموقع »."));
+    etat(L2("Repère placé : vérifiez-le, puis « Confirmer cette position ».", "تم وضع العلامة: تحقّق منها ثم « أكّد هذا الموقع ».", "Marker placed: check it, then “Confirm this position”."));
   }
   function placerRepere(lat, lon, zoom) {
     if (!mini) return;
@@ -173,15 +175,15 @@
     const l = D.points.filter(p => p.src === "visiteur" && /^\d{4}-\d\d-\d\d$/.test(p.date || "") && (isNaN(ref) || age(p) <= 30))
       .sort((x, y) => y.date.localeCompare(x.date)).slice(0, 10);
     if (!l.length) {
-      box.innerHTML = `<p class="sig-vide">${L2("Aucun point d'eau signalé ces 30 derniers jours : soyez le premier !", "لم تُضف أي نقطة ماء خلال الثلاثين يومًا الأخيرة: كن الأول!")}</p>`;
+      box.innerHTML = `<p class="sig-vide">${L2("Aucun point d'eau signalé ces 30 derniers jours : soyez le premier !", "لم تُضف أي نقطة ماء خلال الثلاثين يومًا الأخيرة: كن الأول!", "No water point reported in the last 30 days: be the first!")}</p>`;
       return;
     }
-    const ar = document.documentElement.lang === "ar";
-    box.innerHTML = `<p class="sig-titre">${L2("Derniers points d'eau signalés par les visiteurs", "آخر نقاط الماء التي أضافها الزوار")}</p><ul>` + l.map(p => {
-      const vu = new Date(p.date + "T12:00:00").toLocaleDateString(ar ? "ar-TN" : "fr-FR", { day: "numeric", month: "short" });
-      const st = p.statut === "confirme" ? L2(`confirmé par ${p.ok} visiteurs`, `أكّده ${p.ok} زوار`) : L2("à confirmer", "في انتظار التأكيد");
-      return `<li><b>${esc(p.nom) || nomT(p.type)}</b> · ${nomT(p.type)} <small>· ${L2("signalé le", "أُضيف في")} ${vu} · ${st}</small>
-        <button type="button" data-voir="${esc(p.id)}">${L2("voir sur la carte", "اعرض على الخريطة")}</button></li>`;
+    const lg = document.documentElement.lang;
+    box.innerHTML = `<p class="sig-titre">${L2("Derniers points d'eau signalés par les visiteurs", "آخر نقاط الماء التي أضافها الزوار", "Latest water points reported by visitors")}</p><ul>` + l.map(p => {
+      const vu = new Date(p.date + "T12:00:00").toLocaleDateString(lg === "ar" ? "ar-TN" : lg === "en" ? "en-GB" : "fr-FR", { day: "numeric", month: "short" });
+      const st = p.statut === "confirme" ? L2(`confirmé par ${p.ok} visiteurs`, `أكّده ${p.ok} زوار`, `confirmed by ${p.ok} visitors`) : L2("à confirmer", "في انتظار التأكيد", "to be confirmed");
+      return `<li><b>${esc(p.nom) || nomT(p.type)}</b> · ${nomT(p.type)} <small>· ${L2("signalé le", "أُضيف في", "reported on")} ${vu} · ${st}</small>
+        <button type="button" data-voir="${esc(p.id)}">${L2("voir sur la carte", "اعرض على الخريطة", "see on the map")}</button></li>`;
     }).join("") + `</ul>`;
   }
   function voirSurCarte(id) {
@@ -200,33 +202,33 @@
   if (location.hash === "#signaler") ouvrirSig();            // lien « Signaler un point d'eau » du menu, depuis une autre page
 
   $("pe-ma-pos").addEventListener("click", () => {
-    etat(L2("Recherche de votre position…", "جارٍ تحديد موقعك…"));
+    etat(L2("Recherche de votre position…", "جارٍ تحديد موقعك…", "Finding your position…"));
     maPosition(p => {
-      if (!p) { etat(L2("Position indisponible : touchez plutôt l'endroit sur la carte.", "الموقع غير متاح: المس المكان على الخريطة."), true); return; }
+      if (!p) { etat(L2("Position indisponible : touchez plutôt l'endroit sur la carte.", "الموقع غير متاح: المس المكان على الخريطة.", "Position unavailable: tap the spot on the map instead."), true); return; }
       chargerLeaflet(() => { demarrerMini(); placerRepere(p.lat, p.lon, 17); });
     });
   });
   $("pe-pos-ok").addEventListener("click", () => {
-    if (!repere) { etat(L2("Placez d'abord le repère : « Me localiser (GPS) » ou touchez la carte.", "ضع العلامة أولًا: « حدّد موقعي » أو المس الخريطة."), true); return; }
+    if (!repere) { etat(L2("Placez d'abord le repère : « Me localiser (GPS) » ou touchez la carte.", "ضع العلامة أولًا: « حدّد موقعي » أو المس الخريطة.", "Place the marker first: “Locate me (GPS)” or tap the map."), true); return; }
     const g = repere.getLatLng();
     $("pe-pos").value = g.lat.toFixed(5) + "," + g.lng.toFixed(5);
     $("pe-pos-ok").classList.add("fait");
-    etat(L2("✔ Position confirmée", "✔ تم تأكيد الموقع") + " : " + g.lat.toFixed(5) + ", " + g.lng.toFixed(5));
+    etat(L2("✔ Position confirmée", "✔ تم تأكيد الموقع", "✔ Position confirmed") + " : " + g.lat.toFixed(5) + ", " + g.lng.toFixed(5));
   });
   $("pe-form").addEventListener("submit", e => {
     e.preventDefault();
     const st = $("pe-statut"), type = $("pe-type").value, pos = $("pe-pos").value, nom = $("pe-nom").value.replace(/\|/g, " ").trim().slice(0, 60);
     const dire = (txt, cls) => { st.textContent = txt; st.className = cls || ""; };
-    if (!TYPES[type]) { dire(L2("Choisissez le type de point d'eau.", "اختر نوع نقطة الماء."), "err"); return; }
-    if (!/^-?\d+\.\d+,-?\d+\.\d+$/.test(pos)) { dire(L2("Placez le repère sur la carte, puis « Confirmer cette position ».", "ضع العلامة على الخريطة، ثم « أكّد هذا الموقع »."), "err"); return; }
+    if (!TYPES[type]) { dire(L2("Choisissez le type de point d'eau.", "اختر نوع نقطة الماء.", "Choose the type of water point."), "err"); return; }
+    if (!/^-?\d+\.\d+,-?\d+\.\d+$/.test(pos)) { dire(L2("Placez le repère sur la carte, puis « Confirmer cette position ».", "ضع العلامة على الخريطة، ثم « أكّد هذا الموقع ».", "Place the marker on the map, then “Confirm this position”."), "err"); return; }
     if ($("pe-form").querySelector("[name=_gotcha]").value) return;
-    const btn = $("pe-envoyer"); btn.disabled = true; dire(L2("Envoi…", "جارٍ الإرسال…"));
+    const btn = $("pe-envoyer"); btn.disabled = true; dire(L2("Envoi…", "جارٍ الإرسال…", "Sending…"));
     envoyer("POINT", type + "|" + nom, pos + "|" + jeton).then(() => {
-      dire(L2("Merci ! Le point apparaîtra sur la carte dans 2 heures environ (« à confirmer » jusqu'à ce qu'un autre visiteur le confirme).", "شكرًا! ستظهر النقطة على الخريطة خلال ساعتين تقريبًا (« في انتظار التأكيد » حتى يؤكّدها زائر آخر)."), "ok");
+      dire(L2("Merci ! Le point apparaîtra sur la carte dans 2 heures environ (« à confirmer » jusqu'à ce qu'un autre visiteur le confirme).", "شكرًا! ستظهر النقطة على الخريطة خلال ساعتين تقريبًا (« في انتظار التأكيد » حتى يؤكّدها زائر آخر).", "Thank you! The point will appear on the map in about 2 hours (“to be confirmed” until another visitor confirms it)."), "ok");
       $("pe-form").reset(); $("pe-pos").value = ""; $("pe-pos-ok").classList.remove("fait"); etat("");
       if (repere && mini) { mini.removeLayer(repere); repere = null; }
       setTimeout(fermerSig, 3500);
-    }, () => dire(L2("Échec de l'envoi — vérifiez votre connexion et réessayez.", "تعذّر الإرسال — تحقّق من الاتصال وأعد المحاولة."), "err"))
+    }, () => dire(L2("Échec de l'envoi — vérifiez votre connexion et réessayez.", "تعذّر الإرسال — تحقّق من الاتصال وأعد المحاولة.", "Sending failed — check your connection and try again."), "err"))
       .then(() => { btn.disabled = false; });
   });
 

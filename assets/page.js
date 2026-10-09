@@ -1,23 +1,30 @@
-/* Langue (français / arabe), en-tête, menu et pied de page communs, partage, protections — repris de Ma voiture Tunisie */
+/* Langue (français / arabe / anglais), en-tête, menu et pied de page communs, partage, protections — repris de Ma voiture Tunisie */
 const MAJ = "09/10/2026";   // date de création ; les points sont datés par le robot (donnees/points_eau.js)
 // Menu de l'en-tête (toutes les pages)
 const MENU_SITE = [
-  ["", "Carte", "الخريطة"],
-  ["#signaler", "Signaler un point d'eau", "أضف نقطة ماء"],
-  ["coran-et-eau/", "Le Coran et l'eau", "الماء في القرآن"],
-  ["a-propos/", "À propos", "من نحن"]
+  ["", "Carte", "الخريطة", "Map"],
+  ["#signaler", "Signaler un point d'eau", "أضف نقطة ماء", "Report a water point"],
+  ["majels-et-puits/", "Majels & puits", "المواجل والآبار", "Cisterns & wells"],
+  ["coran-et-eau/", "Le Coran et l'eau", "الماء في القرآن", "Quran & water"],
+  ["a-propos/", "À propos", "من نحن", "About"]
 ];
 
-// La mémoire du navigateur est PARTAGÉE par tous les sites d'ah6259.github.io : n'accepter que « fr » ou « ar »
+// Trois langues (anglais ajouté le 09/10/2026 : site pour le monde entier).
+// La mémoire « langue » est PARTAGÉE par tous les sites d'ah6259.github.io : on n'y lit / écrit que « fr » ou « ar » ;
+// le choix complet (fr / ar / en) est gardé sous la clé propre au site « langue-points-eau » (règle commune).
+// Sans choix : arabe ou français selon le téléphone, sinon anglais (visiteurs du monde entier).
 (function () {
   const html = document.documentElement;
   const racine = html.dataset.racine || "";
-  let langue = "fr";
-  try { langue = (/^(fr|ar)$/.test(localStorage.getItem("langue") || "") ? localStorage.getItem("langue") : "") || (navigator.language || "").startsWith("ar") && "ar" || "fr"; } catch (e) {}
+  const LANGUES = ["fr", "ar", "en"];
+  const lireCle = k => { try { return localStorage.getItem(k) || ""; } catch (e) { return ""; } };
+  const nav = (navigator.language || "").slice(0, 2);
+  let langue = [lireCle("langue-points-eau")].find(l => LANGUES.includes(l))
+    || ["fr", "ar"].find(l => l === lireCle("langue")) || (nav === "ar" || nav === "fr" ? nav : "en");
   const demande = new URLSearchParams(location.search).get("lang");
-  if (demande === "ar" || demande === "fr") langue = demande;
+  if (LANGUES.includes(demande)) langue = demande;
 
-  window.T = (fr, ar) => html.lang === "ar" ? ar : fr;
+  window.T = (fr, ar, en) => html.lang === "ar" ? ar : html.lang === "en" ? (en === undefined ? fr : en) : fr;
 
   function cadre() {
     const ici = location.pathname.replace(/index\.html$/, "");
@@ -26,35 +33,40 @@ const MENU_SITE = [
       <div class="wrap">
         <a class="logo" href="${racine || "./"}">
           <img class="logo-mark" src="${racine}assets/logo.svg" alt="" width="34" height="34">
-          <span class="logo-nom">${T("Points d'eau Tunisie", "نقاط الماء في تونس")}
-            <small>${T("Gratuit · sources, fontaines, majels", "مجاني · عيون، حنفيات، مواجل")}</small></span>
+          <span class="logo-nom">${T("Points d'eau Tunisie", "نقاط الماء في تونس", "Water Points Tunisia")}
+            <small>${T("Gratuit · sources, fontaines, majels", "مجاني · عيون، حنفيات، مواجل", "Free · springs, fountains, cisterns")}</small></span>
         </a>
         <div class="entete-boutons">
-          <button class="partager" type="button" aria-label="${T("Partager cette page", "شارك هذه الصفحة")}" title="${T("Partager", "شارك")}"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg></button>
-          <button class="langue" type="button">${T("العربية", "Français")}</button>
+          <button class="partager" type="button" aria-label="${T("Partager cette page", "شارك هذه الصفحة", "Share this page")}" title="${T("Partager", "شارك", "Share")}"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg></button>
+          <div class="langues" role="group" aria-label="${T("Langue", "اللغة", "Language")}">${[["fr", "FR", "Français"], ["ar", "ع", "العربية"], ["en", "EN", "English"]].map(([l, c, n]) =>
+            `<button type="button" data-lang="${l}" lang="${l}" title="${n}" aria-label="${n}" aria-pressed="${html.lang === l}">${c}</button>`).join("")}</div>
         </div>
       </div>
-      <nav class="menu" aria-label="${T("Rubriques", "الأبواب")}"><div class="wrap">${MENU_SITE.map(([h, fr, ar]) =>
-        `<a href="${racine}${h || "./"}"${(h && !h.startsWith("#") ? ici.endsWith("/" + h) : (!h && !racine)) ? ' aria-current="page"' : ""}>${T(fr, ar)}</a>`).join("")}</div></nav>`;
+      <nav class="menu" aria-label="${T("Rubriques", "الأبواب", "Sections")}"><div class="wrap">${MENU_SITE.map(([h, fr, ar, en]) =>
+        `<a href="${racine}${h || "./"}"${(h && !h.startsWith("#") ? ici.endsWith("/" + h) : (!h && !racine)) ? ' aria-current="page"' : ""}>${T(fr, ar, en)}</a>`).join("")}</div></nav>`;
     const p = document.getElementById("pied");
     if (p) p.innerHTML = `
       <div class="wrap">
-        <div class="pied-logo"><img src="${racine}assets/logo.svg" alt="" width="24" height="24"> ${T("Points d'eau Tunisie", "نقاط الماء في تونس")}</div>
+        <div class="pied-logo"><img src="${racine}assets/logo.svg" alt="" width="24" height="24"> ${T("Points d'eau Tunisie", "نقاط الماء في تونس", "Water Points Tunisia")}</div>
         <nav>
-          <a href="${racine || "./"}">${T("Carte des points d'eau", "خريطة نقاط الماء")}</a>
-          <a href="${racine}#signaler">${T("Signaler un point d'eau", "أضف نقطة ماء")}</a>
-          <a href="${racine}coran-et-eau/">${T("Le Coran et la Sunna sur l'eau", "الماء في القرآن والسنة")}</a>
-          <a href="${racine}a-propos/">${T("À propos et méthode", "من نحن والمنهجية")}</a>
-          <a href="${racine}#avis">${T("Votre avis", "رأيك")}</a>
-          <a href="https://ah6259.github.io/prix-eaux-tunisie/" target="_blank" rel="noopener" data-compteur="lien-site/prix-eaux">${T("Prix de l'eau en bouteille", "أسعار الماء المعدني")}</a>
+          <a href="${racine || "./"}">${T("Carte des points d'eau", "خريطة نقاط الماء", "Water points map")}</a>
+          <a href="${racine}#signaler">${T("Signaler un point d'eau", "أضف نقطة ماء", "Report a water point")}</a>
+          <a href="${racine}majels-et-puits/">${T("Majels, puits et techniques de l'eau", "المواجل والآبار وتقنيات الماء", "Cisterns, wells and water techniques")}</a>
+          <a href="${racine}coran-et-eau/">${T("Le Coran et la Sunna sur l'eau", "الماء في القرآن والسنة", "Water in the Quran and Sunnah")}</a>
+          <a href="${racine}a-propos/">${T("À propos et méthode", "من نحن والمنهجية", "About and method")}</a>
+          <a href="${racine}#avis">${T("Votre avis", "رأيك", "Your feedback")}</a>
+          <a href="https://ah6259.github.io/prix-eaux-tunisie/" target="_blank" rel="noopener" data-compteur="lien-site/prix-eaux">${T("Prix de l'eau en bouteille", "أسعار الماء المعدني", "Bottled water prices (Tunisia)")}</a>
         </nav>
         <p>${T("Eau non contrôlée : les sources, puits et majels ne sont pas analysés. Ce site n'est pas un service officiel.",
-               "ماء غير مراقب: العيون والآبار والمواجل غير محلَّلة. هذا الموقع ليس خدمة رسمية.")}</p>
-        <p>${T("Points : © contributeurs OpenStreetMap (ODbL) et visiteurs du site. Photo : Wikimedia Commons —", "النقاط: © مساهمو OpenStreetMap ‏(ODbL) وزوار الموقع. الصورة: ويكيميديا كومنز —")} <a href="${racine}a-propos/#photos">${T("crédits", "الحقوق")}</a>.</p>
-        <p>© 2026 Points d'eau Tunisie — ${T("tous droits réservés.", "جميع الحقوق محفوظة.")}</p>
+               "ماء غير مراقب: العيون والآبار والمواجل غير محلَّلة. هذا الموقع ليس خدمة رسمية.",
+               "Untested water: springs, wells and majels are not analysed. This website is not an official service.")}</p>
+        <p>${T("Points : © contributeurs OpenStreetMap (ODbL), association AJEM (majels de Djerba) et visiteurs du site. Photo : Wikimedia Commons —",
+               "النقاط: © مساهمو OpenStreetMap ‏(ODbL)، جمعية AJEM (مواجل جربة) وزوار الموقع. الصورة: ويكيميديا كومنز —",
+               "Points: © OpenStreetMap contributors (ODbL), the AJEM association (Djerba majels) and site visitors. Photo: Wikimedia Commons —")} <a href="${racine}a-propos/#photos">${T("crédits", "الحقوق", "credits")}</a>.</p>
+        <p>© 2026 Points d'eau Tunisie — ${T("tous droits réservés.", "جميع الحقوق محفوظة.", "all rights reserved.")}</p>
       </div>`;
-    document.querySelectorAll(".langue").forEach(b =>
-      b.addEventListener("click", () => appliquer(html.lang === "ar" ? "fr" : "ar")));
+    document.querySelectorAll(".langues [data-lang]").forEach(b =>
+      b.addEventListener("click", () => appliquer(b.dataset.lang)));
     // bouton Partager (règle commune) : menu de partage du téléphone, sinon WhatsApp, avec la page vidéo + l'adresse du site
     document.querySelectorAll(".partager").forEach(b => b.addEventListener("click", () => {
       try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: "partage" + location.pathname.replace("/points-eau-tunisie/", "/"), title: "Partage", event: true }); } catch (e) {}
@@ -63,15 +75,15 @@ const MENU_SITE = [
     document.querySelectorAll("[data-maj]").forEach(x => x.textContent = MAJ);
     document.querySelectorAll("img[data-alt-ar]").forEach(i => {
       if (!i.dataset.altFr) i.dataset.altFr = i.alt;
-      i.alt = html.lang === "ar" ? i.dataset.altAr : i.dataset.altFr;
+      i.alt = T(i.dataset.altFr, i.dataset.altAr, i.dataset.altEn);
     });
-    document.querySelectorAll("[data-ph-fr]").forEach(i => { i.placeholder = html.lang === "ar" ? i.dataset.phAr : i.dataset.phFr; });
-    document.querySelectorAll("option[data-fr]").forEach(o => { o.textContent = html.lang === "ar" ? o.dataset.ar : o.dataset.fr; });
+    document.querySelectorAll("[data-ph-fr]").forEach(i => { i.placeholder = T(i.dataset.phFr, i.dataset.phAr, i.dataset.phEn); });
+    document.querySelectorAll("option[data-fr]").forEach(o => { o.textContent = T(o.dataset.fr, o.dataset.ar, o.dataset.en); });
   }
 
   function appliquer(l) {
     html.lang = l; html.dir = l === "ar" ? "rtl" : "ltr";
-    try { localStorage.setItem("langue", l); } catch (e) {}
+    try { localStorage.setItem("langue-points-eau", l); if (l !== "en") localStorage.setItem("langue", l); } catch (e) {}
     cadre();
     document.dispatchEvent(new Event("langue"));
   }
@@ -125,7 +137,7 @@ document.addEventListener("copy", e => {
   if (!sel || sel.isCollapsed || !e.clipboardData) return;
   const n = sel.anchorNode && (sel.anchorNode.nodeType === 1 ? sel.anchorNode : sel.anchorNode.parentElement);
   if (!n || n.closest(ZONE_COPIABLE) || !n.closest(ZONE_PROTEGEE)) return;
-  e.clipboardData.setData("text/plain", sel.toString() + "\n\nSource : " + location.href.split("?")[0] + " — © tous droits réservés");
+  e.clipboardData.setData("text/plain", sel.toString() + "\n\nSource : " + location.href.split("?")[0] + " — © " + T("tous droits réservés", "جميع الحقوق محفوظة", "all rights reserved"));
   e.preventDefault();
 });
 /* Pas d'affichage dans le cadre (iframe) d'un autre site */
@@ -151,7 +163,7 @@ document.addEventListener("click", e => {
 });
 
 /* >>> vidéo de présentation : page video/ partagée par le bouton « Partager » (outil vidéos d'Ahmed) */
-window.VIDEO_SITE = {"base": "/points-eau-tunisie/", "defaut": "fr", "nom": {"fr": "Points d'eau Tunisie", "ar": "نقاط الماء في تونس"}};
+window.VIDEO_SITE = {"base": "/points-eau-tunisie/", "defaut": "fr", "nom": {"fr": "Points d'eau Tunisie", "ar": "نقاط الماء في تونس", "en": "Water Points Tunisia"}};
 /* Bouton « Partager » : partage un LIEN vers la page vidéo du site (vidéo de présentation + gros bouton « Ouvrir le site »)
    + l'adresse du site dans le texte. Menu de partage du téléphone, sinon WhatsApp. Réglages : window.VIDEO_SITE. */
 (function () {
@@ -165,7 +177,7 @@ window.VIDEO_SITE = {"base": "/points-eau-tunisie/", "defaut": "fr", "nom": {"fr
   window.partagerLien = function (titre, site) {
     var v = window.pageVideo(), t = titre || v.titre;
     if (site) v.site = site;
-    var texte = t + "\n" + M({ fr: "Le site : ", ar: "الموقع: " }) + v.site + "\n" + M({ fr: "Regardez la vidéo :", ar: "شاهد الفيديو:" });
+    var texte = t + "\n" + M({ fr: "Le site : ", ar: "الموقع: ", en: "Website: " }) + v.site + "\n" + M({ fr: "Regardez la vidéo :", ar: "شاهد الفيديو:", en: "Watch the video:" });
     function whatsapp() { window.open("https://wa.me/?text=" + encodeURIComponent(texte + " " + v.page), "_blank", "noopener"); return "whatsapp"; }
     if (navigator.share) {
       return navigator.share({ title: t, text: texte, url: v.page }).then(function () { return "lien"; }, function (e) {
@@ -195,7 +207,7 @@ window.VIDEO_SITE = {"base": "/points-eau-tunisie/", "defaut": "fr", "nom": {"fr
         var m = document.querySelector("main"); if (m) m.insertAdjacentElement("afterend", b); else document.body.appendChild(b);
       }
       b.firstChild.href = S.base + "video/" + (l !== S.defaut ? "?lang=" + l : "");
-      b.firstChild.textContent = M({ fr: "Vidéo de présentation", ar: "الفيديو التقديمي" });
+      b.firstChild.textContent = M({ fr: "Vidéo de présentation", ar: "الفيديو التقديمي", en: "Presentation video" });
     }
   }
   document.addEventListener("click", function (e) {

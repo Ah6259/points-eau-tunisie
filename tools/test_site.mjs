@@ -25,7 +25,7 @@ const PAGES = [];
   }
 })("");
 
-async function page(chemin = "index.html", { stockage = {}, lang } = {}) {
+async function page(chemin = "index.html", { stockage = { langue: "fr" }, lang } = {}) {
   const dossier = dirname(chemin);
   const html = lire(chemin).replace(/<script[^>]*gc\.zgo\.at[^>]*><\/script>/, "")
     .replace(/<script( defer)? src="((?:\.\.\/)*(?:assets|donnees)\/[^"?]+)(\?[^"]*)?"><\/script>/g, (_, d, f) => `<script>${lire(join(dossier, f).replace(/\\/g, "/"))}</script>`);
@@ -40,7 +40,7 @@ async function page(chemin = "index.html", { stockage = {}, lang } = {}) {
 }
 
 // ---- 1. toutes les pages : sécurité, installation
-check(`pages : accueil, Coran et l'eau, À propos (${PAGES.length})`, ["index.html", "coran-et-eau/index.html", "a-propos/index.html"].every(p => PAGES.includes(p)));
+check(`pages : accueil, Majels & puits, Coran et l'eau, À propos (${PAGES.length})`, ["index.html", "majels-et-puits/index.html", "coran-et-eau/index.html", "a-propos/index.html"].every(p => PAGES.includes(p)));
 const pb = [], versions = new Set();
 for (const p of PAGES) {
   const h = lire(p);
@@ -57,7 +57,7 @@ check("installation : manifeste (id unique), icônes, service worker, aperçu < 
   return m.id === "/points-eau-tunisie/" && ["assets/icons/icon-192.png", "assets/icons/icon-512.png", "assets/icons/icon-maskable-512.png", "assets/apple-touch-icon.png", "sw.js", "favicon.ico", "assets/og-image-v1.jpg"]
     .every(f => existsSync(join(root, f))) && statSync(join(root, "assets/og-image-v1.jpg")).size < 250 * 1024; })());
 check("robots.txt (IA refusées, sitemap), sitemap avec les pages, LICENSE", /GPTBot/.test(lire("robots.txt")) && /points-eau-tunisie\/sitemap\.xml/.test(lire("robots.txt"))
-  && ["", "coran-et-eau/", "a-propos/"].every(p => lire("sitemap.xml").includes(`<loc>${BASE}${p}</loc>`)) && /Tous droits réservés/.test(lire("LICENSE")));
+  && ["", "majels-et-puits/", "coran-et-eau/", "a-propos/"].every(p => lire("sitemap.xml").includes(`<loc>${BASE}${p}</loc>`)) && /Tous droits réservés/.test(lire("LICENSE")));
 
 // ---- 2. accueil : carte, filtres, signalement
 {
@@ -114,9 +114,9 @@ check("robots.txt (IA refusées, sitemap), sitemap avec les pages, LICENSE", /GP
   check("bulle d'un majel AJEM : « Recensé par l'association AJEM », état, lien vers sa fiche AJEM", !!aj && (() => {
     const h = w.EAUX_BULLE(aj); return /Recensé par l'association AJEM/.test(h) && /Mauvais état/.test(h) && h.includes(`href="${aj.lien}"`); })());
   check("bulle : un lien qui n'est pas une fiche AJEM n'est jamais affiché", !/evil/.test(w.EAUX_BULLE({ ...(aj || {}), lien: "https://evil.example/x" })));
-  check("rubrique « Majels et techniques pour avoir de l'eau » : au moins 5 liens, dont AJEM, tous dans un nouvel onglet",
-    d.querySelectorAll("#majels li a").length >= 5 && !!d.querySelector('#majels a[href="https://www.ajem.tn/fesguietna"]') && [...d.querySelectorAll("#majels a")].every(a => a.target === "_blank" && /noopener/.test(a.rel)));
-  check("menu : Carte, Signaler, Le Coran et l'eau, À propos ; lien vers Prix des Eaux (carte de l'accueil + pied de page)", d.querySelectorAll(".menu a").length === 4
+  check("accueil : carte « Majels, puits et techniques de l'eau » vers la nouvelle page", !!d.querySelector('main a.outil[href="majels-et-puits/"]'));
+  check("menu : Carte, Signaler, Majels & puits, Le Coran et l'eau, À propos ; lien vers Prix des Eaux (carte de l'accueil + pied de page)", d.querySelectorAll(".menu a").length === 5
+    && !!d.querySelector('.menu a[href="majels-et-puits/"]')
     && !!d.querySelector('footer a[href="https://ah6259.github.io/prix-eaux-tunisie/"]') && !!d.querySelector('main a.outil[href="https://ah6259.github.io/prix-eaux-tunisie/"]'));
 }
 {
@@ -137,9 +137,52 @@ check("robots.txt (IA refusées, sitemap), sitemap avec les pages, LICENSE", /GP
     const { d } = await page(p);
     if (d.querySelectorAll("header .partager").length !== 1) manque.push(p + " partager");
     if (!d.querySelector('footer a[href$="#avis"]')) manque.push(p + " avis");
-    if (d.querySelectorAll(".menu a").length !== 4) manque.push(p + " menu");
+    if (d.querySelectorAll(".menu a").length !== 5) manque.push(p + " menu");
   }
   check(`toutes les pages : Partager dans l'en-tête, « Votre avis », menu ${manque.join(" | ")}`, !manque.length);
+}
+// ---- 5. Majels & puits (demande d'Ahmed du 09/10/2026) et anglais (3e langue, « pour le monde entier »)
+{
+  const { d, js } = await page("majels-et-puits/index.html");
+  const liens = [...d.querySelectorAll(".mp-liens li a")];
+  check(`page Majels & puits : explication du majel, au moins 15 liens (${liens.length}) dont AJEM, WOCAT citerne, Bir Barouta ; tous dans un nouvel onglet`,
+    js.length === 0 && d.querySelectorAll(".mp-bref li").length >= 4 && liens.length >= 15
+    && ["https://www.ajem.tn/fesguietna", "https://wocat.net/en/database/technologies/1413/"].every(h => liens.some(a => a.href === h))
+    && liens.some(a => /Barouta/.test(a.textContent)) && liens.every(a => a.target === "_blank" && /noopener/.test(a.rel)));
+  check("page Majels & puits : sections puits (#puits) et majels (#majels), lien « Ajoutez-le sur la carte »",
+    !!d.getElementById("puits") && !!d.getElementById("majels") && !!d.querySelector('a[href="../#signaler"]'));
+}
+{
+  const manque = [];
+  for (const p of PAGES) {
+    const h = lire(p), n = l => (h.match(new RegExp(`data-l="${l}"`, "g")) || []).length;
+    if (n("fr") !== n("ar") || n("fr") !== n("en")) manque.push(`${p} (fr ${n("fr")}, ar ${n("ar")}, en ${n("en")})`);
+  }
+  for (const [a, b] of [["data-fr=", "data-en="], ["data-ph-fr=", "data-ph-en="], ["data-alt-ar=", "data-alt-en="], ["data-vfr=", "data-ven="]])
+    for (const p of PAGES) { const h = lire(p); if (h.split(a).length !== h.split(b).length) manque.push(p + " " + b); }
+  check(`anglais : chaque texte français a sa traduction arabe ET anglaise, sur toutes les pages ${manque.join(" | ")}`, !manque.length);
+}
+{
+  const { w, d, js } = await page("index.html", { lang: "en", stockage: {} });
+  check("accueil ?lang=en : anglais, de gauche à droite, nom « Water Points Tunisia », menu « Cisterns & wells », aucune erreur",
+    d.documentElement.lang === "en" && d.documentElement.dir === "ltr" && /Water Points Tunisia/.test(d.querySelector(".logo-nom").textContent)
+    && [...d.querySelectorAll(".menu a")].some(a => a.textContent === "Cisterns & wells") && js.length === 0);
+  check("anglais : filtres, bulle AJEM et fenêtre de signalement en anglais",
+    /Natural spring/.test(d.getElementById("pe-filtres").textContent) && /Surveyed by the AJEM association/.test(w.EAUX_BULLE(w.EAUX_POINTS.points.find(p => p.src === "ajem")))
+    && (w.EAUX_SIGNALER(), /no water point reported|be the first/i.test(d.getElementById("pe-derniers").textContent)) && d.querySelector('#pe-type option[value="well"], #pe-type option[value="puits"]').textContent === "Well");
+  d.querySelector('.langues [data-lang="fr"]').click();
+  check("choix de langue FR · ع · EN : un clic passe en français, gardé sous « langue-points-eau » ; « langue » partagée = fr",
+    d.documentElement.lang === "fr" && w.localStorage.getItem("langue-points-eau") === "fr" && w.localStorage.getItem("langue") === "fr"
+    && d.querySelector('.langues [data-lang="fr"]').getAttribute("aria-pressed") === "true");
+  d.querySelector('.langues [data-lang="en"]').click();
+  check("choisir l'anglais n'écrit PAS « en » dans la mémoire partagée par les autres sites (reste fr)",
+    d.documentElement.lang === "en" && w.localStorage.getItem("langue-points-eau") === "en" && w.localStorage.getItem("langue") === "fr");
+}
+{
+  const { d } = await page("index.html", { stockage: {} });
+  check("sans choix enregistré, téléphone dans une autre langue (anglais) → site en anglais", d.documentElement.lang === "en");
+  const { d: d2 } = await page("index.html", { stockage: { langue: "ar" } });
+  check("choix « arabe » fait sur un autre de nos sites → arabe", d2.documentElement.lang === "ar");
 }
 {
   const publics = PAGES.map(lire).join("\n") + lire("assets/page.js");

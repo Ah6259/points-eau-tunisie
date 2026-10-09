@@ -129,7 +129,7 @@ footer p{margin:6px 0}
 
 /* ---- langues ---- */
 [data-l]{display:none}
-html[lang="fr"] [data-l="fr"],html[lang="ar"] [data-l="ar"]{display:revert}
+html[lang="fr"] [data-l="fr"],html[lang="ar"] [data-l="ar"],html[lang="en"] [data-l="en"]{display:revert}
 
 @media (max-width:380px){
   .logo-nom small{display:none}
@@ -468,3 +468,13 @@ table.bareme td:last-child:not(.m){white-space:normal;text-align:start}
 .hadith-text{font-family:"Amiri Quran","Scheherazade New",serif;font-size:clamp(19px,4.6vw,25px);line-height:2.1;text-wrap:balance;margin:0 auto;max-width:36em;color:var(--texte)}
 .hadith-source{font-family:"Amiri Quran",serif;color:var(--doux);font-size:15px;margin-top:8px}
 .coran-page{padding-top:8px}
+
+/* ---- choix de la langue : FR · ع · EN (anglais ajouté le 09/10/2026 : site pour le monde entier) ---- */
+.langues{flex:none;display:inline-flex;border:1px solid var(--ligne);background:var(--bg);border-radius:999px;padding:2px;gap:2px}
+.langues button{font:inherit;font-size:12.5px;font-weight:800;border:0;background:none;color:var(--doux);border-radius:999px;padding:5px 8px;cursor:pointer;line-height:1}
+.langues button[aria-pressed="true"]{background:var(--vert);color:#fff}
+.langues button:hover{color:var(--vert)}
+.langues button[aria-pressed="true"]:hover{color:#fff}
+/* ---- page « Majels & puits » ---- */
+.mp-liens .lg{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.04em;color:var(--doux);border:1px solid var(--ligne);border-radius:6px;padding:0 4px;vertical-align:1px}
+.mp-points li{margin:8px 0}

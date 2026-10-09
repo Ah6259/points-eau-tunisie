@@ -66,7 +66,9 @@ check("page video/ : dans le sitemap", lire("sitemap.xml").includes(`<loc>${SITE
 async function ouvrir(page, query = "") {
   const html = lire(page);
   const scripts = [...html.matchAll(/<script[^>]*src="([^"]+)"[^>]*><\/script>/g)].map(m => m[1]).filter(s => !/^https?:/.test(s));
-  const dom = new JSDOM(html.replace(/<script[^>]*src="[^"]*"[^>]*><\/script>/g, ""), { runScripts: "outside-only", url: SITE + page.replace(/index\.html$/, "") + query, pretendToBeVisual: true, virtualConsole: new VirtualConsole() });
+  const dom = new JSDOM(html.replace(/<script[^>]*src="[^"]*"[^>]*><\/script>/g, ""), { runScripts: "outside-only", url: SITE + page.replace(/index\.html$/, "") + query, pretendToBeVisual: true, virtualConsole: new VirtualConsole(),
+    // téléphone réglé dans la langue par défaut du site (un site à 3 langues choisit sinon celle du téléphone)
+    beforeParse(w) { try { Object.defineProperty(w.navigator, "language", { value: DEFAUT }); } catch (e) {} } });
   const w = dom.window;
   w.goatcounter = { count: () => {} };
   w.fetch = async () => ({ ok: true, json: async () => ({}), text: async () => "" });
