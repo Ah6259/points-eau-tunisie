@@ -13,7 +13,7 @@
     puits: { fr: "Puits", ar: "بئر", en: "Well", c: "#6B5B95" }
   };
   const L2 = (fr, ar, en) => (window.T ? window.T(fr, ar, en) : fr);
-  const STATUT = { osm: ["OpenStreetMap", "OpenStreetMap", "OpenStreetMap"], ajem: ["Recensé par l'association AJEM (Fesguietna)", "أحصته جمعية AJEM (فسقيتنا)", "Surveyed by the AJEM association (Fesguietna)"],
+  const STATUT = { osm: ["OpenStreetMap", "OpenStreetMap", "OpenStreetMap"], wpdx: ["Relevé de terrain : Water Point Data Exchange (WPdx, CC BY 4.0)", "مسح ميداني: Water Point Data Exchange ‏(WPdx، CC BY 4.0)", "Field survey: Water Point Data Exchange (WPdx, CC BY 4.0)"], ajem: ["Recensé par l'association AJEM (Fesguietna)", "أحصته جمعية AJEM (فسقيتنا)", "Surveyed by the AJEM association (Fesguietna)"],
     confirme: ["Confirmé par les visiteurs", "أكّده الزوار", "Confirmed by visitors"], signale: ["Signalé par un visiteur, à confirmer", "أضافه زائر، في انتظار التأكيد", "Reported by a visitor, to be confirmed"] };
   const nomT = t => L2(TYPES[t].fr, TYPES[t].ar, TYPES[t].en);
   const D = window.EAUX_POINTS || { points: [] };
@@ -85,14 +85,14 @@
   // ---- Le monde entier (demande d'Ahmed du 09/10/2026 : « toute personne dans le monde doit trouver un point d'eau à côté d'elle »).
   // La Tunisie est déjà chargée (robot trimestriel + AJEM + visiteurs). Ailleurs, les points d'eau d'OpenStreetMap de la zone
   // affichée sont lus EN DIRECT (zoom ≥ 11), auprès des 5 copies d'OpenStreetMap (règle commune), avec les mêmes règles que le robot.
-  // ordre : le plus fiable en direct d'abord (maps.mail.ru, testé le 09/10/2026), 25 s au plus par serveur
+  // les 2 premiers serveurs sont interrogés EN MÊME TEMPS (le plus rapide gagne), puis les autres un par un ; 25 s au plus chacun
   const OVERPASS = ["https://maps.mail.ru/osm/tools/overpass/api/interpreter", "https://overpass-api.de/api/interpreter",
     "https://overpass.kumi.systems/api/interpreter", "https://overpass.private.coffee/api/interpreter",
     "https://overpass.openstreetmap.fr/api/interpreter"];
   const ETIQUETTES = [["natural", "spring", "source"], ["amenity", "drinking_water", "fontaine"], ["man_made", "water_tap", "robinet"],
     ["amenity", "water_point", "robinet"], ["man_made", "cistern", "majel"], ["man_made", "water_well", "puits"]];
   const TUNISIE = { s: 30.2, n: 37.6, o: 7.5, e: 11.7 };
-  const ZOOM_MONDE = 11, zonesLues = [];
+  const ZOOM_MONDE = 9, zonesLues = [];          // 9 = une région (11 = une ville était trop strict : 09/10/2026)
   function versPoint(el) {
     const tags = el.tags || {}, et = ETIQUETTES.find(([k, v]) => tags[k] === v);
     const lat = el.lat !== undefined ? el.lat : (el.center || {}).lat, lon = el.lon !== undefined ? el.lon : (el.center || {}).lon;
@@ -109,23 +109,59 @@
     elements.forEach(el => { const p = versPoint(el); if (p && !connus.has(p.id)) { D.points.push(p); connus.add(p.id); n++; } });
     return n;
   }
+  async function essai(url, q) {
+    const arret = window.AbortController ? new AbortController() : null, minuterie = arret && setTimeout(() => arret.abort(), 25000);
+    try {
+      const r = await fetch(url, { method: "POST", body: new URLSearchParams({ data: q }), signal: arret && arret.signal });
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      const d = await r.json();
+      if (/error|timed out/i.test(String(d.remark || ""))) throw new Error(d.remark);   // erreur cachée : serveur suivant
+      return d.elements || [];
+    } finally { clearTimeout(minuterie); }
+  }
   async function lireZone(s, o, n, e) {
     const bb = [s, o, n, e].map(x => x.toFixed(4)).join(",");
     const q = `[out:json][timeout:25];(${ETIQUETTES.map(([k, v]) => `nwr["${k}"="${v}"](${bb});`).join("")});out center tags 1500;`;
-    for (const url of OVERPASS) {
-      try {
-        const arret = window.AbortController ? new AbortController() : null, minuterie = arret && setTimeout(() => arret.abort(), 25000);
-        const r = await fetch(url, { method: "POST", body: new URLSearchParams({ data: q }), signal: arret && arret.signal });
-        clearTimeout(minuterie);
-        if (!r.ok) throw new Error("HTTP " + r.status);
-        const d = await r.json();
-        if (/error|timed out/i.test(String(d.remark || ""))) throw new Error(d.remark);   // erreur cachée : serveur suivant
-        return d.elements || [];
-      } catch (x) { /* serveur suivant */ }
-    }
+    try { return await Promise.any(OVERPASS.slice(0, 2).map(u => essai(u, q))); } catch (x) { /* les deux ont échoué */ }
+    for (const url of OVERPASS.slice(2)) { try { return await essai(url, q); } catch (x) { /* serveur suivant */ } }
     throw new Error("OpenStreetMap injoignable");
   }
-  const zoneTxt = (t, err) => { const z = $("pe-zone"); if (z) { z.textContent = t; z.className = "aide pe-zone" + (err ? " err" : ""); } };
+
+  // ---- Water Point Data Exchange (WPdx-Basic, CC BY 4.0, décision d'Ahmed du 09/10/2026) : plus de 800 000 points d'eau relevés
+  // sur le terrain dans 84 pays (Afrique, Asie, Amérique latine ; aucun en Tunisie), lus EN DIRECT pour la zone affichée.
+  // Les points « en panne » (status_id = No) ne sont pas montrés ; eaux de surface, eau livrée ou en bouteille non plus.
+  const WPDX = "https://data.waterpointdata.org/resource/jfkt-jmqa.json";
+  const TYPE_WPDX = { "Borehole/Tubewell": "puits", "Protected Well": "puits", "Undefined Well": "puits", "Unprotected Well": "puits",
+    "Piped Water": "robinet", "Rainwater Harvesting": "majel", "Protected Spring": "source", "Undefined Spring": "source" };
+  function versPointWpdx(r) {
+    const t = TYPE_WPDX[r.water_source_clean], lat = parseFloat(r.lat_deg), lon = parseFloat(r.lon_deg);
+    if (!t || !isFinite(lat) || !isFinite(lon) || r.status_id === "No" || !/^\d+$/.test(String(r.row_id || ""))) return null;
+    return { id: "wpdx-" + r.row_id, type: t, lat: +lat.toFixed(6), lon: +lon.toFixed(6), nom: "", potable: null,
+      src: "wpdx", statut: "wpdx", ok: 0, ko: 0, monde: true };
+  }
+  async function lireWpdx(s, o, n, e) {
+    const arret = window.AbortController ? new AbortController() : null, minuterie = arret && setTimeout(() => arret.abort(), 25000);
+    const q = new URLSearchParams({ $select: "row_id,lat_deg,lon_deg,water_source_clean,status_id", $limit: "2000",
+      $where: `within_box(geocoded_column, ${n.toFixed(4)}, ${o.toFixed(4)}, ${s.toFixed(4)}, ${e.toFixed(4)}) AND status_id != 'No'` });
+    try {
+      const r = await fetch(WPDX + "?" + q, { signal: arret && arret.signal });
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      const d = await r.json();
+      if (!Array.isArray(d)) throw new Error("réponse inattendue");
+      return d;
+    } finally { clearTimeout(minuterie); }
+  }
+  function ajouterWpdx(lignes) {
+    const connus = new Set(D.points.map(p => p.id));
+    let n = 0;
+    lignes.forEach(r => { const p = versPointWpdx(r); if (p && !connus.has(p.id)) { D.points.push(p); connus.add(p.id); n++; } });
+    return n;
+  }
+  let bulleZone = null;                            // le même message, posé SUR la carte (bien visible, 09/10/2026)
+  const zoneTxt = (t, err) => {
+    const z = $("pe-zone"); if (z) { z.textContent = t; z.className = "aide pe-zone" + (err ? " err" : ""); }
+    if (bulleZone) { bulleZone.textContent = t; bulleZone.hidden = !t; bulleZone.classList.toggle("err", !!err); }
+  };
   async function chargerMonde() {
     if (!carte) return;
     const b = carte.getBounds(), dedans = b.getSouth() >= TUNISIE.s && b.getNorth() <= TUNISIE.n && b.getWest() >= TUNISIE.o && b.getEast() <= TUNISIE.e;
@@ -134,18 +170,22 @@
     if (zonesLues.some(z => z.contains(b))) return;
     const zone = b.pad(0.25);
     zoneTxt(L2("Recherche des points d'eau de cette zone…", "جارٍ البحث عن نقاط الماء في هذه المنطقة…", "Looking for water points in this area…"));
+    // OpenStreetMap et WPdx en même temps ; il suffit qu'un des deux réponde
+    const [osm, wp] = await Promise.allSettled([lireZone(zone.getSouth(), zone.getWest(), zone.getNorth(), zone.getEast()),
+      lireWpdx(zone.getSouth(), zone.getWest(), zone.getNorth(), zone.getEast())]);
     try {
-      const n = ajouterZone(await lireZone(zone.getSouth(), zone.getWest(), zone.getNorth(), zone.getEast()));
+      if (osm.status === "rejected" && wp.status === "rejected") throw osm.reason;
+      const n = (osm.status === "fulfilled" ? ajouterZone(osm.value) : 0) + (wp.status === "fulfilled" ? ajouterWpdx(wp.value) : 0);
       zonesLues.push(zone); filtres(); dessiner(); proches();
       const total = D.points.filter(p => zone.contains([p.lat, p.lon])).length;
-      zoneTxt(total ? L2("{n} points d'eau dans cette zone (OpenStreetMap).", "{n} نقطة ماء في هذه المنطقة (OpenStreetMap).", "{n} water points in this area (OpenStreetMap).").replace("{n}", total)
+      zoneTxt(total ? L2("{n} points d'eau dans cette zone.", "{n} نقطة ماء في هذه المنطقة.", "{n} water points in this area.").replace("{n}", total)
         : L2("Aucun point d'eau connu ici : vous en connaissez un ? Signalez-le.", "لا توجد نقطة ماء معروفة هنا: تعرف واحدة؟ أضفها.", "No known water point here: do you know one? Report it."));
       return n;
     } catch (x) {
       zoneTxt(L2("OpenStreetMap ne répond pas pour le moment : réessayez dans un instant.", "OpenStreetMap لا يستجيب الآن: أعد المحاولة بعد قليل.", "OpenStreetMap is not responding right now: try again in a moment."), true);
     }
   }
-  window.EAUX_MONDE = { versPoint, ajouterZone, lireZone };   // pour les tests
+  window.EAUX_MONDE = { versPoint, ajouterZone, lireZone, versPointWpdx, ajouterWpdx, lireWpdx, chargerMonde, zoneTxt };   // pour les tests
 
   function demarrerCarte() {
     if (carte || !window.L) return;
@@ -153,6 +193,9 @@
     L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 18,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">contributeurs OpenStreetMap</a>' }).addTo(carte);
     calque = L.layerGroup().addTo(carte);
+    const message = L.control({ position: "topright" });
+    message.onAdd = () => { bulleZone = L.DomUtil.create("div", "pe-zone-carte"); bulleZone.hidden = true; L.DomEvent.disableClickPropagation(bulleZone); return bulleZone; };
+    message.addTo(carte);
     let attente = null;
     carte.on("moveend", () => { clearTimeout(attente); attente = setTimeout(chargerMonde, 600); });
     dessiner();

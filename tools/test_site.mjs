@@ -347,5 +347,38 @@ check("robots.txt (IA refusées, sitemap), sitemap avec les pages, LICENSE", /GP
   const { d: d2 } = await page("index.html", { lang: "xx", stockage: { langue: "ar" } });
   check("?lang=xx inconnu : ignoré (choix « ar » des autres sites gardé)", d2.documentElement.lang === "ar");
 }
+// ---- WaterPoint Data Exchange (WPdx, CC BY 4.0) en direct + zoom région + 2 serveurs en parallèle (09/10/2026)
+{
+  const { w, d } = await page();
+  const M = w.EAUX_MONDE;
+  const ok = [
+    M.versPointWpdx({ row_id: "1", lat_deg: "0.3", lon_deg: "32.5", water_source_clean: "Borehole/Tubewell", status_id: "Yes" }),
+    M.versPointWpdx({ row_id: "2", lat_deg: "0.3", lon_deg: "32.5", water_source_clean: "Protected Spring", status_id: "Unknown" }),
+    M.versPointWpdx({ row_id: "3", lat_deg: "0.3", lon_deg: "32.5", water_source_clean: "Rainwater Harvesting" }),
+    M.versPointWpdx({ row_id: "4", lat_deg: "0.3", lon_deg: "32.5", water_source_clean: "Piped Water", status_id: "Yes" })];
+  const refuses = [
+    M.versPointWpdx({ row_id: "5", lat_deg: "0.3", lon_deg: "32.5", water_source_clean: "Borehole/Tubewell", status_id: "No" }),
+    M.versPointWpdx({ row_id: "6", lat_deg: "0.3", lon_deg: "32.5", water_source_clean: "Surface Water (River/Stream/Lake/Pond/Dam)" }),
+    M.versPointWpdx({ row_id: "7", lat_deg: "x", lon_deg: "32.5", water_source_clean: "Protected Well" })];
+  check("WPdx : forage → puits, source, pluie → majel, robinet ; « en panne », eau de surface et position illisible écartés",
+    ok.map(p => p && p.type).join(",") === "puits,source,majel,robinet" && ok.every(p => p.src === "wpdx" && p.monde) && refuses.every(p => p === null));
+  check("WPdx : bulle avec la source « Water Point Data Exchange (WPdx, CC BY 4.0) »", /Water Point Data Exchange \(WPdx, CC BY 4\.0\)/.test(w.EAUX_BULLE(ok[0])));
+  const urls = [];
+  w.fetch = async (u, o) => { urls.push(String(u)); return { ok: true, json: async () => [{ row_id: "9", lat_deg: "0.31", lon_deg: "32.58", water_source_clean: "Protected Well", status_id: "Yes" }] }; };
+  const l = await M.lireWpdx(0.2, 32.4, 0.4, 32.7);
+  const total = d.getElementById("pe-total").textContent;
+  const n = M.ajouterWpdx(l), n2 = M.ajouterWpdx(l);
+  check("WPdx : zone demandée (within_box nord, ouest, sud, est) sans les points en panne ; ajout sans doublon ; compteur Tunisie inchangé",
+    /within_box\(geocoded_column, 0\.4000, 32\.4000, 0\.2000, 32\.7000\)/.test(decodeURIComponent(urls[0].replace(/\+/g, " "))) && /status_id != 'No'/.test(decodeURIComponent(urls[0].replace(/\+/g, " ")))
+    && n === 1 && n2 === 0 && d.getElementById("pe-total").textContent === total);
+  // 2 premiers serveurs OpenStreetMap EN MÊME TEMPS : le 1er (lent) n'empêche pas le 2e de répondre
+  const appels = [];
+  w.fetch = (u) => { appels.push(String(u)); return /mail\.ru/.test(u) ? new Promise(() => {}) : Promise.resolve({ ok: true, json: async () => ({ elements: [{ type: "node", id: 77, lat: 36.7, lon: 3.05, tags: { amenity: "drinking_water" } }] }) }); };
+  const t0 = Date.now(), els = (await Promise.race([M.lireZone(36.6, 3.0, 36.8, 3.1), new Promise(r => setTimeout(() => r(null), 3000))])) || [];
+  check("OpenStreetMap : 2 serveurs interrogés ensemble, le plus rapide gagne (le serveur bloqué ne fait pas attendre)",
+    els.length === 1 && appels.length === 2 && Date.now() - t0 < 2000);
+  check("CSP : WPdx (data.waterpointdata.org) autorisé ; zoom « région » (9) ; message posé sur la carte",
+    /connect-src[^;]*data\.waterpointdata\.org/.test(lire("index.html")) && /ZOOM_MONDE = 9\b/.test(lire("assets/points-eau.js")) && /pe-zone-carte/.test(lire("assets/points-eau.js")));
+}
 console.log(`\n${erreurs ? erreurs + " PROBLÈME(S)" : "TOUT PASSE"} (${total} vérifications)`);
 process.exit(erreurs ? 1 : 0);

@@ -4,6 +4,9 @@
    Un texte français ajouté ou modifié doit être traduit ici dans les 5 langues (tools/test_site.mjs le vérifie). */
 window.TRADUCTIONS = {
 "tr": {
+ "{n} points d'eau dans cette zone.": "{n} su noktası bu bölgede.",
+ "Relevé de terrain : Water Point Data Exchange (WPdx, CC BY 4.0)": "Saha araştırması: Water Point Data Exchange (WPdx, CC BY 4.0)",
+ "<b>Water Point Data Exchange</b> (<a href=\"https://www.waterpointdata.org/\" rel=\"noopener\">WPdx</a>, licence CC BY 4.0) : plus de 800 000 points d'eau relevés sur le terrain dans 84 pays (surtout en Afrique et en Asie), lus en direct pour la zone affichée ; les points signalés « en panne » ne sont pas montrés.": "<b>Water Point Data Exchange</b> (<a href=\"https://www.waterpointdata.org/\" rel=\"noopener\">WPdx</a>, CC BY 4.0 lisansı): 84 ülkede (çoğunlukla Afrika ve Asya'da) sahada kaydedilmiş 800.000'den fazla su noktası, gösterilen bölge için anlık okunur; « arızalı » bildirilen noktalar gösterilmez.",
  "Les mosquées de Tunisie : carte et histoire": "Tunus camileri: harita ve tarih",
  "Toutes les mosquées du pays sur une carte, et l'histoire des grandes mosquées, de Kairouan à la Zitouna.": "Ülkenin tüm camileri bir haritada ve Kayrevan'dan Zeytune'ye büyük camilerin tarihi.",
  "Accueil": "Ana sayfa",
@@ -179,6 +182,9 @@ window.TRADUCTIONS = {
  "Hadiths en anglais :": "İngilizce hadisler:"
 },
 "id": {
+ "{n} points d'eau dans cette zone.": "{n} titik air di wilayah ini.",
+ "Relevé de terrain : Water Point Data Exchange (WPdx, CC BY 4.0)": "Survei lapangan: Water Point Data Exchange (WPdx, CC BY 4.0)",
+ "<b>Water Point Data Exchange</b> (<a href=\"https://www.waterpointdata.org/\" rel=\"noopener\">WPdx</a>, licence CC BY 4.0) : plus de 800 000 points d'eau relevés sur le terrain dans 84 pays (surtout en Afrique et en Asie), lus en direct pour la zone affichée ; les points signalés « en panne » ne sont pas montrés.": "<b>Water Point Data Exchange</b> (<a href=\"https://www.waterpointdata.org/\" rel=\"noopener\">WPdx</a>, lisensi CC BY 4.0): lebih dari 800.000 titik air yang dicatat di lapangan di 84 negara (terutama di Afrika dan Asia), dibaca langsung untuk wilayah yang ditampilkan; titik yang dilaporkan « rusak » tidak ditampilkan.",
  "Les mosquées de Tunisie : carte et histoire": "Masjid-masjid Tunisia: peta dan sejarah",
  "Toutes les mosquées du pays sur une carte, et l'histoire des grandes mosquées, de Kairouan à la Zitouna.": "Semua masjid di negeri ini dalam satu peta, dan sejarah masjid-masjid besar, dari Kairouan hingga Zaitunah.",
  "Accueil": "Beranda",
@@ -354,6 +360,9 @@ window.TRADUCTIONS = {
  "Hadiths en anglais :": "Hadis dalam bahasa Inggris:"
 },
 "ur": {
+ "{n} points d'eau dans cette zone.": "اس علاقے میں {n} پانی کے مقامات۔",
+ "Relevé de terrain : Water Point Data Exchange (WPdx, CC BY 4.0)": "میدانی سروے: Water Point Data Exchange ‏(WPdx، CC BY 4.0)",
+ "<b>Water Point Data Exchange</b> (<a href=\"https://www.waterpointdata.org/\" rel=\"noopener\">WPdx</a>, licence CC BY 4.0) : plus de 800 000 points d'eau relevés sur le terrain dans 84 pays (surtout en Afrique et en Asie), lus en direct pour la zone affichée ; les points signalés « en panne » ne sont pas montrés.": "<b>Water Point Data Exchange</b> (<a href=\"https://www.waterpointdata.org/\" rel=\"noopener\">WPdx</a>، لائسنس CC BY 4.0): 84 ممالک میں (زیادہ تر افریقہ اور ایشیا میں) میدان میں درج 8 لاکھ سے زیادہ پانی کے مقامات، دکھائے گئے علاقے کے لیے براہِ راست پڑھے جاتے ہیں؛ « خراب » بتائے گئے مقامات نہیں دکھائے جاتے۔",
  "Les mosquées de Tunisie : carte et histoire": "تیونس کی مساجد: نقشہ اور تاریخ",
  "Toutes les mosquées du pays sur une carte, et l'histoire des grandes mosquées, de Kairouan à la Zitouna.": "ملک کی تمام مساجد ایک نقشے پر، اور قیروان سے زیتونہ تک بڑی مساجد کی تاریخ۔",
  "Accueil": "صفحۂ اوّل",
@@ -529,6 +538,9 @@ window.TRADUCTIONS = {
  "Hadiths en anglais :": "انگریزی میں احادیث:"
 },
 "de": {
+ "{n} points d'eau dans cette zone.": "{n} Wasserstellen in diesem Gebiet.",
+ "Relevé de terrain : Water Point Data Exchange (WPdx, CC BY 4.0)": "Feldaufnahme: Water Point Data Exchange (WPdx, CC BY 4.0)",
+ "<b>Water Point Data Exchange</b> (<a href=\"https://www.waterpointdata.org/\" rel=\"noopener\">WPdx</a>, licence CC BY 4.0) : plus de 800 000 points d'eau relevés sur le terrain dans 84 pays (surtout en Afrique et en Asie), lus en direct pour la zone affichée ; les points signalés « en panne » ne sont pas montrés.": "<b>Water Point Data Exchange</b> (<a href=\"https://www.waterpointdata.org/\" rel=\"noopener\">WPdx</a>, Lizenz CC BY 4.0): über 800.000 vor Ort erfasste Wasserstellen in 84 Ländern (vor allem in Afrika und Asien), live für das angezeigte Gebiet gelesen; als „defekt“ gemeldete Stellen werden nicht angezeigt.",
  "Les mosquées de Tunisie : carte et histoire": "Die Moscheen Tunesiens: Karte und Geschichte",
  "Toutes les mosquées du pays sur une carte, et l'histoire des grandes mosquées, de Kairouan à la Zitouna.": "Alle Moscheen des Landes auf einer Karte und die Geschichte der großen Moscheen, von Kairouan bis zur Zitouna.",
  "Accueil": "Startseite",
@@ -704,6 +716,9 @@ window.TRADUCTIONS = {
  "Hadiths en anglais :": "Hadithe auf Englisch:"
 },
 "es": {
+ "{n} points d'eau dans cette zone.": "{n} puntos de agua en esta zona.",
+ "Relevé de terrain : Water Point Data Exchange (WPdx, CC BY 4.0)": "Relevamiento de campo: Water Point Data Exchange (WPdx, CC BY 4.0)",
+ "<b>Water Point Data Exchange</b> (<a href=\"https://www.waterpointdata.org/\" rel=\"noopener\">WPdx</a>, licence CC BY 4.0) : plus de 800 000 points d'eau relevés sur le terrain dans 84 pays (surtout en Afrique et en Asie), lus en direct pour la zone affichée ; les points signalés « en panne » ne sont pas montrés.": "<b>Water Point Data Exchange</b> (<a href=\"https://www.waterpointdata.org/\" rel=\"noopener\">WPdx</a>, licencia CC BY 4.0): más de 800 000 puntos de agua registrados sobre el terreno en 84 países (sobre todo en África y Asia), leídos en directo para la zona mostrada; no se muestran los puntos señalados como « averiados ».",
  "Les mosquées de Tunisie : carte et histoire": "Las mezquitas de Túnez: mapa e historia",
  "Toutes les mosquées du pays sur une carte, et l'histoire des grandes mosquées, de Kairouan à la Zitouna.": "Todas las mezquitas del país en un mapa y la historia de las grandes mezquitas, de Kairuán a la Zitouna.",
  "Accueil": "Inicio",
