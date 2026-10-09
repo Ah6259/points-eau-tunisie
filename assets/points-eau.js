@@ -185,7 +185,33 @@
       zoneTxt(L2("OpenStreetMap ne répond pas pour le moment : réessayez dans un instant.", "OpenStreetMap لا يستجيب الآن: أعد المحاولة بعد قليل.", "OpenStreetMap is not responding right now: try again in a moment."), true);
     }
   }
-  window.EAUX_MONDE = { versPoint, ajouterZone, lireZone, versPointWpdx, ajouterWpdx, lireWpdx, chargerMonde, zoneTxt };   // pour les tests
+  // « Chercher une ville du monde » (09/10/2026, comme le site des mosquées) : Nominatim (OpenStreetMap), UNE requête par
+  // recherche validée (bouton, touche Entrée ou ville d'exemple), jamais à chaque frappe ; la carte se centre sur la ville et
+  // ses points d'eau sont lus en direct (chargerMonde, au déplacement de la carte)
+  const NOMINATIM = "https://nominatim.openstreetmap.org/search", villesVues = {};
+  let villeEnCours = false;
+  async function chercherVille(q) {
+    q = String(q || "").trim().slice(0, 60);
+    const info = $("pe-monde-info");
+    if (!q || villeEnCours || !info) return;
+    villeEnCours = true;
+    info.textContent = L2("Recherche de la ville dans le monde…", "جارٍ البحث عن المدينة في العالم…", "Looking for the town in the world…");
+    try {
+      let r = villesVues[q.toLowerCase()];
+      if (!r) {
+        const rep = await fetch(NOMINATIM + "?" + new URLSearchParams({ format: "json", q, limit: "1", "accept-language": document.documentElement.lang }), { headers: { Accept: "application/json" } });
+        if (!rep.ok) throw new Error("HTTP " + rep.status);
+        r = villesVues[q.toLowerCase()] = ((await rep.json()) || [])[0] || { vide: true };
+      }
+      if (r.vide || !isFinite(+r.lat) || !isFinite(+r.lon)) { info.textContent = L2("Aucune ville trouvée dans le monde pour ce nom.", "لم يُعثر على مدينة بهذا الاسم في العالم.", "No town with this name was found in the world."); return; }
+      info.textContent = L2("Carte centrée sur : {l} (recherche Nominatim, © contributeurs OpenStreetMap).", "الخريطة متمركزة على: {l} (بحث Nominatim، © مساهمو OpenStreetMap).", "Map centred on: {l} (Nominatim search, © OpenStreetMap contributors).")
+        .replace("{l}", String(r.display_name || q).slice(0, 120));
+      chargerLeaflet(() => { carte.setView([+r.lat, +r.lon], 12); $("pe-carte").scrollIntoView && $("pe-carte").scrollIntoView({ behavior: "smooth", block: "center" }); });
+    } catch (x) {
+      info.textContent = L2("La recherche de ville ne répond pas pour le moment : réessayez dans un instant.", "البحث عن المدن لا يستجيب الآن: أعد المحاولة بعد قليل.", "The town search is not responding right now: try again in a moment.");
+    } finally { villeEnCours = false; }
+  }
+  window.EAUX_MONDE = { versPoint, ajouterZone, lireZone, versPointWpdx, ajouterWpdx, lireWpdx, chargerMonde, zoneTxt, chercherVille };   // pour les tests
 
   function demarrerCarte() {
     if (carte || !window.L) return;
@@ -230,6 +256,13 @@
     if (voir) { voirSurCarte(voir.dataset.voir); return; }
     const lien = e.target.closest('a[href$="#signaler"]');
     if (lien && lien.pathname === location.pathname) { e.preventDefault(); ouvrirSig(); }
+  });
+  // bandeau « Le monde entier est sur la carte » : recherche d'une ville, villes d'exemple, vue du monde (09/10/2026)
+  if ($("pe-monde-f")) $("pe-monde-f").addEventListener("submit", e => { e.preventDefault(); chercherVille($("pe-monde-q").value); });
+  document.addEventListener("click", e => {
+    const ex = e.target.closest && e.target.closest("[data-ville-ex]");
+    if (ex) { chercherVille(ex.dataset.villeEx); return; }
+    if (e.target.closest && e.target.closest("[data-monde-vue]")) chargerLeaflet(() => { carte.setView([25, 15], 2); $("pe-carte").scrollIntoView && $("pe-carte").scrollIntoView({ behavior: "smooth", block: "center" }); });
   });
   $("pe-autour").addEventListener("click", () => {
     $("pe-autour-txt").textContent = L2("Recherche de votre position…", "جارٍ تحديد موقعك…", "Finding your position…");

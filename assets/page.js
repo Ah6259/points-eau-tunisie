@@ -57,7 +57,7 @@ const MENU_SITE = [
       <div class="wrap">
         <a class="logo" href="${racine || "./"}">
           <img class="logo-mark" src="${racine}assets/logo.svg" alt="" width="34" height="34">
-          <span class="logo-nom">${T("Points d'eau Tunisie", "نقاط الماء في تونس", "Water Points Tunisia")}
+          <span class="logo-nom">${T("Points d'eau — Tunisie et monde", "نقاط الماء في تونس والعالم", "Water points — Tunisia and world")}
             <small>${T("Gratuit · sources, fontaines, majels", "مجاني · عيون، حنفيات، مواجل", "Free · springs, fountains, cisterns")}</small></span>
         </a>
         <div class="entete-boutons">
@@ -72,7 +72,7 @@ const MENU_SITE = [
     const p = document.getElementById("pied");
     if (p) p.innerHTML = `
       <div class="wrap">
-        <div class="pied-logo"><img src="${racine}assets/logo.svg" alt="" width="24" height="24"> ${T("Points d'eau Tunisie", "نقاط الماء في تونس", "Water Points Tunisia")}</div>
+        <div class="pied-logo"><img src="${racine}assets/logo.svg" alt="" width="24" height="24"> ${T("Points d'eau — Tunisie et monde", "نقاط الماء في تونس والعالم", "Water points — Tunisia and world")}</div>
         <nav>
           <a href="${racine || "./"}">${T("Carte des points d'eau", "خريطة نقاط الماء", "Water points map")}</a>
           <a href="${racine}#signaler">${T("Signaler un point d'eau", "أضف نقطة ماء", "Report a water point")}</a>

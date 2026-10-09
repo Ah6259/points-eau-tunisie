@@ -164,8 +164,8 @@ check("robots.txt (IA refusées, sitemap), sitemap avec les pages, LICENSE", /GP
 }
 {
   const { w, d, js } = await page("index.html", { lang: "en", stockage: {} });
-  check("accueil ?lang=en : anglais, de gauche à droite, nom « Water Points Tunisia », menu « Majels and wells in Tunisia », aucune erreur",
-    d.documentElement.lang === "en" && d.documentElement.dir === "ltr" && /Water Points Tunisia/.test(d.querySelector(".logo-nom").textContent)
+  check("accueil ?lang=en : anglais, de gauche à droite, nom « Water points — Tunisia and world », menu « Majels and wells in Tunisia », aucune erreur",
+    d.documentElement.lang === "en" && d.documentElement.dir === "ltr" && /Water points — Tunisia and world/.test(d.querySelector(".logo-nom").textContent)
     && [...d.querySelectorAll(".menu a")].some(a => a.textContent === "Majels and wells in Tunisia") && js.length === 0);
   check("anglais : filtres, bulle AJEM et fenêtre de signalement en anglais",
     /Natural spring/.test(d.getElementById("pe-filtres").textContent) && /Surveyed by the AJEM association/.test(w.EAUX_BULLE(w.EAUX_POINTS.points.find(p => p.src === "ajem")))
@@ -263,7 +263,7 @@ check("robots.txt (IA refusées, sitemap), sitemap avec les pages, LICENSE", /GP
 {
   const { d, js } = await page("index.html", { lang: "ur" });
   check("(b) ?lang=ur : ourdou, de droite à gauche, nom du site en ourdou, aucune erreur JS", d.documentElement.lang === "ur" && d.documentElement.dir === "rtl"
-    && /تیونس کے پانی کے مقامات/.test(d.querySelector(".logo-nom").textContent) && js.length === 0);
+    && /پانی کے مقامات — تیونس اور دنیا/.test(d.querySelector(".logo-nom").textContent) && js.length === 0);
   const { d: d2, js: js2 } = await page("coran-et-eau/index.html", { lang: "es" });
   check("page Coran en espagnol : titre traduit, versets et hadiths restés en arabe", d2.querySelector('h1 [data-l="en"]').textContent === "El agua en el Corán y la Sunna"
     && /سورة الأنبياء/.test(d2.querySelector(".coran-page").textContent) && js2.length === 0);

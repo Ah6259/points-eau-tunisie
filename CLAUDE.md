@@ -28,3 +28,7 @@ Règles communes : `../../regles communes a tous les sites.md`.
 - Pages : `python tools/construire.py` (gabarits `tools/gabarits/`, une seule version `VERSION`) ; accueil écrit à la main.
 - Tests : `node tools/test_site.mjs`, `python tools/test_points.py`, `python tools/test_sabotage.py` (9 sabotages),
   `node tools/test_sw.mjs`, `node tools/test_avis.mjs` ; tous dans `tests.yml`.
+- **« Tunisie et monde » (09/10/2026, demande d'Ahmed : que les visiteurs sachent que la carte couvre le monde)** : nom affiché
+  (en-tête, pied de page, manifeste) « Points d'eau — Tunisie et monde / نقاط الماء في تونس والعالم » (adresse du site inchangée)
+  + bandeau `.monde-bande` juste au-dessus de la carte : « 🌍 Le monde entier est sur la carte », villes d'exemple (`data-ville-ex`,
+  La Mecque, Istanbul, Paris, Le Caire → recherche Nominatim, une requête par appui) et « Voir le monde » (`data-monde-vue`).

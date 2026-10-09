@@ -513,3 +513,18 @@ html[lang="ur"] [data-t="ur"],html[lang="de"] [data-t="de"],html[lang="es"] [dat
 .sens small a{color:inherit}
 .pe-zone-carte{max-width:230px;background:rgba(255,255,255,.95);color:#0E2A2E;border-radius:10px;padding:7px 10px;font:600 12.5px/1.4 Figtree,"Noto Kufi Arabic",sans-serif;box-shadow:0 2px 8px rgba(0,0,0,.25)}
 .pe-zone-carte.err{color:#C2412F}
+
+/* ---- « Le monde entier est sur la carte » (09/10/2026) ---- */
+.monde-bande{margin:12px 0 10px;padding:12px 14px;border-radius:14px;background:rgba(31,107,160,.07);border:1.5px solid rgba(31,107,160,.25)}
+.monde-titre{margin:0 0 4px;font-size:16px}
+.monde-txt{margin:0 0 8px;font-size:14px}
+.monde-ex{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0}
+.monde-ex-t{font-size:13.5px;font-weight:700}
+.monde-bande .chipbtn{font:inherit;font-size:13.5px;font-weight:700;border:1.5px solid var(--ligne);background:var(--carte);color:var(--texte);border-radius:999px;padding:6px 11px;cursor:pointer}
+.monde-bande .monde-vue{border-style:dashed}
+.monde-form{margin:0 0 8px}
+.monde-etiquette{display:block;font-size:13.5px;font-weight:700;margin:0 0 4px}
+.monde-champ{display:flex;gap:6px}
+.monde-champ .btn-principal{width:auto;flex:none;margin:0;padding-inline:16px}
+.monde-champ input{flex:1;min-width:0;font:inherit;font-size:16px;padding:9px 12px;border:1.5px solid var(--ligne);border-radius:12px;background:var(--carte);color:var(--texte)}
+.monde-info{margin:8px 0 0}.monde-info:empty{display:none}

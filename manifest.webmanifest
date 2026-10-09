@@ -1,6 +1,6 @@
 {
   "id": "/points-eau-tunisie/",
-  "name": "Points d'eau Tunisie",
+  "name": "Points d'eau — Tunisie et monde",
   "short_name": "Points d'eau",
   "description": "Gratuit : carte des sources, fontaines d'eau potable, robinets publics, majels et puits de Tunisie ; trouvez le plus proche et signalez-en un.",
   "start_url": "./",
@@ -11,8 +11,21 @@
   "theme_color": "#0B6E78",
   "background_color": "#F2F8F8",
   "icons": [
-    { "src": "assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
-    { "src": "assets/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    {
+      "src": "assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
   ]
 }
