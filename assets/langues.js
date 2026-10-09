@@ -4,6 +4,8 @@
    Un texte français ajouté ou modifié doit être traduit ici dans les 5 langues (tools/test_site.mjs le vérifie). */
 window.TRADUCTIONS = {
 "tr": {
+ "Les mosquées de Tunisie : carte et histoire": "Tunus camileri: harita ve tarih",
+ "Toutes les mosquées du pays sur une carte, et l'histoire des grandes mosquées, de Kairouan à la Zitouna.": "Ülkenin tüm camileri bir haritada ve Kayrevan'dan Zeytune'ye büyük camilerin tarihi.",
  "Accueil": "Ana sayfa",
  "À propos": "Hakkında",
  "À propos et méthode": "Hakkında ve yöntem",
@@ -177,6 +179,8 @@ window.TRADUCTIONS = {
  "Hadiths en anglais :": "İngilizce hadisler:"
 },
 "id": {
+ "Les mosquées de Tunisie : carte et histoire": "Masjid-masjid Tunisia: peta dan sejarah",
+ "Toutes les mosquées du pays sur une carte, et l'histoire des grandes mosquées, de Kairouan à la Zitouna.": "Semua masjid di negeri ini dalam satu peta, dan sejarah masjid-masjid besar, dari Kairouan hingga Zaitunah.",
  "Accueil": "Beranda",
  "À propos": "Tentang",
  "À propos et méthode": "Tentang dan metode",
@@ -350,6 +354,8 @@ window.TRADUCTIONS = {
  "Hadiths en anglais :": "Hadis dalam bahasa Inggris:"
 },
 "ur": {
+ "Les mosquées de Tunisie : carte et histoire": "تیونس کی مساجد: نقشہ اور تاریخ",
+ "Toutes les mosquées du pays sur une carte, et l'histoire des grandes mosquées, de Kairouan à la Zitouna.": "ملک کی تمام مساجد ایک نقشے پر، اور قیروان سے زیتونہ تک بڑی مساجد کی تاریخ۔",
  "Accueil": "صفحۂ اوّل",
  "À propos": "ہمارے بارے میں",
  "À propos et méthode": "ہمارے بارے میں اور طریقۂ کار",
@@ -523,6 +529,8 @@ window.TRADUCTIONS = {
  "Hadiths en anglais :": "انگریزی میں احادیث:"
 },
 "de": {
+ "Les mosquées de Tunisie : carte et histoire": "Die Moscheen Tunesiens: Karte und Geschichte",
+ "Toutes les mosquées du pays sur une carte, et l'histoire des grandes mosquées, de Kairouan à la Zitouna.": "Alle Moscheen des Landes auf einer Karte und die Geschichte der großen Moscheen, von Kairouan bis zur Zitouna.",
  "Accueil": "Startseite",
  "À propos": "Über uns",
  "À propos et méthode": "Über uns und Methode",
@@ -696,6 +704,8 @@ window.TRADUCTIONS = {
  "Hadiths en anglais :": "Hadithe auf Englisch:"
 },
 "es": {
+ "Les mosquées de Tunisie : carte et histoire": "Las mezquitas de Túnez: mapa e historia",
+ "Toutes les mosquées du pays sur une carte, et l'histoire des grandes mosquées, de Kairouan à la Zitouna.": "Todas las mezquitas del país en un mapa y la historia de las grandes mezquitas, de Kairuán a la Zitouna.",
  "Accueil": "Inicio",
  "À propos": "Acerca de",
  "À propos et méthode": "Acerca de y método",
