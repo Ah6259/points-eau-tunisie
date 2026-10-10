@@ -15,7 +15,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 SORTIE = ROOT / "donnees" / "points_ajem.json"
 URL = "https://www.ajem.tn/fesguietna/maps/state"
-UA = {"User-Agent": "points-eau-tunisie/1.0 (+https://ah6259.github.io/points-eau-tunisie/)"}
+UA = {"User-Agent": "points-eau-tunisie/1.0 (+https://eau.clicvia.com/)"}
 MINIMUM = 150
 ETATS = {"bonne": "bon", "moyenne": "moyen", "mauvaise": "mauvais", "tres-mauvaise": "tres-mauvais"}
 DJERBA = (33.55, 33.98, 10.65, 11.10)           # lat min, lat max, lon min, lon max (île + Ajim / El Kantara)

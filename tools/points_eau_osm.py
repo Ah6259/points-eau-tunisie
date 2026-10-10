@@ -12,7 +12,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SORTIE = ROOT / "donnees" / "points_osm.json"
-UA = {"User-Agent": "points-eau-tunisie/1.0 (+https://ah6259.github.io/points-eau-tunisie/)"}
+UA = {"User-Agent": "points-eau-tunisie/1.0 (+https://eau.clicvia.com/)"}
 SERVEURS = ["https://overpass-api.de/api/interpreter", "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
             "https://overpass.kumi.systems/api/interpreter", "https://overpass.private.coffee/api/interpreter",
             "https://overpass.openstreetmap.fr/api/interpreter"]   # 5 copies du même OpenStreetMap (règle commune § 4)

@@ -8,8 +8,8 @@ L'accueil (index.html) est écrit à la main ; sa version ?v= est remplacée ici
 import json, os, re, sys
 
 ICI = os.path.dirname(os.path.abspath(__file__)); RACINE = os.path.dirname(ICI)
-VERSION = "20261009k"           # à changer à chaque modification des fichiers assets/ (le test vérifie une seule version)
-BASE = "https://ah6259.github.io/points-eau-tunisie/"
+VERSION = "20261011a"           # à changer à chaque modification des fichiers assets/ (le test vérifie une seule version)
+BASE = "https://eau.clicvia.com/"
 CSP = ("default-src 'self'; script-src 'self' https://gc.zgo.at https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; "
        "font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://tile.openstreetmap.org https://*.tile.openstreetmap.org https://cdnjs.cloudflare.com https://prix-eaux-tunisie.goatcounter.com; "
        "connect-src 'self' https://data.waterpointdata.org https://overpass-api.de https://maps.mail.ru https://overpass.kumi.systems https://overpass.private.coffee https://overpass.openstreetmap.fr https://prix-eaux-tunisie.goatcounter.com https://formspree.io https://docs.google.com; object-src 'none'; base-uri 'self'; "

@@ -34,3 +34,5 @@ Règles communes : `../../regles communes a tous les sites.md`.
   La Mecque, Istanbul, Paris, Le Caire → recherche Nominatim, une requête par appui) et « Voir le monde » (`data-monde-vue`).
   Nom SANS tiret (demande d'Ahmed du 09/10) ; sur téléphone il passe sur 2-3 lignes (`.logo-nom`, media 560 px) ; titre Google
   « Où trouver de l'eau en Tunisie et dans le monde : … » ; recherche de ville : `chercherVille` de points-eau.js (CSP : nominatim).
+
+- **Adresse depuis le 11/10/2026 : https://eau.clicvia.com/** (domaine clicvia.com d'Ahmed, ligne DNS `CNAME eau → ah6259.github.io` nuage gris, fichier `CNAME`). L'ancienne adresse ah6259.github.io/points-eau-tunisie/ redirige seule. Site à la racine « / » : `BASE_SITE` de assets/page.js (sw.js, vidéo) ; GoatCounter garde le préfixe `/points-eau-tunisie`. Si l'outil vidéo réécrit le bloc VIDEO_SITE, remettre `"base": BASE_SITE` et l'ORIGINE eau.clicvia.com.

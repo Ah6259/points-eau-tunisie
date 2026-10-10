@@ -6,7 +6,7 @@ Carte gratuite, en français et en arabe, des sources, fontaines d'eau potable, 
 d'exemple, « Voir le monde »).
 Les visiteurs peuvent signaler un point d'eau, le confirmer ou dire qu'il n'existe plus. Aussi : l'eau dans le Coran et la Sunna.
 
-En ligne : https://ah6259.github.io/points-eau-tunisie/
+En ligne : https://eau.clicvia.com/
 
 ## Comment il vit tout seul
 - `signalements.yml` (toutes les 2 h) publie les points signalés ; `osm.yml` (tous les 3 mois) relit OpenStreetMap.
