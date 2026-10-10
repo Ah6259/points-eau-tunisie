@@ -19,7 +19,7 @@ Règles communes : `../../regles communes a tous les sites.md`.
 ## Données et robots
 - `tools/points_eau_osm.py` (robot `osm.yml`, tous les 3 mois : 1er janvier, avril, juillet, octobre) : OpenStreetMap, 5 serveurs Overpass, aire du pays admin_level=2 ;
   sources, fontaines, robinets/points d'eau, citernes, puits (privés exclus) → `donnees/points_osm.json` (ancien gardé en panne).
-- `tools/signalements_points.py` (robot `signalements.yml`, toutes les 2 h) : lit le CSV PUBLIC du Google Forms du site Prix des
+- `tools/signalements_points.py` (robot `signalements.yml`, toutes les 2 h ; depuis le 10/10/2026 commit SEULEMENT si un point change, ou chaque semaine : `doit_ecrire`) : lit le CSV PUBLIC du Google Forms du site Prix des
   Eaux (même formulaire : format POINT / POINT-OK / POINT-KO, marque = « type|nom » ou id, lieu = « lat,lon|jeton »).
   Le robot du site des Eaux ignore ces lignes. Règles dans `tools/points_eau.py` (Tunisie, type, nom nettoyé, 10/navigateur,
   doublon < 40 m = confirmation, statut signalé/confirmé, retiré si « n'existe plus » majoritaire ≥ 2, ≥ 3 pour OSM).

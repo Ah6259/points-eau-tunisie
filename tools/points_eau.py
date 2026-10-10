@@ -17,7 +17,7 @@ Garde-fous (un robot ne peut pas prouver qu'un point d'eau existe, il écarte l'
     disent « n'existe plus » et qu'elles sont plus nombreuses que les confirmations (3 pour un point OpenStreetMap).
 Sortie : donnees/points_eau.js (window.EAUX_POINTS), lu par la page points-d-eau/."""
 import hashlib, json, math, re
-from datetime import datetime
+from datetime import date, datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -111,17 +111,41 @@ def calculer(reponses, osm_points):
     return sorted(sortie, key=lambda p: p["id"]), rejets
 
 
+JOURS_RAFRAICHIR = 7   # « maj » sert de date de référence (30 derniers jours) et de battement de cœur : rafraîchie au moins chaque semaine
+
+
+def doit_ecrire(texte, aujourdhui=None):
+    """Audit des robots du 10/10/2026 : on ne réécrit le fichier (donc pas de commit ni de publication) que si son contenu
+    change AUTREMENT que par la date « maj », ou si cette date a plus de JOURS_RAFRAICHIR jours."""
+    try:
+        ancien = SORTIE.read_text(encoding="utf-8")
+    except FileNotFoundError:
+        return True
+    motif = re.compile(r'"maj":"([^"]*)"')
+    if motif.sub('"maj":""', ancien, count=1) != motif.sub('"maj":""', texte, count=1):
+        return True
+    m = motif.search(ancien)
+    try:
+        vieux = date.fromisoformat(m.group(1)[:10])
+    except (AttributeError, ValueError):
+        return True
+    return ((aujourdhui or date.today()) - vieux).days >= JOURS_RAFRAICHIR
+
+
 def ecrire_points(reponses):
     osm = json.loads(OSM.read_text(encoding="utf-8")) if OSM.exists() else {"points": []}
     ajem = json.loads(AJEM.read_text(encoding="utf-8")).get("points", []) if AJEM.exists() else []
     # un majel AJEM et un puits/majel OpenStreetMap à moins de RAYON_M : le même ouvrage, on garde la fiche AJEM (plus riche)
     base = [p for p in osm.get("points", []) if not (p["type"] in ("majel", "puits") and any(distance_m(p, a) <= RAYON_M for a in ajem))]
     points, rejets = calculer(reponses, base + ajem)
-    SORTIE.write_text("// GÉNÉRÉ par tools/points_eau.py (via signalements.py) — points d'eau : OpenStreetMap + AJEM (majels de Djerba) + visiteurs\n"
+    texte = ("// GÉNÉRÉ par tools/points_eau.py (via signalements.py) — points d'eau : OpenStreetMap + AJEM (majels de Djerba) + visiteurs\n"
                       "window.EAUX_POINTS = " + json.dumps({"maj": datetime.now().isoformat(timespec="minutes"),
                                                             "osm_maj": osm.get("maj", ""), "points": points},
-                                                           ensure_ascii=False, separators=(",", ":")) + ";\n",
-                      encoding="utf-8", newline="\n")
+                                                           ensure_ascii=False, separators=(",", ":")) + ";\n")
+    if doit_ecrire(texte):
+        SORTIE.write_text(texte, encoding="utf-8", newline="\n")
+    else:
+        print("Aucun changement : fichier non réécrit (pas de commit).")
     nb_v = sum(1 for p in points if p["src"] == "visiteur")
     print(f"Points d'eau : {len(points)} sur la carte ({nb_v} signalés par les visiteurs), {len(rejets)} rejet(s)")
     return points

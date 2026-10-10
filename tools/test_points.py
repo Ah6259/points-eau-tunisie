@@ -121,5 +121,20 @@ check("majel AJEM : 2 « n'existe plus » ne suffisent pas (3 comme OpenStreetMa
 _carte = __import__("json").loads(open(P.SORTIE, encoding="utf-8").read().split("=", 1)[1].strip().rstrip(";"))
 check("fichier de la carte : contient les majels AJEM (au moins 150)", sum(1 for p in _carte["points"] if p["src"] == "ajem") >= 150)
 
+# garde-fou « commit seulement si un vrai changement » (audit des robots du 10/10/2026)
+import tempfile as _tmpm
+from datetime import date as _d
+from pathlib import Path
+with _tmpm.TemporaryDirectory() as _tmp:
+    _vieux = P.SORTIE
+    P.SORTIE = Path(_tmp) / "sortie.js"
+    _a = 'window.X = {"maj":"2026-10-10T08:00","points":[1]};\n'
+    check("fichier absent : écrit", P.doit_ecrire(_a))
+    P.SORTIE.write_text(_a, encoding="utf-8")
+    check("seule l'heure « maj » change : pas réécrit", not P.doit_ecrire(_a.replace("08:00", "10:00"), _d(2026, 10, 10)))
+    check("un point change : réécrit", P.doit_ecrire(_a.replace("[1]", "[1,2]"), _d(2026, 10, 10)))
+    check("date « maj » de plus de 7 jours : réécrit (battement de cœur)", P.doit_ecrire(_a, _d(2026, 10, 17)))
+    P.SORTIE = _vieux
+
 print(f"\n{'TOUT PASSE' if not erreurs else str(erreurs) + ' PROBLÈME(S)'} ({total} vérifications)")
 sys.exit(1 if erreurs else 0)

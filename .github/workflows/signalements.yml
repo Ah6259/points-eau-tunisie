@@ -1,5 +1,5 @@
 # Points d'eau signalés par les visiteurs (même Google Forms que les prix du site Prix des Eaux) : publiés toutes les 2 h.
-# Un tableau illisible ne change rien (anciens points gardés). Ce commit fréquent sert aussi de battement de cœur.
+# Un tableau illisible ne change rien (anciens points gardés). Commit seulement si un signalement change (ou une fois par semaine : battement de cœur, audit du 10/10/2026).
 name: Signalements des points d'eau
 on:
   schedule:
