@@ -208,6 +208,24 @@ document.addEventListener("click", e => {
   try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: a.dataset.compteur, title: "Lien vers un autre site : " + a.dataset.compteur, event: true }); } catch (x) { /* rien : le lien marche sans */ }
 });
 
+/* Les 5 photos de l'accueil (source, fontaine, robinet, majel, puits) défilent seules sur téléphone (11/10/2026) :
+   on ajoute une copie cachée aux lecteurs d'écran pour une boucle sans trou ; le mouvement est fait par style.css (.defile). */
+(function () {
+  function defile() {
+    var ul = document.querySelector(".types-eau");
+    if (!ul || ul.classList.contains("defile")) return;
+    try { if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return; } catch (e) {}
+    [].slice.call(ul.children).forEach(function (li) {
+      var c = li.cloneNode(true); c.className = "copie"; c.setAttribute("aria-hidden", "true");
+      [].forEach.call(c.querySelectorAll("a"), function (a) { a.tabIndex = -1; });
+      var im = c.querySelector("img"); if (im) im.setAttribute("loading", "lazy");
+      ul.appendChild(c);
+    });
+    ul.classList.add("defile");
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", defile); else defile();
+})();
+
 /* >>> vidéo de présentation : page video/ partagée par le bouton « Partager » (outil vidéos d'Ahmed) */
 /* Adresse du site (11/10/2026) : eau.clicvia.com (racine « / ») ; l'ancienne adresse ah6259.github.io/points-eau-tunisie/ redirige
    vers elle. BASE_SITE = dossier du site selon l'adresse ; GoatCounter garde le préfixe /points-eau-tunisie (compteur commun). */

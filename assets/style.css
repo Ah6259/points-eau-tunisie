@@ -502,7 +502,17 @@ html[dir="rtl"] .langues-liste button{text-align:right}
 .type-eau figcaption b{display:block;font-weight:700}
 .type-eau small{display:block;margin-top:2px;font-size:9.5px;line-height:1.35;color:rgba(255,255,255,.78);overflow-wrap:anywhere}
 .type-eau small a{color:inherit}
-@media (min-width:700px){.types-eau{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));overflow:visible}}
+/* défilement automatique des 5 photos sur téléphone (11/10/2026, demande d'Ahmed : « ça donne une vie au site ») :
+   page.js ajoute une copie des 5 photos et la classe .defile ; chaque photo glisse de droite à gauche (~3 s par photo),
+   pause quand on touche ; même sens en arabe ; arrêt si le visiteur a demandé moins d'animations. */
+.types-eau.defile{overflow:hidden;scroll-snap-type:none;direction:ltr}
+.types-eau.defile li{animation:types-defile 15s linear infinite}
+.types-eau.defile:active li{animation-play-state:paused}
+.types-eau li.copie{display:none}
+.types-eau.defile li.copie{display:block}
+@keyframes types-defile{from{transform:translateX(0)}to{transform:translateX(-730px)}}   /* 5 × (136 px + 10 px d'écart) */
+@media (prefers-reduced-motion:reduce){.types-eau.defile{overflow-x:auto}.types-eau.defile li{animation:none}.types-eau.defile li.copie{display:none}}
+@media (min-width:700px){.types-eau{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));overflow:visible}.types-eau.defile li{animation:none}.types-eau.defile li.copie{display:none}}
 /* ---- page Coran : traduction du sens sous chaque verset / hadith, dans la langue choisie (rien en plus en arabe) ---- */
 [data-t]{display:none}
 html[lang="fr"] [data-t="fr"],html[lang="en"] [data-t="en"],html[lang="tr"] [data-t="tr"],html[lang="id"] [data-t="id"],

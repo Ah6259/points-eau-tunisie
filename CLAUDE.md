@@ -36,3 +36,8 @@ Règles communes : `../../regles communes a tous les sites.md`.
   « Où trouver de l'eau en Tunisie et dans le monde : … » ; recherche de ville : `chercherVille` de points-eau.js (CSP : nominatim).
 
 - **Adresse depuis le 11/10/2026 : https://eau.clicvia.com/** (domaine clicvia.com d'Ahmed, ligne DNS `CNAME eau → ah6259.github.io` nuage gris, fichier `CNAME`). L'ancienne adresse ah6259.github.io/points-eau-tunisie/ redirige seule. Site à la racine « / » : `BASE_SITE` de assets/page.js (sw.js, vidéo) ; GoatCounter garde le préfixe `/points-eau-tunisie`. Si l'outil vidéo réécrit le bloc VIDEO_SITE, remettre `"base": BASE_SITE` et l'ORIGINE eau.clicvia.com.
+
+- **11/10/2026 — les 5 photos de l'accueil défilent seules sur téléphone** (demande d'Ahmed : « ça donne une vie au site ») :
+  assets/page.js ajoute une copie des 5 photos (`li.copie`, cachée aux lecteurs d'écran) et la classe `.defile` ; style.css les fait
+  glisser de droite à gauche (15 s pour les 5, ≈ 3 s par photo ; pause au toucher ; même sens en arabe ; arrêt si « moins d'animations ») ;
+  sur ordinateur (≥ 700 px) les 5 restent côte à côte, sans mouvement. Testé par test_site.mjs.

@@ -325,7 +325,11 @@ check("robots.txt (IA refusées, sitemap), sitemap avec les pages, LICENSE", /GP
 }
 {
   const { d } = await page("index.html"), ap = lire("a-propos/index.html");
-  const v = [...d.querySelectorAll(".types-eau figure.type-eau")], pb = [];
+  const v = [...d.querySelectorAll(".types-eau li:not(.copie) figure.type-eau")], pb = [];
+  const copies = [...d.querySelectorAll(".types-eau li.copie")];
+  check("accueil : les 5 photos défilent seules (copie cachée aux lecteurs d'écran, liens hors tabulation, classe .defile)",
+    d.querySelector(".types-eau").classList.contains("defile") && copies.length === 5
+    && copies.every(li => li.getAttribute("aria-hidden") === "true" && [...li.querySelectorAll("a")].every(a => a.tabIndex === -1)));
   for (const f of v) {
     const src = (f.querySelector("img") || {}).getAttribute?.("src") || "", c = f.querySelector("small");
     const fichier = join(root, src);
