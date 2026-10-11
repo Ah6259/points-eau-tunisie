@@ -41,3 +41,4 @@ Règles communes : `../../regles communes a tous les sites.md`.
   assets/page.js ajoute une copie des 5 photos (`li.copie`, cachée aux lecteurs d'écran) et la classe `.defile` ; style.css les fait
   glisser de droite à gauche (15 s pour les 5, ≈ 3 s par photo ; pause au toucher ; même sens en arabe ; arrêt si « moins d'animations ») ;
   sur ordinateur (≥ 700 px) les 5 restent côte à côte, sans mouvement. Testé par test_site.mjs.
+- **11/10/2026 — aperçu WhatsApp** : petite vignette chez un ami → ajout de og:url / og:site_name / og:locale (comme Prix des Eaux) et image renommée `assets/og-image-v2.jpg` (WhatsApp garde l'ancienne en mémoire : nouveau nom à chaque changement).

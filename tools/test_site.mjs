@@ -54,8 +54,8 @@ check(`une seule version ?v= (${[...versions].join(", ")})`, versions.size === 1
 check("CSP de l'accueil : carte (cdnjs, tuiles OpenStreetMap) et envoi au formulaire Google autorisés", (() => { const h = lire("index.html");
   return /script-src[^;]*cdnjs\.cloudflare\.com/.test(h) && /img-src[^;]*tile\.openstreetmap\.org/.test(h) && /connect-src[^;]*docs\.google\.com/.test(h); })());
 check("installation : manifeste (id unique), icônes, service worker, aperçu < 250 Ko", (() => { const m = JSON.parse(lire("manifest.webmanifest"));
-  return m.id === "/" && ["assets/icons/icon-192.png", "assets/icons/icon-512.png", "assets/icons/icon-maskable-512.png", "assets/apple-touch-icon.png", "sw.js", "favicon.ico", "assets/og-image-v1.jpg"]
-    .every(f => existsSync(join(root, f))) && statSync(join(root, "assets/og-image-v1.jpg")).size < 250 * 1024; })());
+  return m.id === "/" && ["assets/icons/icon-192.png", "assets/icons/icon-512.png", "assets/icons/icon-maskable-512.png", "assets/apple-touch-icon.png", "sw.js", "favicon.ico", "assets/og-image-v2.jpg"]
+    .every(f => existsSync(join(root, f))) && statSync(join(root, "assets/og-image-v2.jpg")).size < 250 * 1024; })());
 check("robots.txt (IA refusées, sitemap), sitemap avec les pages, LICENSE", /GPTBot/.test(lire("robots.txt")) && /eau\.clicvia\.com\/sitemap\.xml/.test(lire("robots.txt"))
   && ["", "majels-et-puits/", "coran-et-eau/", "a-propos/"].every(p => lire("sitemap.xml").includes(`<loc>${BASE}${p}</loc>`)) && /Tous droits réservés/.test(lire("LICENSE")));
 
