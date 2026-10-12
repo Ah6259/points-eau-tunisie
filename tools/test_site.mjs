@@ -117,7 +117,7 @@ check("robots.txt (IA refusées, sitemap), sitemap avec les pages, LICENSE", /GP
   check("accueil : carte « Majels, puits et techniques de l'eau » vers la nouvelle page", !!d.querySelector('main a.outil[href="majels-et-puits/"]'));
   check("menu : Carte, Signaler, Majels & puits, Le Coran et l'eau, À propos ; lien vers Prix des Eaux (carte de l'accueil + pied de page)", d.querySelectorAll(".menu a").length === 5
     && !!d.querySelector('.menu a[href="majels-et-puits/"]')
-    && !!d.querySelector('footer a[href="https://ah6259.github.io/prix-eaux-tunisie/"]') && !!d.querySelector('main a.outil[href="https://ah6259.github.io/prix-eaux-tunisie/"]'));
+    && !!d.querySelector('footer a[href="https://prix-eau.clicvia.com/"]') && !!d.querySelector('main a.outil[href="https://prix-eau.clicvia.com/"]'));
 }
 {
   const { d, js } = await page("index.html", { lang: "ar", stockage: { langue: "en" } });

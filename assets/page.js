@@ -80,7 +80,8 @@ const MENU_SITE = [
           <a href="${racine}coran-et-eau/">${T("Le Coran et la Sunna sur l'eau", "الماء في القرآن والسنة", "Water in the Quran and Sunnah")}</a>
           <a href="${racine}a-propos/">${T("À propos et méthode", "من نحن والمنهجية", "About and method")}</a>
           <a href="${racine}#avis">${T("Votre avis", "رأيك", "Your feedback")}</a>
-          <a href="https://ah6259.github.io/prix-eaux-tunisie/" target="_blank" rel="noopener" data-compteur="lien-site/prix-eaux">${T("Prix de l'eau en bouteille", "أسعار الماء المعدني", "Bottled water prices (Tunisia)")}</a>
+          <a href="https://prix-eau.clicvia.com/" target="_blank" rel="noopener" data-compteur="lien-site/prix-eaux">${T("Prix de l'eau en bouteille", "أسعار الماء المعدني", "Bottled water prices (Tunisia)")}</a>
+        <a href="https://clicvia.com/" rel="noopener" target="_blank">${T("Tous nos services", "كل خدماتنا", "All our services")}</a>
         </nav>
         <p>${T("Eau non contrôlée : les sources, puits et majels ne sont pas analysés. Ce site n'est pas un service officiel.",
                "ماء غير مراقب: العيون والآبار والمواجل غير محلَّلة. هذا الموقع ليس خدمة رسمية.",
