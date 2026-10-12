@@ -46,3 +46,14 @@ Règles communes : `../../regles communes a tous les sites.md`.
 - **Visibilité Google (12/10/2026, règle commune § 8)** : liens vers nos autres sites en `https://<site>.clicvia.com/` (jamais `ah6259.github.io`), lien « Tous nos services » → https://clicvia.com/ dans le pied de page, `robots.txt` avec ligne Sitemap, `sitemap.xml` daté, JSON-LD sur l'accueil, clé IndexNow `377f054ba9c5ed40d6796adc8d87d1e8.txt` à la racine (ne pas supprimer : robot `indexnow` du portail). Contrôle : `node "outils visibilite/controle.mjs"` (dépôt projets-ahmed). Sitemap envoyé dans Search Console par Ahmed le 12/10/2026.
 
 - **Google + Bing (12/10/2026)** : sitemap envoyé par Ahmed dans Google Search Console et dans Bing Webmaster Tools (site clicvia.com/), indexation de l'accueil demandée. Pour un nouveau site : mêmes gestes, voir `nouveau site - procedure.md` § 4 étape 5 (dépôt projets-ahmed).
+
+- **UNE ADRESSE PAR LANGUE (12/10/2026, visibilité Google — demande d'Ahmed, même méthode que Mosquées)** : chaque page existe en
+  français à son adresse d'origine ET dans `ar/`, `en/`, `tr/`, `id/`, `ur/`, `de/`, `es/` (28 pages), déjà écrite dans la langue
+  (`<html lang>`, sens, titre = `<h1>` + nom du site, description = introduction, texte, adresse officielle, hreflang, x-default =
+  anglais). `tools/construire.py` écrit les pages françaises puis `tools/pages_langues.py` en tire les 7 autres et refait
+  `sitemap.xml` (32 adresses + vidéo) — **ne jamais modifier à la main un fichier de `ar/ … es/`**. Liens entre pages : dans le
+  dossier de la langue ; `assets/`, `donnees/` : à la racine ; `video/` reste une seule page (`?lang=`).
+  `assets/page.js` : la langue est celle de l'ADRESSE ; le bouton de langue ouvre l'autre adresse et garde le choix
+  (`langue-points-eau`) ; ancien lien `?lang=ar` ou choix déjà fait → bonne adresse ; jamais de changement d'après la langue du
+  téléphone seule (Google lirait de l'anglais sur la page française) : lien « English → » proposé sous le menu.
+  Nouveau texte français : le traduire dans `assets/langues.js` ; la construction dit « N texte(s) resté(s) en anglais » (0 attendu).

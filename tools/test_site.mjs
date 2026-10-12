@@ -25,7 +25,16 @@ const PAGES = [];
   }
 })("");
 
-async function page(chemin = "index.html", { stockage = { langue: "fr" }, lang } = {}) {
+// Une adresse par langue (12/10/2026) : ar/…, en/…, tr/…, id/…, ur/…, de/…, es/… ; le français garde les adresses d'origine.
+const AUTRES = ["ar", "en", "tr", "id", "ur", "de", "es"];
+const langueDe = p => AUTRES.find(l => p.startsWith(l + "/")) || "fr";
+const PAGES_FR = PAGES.filter(p => langueDe(p) === "fr");
+const PAGES_LANGUE = PAGES.filter(p => langueDe(p) !== "fr");
+
+// page(…, { lang }) ouvre l'ADRESSE de la langue (sauf video/, restée à une seule adresse ; adresseFr : ancien lien « ?lang= ») ;
+// w.__allers note les changements d'adresse demandés par assets/page.js
+async function page(chemin = "index.html", { stockage = { langue: "fr" }, lang, adresseFr = false } = {}) {
+  if (lang && AUTRES.includes(lang) && !chemin.startsWith("video/") && !adresseFr) { chemin = lang + "/" + chemin; lang = ""; }
   const dossier = dirname(chemin);
   const html = lire(chemin).replace(/<script[^>]*gc\.zgo\.at[^>]*><\/script>/, "")
     .replace(/<script( defer)? src="((?:\.\.\/)*(?:assets|donnees)\/[^"?]+)(\?[^"]*)?"><\/script>/g, (_, d, f) => `<script>${lire(join(dossier, f).replace(/\\/g, "/"))}</script>`);
@@ -34,6 +43,7 @@ async function page(chemin = "index.html", { stockage = { langue: "fr" }, lang }
   const url = BASE + (chemin === "index.html" ? "" : chemin.replace(/index\.html$/, "")) + (lang ? "?lang=" + lang : "");
   const dom = new JSDOM(html, { url, runScripts: "dangerously", pretendToBeVisual: true, virtualConsole: vc,
     beforeParse(w) { for (const [k, v] of Object.entries(stockage)) w.localStorage.setItem(k, v);
+      w.__allers = []; w.allerVers = u => w.__allers.push(u);
       w.__envois = []; w.IntersectionObserver = class { observe() {} disconnect() {} }; w.open = () => null; } });
   await new Promise(r => setTimeout(r, 60));
   return { w: dom.window, d: dom.window.document, js };
@@ -154,35 +164,36 @@ check("robots.txt (IA refusées, sitemap), sitemap avec les pages, LICENSE", /GP
 }
 {
   const manque = [];
-  for (const p of PAGES) {
+  for (const p of PAGES_FR) {
     const h = lire(p), n = l => (h.match(new RegExp(`data-l="${l}"`, "g")) || []).length;
     if (n("fr") !== n("ar") || n("fr") !== n("en")) manque.push(`${p} (fr ${n("fr")}, ar ${n("ar")}, en ${n("en")})`);
   }
   for (const [a, b] of [["data-fr=", "data-en="], ["data-ph-fr=", "data-ph-en="], ["data-alt-ar=", "data-alt-en="], ["data-vfr=", "data-ven="]])
-    for (const p of PAGES) { const h = lire(p); if (h.split(a).length !== h.split(b).length) manque.push(p + " " + b); }
+    for (const p of PAGES_FR) { const h = lire(p); if (h.split(a).length !== h.split(b).length) manque.push(p + " " + b); }
   check(`anglais : chaque texte français a sa traduction arabe ET anglaise, sur toutes les pages ${manque.join(" | ")}`, !manque.length);
 }
 {
   const { w, d, js } = await page("index.html", { lang: "en", stockage: {} });
-  check("accueil ?lang=en : anglais, de gauche à droite, nom « Water points of Tunisia and the world », menu « Majels and wells in Tunisia », aucune erreur",
+  check("accueil en/ : anglais, de gauche à droite, nom « Water points of Tunisia and the world », menu « Majels and wells in Tunisia », aucune erreur",
     d.documentElement.lang === "en" && d.documentElement.dir === "ltr" && /Water points of Tunisia and the world/.test(d.querySelector(".logo-nom").textContent)
     && [...d.querySelectorAll(".menu a")].some(a => a.textContent === "Majels and wells in Tunisia") && js.length === 0);
   check("anglais : filtres, bulle AJEM et fenêtre de signalement en anglais",
     /Natural spring/.test(d.getElementById("pe-filtres").textContent) && /Surveyed by the AJEM association/.test(w.EAUX_BULLE(w.EAUX_POINTS.points.find(p => p.src === "ajem")))
     && (w.EAUX_SIGNALER(), /no water point reported|be the first/i.test(d.getElementById("pe-derniers").textContent)) && d.querySelector('#pe-type option[value="well"], #pe-type option[value="puits"]').textContent === "Well");
   d.querySelector('.langues [data-lang="fr"]').click();
-  check("choix de langue FR · ع · EN : un clic passe en français, gardé sous « langue-points-eau » ; « langue » partagée = fr",
-    d.documentElement.lang === "fr" && w.localStorage.getItem("langue-points-eau") === "fr" && w.localStorage.getItem("langue") === "fr"
-    && d.querySelector('.langues [data-lang="fr"]').getAttribute("aria-pressed") === "true");
+  check("page anglaise (en/), choisir le français : ouvre l'adresse française, choix gardé sous « langue-points-eau » ; « langue » partagée = fr",
+    w.__allers.join() === "/" && w.localStorage.getItem("langue-points-eau") === "fr" && w.localStorage.getItem("langue") === "fr" && d.documentElement.lang === "en");
   d.querySelector('.langues [data-lang="en"]').click();
-  check("choisir l'anglais n'écrit PAS « en » dans la mémoire partagée par les autres sites (reste fr)",
-    d.documentElement.lang === "en" && w.localStorage.getItem("langue-points-eau") === "en" && w.localStorage.getItem("langue") === "fr");
+  check("choisir l'anglais n'écrit PAS « en » dans la mémoire partagée par les autres sites (reste fr) ; déjà sur la bonne adresse : rien ne bouge",
+    w.__allers.length === 1 && w.localStorage.getItem("langue-points-eau") === "en" && w.localStorage.getItem("langue") === "fr");
 }
 {
   const { d } = await page("index.html", { stockage: {} });
-  check("sans choix enregistré, téléphone dans une autre langue (anglais) → site en anglais", d.documentElement.lang === "en");
-  const { d: d2 } = await page("index.html", { stockage: { langue: "ar" } });
-  check("choix « arabe » fait sur un autre de nos sites → arabe", d2.documentElement.lang === "ar");
+  const prop = d.querySelector(".autre-langue a");
+  check("sans choix enregistré, téléphone en anglais : la page reste en français (Google lit la bonne langue) et PROPOSE « English → » (adresse en/)",
+    d.documentElement.lang === "fr" && !!prop && prop.getAttribute("href") === "/en/" && /English/.test(prop.textContent));
+  const { w: w2, d: d2 } = await page("index.html", { stockage: { langue: "ar" } });
+  check("choix « arabe » fait sur un autre de nos sites (autre adresse, autre mémoire) : la page française reste française", d2.documentElement.lang === "fr" && w2.__allers.length === 0);
 }
 {
   // monde entier : lecture en direct d'OpenStreetMap hors de Tunisie (faux serveurs : le 1er répond « vide + erreur cachée »)
@@ -218,7 +229,7 @@ check("robots.txt (IA refusées, sitemap), sitemap avec les pages, LICENSE", /GP
   const cle = s => String(s).replace(/\s+/g, " ").trim();
   const textes = new Map(), structure = [];
   const ajouter = (fr, ou) => { fr = cle(fr || ""); if (fr && !textes.has(fr)) textes.set(fr, ou); };
-  for (const p of PAGES) {
+  for (const p of PAGES_FR) {
     const d = new JSDOM(lire(p)).window.document;
     d.querySelectorAll('[data-l="fr"]').forEach(f => f.tagName === "UL" ? [...f.children].forEach(li => ajouter(li.innerHTML, p)) : ajouter(f.innerHTML, p));
     d.querySelectorAll('[data-l="en"]').forEach(e => { const f = e.previousElementSibling && e.previousElementSibling.previousElementSibling;
@@ -246,19 +257,40 @@ check("robots.txt (IA refusées, sitemap), sitemap avec les pages, LICENSE", /GP
   check("(a) traductions : mêmes balises HTML (gras, liens) et même « {n} » que le français " + balises.join(" | "), !balises.length);
   const css = lire("assets/style.css");
   check("CSS : les éléments « en » sont montrés pour tr, id, ur, de, es (ils reçoivent la traduction)", NOUVELLES.every(l => css.includes(`html[lang="${l}"] [data-l="en"]`)));
-  check("hreflang des 8 langues sur toutes les pages (sauf video/)", PAGES.filter(p => !p.startsWith("video/")).every(p => ["fr", "ar", "en", ...NOUVELLES, "x-default"].every(l => lire(p).includes(`hreflang="${l}"`))));
+  // ---- une adresse par langue : chaque page de langue est écrite dans sa langue, avec sa propre adresse officielle
+  const pbL = [], droite = ["ar", "ur"], frSansVideo = PAGES_FR.filter(p => !p.startsWith("video/"));
+  for (const p of PAGES_LANGUE) {
+    const h = lire(p), l = langueDe(p), fr = p.slice(l.length + 1), url = BASE + p.replace(/index\.html$/, "");
+    if (!PAGES_FR.includes(fr)) { pbL.push(p + " sans page française"); continue; }
+    if (!new RegExp(`<html lang="${l}" dir="${droite.includes(l) ? "rtl" : "ltr"}"`).test(h)) pbL.push(p + " lang/dir");
+    if (!h.includes(`<link rel="canonical" href="${url}">`) || !h.includes(`<meta property="og:url" content="${url}">`)) pbL.push(p + " adresse officielle");
+    const garde = ["ar", "en"].includes(l) ? l : "en";
+    if (["fr", "ar", "en"].some(x => x !== garde && h.includes(`data-l="${x}"`))) pbL.push(p + " reste d'une autre langue");
+    if ([...h.matchAll(/(?:src|href)="((?:\.\.\/)*)(?:assets|donnees)\//g)].some(m => m[1] !== "../".repeat(p.split("/").length - 1))) pbL.push(p + " chemin des fichiers communs");
+    if (!h.includes(`hreflang="${l}" href="${url}"`)) pbL.push(p + " hreflang vers elle-même");
+    if (h.match(/<title>([^<]*)<\/title>/)[1] === lire(fr).match(/<title>([^<]*)<\/title>/)[1]) pbL.push(p + " titre resté en français");
+    if ([...h.matchAll(/<link rel="alternate"[^>]*>/g)].join("") !== [...lire(fr).matchAll(/<link rel="alternate"[^>]*>/g)].join("")) pbL.push(p + " liens hreflang différents de la page française");
+    if (!lire("sitemap.xml").includes(`<loc>${url}</loc>`)) pbL.push(p + " absente du plan du site");
+  }
+  check(`une adresse par langue : ${PAGES_LANGUE.length} pages (7 langues × ${frSansVideo.length}), chacune dans sa langue (lang, sens, titre, adresse officielle, fichiers communs, plan du site) ${pbL.slice(0, 4).join(" | ")}`,
+    PAGES_LANGUE.length === 7 * frSansVideo.length && !pbL.length);
+  check("hreflang : français à l'adresse d'origine, les 7 autres langues dans leur dossier, x-default = anglais, plus aucun « ?lang= »",
+    frSansVideo.every(p => { const h = lire(p), d = p.replace(/index\.html$/, "");
+      return h.includes(`hreflang="fr" href="${BASE}${d}"`) && AUTRES.every(l => h.includes(`hreflang="${l}" href="${BASE}${l}/${d}"`))
+        && h.includes(`hreflang="x-default" href="${BASE}en/${d}"`) && !/hreflang="[^"]*" href="[^"]*[?]lang=/.test(h); }));
 }
 {
   const { w, d, js } = await page("index.html", { lang: "tr", stockage: {} });
   const h1 = d.querySelector('h1 [data-l="en"]');
-  check("(b) ?lang=tr : html lang tr, de gauche à droite, titre h1 en turc, menu et filtres en turc, aucune erreur JS",
+  check("(b) adresse tr/ : html lang tr, de gauche à droite, titre h1 en turc, menu et filtres en turc, aucune erreur JS",
     d.documentElement.lang === "tr" && d.documentElement.dir === "ltr" && h1.textContent === "Su nerede bulunur: kaynaklar, çeşmeler ve majeller"
     && [...d.querySelectorAll(".menu a")].some(a => a.textContent === "Harita") && /Doğal kaynak/.test(d.getElementById("pe-filtres").textContent) && js.length === 0);
   check("(b) turc : bulle AJEM, liste des types, placeholder et texte de remplacement de la photo (page Majels) traduits",
     /AJEM derneği tarafından kaydedildi/.test(w.EAUX_BULLE(w.EAUX_POINTS.points.find(p => p.src === "ajem")))
     && d.querySelector('#pe-type option[value="puits"]').textContent === "Kuyu" && d.getElementById("pe-nom").placeholder === "İsteğe bağlı"
     && (await page("majels-et-puits/index.html", { lang: "tr" })).d.querySelector(".hero .illus img").alt.startsWith("Cerbe'de"));
-  check("(b) turc : la mémoire partagée « langue » n'est pas touchée (ni tr, ni rien)", w.localStorage.getItem("langue") === null && w.localStorage.getItem("langue-points-eau") === "tr");
+  check("(b) turc : une simple visite n'enregistre aucun choix ; titre de l'onglet en turc, liens du menu dans tr/, fichiers communs à la racine", w.localStorage.getItem("langue") === null && w.localStorage.getItem("langue-points-eau") === null && w.__allers.length === 0
+    && /^Su nerede bulunur/.test(d.title) && d.querySelector(".menu a").getAttribute("href") === "./" && d.querySelector(".logo-mark").getAttribute("src") === "../assets/logo.svg");
 }
 {
   const { d, js } = await page("index.html", { lang: "ur" });
@@ -284,17 +316,20 @@ check("robots.txt (IA refusées, sitemap), sitemap avec les pages, LICENSE", /GP
   bouton().click(); d.querySelector("main").click();
   check("(c) le bouton ouvre la liste (aria-expanded), Échap la ferme, un clic dehors la ferme", ouverte && echap && liste().hidden);
   bouton().click(); [...liste().querySelectorAll("[data-lang]")].find(b => b.textContent === "Deutsch").click();
-  check("(c) choisir Deutsch : page en allemand, « langue-points-eau » = de, « langue » partagée inchangée (fr), bouton « DE »",
-    d.documentElement.lang === "de" && d.documentElement.dir === "ltr" && w.localStorage.getItem("langue-points-eau") === "de" && w.localStorage.getItem("langue") === "fr"
-    && /DE/.test(bouton().textContent) && d.querySelector('h1 [data-l="en"]').textContent === "Wo man Wasser findet: Quellen, Brunnen und Majels"
-    && /Natürliche Quelle/.test(d.getElementById("pe-filtres").textContent) && js.length === 0);
-  bouton().click(); liste().querySelector('[data-lang="fr"]').click();
-  const restes = [...d.querySelectorAll('[data-l="en"]')].filter(e => e.innerHTML !== e.dataset.enOrigine).length;
-  check("(d) retour en français : textes français, plus aucun texte allemand (les « en » ont retrouvé l'anglais), filtres et menu en français",
-    d.documentElement.lang === "fr" && restes === 0 && !/Wasser|Quelle|Karte/.test(d.getElementById("pe-filtres").textContent + d.querySelector(".menu").textContent)
-    && d.querySelector('h1 [data-l="en"]').textContent === "Where to find water: springs, fountains and majels" && d.getElementById("pe-nom").placeholder === "Facultatif");
-  liste().querySelector('[data-lang="en"]').click();
-  check("(d) puis anglais : l'anglais d'origine (pas d'allemand)", d.documentElement.lang === "en" && d.querySelector('h1 [data-l="en"]').textContent === "Where to find water: springs, fountains and majels");
+  check("(c) choisir Deutsch : ouvre l'adresse de/, « langue-points-eau » = de, « langue » partagée inchangée (fr) ; la page française ne change pas sur place",
+    w.__allers.join() === "/de/" && d.documentElement.lang === "fr" && w.localStorage.getItem("langue-points-eau") === "de" && w.localStorage.getItem("langue") === "fr" && js.length === 0);
+  const { w: wd, d: dd, js: jd } = await page("index.html", { lang: "de", stockage: { "langue-points-eau": "de" } });
+  check("(d) page allemande (de/) : texte allemand écrit dans la page, bouton « DE », filtres en allemand, aucune erreur",
+    dd.documentElement.lang === "de" && dd.documentElement.dir === "ltr" && /DE/.test(dd.querySelector(".langues-bouton").textContent)
+    && dd.querySelector('h1 [data-l="en"]').textContent === "Wo man Wasser findet: Quellen, Brunnen und Majels" && /Wo man Wasser findet: Quellen, Brunnen und Majels/.test(lire("de/index.html"))
+    && /Natürliche Quelle/.test(dd.getElementById("pe-filtres").textContent) && wd.__allers.length === 0 && jd.length === 0);
+  dd.querySelector(".langues-bouton").click(); dd.querySelector('#langues-liste [data-lang="fr"]').click();
+  check("(d) revenir au français depuis de/ : ouvre l'adresse française, choix gardé", wd.__allers.join() === "/" && wd.localStorage.getItem("langue-points-eau") === "fr");
+  const { w: w3 } = await page("majels-et-puits/index.html", { lang: "ar", adresseFr: true });
+  const { w: w4 } = await page("a-propos/index.html", { stockage: { "langue-points-eau": "tr" } });
+  const { w: w5, d: d5 } = await page("index.html", { lang: "ur", stockage: { "langue-points-eau": "ur" } });
+  check("(d) ancien lien « ?lang=ar » → adresse ar/ de la même page ; choix déjà fait (turc) → adresse tr/ ; bonne adresse : rien ne bouge, pas de proposition",
+    w3.__allers.join() === "/ar/majels-et-puits/" && w4.__allers.join() === "/tr/a-propos/" && w5.__allers.length === 0 && !d5.querySelector(".autre-langue"));
 }
 // ---- 7. demandes d'Ahmed du 09/10/2026 (soir) : robot trimestriel, Coran traduit, photos des types, menu
 {
@@ -347,9 +382,9 @@ check("robots.txt (IA refusées, sitemap), sitemap avec les pages, LICENSE", /GP
 }
 {
   const { d } = await page("index.html", { stockage: {} });
-  check("sans choix, téléphone en anglais (faux navigateur en-US) → anglais ; ?lang=xx inconnu ignoré", d.documentElement.lang === "en");
-  const { d: d2 } = await page("index.html", { lang: "xx", stockage: { langue: "ar" } });
-  check("?lang=xx inconnu : ignoré (choix « ar » des autres sites gardé)", d2.documentElement.lang === "ar");
+  check("sans choix, téléphone en anglais (faux navigateur en-US) : la page française reste française", d.documentElement.lang === "fr");
+  const { w: wx, d: d2 } = await page("index.html", { lang: "xx", stockage: { langue: "ar" } });
+  check("?lang=xx inconnu : ignoré, la page française reste française", d2.documentElement.lang === "fr" && wx.__allers.length === 0);
 }
 // ---- WaterPoint Data Exchange (WPdx, CC BY 4.0) en direct + zoom région + 2 serveurs en parallèle (09/10/2026)
 {

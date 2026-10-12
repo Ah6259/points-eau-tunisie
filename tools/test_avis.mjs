@@ -175,12 +175,14 @@ w.close();
 
 // ---- 3. Lien « Votre avis » dans le pied de page de TOUTES les pages ----------------------
 const sansLien = [], fautes = [];
+// Une adresse par langue (12/10/2026) : dans ar/, en/, tr/… « Votre avis » mène à l'accueil de la langue.
+const langueDe = p => { const l = ["ar", "en", "tr", "id", "ur", "de", "es"].find(x => p.startsWith(x + "/")); return l ? l + "/" : ""; };
 for (const p of pages) {
   const ww = await ouvrir(p);
   const pied = ww.document.getElementById("pied") || ww.document.querySelector("footer");
   const liens = pied ? [...pied.querySelectorAll("a[href]")] : [];
   const ok = liens.some(l => { const u = new URL(l.getAttribute("href"), ww.location.href);
-    return u.hash === "#avis" && (u.origin + u.pathname).replace(/index\.html$/, "") === BASE && /Votre avis/.test(l.textContent); });
+    return u.hash === "#avis" && (u.origin + u.pathname).replace(/index\.html$/, "") === BASE + langueDe(p) && (langueDe(p) || /Votre avis/.test(l.textContent)); });
   if (!ok) sansLien.push(p);
   if (ww.fautes.length) fautes.push(p + " : " + ww.fautes[0]);
   ww.close();

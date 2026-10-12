@@ -5,11 +5,14 @@ même en-tête technique partout (sécurité CSP, iPhone, aperçu de partage, po
 Un gabarit commence par des lignes « clé: valeur » (titre, description, og_titre, og_description, tete, scripts, corps, faq),
 puis une ligne « --- », puis le contenu de <body> (sans l'en-tête ni le pied, ajoutés par assets/page.js).
 L'accueil (index.html) est écrit à la main ; sa version ?v= est remplacée ici aussi pour garder UNE version pour tout le site."""
-import json, os, re, sys
+import json, os, re, shutil, sys
 
 ICI = os.path.dirname(os.path.abspath(__file__)); RACINE = os.path.dirname(ICI)
-VERSION = "20261012a"           # à changer à chaque modification des fichiers assets/ (le test vérifie une seule version)
+VERSION = "20261012b"           # à changer à chaque modification des fichiers assets/ (le test vérifie une seule version)
 BASE = "https://eau.clicvia.com/"
+sys.path.insert(0, ICI)
+import pages_langues as PL  # noqa: E402
+LANGUES = PL.LANGUES            # une vraie page par langue : ar/, en/, tr/, id/, ur/, de/, es/ (tools/pages_langues.py, 12/10/2026)
 CSP = ("default-src 'self'; script-src 'self' https://gc.zgo.at https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; "
        "font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://tile.openstreetmap.org https://*.tile.openstreetmap.org https://cdnjs.cloudflare.com https://prix-eaux-tunisie.goatcounter.com; "
        "connect-src 'self' https://data.waterpointdata.org https://overpass-api.de https://maps.mail.ru https://overpass.kumi.systems https://overpass.private.coffee https://overpass.openstreetmap.fr https://prix-eaux-tunisie.goatcounter.com https://formspree.io https://docs.google.com; object-src 'none'; base-uri 'self'; "
@@ -30,6 +33,8 @@ def lire_gabarit(chemin):
 def page(chemin_page, meta, corps):
     profondeur = chemin_page.count("/")
     r = "../" * profondeur
+    dossier = chemin_page.rsplit("index.html", 1)[0]
+    alt = PL.liens_hreflang(BASE, dossier, LANGUES)
     # en-tête : traductions (langues.js, avant page.js), règles, page commune (+ « tete », ex. pass.js) ; bas de page : les scripts propres à la page (« scripts »)
     tete = ["langues.js", "page.js"] + [s.strip() for s in meta.get("tete", "").split(",") if s.strip()]
     bas = [s.strip() for s in meta.get("scripts", "").split(",") if s.strip()]
@@ -41,7 +46,7 @@ def page(chemin_page, meta, corps):
     attr_corps = (" " + meta["corps"]) if meta.get("corps") else ""
     robots = '<meta name="robots" content="noai, noimageai">' if meta.get("index", "oui") == "oui" else '<meta name="robots" content="noindex, noai, noimageai">'
     return f"""<!doctype html>
-<html lang="fr" dir="ltr" translate="no" data-racine="{r}">
+<html lang="fr" dir="ltr" translate="no" data-racine="{r}" data-chemin="{dossier}" data-fixe>
 <head>
 <meta charset="utf-8">
 <meta name="google" content="notranslate">
@@ -52,16 +57,7 @@ def page(chemin_page, meta, corps):
 <title>{meta['titre']}</title>
 <meta name="description" content="{meta['description']}">
 <link rel="canonical" href="{BASE}{chemin_page.rsplit('index.html', 1)[0]}">
-<link rel="alternate" hreflang="fr" href="{BASE}{chemin_page.rsplit('index.html', 1)[0]}">
-<link rel="alternate" hreflang="ar" href="{BASE}{chemin_page.rsplit('index.html', 1)[0]}?lang=ar">
-<link rel="alternate" hreflang="en" href="{BASE}{chemin_page.rsplit('index.html', 1)[0]}?lang=en">
-<link rel="alternate" hreflang="tr" href="{BASE}{chemin_page.rsplit('index.html', 1)[0]}?lang=tr">
-<link rel="alternate" hreflang="id" href="{BASE}{chemin_page.rsplit('index.html', 1)[0]}?lang=id">
-<link rel="alternate" hreflang="ur" href="{BASE}{chemin_page.rsplit('index.html', 1)[0]}?lang=ur">
-<link rel="alternate" hreflang="de" href="{BASE}{chemin_page.rsplit('index.html', 1)[0]}?lang=de">
-<link rel="alternate" hreflang="es" href="{BASE}{chemin_page.rsplit('index.html', 1)[0]}?lang=es">
-<link rel="alternate" hreflang="x-default" href="{BASE}{chemin_page.rsplit('index.html', 1)[0]}">
-<link rel="icon" href="{r}assets/logo.svg" type="image/svg+xml">
+{alt}<link rel="icon" href="{r}assets/logo.svg" type="image/svg+xml">
 <link rel="manifest" href="{r}manifest.webmanifest">
 <link rel="apple-touch-icon" href="{r}assets/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -96,6 +92,7 @@ def page(chemin_page, meta, corps):
 def main():
     dossier = os.path.join(ICI, "gabarits")
     n = 0
+    chemins = [""]                # pages proposées à Google (dossier depuis la racine ; « » = accueil)
     for nom in sorted(os.listdir(dossier)):
         if not nom.endswith(".html"):
             continue
@@ -105,13 +102,38 @@ def main():
         os.makedirs(os.path.dirname(dest), exist_ok=True)
         open(dest, "w", encoding="utf-8", newline="\n").write(page(chemin, meta, corps))
         n += 1
-    # une seule version ?v= pour tout le site (accueil écrit à la main compris)
+        if meta.get("index", "oui") == "oui":
+            chemins.append(chemin.rsplit("index.html", 1)[0])
+    # une seule version ?v= pour tout le site (accueil écrit à la main compris) ; même en-tête de langue que les autres pages
     acc = os.path.join(RACINE, "index.html")
     t = open(acc, encoding="utf-8").read()
     t2 = re.sub(r"\?v=\d{8}[a-z]", "?v=" + VERSION, t)
+    t2 = re.sub(r'<html lang="fr" dir="ltr" translate="no"[^>]*>', '<html lang="fr" dir="ltr" translate="no" data-racine="" data-chemin="" data-fixe>', t2, count=1)
+    t2 = re.sub(r'(?:<link rel="alternate" hreflang="[^"]*" href="[^"]*">\n)+', lambda m: PL.liens_hreflang(BASE, "", LANGUES), t2, count=1)
     if t2 != t:
         open(acc, "w", encoding="utf-8", newline="\n").write(t2)
-    print(f"{n} page(s) écrite(s), version {VERSION}")
+    # une vraie page par langue, tirée de chaque page française ; plan du site avec toutes les adresses
+    trads = PL.lire_traductions(os.path.join(RACINE, "assets", "langues.js"))
+    for l in LANGUES[1:]:
+        if os.path.isdir(os.path.join(RACINE, l)):
+            shutil.rmtree(os.path.join(RACINE, l))
+    adresses, manque = [], 0
+    for c in chemins:
+        fr = open(os.path.join(RACINE, c, "index.html"), encoding="utf-8").read()
+        adresses.append(c)
+        for l in LANGUES[1:]:
+            texte, m = PL.variante(fr, BASE, c, l, LANGUES, trads.get(l, {}))
+            dest = os.path.join(RACINE, l, c, "index.html")
+            os.makedirs(os.path.dirname(dest), exist_ok=True)
+            open(dest, "w", encoding="utf-8", newline="\n").write(texte)
+            manque += m
+            adresses.append(f"{l}/{c}")
+    maj = f"{VERSION[:4]}-{VERSION[4:6]}-{VERSION[6:8]}"        # date de la dernière modification (tirée de VERSION)
+    sm = os.path.join(RACINE, "sitemap.xml")
+    video = "".join(re.findall(r"  <url><loc>[^<]*/video/[^<]*</loc>.*?</url>\n", open(sm, encoding="utf-8").read())) if os.path.exists(sm) else ""
+    open(sm, "w", encoding="utf-8", newline="\n").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        + "".join(f"  <url><loc>{BASE}{a}</loc><lastmod>{maj}</lastmod></url>\n" for a in adresses) + video + "</urlset>\n")
+    print(f"{n} page(s) écrite(s) en 8 langues ({len(adresses)} adresses), {manque} texte(s) resté(s) en anglais, version {VERSION}")
 
 
 if __name__ == "__main__":
