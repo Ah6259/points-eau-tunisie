@@ -11,6 +11,11 @@ Langues : 21 langues (une adresse par langue : /en/, /ar/, /tr/…).
 - [Water in the Quran and Sunnah](https://eau.clicvia.com/en/coran-et-eau/) : Building a majel, maintaining a fountain or pointing out a spring is “giving water to drink”: the best charity according to the Prophet ﷺ. The texts are in Arabic, with the translation of their meanin
 - [Majels and wells in Tunisia](https://eau.clicvia.com/en/majels-et-puits/) : For centuries, people in Tunisia have collected rainwater in underground cisterns (majels, fesguias), dug wells and shared oasis water by the clock. Many of these techniques are still in use today. He
 
+## Données fraîches (JSON, lisibles par une machine)
+
+Ces fichiers sont produits par les robots du site ; un assistant peut les lire pour répondre avec les données du jour, en citant le site.
+- [Points d'eau publics de Tunisie (sources, fontaines, robinets, citernes ; OpenStreetMap, licence ODbL)](https://eau.clicvia.com/donnees/points_osm.json) — mis à jour tous les 3 mois. Champs : points[] : type, lat, lon, nom, potable ; maj = date du relevé.
+
 ## À savoir
 
 - Points d'eau tirés d'OpenStreetMap et des signalements des visiteurs ; l'eau n'est pas contrôlée.
