@@ -20,7 +20,8 @@ const MENU_SITE = [
   const LANGUES = [["fr", "FR", "Français"], ["ar", "ع", "العربية"], ["en", "EN", "English"], ["tr", "TR", "Türkçe"],
     ["id", "ID", "Bahasa Indonesia"], ["ur", "UR", "اردو"], ["de", "DE", "Deutsch"], ["es", "ES", "Español"],
     ["it", "IT", "Italiano"], ["pt", "PT", "Português"], ["nl", "NL", "Nederlands"], ["zh", "中文", "中文"], ["ja", "日本語", "日本語"],
-    ["ko", "한국어", "한국어"], ["hi", "हिन्दी", "हिन्दी"]];
+    ["ko", "한국어", "한국어"], ["hi", "हिन्दी", "हिन्दी"], ["ru", "RU", "Русский"], ["vi", "VI", "Tiếng Việt"], ["th", "ไทย", "ไทย"],
+    ["tl", "TL", "Filipino"], ["sv", "SV", "Svenska"], ["ro", "RO", "Română"]];
   const CODES = LANGUES.map(x => x[0]), NOUVELLES = CODES.slice(3), DROITE = ["ar", "ur"];
   const lireCle = k => { try { return localStorage.getItem(k) || ""; } catch (e) { return ""; } };
   const nav = (navigator.language || "").slice(0, 2).toLowerCase();

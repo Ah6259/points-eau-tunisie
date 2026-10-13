@@ -8,7 +8,7 @@ L'accueil (index.html) est écrit à la main ; sa version ?v= est remplacée ici
 import json, os, re, shutil, sys
 
 ICI = os.path.dirname(os.path.abspath(__file__)); RACINE = os.path.dirname(ICI)
-VERSION = "20261013a"           # à changer à chaque modification des fichiers assets/ (le test vérifie une seule version)
+VERSION = "20261013b"           # à changer à chaque modification des fichiers assets/ (le test vérifie une seule version)
 BASE = "https://eau.clicvia.com/"
 sys.path.insert(0, ICI)
 import pages_langues as PL  # noqa: E402

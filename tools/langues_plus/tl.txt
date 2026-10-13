@@ -1,0 +1,193 @@
+0	Mga mapagkukunan ng tubig sa Tunisia at sa buong mundo
+1	Nasa mapa ang buong mundo
+2	Mga halimbawa:
+3	Mecca
+4	Istanbul
+5	Paris
+6	Cairo
+7	Tingnan ang mundo
+8	Sa labas ng Tunisia: maghanap ng lungsod, o pindutin ang isang halimbawa.
+9	Maghanap ng lungsod sa mundo
+10	Hanapin
+11	Hal. Paris, Istanbul, Cairo…
+12	Hinahanap ang lungsod sa mundo…
+13	Walang nakitang lungsod sa mundo na may ganitong pangalan.
+14	Nakasentro ang mapa sa: {l} (paghahanap sa Nominatim, © mga nag-aambag sa OpenStreetMap).
+15	Hindi sumasagot ang paghahanap ng lungsod sa ngayon: subukang muli maya-maya.
+16	{n} mapagkukunan ng tubig sa lugar na ito.
+17	Datos mula sa aktuwal na pagsisiyasat: Water Point Data Exchange (WPdx, CC BY 4.0)
+18	<b>Water Point Data Exchange</b> (<a href="https://www.waterpointdata.org/" rel="noopener">WPdx</a>, lisensyang CC BY 4.0): mahigit 800 000 mapagkukunan ng tubig na itinala sa mismong lugar sa 84 na bansa (lalo na sa Aprika at Asya), binabasa nang live para sa lugar na ipinapakita; hindi ipinapakita ang mga iniulat na «sira».
+19	Mga moske ng Tunisia: mapa at kasaysayan
+20	Lahat ng moske ng bansa sa iisang mapa, at ang kasaysayan ng malalaking moske, mula Kairouan hanggang Zitouna.
+21	Home
+22	Tungkol dito
+23	Tungkol sa site at pamamaraan
+24	Isang libre at malayang site para makahanap ng tubig, sa Tunisia at sa buong mundo, at matulungan ang iba na makahanap nito.
+25	Saan galing ang mga punto?
+26	<b>OpenStreetMap</b>, ang malayang mapa na gawa ng mga nag-aambag dito: mga bukal, inuman ng tubig, gripo at pampublikong igiban, imbakan ng tubig at balon sa Tunisia, na muling binabasa ng aming robot tuwing 3 buwan (hindi kasama ang mga pribadong balon at imbakan).
+27	<b>Ang samahang AJEM</b>, proyektong <a href="https://www.ajem.tn/fesguietna" rel="noopener">Fesguietna</a>: ang mga majel (imbakan ng tubig-ulan) ng Djerba na naitala nito, kasama ang kalagayan ng mga ito; bawat punto ay may link sa sarili nitong pahina at mga larawan sa site ng AJEM.
+28	<b>Sa ibang bahagi ng mundo</b>: binabasa ng mapa ang OpenStreetMap nang live para sa lugar na ipinapakita (kapag nag-zoom sa isang lungsod o pinindot ang «Malapit sa akin»).
+29	<b>Ang mga bisita</b>: maaaring mag-ulat ninuman ng mapagkukunan ng tubig. Awtomatiko itong inilalathala (humigit-kumulang tuwing 2 oras), na may markang «kukumpirmahin pa» hanggang kumpirmahin ito ng ibang bisita.
+30	Paano ito sinusuri?
+31	Tinatanggihan ng robot ang imposibleng lokasyon o ang uring hindi kilala, inaalis ang mga numero ng telepono at mga link (walang patalastas), at nililimitahan ang bilang ng ulat bawat telepono.
+32	Ang puntong iniulat nang wala pang 40 m mula sa isang kilalang punto na kapareho ng uri ay ibinibilang na kumpirmasyon (walang dobleng tala).
+33	Kapag maraming bisita ang nagsabing «wala na ito» (mas marami kaysa sa mga kumpirmasyon), inaalis ang punto sa mapa.
+34	<b>Walang sumusuri sa kalidad ng tubig</b>: hindi ito kontrolado at maaaring hindi ligtas inumin.
+35	Ang inyong datos
+36	Ang inyong lokasyon ay ginagamit lamang para ipakita ang mga kalapit na punto, sa loob ng inyong telepono: ipinapadala lamang ito kapag nag-ulat kayo ng mapagkukunan ng tubig (at ang lokasyon lamang ng puntong iyon). Isang di-nagpapakilalang identifier ng browser ang pumipigil sa isang tao na bumoto nang maraming beses. Di-nagpapakilalang estadistika ng pagbisita, walang cookie.
+37	Mga kredito
+38	Mga punto at batayang mapa:
+39	Mga majel ng Djerba:
+40	Mapa: Leaflet.
+41	Larawan ng majel sa Djerba: mga mag-aaral ng paaralang elementarya ng Beb Djabli sa Téboursouk, paligsahang WikiChallenge 2022,
+42	(ginupit)
+43	Makipag-ugnayan
+44	May mali, may ideya? <a href="../#avis">Sumulat sa amin sa «Ang inyong opinyon»</a>.
+45	Ang Qur'an at ang tubig
+46	Ang tubig sa Qur'an at sa Sunnah
+47	Ang pagtatayo ng majel, pag-aalaga ng inuman o pagtuturo ng daan patungo sa isang bukal ay «pagpapainom ng tubig»: ang pinakamainam na kawanggawa ayon sa Propeta ﷺ. Ang mga teksto ay nasa Arabe, kasama ang salin ng kahulugan ng mga ito.
+48	May alam ba kayong majel, inuman o bukal na bukas sa lahat? <a href="../#signaler">Idagdag ito sa mapa</a>, para makainom din doon ang iba.
+49	Larawan
+50	Saan makakahanap ng tubig: mga bukal, inuman at majel
+51	Ang libreng mapa ng mga mapagkukunan ng tubig, sa Tunisia at saanman sa mundo. Hanapin ang pinakamalapit, at idagdag ang mga alam ninyo para matulungan ang iba.
+52	mapagkukunan ng tubig sa Tunisia · at ang buong mundo
+53	<b>Hindi kontroladong tubig.</b> Hindi sinusuri ang mga bukal, balon at majel: maaaring hindi ligtas inumin ang tubig. Pakuluan o salain ito kung may alinlangan, at huwag itong ipainom sa mga sanggol.
+54	Malapit sa akin
+55	Pindutin ang isang punto para sa ruta, o para sabihin kung naroon pa ito. Hindi nakita?
+56	Maghanap din sa Google Maps
+57	Ang mga majel ng Djerba sa mapa (pangalan, kalagayan at mga larawan) ay galing sa pagtatala ng samahang <b>AJEM</b>, proyektong
+58	: salamat sa kanila.
+59	Mag-ulat ng mapagkukunan ng tubig
+60	Tingnan
+61	Mga majel at balon sa Tunisia
+62	Kung paano itinatayo ang majel, ang mga balon at oasis, at ang mga ginagamit pa hanggang ngayon: mga paliwanag at link.
+63	Ang Qur'an at ang Sunnah tungkol sa tubig
+64	«Ang pinakamainam na kawanggawa: ang pagpapainom ng tubig» — mga talata at hadith tungkol sa tubig.
+65	Tubig na nakabote: ihambing ang mga presyo
+66	Sa aming site na Prix des Eaux de Tunisie: ang pinakamurang pakete ng tubig ngayong araw.
+67	Ang inyong opinyon
+68	Lahat ng aming serbisyo
+69	May puna, mali, o ideya? Sumulat sa amin: binabasa ang bawat mensahe.
+70	Ang inyong marka (opsyonal)
+71	Napakahusay
+72	Mahusay
+73	Katamtaman
+74	Hindi maganda
+75	Ang inyong mensahe
+76	Ang inyong e-mail (opsyonal, para masagot namin kayo)
+77	Ipadala
+78	Ang inyong opinyon ay ipinapadala sa gumawa ng site (serbisyong Formspree). Walang ipinapadala hangga't hindi pinipindot ang «Ipadala».
+79	Isang bukal, inuman, pampublikong gripo, majel na bukas sa lahat (Djerba, ang Timog…): tulungan ang iba na makahanap ng tubig. Pagkatapos ng awtomatikong pagsusuri, inilalathala ang punto sa mapa, na «kukumpirmahin pa» hanggang kumpirmahin ito ng ibang bisita.
+80	Uri
+81	Pangalan o palatandaan
+82	Hanapin ang lokasyon ko (GPS)
+83	Hindi laging tumpak ang awtomatikong lokasyon: ilipat ang marker (o pindutin ang mapa) para ilagay ito sa eksaktong kinalalagyan ng mapagkukunan ng tubig, saka kumpirmahin.
+84	Kumpirmahin ang lokasyong ito
+85	Walang personal na impormasyong ipinapadala: ang uri, pangalan ng lugar at lokasyon lamang. Awtomatikong inaalis ang mga numero ng telepono at patalastas. Nawawala ang isang punto kapag maraming bisita ang nagsabing wala na ito.
+86	— pumili —
+87	Likas na bukal
+88	Inuman ng tubig
+89	Gripo / pampublikong igiban
+90	Pampublikong majel
+91	Balon
+92	Ang nagustuhan ninyo, ang kulang, ang maling dapat itama…
+93	pangalan@example.com
+94	Opsyonal
+95	Isang puting majel (imbakan ng tubig-ulan) sa Djerba, sa gitna ng mga palma
+96	Mga majel &amp; balon
+97	Sa loob ng maraming siglo, iniipon sa Tunisia ang tubig-ulan sa mga imbakan (majel, fesguia), naghuhukay ng mga balon at hinahati ang tubig ng mga oasis nang eksakto ayon sa oras. Marami sa mga pamamaraang ito ang ginagamit pa hanggang ngayon. Narito ang pinakamahalaga, at mga mapagkakatiwalaang link para sa gustong matuto pa, magtayo o magkumpuni.
+98	Ang majel sa maikling salita
+99	<b>Isang imbakang nakabaon sa lupa</b> (ماجل) na nag-iipon ng tubig-ulan mula sa bubong, patyo o lupang pahilig (ang «impluvium»).
+100	<b>Tatlong bahagi</b>: ang ibabaw na sumasalo ng tubig, isang maliit na lalagyan kung saan tumitining ang putik, at ang imbakang hinukay sa lupa at pinalitadahan para hindi tumagas.
+101	<b>Sa Djerba at sa Timog</b>, katabi ng majel ng bahay ang fesguia, isang malaking imbakan na kadalasang pampubliko; pinapaputi ng apog ang mga bubong at patyo bago ang tag-ulan para manatiling malinis ang tubig.
+102	<b>Kapaki-pakinabang pa rin ngayon</b>: dahil sa tagtuyot, nagbibigay ang Estado ng pautang na walang interes para magtayo ng majel, at kinukumpuni ng mga samahan ang mga pampublikong imbakan.
+103	Hindi kontrolado ang tubig ng majel: pakuluan o salain ito bago inumin.
+104	Mga majel at fesguia ng Djerba at ng Timog
+105	pagtatala, mga mapa at pagkukumpuni ng mga pampublikong imbakan ng Djerba (galing sa kanila ang 212 majel sa aming mapa).
+106	«Ang mga majel, kayamanang minana sa mga ninuno» — kung paano gumagana ang mga ito.
+107	ang mga imbakan ng Djerba na ipinaliwanag nang simple (majel, fesguia).
+108	ang menzel, ang tradisyonal na bahay ng Djerba, kasama ang imbakan at balon nito.
+109	ang mga sinaunang imbakan ng Djerba, pamana at kasangkapan sa harap ng pagbabago ng klima.
+110	Paano itinatayo ang majel
+111	kumpletong teknikal na gabay (Instituto ng mga Tigang na Rehiyon sa Médenine): ibabaw na panalo ng tubig, lalagyang patiningan, imbakan, mga sukat, gastos at pag-aalaga.
+112	ang mga pamamaraan ng pag-iipon ng tubig sa Tunisia at ang epekto ng mga ito sa lupa at tubig.
+113	«Sa harap ng kakulangan ng tubig, bumabalik ang mga Tunisian sa mga pamamaraan ng ninuno» — mga bubong na pinaputi ng apog, mga imbakan, mga payo.
+114	Mga balon at oasis
+115	ang tanyag na balon ng Kairouan, na ang tubig ay iniaahon ng isang noria na pinaiikot ng kamelyo.
+116	Ang Bir Barrouta ngayon: kasaysayan, alamat at kalagayan ng monumento.
+117	«Bled el Abar» (ang lupain ng mga balon): isang proyekto para ayusin ang mga balon ng disyerto ng Tunisia.
+118	Si Ibn Chabbat, ang «maestro ng tubig» ng Djérid, at ang paghahati ng tubig ng mga oasis ayon sa oras.
+119	ang oasis ng Gabès, ang nag-iisang oasis sa baybayin, nasa pansamantalang listahan ng Pandaigdigang Pamana.
+120	ang tubig sa Carthage noong panahong Romano at sa Tunis: mga imbakan, balon at gulong ng tubig.
+121	Pag-iipon ng ulan sa mga lupain ng Timog
+122	ang mga jessour sa kabundukan ng Médenine: mabababang pader na pumipigil sa tubig at lupa para makapagtanim ng olibo at igos.
+123	ang mga tabia sa paanan ng bundok: mga pilapil na lupa na sumasalo ng umaagos na tubig-ulan at nagpupuno muli sa tubig sa ilalim ng lupa.
+124	Ginagamit pa hanggang ngayon
+125	ang pautang ng Estado na walang interes para magtayo ng majel (batas sa pananalapi), pinalawig.
+126	iminumungkahi ng WWF na buhaying muli ang mga majel para harapin ang pagbabago ng klima.
+127	«Bled al Abar», isang proyektong nagtatampok sa mga balon ng disyerto ng Tunisia.
+128	May alam ba kayong majel o balon na bukas sa lahat?
+129	Idagdag ito sa mapa
+130	Mga mapagkukunan ng tubig sa Tunisia
+131	Video ng pagpapakilala
+132	Buksan ang site
+133	Ibahagi ang video
+134	Mapa
+135	Libre · mga bukal, inuman, majel
+136	Ibahagi ang pahinang ito
+137	Ibahagi
+138	Wika
+139	Mga seksyon
+140	Mapa ng mga mapagkukunan ng tubig
+141	Presyo ng tubig na nakabote
+142	Hindi kontroladong tubig: hindi sinusuri ang mga bukal, balon at majel. Ang site na ito ay hindi opisyal na serbisyo.
+143	Mga punto: © mga nag-aambag sa OpenStreetMap (ODbL), samahang AJEM (mga majel ng Djerba) at mga bisita ng site. Larawan: Wikimedia Commons —
+144	mga kredito
+145	nakalaan ang lahat ng karapatan.
+146	nakalaan ang lahat ng karapatan
+147	Ang site:
+148	Panoorin ang video:
+149	Itinala ng samahang AJEM (Fesguietna)
+150	Kinumpirma ng mga bisita
+151	Iniulat ng isang bisita, kukumpirmahin pa
+152	Mabuting kalagayan
+153	Katamtamang kalagayan
+154	Masamang kalagayan
+155	Napakasamang kalagayan
+156	Pahina at mga larawan sa site ng AJEM
+157	kumpirmasyon
+158	Ruta (Google Maps)
+159	Totoo ito
+160	Wala na ito
+161	Pinakamalapit sa inyo
+162	pumunta roon
+163	Sa ibang bahagi ng mundo: i-zoom ang isang lungsod, o pindutin ang «Malapit sa akin», para makita ang mga mapagkukunan ng tubig nito.
+164	Hinahanap ang mga mapagkukunan ng tubig sa lugar na ito…
+165	{n} mapagkukunan ng tubig sa lugar na ito (OpenStreetMap).
+166	Walang kilalang mapagkukunan ng tubig dito: may alam ba kayo? Iulat ito.
+167	Hindi sumasagot ang OpenStreetMap sa ngayon: subukang muli maya-maya.
+168	Salamat! Maisasama ito sa loob ng mga 2 oras.
+169	Hinahanap ang inyong lokasyon…
+170	Hindi makuha ang lokasyon: payagan ang pagtukoy ng lokasyon, o maghanap sa mapa.
+171	Nailagay na ang marker: suriin ito, saka pindutin ang «Kumpirmahin ang lokasyong ito».
+172	Walang mapagkukunan ng tubig na iniulat nitong huling 30 araw: kayo na ang mauna!
+173	Mga pinakabagong mapagkukunan ng tubig na iniulat ng mga bisita
+174	kinumpirma ng {n} bisita
+175	kukumpirmahin pa
+176	iniulat noong
+177	tingnan sa mapa
+178	Hindi makuha ang lokasyon: pindutin na lang ang lugar sa mapa.
+179	Ilagay muna ang marker: «Hanapin ang lokasyon ko (GPS)» o pindutin ang mapa.
+180	✔ Nakumpirma ang lokasyon
+181	Piliin ang uri ng mapagkukunan ng tubig.
+182	Ilagay ang marker sa mapa, saka pindutin ang «Kumpirmahin ang lokasyong ito».
+183	Ipinapadala…
+184	Salamat! Lalabas ang punto sa mapa sa loob ng mga 2 oras («kukumpirmahin pa» hanggang kumpirmahin ito ng ibang bisita).
+185	Hindi naipadala — suriin ang inyong koneksyon at subukang muli.
+186	Isulat muna ang inyong mensahe bago ipadala.
+187	Masyadong mahaba ang mensahe: hanggang {n} karakter lamang.
+188	Salamat! Naipadala na ang inyong opinyon.
+189	Hindi naipadala — suriin ang inyong koneksyon at subukang muli mamaya.
+190	Mga larawan ng mga uri ng mapagkukunan ng tubig (home), Wikimedia Commons, ginupit:
+191	Mga salin ng kahulugan ng mga talata ng Qur'an (pahinang «Ang Qur'an at ang tubig»):
+192	Mga hadith sa Ingles:

@@ -1,0 +1,193 @@
+0	Điểm lấy nước ở Tunisia và trên thế giới
+1	Cả thế giới đều có trên bản đồ
+2	Ví dụ:
+3	Mecca
+4	Istanbul
+5	Paris
+6	Cairo
+7	Xem thế giới
+8	Ngoài Tunisia: hãy tìm một thành phố, hoặc chạm vào một ví dụ.
+9	Tìm một thành phố trên thế giới
+10	Tìm
+11	VD: Paris, Istanbul, Cairo…
+12	Đang tìm thành phố trên thế giới…
+13	Không tìm thấy thành phố nào trên thế giới với tên này.
+14	Bản đồ đặt tâm tại: {l} (tìm kiếm Nominatim, © những người đóng góp cho OpenStreetMap).
+15	Chức năng tìm thành phố hiện không phản hồi: hãy thử lại sau giây lát.
+16	{n} điểm lấy nước trong vùng này.
+17	Khảo sát thực địa: Water Point Data Exchange (WPdx, CC BY 4.0)
+18	<b>Water Point Data Exchange</b> (<a href="https://www.waterpointdata.org/" rel="noopener">WPdx</a>, giấy phép CC BY 4.0): hơn 800 000 điểm lấy nước được khảo sát thực địa tại 84 quốc gia (chủ yếu ở châu Phi và châu Á), đọc trực tiếp cho vùng đang hiển thị; các điểm được báo là «hỏng» không được hiển thị.
+19	Thánh đường ở Tunisia: bản đồ và lịch sử
+20	Mọi thánh đường của đất nước trên một bản đồ, và lịch sử các thánh đường lớn, từ Kairouan đến Zitouna.
+21	Trang chủ
+22	Giới thiệu
+23	Giới thiệu và phương pháp
+24	Một trang web miễn phí và độc lập để tìm nước, ở Tunisia và trên thế giới, và giúp người khác tìm được nước.
+25	Các điểm lấy từ đâu?
+26	<b>OpenStreetMap</b>, bản đồ tự do do cộng đồng đóng góp: suối, vòi nước uống, vòi và điểm lấy nước công cộng, bể chứa và giếng ở Tunisia, được robot của chúng tôi đọc lại 3 tháng một lần (không tính giếng và bể chứa tư nhân).
+27	<b>Hội AJEM</b>, dự án <a href="https://www.ajem.tn/fesguietna" rel="noopener">Fesguietna</a>: các majel (bể chứa nước mưa) ở Djerba mà hội đã thống kê, kèm tình trạng; mỗi điểm dẫn đến trang và ảnh của nó trên trang web của AJEM.
+28	<b>Ở nơi khác trên thế giới</b>: bản đồ đọc OpenStreetMap trực tiếp cho vùng đang hiển thị (khi bạn phóng to một thành phố hoặc chạm «Quanh tôi»).
+29	<b>Khách truy cập</b>: ai cũng có thể báo một điểm lấy nước. Điểm được đăng tự động (khoảng 2 giờ một lần), đánh dấu «chờ xác nhận» cho đến khi một khách khác xác nhận.
+30	Việc kiểm tra diễn ra thế nào?
+31	Robot từ chối vị trí không thể có hoặc loại không hợp lệ, xóa số điện thoại và đường dẫn (không quảng cáo), và giới hạn số lần báo từ mỗi điện thoại.
+32	Một điểm được báo cách một điểm đã biết cùng loại dưới 40 m được tính là một lần xác nhận (không trùng lặp).
+33	Nếu nhiều khách nói «không còn tồn tại» (nhiều hơn số lần xác nhận), điểm sẽ bị gỡ khỏi bản đồ.
+34	<b>Không ai kiểm tra chất lượng nước</b>: nước không được kiểm soát và có thể không uống được.
+35	Dữ liệu của bạn
+36	Vị trí của bạn chỉ dùng để hiển thị các điểm gần đó, ngay trong điện thoại của bạn: nó chỉ được gửi đi khi bạn báo một điểm lấy nước (và khi đó chỉ gửi vị trí của điểm ấy). Một mã ẩn danh của trình duyệt giúp tránh việc một người bỏ phiếu nhiều lần. Thống kê lượt truy cập ẩn danh, không dùng cookie.
+37	Nguồn và ghi công
+38	Các điểm và nền bản đồ:
+39	Majel ở Djerba:
+40	Bản đồ: Leaflet.
+41	Ảnh majel ở Djerba: học sinh trường tiểu học Beb Djabli ở Téboursouk, cuộc thi WikiChallenge 2022,
+42	(đã cắt)
+43	Liên hệ
+44	Có lỗi sai, có ý tưởng? <a href="../#avis">Hãy viết cho chúng tôi ở mục «Ý kiến của bạn»</a>.
+45	Kinh Qur'an và nước
+46	Nước trong kinh Qur'an và Sunnah
+47	Xây một majel, chăm sóc một vòi nước hay chỉ đường đến một con suối, chính là «cho người khác nước uống»: việc bố thí tốt nhất theo lời Nhà Tiên tri ﷺ. Các văn bản bằng tiếng Ả Rập, kèm bản dịch ý nghĩa.
+48	Bạn biết một majel, một vòi nước hay một con suối mở cho mọi người? <a href="../#signaler">Hãy thêm vào bản đồ</a>, để người khác cũng có thể uống ở đó.
+49	Ảnh
+50	Tìm nước ở đâu: suối, vòi nước và majel
+51	Bản đồ miễn phí các điểm lấy nước, ở Tunisia và khắp nơi trên thế giới. Hãy tìm điểm gần nhất, và thêm những điểm bạn biết để giúp người khác.
+52	điểm lấy nước ở Tunisia · và cả thế giới
+53	<b>Nước không được kiểm soát.</b> Suối, giếng và majel không được xét nghiệm: nước có thể không uống được. Hãy đun sôi hoặc lọc nếu nghi ngờ, và đừng cho trẻ sơ sinh uống.
+54	Quanh tôi
+55	Chạm vào một điểm để xem đường đi, hoặc để cho biết nó còn tồn tại không. Không tìm thấy?
+56	Tìm thêm trên Google Maps
+57	Các majel ở Djerba trên bản đồ (tên, tình trạng và ảnh) lấy từ cuộc thống kê của hội <b>AJEM</b>, dự án
+58	: xin cảm ơn họ.
+59	Báo một điểm lấy nước
+60	Xem
+61	Majel và giếng ở Tunisia
+62	Cách xây một majel, các giếng và ốc đảo, và những gì ngày nay vẫn còn dùng: giải thích và đường dẫn.
+63	Kinh Qur'an và Sunnah nói về nước
+64	«Việc bố thí tốt nhất: cho nước uống» — các câu kinh và hadith về nước.
+65	Nước đóng chai: so sánh giá
+66	Trên trang Prix des Eaux de Tunisie của chúng tôi: lốc nước rẻ nhất hôm nay.
+67	Ý kiến của bạn
+68	Tất cả dịch vụ của chúng tôi
+69	Một nhận xét, một lỗi sai, một ý tưởng? Hãy viết cho chúng tôi: mọi tin nhắn đều được đọc.
+70	Đánh giá của bạn (không bắt buộc)
+71	Rất tốt
+72	Tốt
+73	Trung bình
+74	Chưa tốt
+75	Tin nhắn của bạn
+76	E-mail của bạn (không bắt buộc, để chúng tôi trả lời)
+77	Gửi
+78	Ý kiến của bạn được gửi đến người tạo trang web (dịch vụ Formspree). Không có gì được gửi nếu bạn chưa bấm «Gửi».
+79	Một con suối, một vòi nước, một vòi công cộng, một majel mở cho mọi người (Djerba, miền Nam…): hãy giúp người khác tìm nước. Sau khi kiểm tra tự động, điểm được đăng lên bản đồ, ở trạng thái «chờ xác nhận» cho đến khi một khách khác xác nhận.
+80	Loại
+81	Tên hoặc điểm mốc
+82	Định vị tôi (GPS)
+83	Vị trí tự động không phải lúc nào cũng chính xác: hãy di chuyển điểm đánh dấu (hoặc chạm vào bản đồ) để đặt nó đúng chỗ của điểm lấy nước, rồi xác nhận.
+84	Xác nhận vị trí này
+85	Không có thông tin cá nhân nào được gửi: chỉ có loại, tên địa điểm và vị trí. Số điện thoại và quảng cáo bị xóa tự động. Một điểm sẽ biến mất nếu nhiều khách nói rằng nó không còn tồn tại.
+86	— chọn —
+87	Suối tự nhiên
+88	Vòi nước uống
+89	Vòi / điểm lấy nước công cộng
+90	Majel công cộng
+91	Giếng
+92	Điều bạn thích, điều còn thiếu, lỗi cần sửa…
+93	ten@example.com
+94	Không bắt buộc
+95	Một majel trắng (bể chứa nước mưa) ở Djerba, giữa những cây cọ
+96	Majel &amp; giếng
+97	Từ nhiều thế kỷ nay, ở Tunisia người ta hứng nước mưa vào các bể chứa (majel, fesguia), đào giếng và chia nước ốc đảo chính xác theo thời gian. Nhiều kỹ thuật trong số đó ngày nay vẫn còn dùng. Đây là những điều cốt yếu, và các đường dẫn nghiêm túc để tìm hiểu thêm, xây dựng hoặc phục hồi.
+98	Tóm tắt về majel
+99	<b>Một bể chứa ngầm</b> (ماجل) hứng nước mưa từ mái nhà, sân hoặc một khoảnh đất dốc («impluvium»).
+100	<b>Ba phần</b>: bề mặt hứng nước, một bể nhỏ để bùn lắng xuống, rồi bể chứa đào trong lòng đất và trát kín để không thấm nước.
+101	<b>Ở Djerba và miền Nam</b>, majel của ngôi nhà nằm cạnh fesguia, bể chứa lớn thường là của chung; mái nhà và sân được quét vôi trắng trước mùa mưa để giữ nước sạch.
+102	<b>Ngày nay vẫn hữu ích</b>: do hạn hán, Nhà nước cho vay không lãi để xây majel, và các hội đoàn phục hồi những bể chứa công cộng.
+103	Nước trong majel không được kiểm soát: hãy đun sôi hoặc lọc trước khi uống.
+104	Majel và fesguia ở Djerba và miền Nam
+105	thống kê, bản đồ và phục hồi các bể chứa công cộng ở Djerba (212 majel trên bản đồ của chúng tôi lấy từ họ).
+106	«Majel, kho báu của tổ tiên» — chúng hoạt động thế nào.
+107	các bể chứa ở Djerba được giải thích đơn giản (majel, fesguia).
+108	menzel, ngôi nhà truyền thống ở Djerba, với bể chứa và giếng.
+109	các bể chứa lâu đời ở Djerba, di sản và công cụ ứng phó với khí hậu.
+110	Cách xây một majel
+111	tài liệu kỹ thuật đầy đủ (Viện các Vùng Khô hạn ở Médenine): bề mặt thu nước, bể lắng, bể chứa, kích thước, chi phí và bảo dưỡng.
+112	các kỹ thuật thu nước ở Tunisia và tác động của chúng đến đất và nước.
+113	«Trước tình trạng thiếu nước, người Tunisia dùng lại các phương pháp của tổ tiên» — mái quét vôi, bể chứa, lời khuyên.
+114	Giếng và ốc đảo
+115	giếng nổi tiếng ở Kairouan, nước được kéo lên bằng một guồng nước do lạc đà một bướu quay.
+116	Bir Barrouta ngày nay: lịch sử, truyền thuyết và tình trạng di tích.
+117	«Bled el Abar» (xứ sở của giếng): một dự án phục hồi các giếng ở sa mạc Tunisia.
+118	Ibn Chabbat, «bậc thầy về nước» của vùng Djérid, và việc chia nước ốc đảo theo thời gian.
+119	ốc đảo Gabès, ốc đảo ven biển duy nhất, nằm trong danh sách dự kiến của Di sản Thế giới.
+120	nước ở Carthage thời La Mã và ở Tunis: bể chứa, giếng và guồng nước.
+121	Hứng nước mưa trên đất miền Nam
+122	các jessour ở vùng núi Médenine: những bờ tường thấp giữ nước và đất để trồng ô liu và sung.
+123	các tabia ở vùng chân núi: những bờ đất hứng nước chảy tràn và bổ sung cho mạch nước ngầm.
+124	Ngày nay vẫn còn dùng
+125	khoản vay không lãi của Nhà nước để xây majel (luật tài chính), được gia hạn.
+126	WWF đề xuất khôi phục các majel để ứng phó với biến đổi khí hậu.
+127	«Bled al Abar», một dự án tôn vinh các giếng ở sa mạc Tunisia.
+128	Bạn biết một majel hoặc một giếng mở cho mọi người?
+129	Hãy thêm vào bản đồ
+130	Điểm lấy nước ở Tunisia
+131	Video giới thiệu
+132	Mở trang web
+133	Chia sẻ video
+134	Bản đồ
+135	Miễn phí · suối, vòi nước, majel
+136	Chia sẻ trang này
+137	Chia sẻ
+138	Ngôn ngữ
+139	Mục
+140	Bản đồ điểm lấy nước
+141	Giá nước đóng chai
+142	Nước không được kiểm soát: suối, giếng và majel không được xét nghiệm. Trang web này không phải là dịch vụ chính thức.
+143	Các điểm: © những người đóng góp cho OpenStreetMap (ODbL), hội AJEM (majel ở Djerba) và khách truy cập trang. Ảnh: Wikimedia Commons —
+144	nguồn ảnh
+145	đã đăng ký bản quyền.
+146	đã đăng ký bản quyền
+147	Trang web:
+148	Xem video:
+149	Do hội AJEM thống kê (Fesguietna)
+150	Đã được khách xác nhận
+151	Do một khách báo, chờ xác nhận
+152	Tình trạng tốt
+153	Tình trạng trung bình
+154	Tình trạng xấu
+155	Tình trạng rất xấu
+156	Trang và ảnh trên trang web AJEM
+157	lần xác nhận
+158	Đường đi (Google Maps)
+159	Đúng vậy
+160	Không còn tồn tại
+161	Gần bạn nhất
+162	đi đến đó
+163	Ở nơi khác trên thế giới: hãy phóng to một thành phố, hoặc chạm «Quanh tôi», để xem các điểm lấy nước ở đó.
+164	Đang tìm các điểm lấy nước trong vùng này…
+165	{n} điểm lấy nước trong vùng này (OpenStreetMap).
+166	Chưa có điểm lấy nước nào được biết ở đây: bạn biết một điểm? Hãy báo cho chúng tôi.
+167	OpenStreetMap hiện không phản hồi: hãy thử lại sau giây lát.
+168	Cảm ơn! Sẽ được ghi nhận trong khoảng 2 giờ.
+169	Đang tìm vị trí của bạn…
+170	Không lấy được vị trí: hãy cho phép định vị, hoặc tìm trên bản đồ.
+171	Đã đặt điểm đánh dấu: hãy kiểm tra, rồi bấm «Xác nhận vị trí này».
+172	Không có điểm lấy nước nào được báo trong 30 ngày qua: hãy là người đầu tiên!
+173	Các điểm lấy nước mới nhất do khách báo
+174	được {n} khách xác nhận
+175	chờ xác nhận
+176	báo ngày
+177	xem trên bản đồ
+178	Không lấy được vị trí: hãy chạm vào đúng chỗ trên bản đồ.
+179	Trước tiên hãy đặt điểm đánh dấu: «Định vị tôi (GPS)» hoặc chạm vào bản đồ.
+180	✔ Đã xác nhận vị trí
+181	Hãy chọn loại điểm lấy nước.
+182	Hãy đặt điểm đánh dấu trên bản đồ, rồi bấm «Xác nhận vị trí này».
+183	Đang gửi…
+184	Cảm ơn! Điểm sẽ xuất hiện trên bản đồ trong khoảng 2 giờ («chờ xác nhận» cho đến khi một khách khác xác nhận).
+185	Gửi không thành công — hãy kiểm tra kết nối và thử lại.
+186	Hãy viết tin nhắn trước khi gửi.
+187	Tin nhắn quá dài: tối đa {n} ký tự.
+188	Cảm ơn! Ý kiến của bạn đã được gửi.
+189	Gửi không thành công — hãy kiểm tra kết nối và thử lại sau.
+190	Ảnh các loại điểm lấy nước (trang chủ), Wikimedia Commons, đã cắt:
+191	Bản dịch ý nghĩa các câu kinh Qur'an (trang «Kinh Qur'an và nước»):
+192	Hadith bằng tiếng Anh:

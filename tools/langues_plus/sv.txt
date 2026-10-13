@@ -1,0 +1,193 @@
+0	Vattenställen i Tunisien och i världen
+1	Hela världen finns på kartan
+2	Exempel:
+3	Mecka
+4	Istanbul
+5	Paris
+6	Kairo
+7	Se världen
+8	Utanför Tunisien: sök en stad eller tryck på ett exempel.
+9	Sök en stad i världen
+10	Sök
+11	T.ex. Paris, Istanbul, Kairo…
+12	Söker staden i världen…
+13	Ingen stad i världen hittades med det namnet.
+14	Kartan är centrerad på: {l} (sökning med Nominatim, © OpenStreetMaps bidragsgivare).
+15	Stadssökningen svarar inte just nu: försök igen om en stund.
+16	{n} vattenställen i det här området.
+17	Fältdata: Water Point Data Exchange (WPdx, CC BY 4.0)
+18	<b>Water Point Data Exchange</b> (<a href="https://www.waterpointdata.org/" rel="noopener">WPdx</a>, licens CC BY 4.0): mer än 800 000 vattenställen som registrerats på plats i 84 länder (främst i Afrika och Asien), lästa i realtid för det område som visas; vattenställen som rapporterats som ”ur funktion” visas inte.
+19	Tunisiens moskéer: karta och historia
+20	Alla landets moskéer på en karta, och de stora moskéernas historia, från Kairouan till Zitouna.
+21	Start
+22	Om
+23	Om webbplatsen och metoden
+24	En gratis och oberoende webbplats för att hitta vatten, i Tunisien och i världen, och hjälpa andra att hitta det.
+25	Varifrån kommer punkterna?
+26	<b>OpenStreetMap</b>, den fria kartan som görs av sina bidragsgivare: källor, dricksfontäner, kranar och allmänna vattenposter, cisterner och brunnar i Tunisien, som vår robot läser om var tredje månad (privata brunnar och cisterner undantagna).
+27	<b>Föreningen AJEM</b>, projektet <a href="https://www.ajem.tn/fesguietna" rel="noopener">Fesguietna</a>: de majel (regnvattencisterner) på Djerba som föreningen har inventerat, med deras skick; varje punkt länkar till sin sida och sina foton på AJEM:s webbplats.
+28	<b>På andra håll i världen</b>: kartan läser OpenStreetMap i realtid för det område som visas (när man zoomar in på en stad eller trycker på ”Nära mig”).
+29	<b>Besökarna</b>: vem som helst kan rapportera ett vattenställe. Det publiceras automatiskt (ungefär varannan timme), märkt ”att bekräfta” tills en annan besökare bekräftar det.
+30	Hur kontrolleras det?
+31	Roboten avvisar ett omöjligt läge eller en okänd typ, tar bort telefonnummer och länkar (ingen reklam) och begränsar antalet rapporter per telefon.
+32	En punkt som rapporteras mindre än 40 m från en känd punkt av samma typ räknas som en bekräftelse (ingen dubblett).
+33	Om flera besökare säger ”finns inte längre” (fler än bekräftelserna) tas punkten bort från kartan.
+34	<b>Ingen kontrollerar vattnets kvalitet</b>: det är inte kontrollerat och kan vara otjänligt att dricka.
+35	Dina uppgifter
+36	Din position används bara för att visa punkter i närheten, i din telefon: den skickas bara om du rapporterar ett vattenställe (och då bara punktens läge). En anonym identifierare i webbläsaren hindrar att samma person röstar flera gånger. Anonym besöksstatistik, utan kakor.
+37	Upphov och källor
+38	Punkter och bakgrundskarta:
+39	Djerbas majel:
+40	Karta: Leaflet.
+41	Foto av majel på Djerba: elever vid grundskolan Beb Djabli i Téboursouk, tävlingen WikiChallenge 2022,
+42	(beskuren)
+43	Kontakt
+44	Ett fel, en idé? <a href="../#avis">Skriv till oss under ”Din åsikt”</a>.
+45	Koranen och vattnet
+46	Vattnet i Koranen och sunna
+47	Att bygga en majel, sköta en fontän eller visa vägen till en källa är att ”ge någon att dricka”: den bästa allmosan enligt Profeten ﷺ. Texterna är på arabiska, med en översättning av deras innebörd.
+48	Känner du till en majel, en fontän eller en källa som är öppen för alla? <a href="../#signaler">Lägg till den på kartan</a>, så att andra kan dricka där.
+49	Foto
+50	Var man hittar vatten: källor, fontäner och majel
+51	Den kostnadsfria kartan över vattenställen, i Tunisien och i hela världen. Hitta det närmaste, och lägg till dem du känner till för att hjälpa andra.
+52	vattenställen i Tunisien · och hela världen
+53	<b>Okontrollerat vatten.</b> Källor, brunnar och majel analyseras inte: vattnet kan vara otjänligt att dricka. Koka eller filtrera det om du är osäker, och ge det inte till spädbarn.
+54	Nära mig
+55	Tryck på en punkt för vägbeskrivning, eller för att säga om den fortfarande finns. Hittar du inte?
+56	Sök även på Google Maps
+57	Djerbas majel på kartan (namn, skick och foton) kommer från inventeringen som gjorts av föreningen <b>AJEM</b>, projektet
+58	: tack till dem.
+59	Rapportera ett vattenställe
+60	Visa
+61	Majel och brunnar i Tunisien
+62	Hur man bygger en majel, brunnarna och oaserna, och vad som fortfarande används i dag: förklaringar och länkar.
+63	Koranen och sunna om vatten
+64	”Den bästa allmosan: att ge någon att dricka” — verser och hadither om vatten.
+65	Vatten på flaska: jämför priserna
+66	På vår webbplats Prix des Eaux de Tunisie: det billigaste flaskpaketet i dag.
+67	Din åsikt
+68	Alla våra tjänster
+69	En synpunkt, ett fel, en idé? Skriv till oss: varje meddelande läses.
+70	Ditt betyg (frivilligt)
+71	Mycket bra
+72	Bra
+73	Medel
+74	Inte bra
+75	Ditt meddelande
+76	Din e-postadress (frivilligt, så att vi kan svara)
+77	Skicka
+78	Din åsikt skickas till webbplatsens skapare (tjänsten Formspree). Ingenting skickas utan ett klick på ”Skicka”.
+79	En källa, en fontän, en allmän kran, en majel som är öppen för alla (Djerba, södern…): hjälp andra att hitta vatten. Efter en automatisk kontroll publiceras punkten på kartan, som ”att bekräfta” tills en annan besökare bekräftar den.
+80	Typ
+81	Namn eller riktmärke
+82	Hitta min position (GPS)
+83	Den automatiska positionen är inte alltid exakt: flytta markören (eller tryck på kartan) så att den hamnar precis där vattenstället ligger, och bekräfta sedan.
+84	Bekräfta den här positionen
+85	Ingenting personligt skickas: bara typen, platsens namn och läget. Telefonnummer och reklam tas bort automatiskt. En punkt försvinner om flera besökare säger att den inte längre finns.
+86	— välj —
+87	Naturlig källa
+88	Dricksfontän
+89	Allmän kran / vattenpost
+90	Allmän majel
+91	Brunn
+92	Vad du tycker om, vad som saknas, ett fel att rätta…
+93	namn@example.com
+94	Frivilligt
+95	En vit majel (regnvattencistern) på Djerba, bland palmerna
+96	Majel &amp; brunnar
+97	I århundraden har man i Tunisien samlat regnvatten i cisterner (majel, fesguia), grävt brunnar och delat oasernas vatten på minuten när. Många av dessa tekniker används än i dag. Här är det viktigaste, och seriösa länkar för den som vill veta mer, bygga eller restaurera.
+98	Majeln i korthet
+99	<b>En nedgrävd cistern</b> (ماجل) som samlar regnvatten från ett tak, en gård eller en sluttande mark (”impluviet”).
+100	<b>Tre delar</b>: ytan som samlar vattnet, en liten bassäng där slammet sjunker till botten, och sedan behållaren som grävts ner i marken och putsats för att bli tät.
+101	<b>På Djerba och i södern</b> finns husets majel sida vid sida med fesguian, en stor cistern som ofta är allmän; taken och gårdarna kalkas vita före regnen för att hålla vattnet rent.
+102	<b>Fortfarande till nytta i dag</b>: på grund av torkan ger staten ett räntefritt lån för att bygga en majel, och föreningar restaurerar de allmänna cisternerna.
+103	Vattnet i en majel är inte kontrollerat: koka eller filtrera det innan du dricker det.
+104	Majel och fesguior på Djerba och i södern
+105	inventering, kartor och restaurering av Djerbas allmänna cisterner (de 212 majel på vår karta kommer från dem).
+106	”Majel, en skatt från förfäderna” — hur de fungerar.
+107	Djerbas cisterner enkelt förklarade (majel, fesguia).
+108	menzel, Djerbas traditionella hus, med sin cistern och sin brunn.
+109	Djerbas urgamla cisterner, kulturarv och redskap inför klimatet.
+110	Hur man bygger en majel
+111	fullständigt tekniskt faktablad (Institutet för torra regioner i Médenine): uppsamlingsyta, sedimenteringsbassäng, behållare, mått, kostnader och underhåll.
+112	teknikerna för att samla vatten i Tunisien och deras effekter på mark och vatten.
+113	”Inför vattenbristen tar tunisierna till förfädernas metoder” — kalkade tak, cisterner, råd.
+114	Brunnar och oaser
+115	den berömda brunnen i Kairouan, där vattnet lyfts upp av ett skopverk som dras runt av en dromedar.
+116	Bir Barrouta i dag: historia, legend och monumentets skick.
+117	”Bled el Abar” (brunnarnas land): ett projekt för att rusta upp brunnarna i den tunisiska öknen.
+118	Ibn Chabbat, Djérids ”vattenmästare”, och delningen av oasernas vatten efter tid.
+119	oasen i Gabès, den enda kustoasen, på den preliminära världsarvslistan.
+120	vattnet i det romerska Kartago och i Tunis: cisterner, brunnar och vattenhjul.
+121	Att samla regn på söderns marker
+122	jessour i Médenines berg: små murar som håller kvar vatten och jord för att odla oliv- och fikonträd.
+123	tabia vid bergens fot: jordvallar som samlar ytavrinningen och fyller på grundvattnet.
+124	Används fortfarande i dag
+125	statens räntefria lån för att bygga en majel (finanslagen), förlängt.
+126	WWF föreslår att majel tas i bruk igen för att möta klimatförändringarna.
+127	”Bled al Abar”, ett projekt som lyfter fram brunnarna i den tunisiska öknen.
+128	Känner du till en majel eller en brunn som är öppen för alla?
+129	Lägg till den på kartan
+130	Vattenställen i Tunisien
+131	Presentationsvideo
+132	Öppna webbplatsen
+133	Dela videon
+134	Karta
+135	Gratis · källor, fontäner, majel
+136	Dela den här sidan
+137	Dela
+138	Språk
+139	Avsnitt
+140	Karta över vattenställen
+141	Priset på flaskvatten
+142	Okontrollerat vatten: källor, brunnar och majel analyseras inte. Den här webbplatsen är ingen officiell tjänst.
+143	Punkter: © OpenStreetMaps bidragsgivare (ODbL), föreningen AJEM (Djerbas majel) och webbplatsens besökare. Foto: Wikimedia Commons —
+144	upphov
+145	alla rättigheter förbehållna.
+146	alla rättigheter förbehållna
+147	Webbplatsen:
+148	Se videon:
+149	Inventerad av föreningen AJEM (Fesguietna)
+150	Bekräftad av besökare
+151	Rapporterad av en besökare, att bekräfta
+152	Gott skick
+153	Medelgott skick
+154	Dåligt skick
+155	Mycket dåligt skick
+156	Sida och foton på AJEM:s webbplats
+157	bekräftelse(r)
+158	Vägbeskrivning (Google Maps)
+159	Det stämmer
+160	Finns inte längre
+161	Närmast dig
+162	ta mig dit
+163	På andra håll i världen: zooma in på en stad, eller tryck på ”Nära mig”, för att se dess vattenställen.
+164	Söker vattenställen i det här området…
+165	{n} vattenställen i det här området (OpenStreetMap).
+166	Inget känt vattenställe här: känner du till något? Rapportera det.
+167	OpenStreetMap svarar inte just nu: försök igen om en stund.
+168	Tack! Det räknas med inom ungefär 2 timmar.
+169	Söker din position…
+170	Positionen är inte tillgänglig: tillåt platsåtkomst eller sök på kartan.
+171	Markören är utsatt: kontrollera den och tryck sedan på ”Bekräfta den här positionen”.
+172	Inget vattenställe har rapporterats de senaste 30 dagarna: bli den första!
+173	Senaste vattenställena som besökare har rapporterat
+174	bekräftad av {n} besökare
+175	att bekräfta
+176	rapporterad
+177	visa på kartan
+178	Positionen är inte tillgänglig: tryck i stället på stället på kartan.
+179	Sätt först ut markören: ”Hitta min position (GPS)” eller tryck på kartan.
+180	✔ Positionen bekräftad
+181	Välj typ av vattenställe.
+182	Sätt ut markören på kartan och tryck sedan på ”Bekräfta den här positionen”.
+183	Skickar…
+184	Tack! Punkten visas på kartan inom ungefär 2 timmar (”att bekräfta” tills en annan besökare bekräftar den).
+185	Det gick inte att skicka — kontrollera din anslutning och försök igen.
+186	Skriv ditt meddelande innan du skickar.
+187	För långt meddelande: högst {n} tecken.
+188	Tack! Din åsikt har skickats.
+189	Det gick inte att skicka — kontrollera din anslutning och försök igen senare.
+190	Foton av typerna av vattenställen (startsidan), Wikimedia Commons, beskurna:
+191	Översättningar av innebörden i Koranens verser (sidan ”Koranen och vattnet”):
+192	Hadither på engelska:

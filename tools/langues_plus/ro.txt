@@ -1,0 +1,193 @@
+0	Puncte de apă din Tunisia și din lume
+1	Lumea întreagă este pe hartă
+2	Exemple:
+3	Mecca
+4	Istanbul
+5	Paris
+6	Cairo
+7	Vezi lumea
+8	În afara Tunisiei: căutați un oraș sau atingeți un exemplu.
+9	Căutați un oraș din lume
+10	Caută
+11	Ex.: Paris, Istanbul, Cairo…
+12	Se caută orașul în lume…
+13	Niciun oraș găsit în lume cu acest nume.
+14	Hartă centrată pe: {l} (căutare Nominatim, © contribuitorii OpenStreetMap).
+15	Căutarea de orașe nu răspunde deocamdată: încercați din nou peste o clipă.
+16	{n} puncte de apă în această zonă.
+17	Date de teren: Water Point Data Exchange (WPdx, CC BY 4.0)
+18	<b>Water Point Data Exchange</b> (<a href="https://www.waterpointdata.org/" rel="noopener">WPdx</a>, licență CC BY 4.0): peste 800 000 de puncte de apă înregistrate pe teren în 84 de țări (mai ales în Africa și în Asia), citite în timp real pentru zona afișată; punctele semnalate ca „defecte” nu sunt arătate.
+19	Moscheile din Tunisia: hartă și istorie
+20	Toate moscheile țării pe o hartă și istoria marilor moschei, de la Kairouan la Zitouna.
+21	Acasă
+22	Despre
+23	Despre site și metodă
+24	Un site gratuit și independent pentru a găsi apă, în Tunisia și în lume, și pentru a-i ajuta pe alții să o găsească.
+25	De unde provin punctele?
+26	<b>OpenStreetMap</b>, harta liberă făcută de contribuitorii ei: izvoare, cișmele cu apă potabilă, robinete și puncte de apă publice, cisterne și fântâni din Tunisia, recitite la fiecare 3 luni de robotul nostru (fântânile și cisternele private sunt excluse).
+27	<b>Asociația AJEM</b>, proiectul <a href="https://www.ajem.tn/fesguietna" rel="noopener">Fesguietna</a>: cisternele „majel” (pentru apă de ploaie) din Djerba pe care le-a inventariat, cu starea lor; fiecare punct trimite la fișa și la fotografiile lui de pe site-ul AJEM.
+28	<b>În alte părți ale lumii</b>: harta citește OpenStreetMap în timp real pentru zona afișată (când măriți un oraș sau atingeți „În jurul meu”).
+29	<b>Vizitatorii</b>: oricine poate semnala un punct de apă. El este publicat automat (cam la fiecare 2 ore), marcat „de confirmat” până când un alt vizitator îl confirmă.
+30	Cum se verifică?
+31	Robotul refuză o poziție imposibilă sau un tip necunoscut, scoate numerele de telefon și legăturile (fără publicitate) și limitează numărul de semnalări pe telefon.
+32	Un punct semnalat la mai puțin de 40 m de un punct cunoscut de același tip contează ca o confirmare (fără dubluri).
+33	Dacă mai mulți vizitatori spun „nu mai există” (mai mulți decât confirmările), punctul este scos de pe hartă.
+34	<b>Nimeni nu verifică calitatea apei</b>: ea nu este controlată și se poate să nu fie potabilă.
+35	Datele dumneavoastră
+36	Poziția dumneavoastră servește numai la afișarea punctelor apropiate, în telefonul dumneavoastră: ea este trimisă doar dacă semnalați un punct de apă (și atunci doar poziția punctului). Un identificator anonim al browserului împiedică aceeași persoană să voteze de mai multe ori. Statistici de vizită anonime, fără cookie-uri.
+37	Credite
+38	Puncte și fundal de hartă:
+39	Cisternele „majel” din Djerba:
+40	Hartă: Leaflet.
+41	Fotografia unui majel din Djerba: elevii școlii primare Beb Djabli din Téboursouk, concursul WikiChallenge 2022,
+42	(decupată)
+43	Contact
+44	O greșeală, o idee? <a href="../#avis">Scrieți-ne la „Părerea dumneavoastră”</a>.
+45	Coranul și apa
+46	Apa în Coran și în Sunna
+47	A construi un majel, a întreține o cișmea sau a arăta un izvor înseamnă „a da de băut”: cea mai bună milostenie, după spusele Profetului ﷺ. Textele sunt în arabă, cu traducerea sensului lor.
+48	Cunoașteți un majel, o cișmea sau un izvor deschis tuturor? <a href="../#signaler">Adăugați-l pe hartă</a>, pentru ca și alții să poată bea de acolo.
+49	Foto
+50	Unde găsiți apă: izvoare, cișmele și cisterne
+51	Harta gratuită a punctelor de apă, în Tunisia și peste tot în lume. Găsiți-l pe cel mai apropiat și adăugați-le pe cele pe care le cunoașteți, ca să-i ajutați pe alții.
+52	puncte de apă în Tunisia · și lumea întreagă
+53	<b>Apă necontrolată.</b> Izvoarele, fântânile și cisternele nu sunt analizate: apa se poate să nu fie potabilă. Fierbeți-o sau filtrați-o dacă aveți îndoieli și nu o dați bebelușilor.
+54	În jurul meu
+55	Atingeți un punct pentru traseu sau pentru a spune dacă mai există. Nu l-ați găsit?
+56	Căutați și pe Google Maps
+57	Cisternele „majel” din Djerba de pe hartă (numele, starea și fotografiile lor) provin din inventarul asociației <b>AJEM</b>, proiectul
+58	: le mulțumim.
+59	Semnalează un punct de apă
+60	Vezi
+61	Cisterne „majel” și fântâni în Tunisia
+62	Cum se construiește un majel, fântânile și oazele și ce se folosește și astăzi: explicații și legături.
+63	Coranul și Sunna despre apă
+64	„Cea mai bună milostenie: a da de băut” — versete și hadisuri despre apă.
+65	Apă îmbuteliată: comparați prețurile
+66	Pe site-ul nostru Prix des Eaux de Tunisie: cel mai ieftin bax de apă de astăzi.
+67	Părerea dumneavoastră
+68	Toate serviciile noastre
+69	O observație, o greșeală, o idee? Scrieți-ne: fiecare mesaj este citit.
+70	Nota dumneavoastră (opțional)
+71	Foarte bine
+72	Bine
+73	Mediu
+74	Nu prea bine
+75	Mesajul dumneavoastră
+76	E-mailul dumneavoastră (opțional, pentru a vă răspunde)
+77	Trimite
+78	Părerea dumneavoastră este trimisă creatorului site-ului (serviciul Formspree). Nimic nu este trimis fără un clic pe „Trimite”.
+79	Un izvor, o cișmea, un robinet public, un majel deschis tuturor (Djerba, Sudul…): ajutați-i pe ceilalți să găsească apă. După o verificare automată, punctul este publicat pe hartă, „de confirmat” până când un alt vizitator îl confirmă.
+80	Tip
+81	Nume sau reper
+82	Localizează-mă (GPS)
+83	Poziția automată nu este întotdeauna exactă: mutați reperul (sau atingeți harta) pentru a-l pune pe locul precis al punctului de apă, apoi confirmați.
+84	Confirmă această poziție
+85	Nimic personal nu este trimis: doar tipul, numele locului și poziția. Numerele de telefon și publicitatea sunt scoase automat. Un punct dispare dacă mai mulți vizitatori spun că nu mai există.
+86	— alegeți —
+87	Izvor natural
+88	Cișmea cu apă potabilă
+89	Robinet / punct de apă public
+90	Majel public
+91	Fântână
+92	Ce vă place, ce lipsește, o greșeală de corectat…
+93	nume@example.com
+94	Opțional
+95	Un majel alb (cisternă pentru apă de ploaie) în Djerba, printre palmieri
+96	Cisterne &amp; fântâni
+97	De secole, în Tunisia se adună apa de ploaie în cisterne (majel, fesguia), se sapă fântâni și se împarte apa oazelor cu mare precizie, după timp. Multe dintre aceste tehnici se folosesc și astăzi. Iată esențialul și legături serioase pentru a merge mai departe, a construi sau a restaura.
+98	Majelul pe scurt
+99	<b>O cisternă îngropată</b> (ماجل) care adună apa de ploaie de pe un acoperiș, dintr-o curte sau de pe un teren în pantă („impluviul”).
+100	<b>Trei părți</b>: suprafața care adună apa, un mic bazin în care se depune nămolul, apoi rezervorul săpat în pământ și tencuit ca să fie etanș.
+101	<b>În Djerba și în Sud</b>, majelul casei stă alături de fesguia, o cisternă mare, adesea publică; acoperișurile și curțile sunt văruite înainte de ploi, pentru ca apa să rămână curată.
+102	<b>Util și astăzi</b>: din cauza secetelor, statul acordă un credit fără dobândă pentru construirea unui majel, iar asociațiile restaurează cisternele publice.
+103	Apa dintr-un majel nu este controlată: fierbeți-o sau filtrați-o înainte de a o bea.
+104	Cisternele majel și fesguia din Djerba și din Sud
+105	inventar, hărți și restaurarea cisternelor publice din Djerba (cele 212 cisterne de pe harta noastră provin de la ei).
+106	„Cisternele majel, o comoară strămoșească” — cum funcționează.
+107	cisternele din Djerba explicate simplu (majel, fesguia).
+108	menzelul, casa tradițională din Djerba, cu cisterna și fântâna ei.
+109	cisternele strămoșești din Djerba, patrimoniu și unealtă în fața schimbărilor climatice.
+110	Cum se construiește un majel
+111	fișă tehnică completă (Institutul Regiunilor Aride din Médenine): suprafață de colectare, bazin de decantare, rezervor, dimensiuni, costuri și întreținere.
+112	tehnicile de colectare a apei în Tunisia și efectele lor asupra solurilor și a apei.
+113	„În fața lipsei de apă, tunisienii recurg la procedeele strămoșești” — acoperișuri văruite, cisterne, sfaturi.
+114	Fântâni și oaze
+115	celebra fântână din Kairouan, a cărei apă este ridicată de o noria învârtită de un dromader.
+116	Bir Barrouta astăzi: istorie, legendă și starea monumentului.
+117	„Bled el Abar” (țara fântânilor): un proiect pentru reabilitarea fântânilor din deșertul tunisian.
+118	Ibn Chabbat, „stăpânul apelor” din Djérid, și împărțirea apei oazelor după timp.
+119	oaza din Gabès, singura oază de litoral, pe lista indicativă a patrimoniului mondial.
+120	apa în Cartagina romană și la Tunis: cisterne, fântâni și roți de apă.
+121	Adunarea ploii pe pământurile din Sud
+122	„jessour”-urile din munții Médenine: ziduri mici care rețin apa și pământul pentru cultivarea măslinilor și a smochinilor.
+123	„tabia” de la poalele munților: diguri de pământ care adună scurgerile și reîncarcă pânza freatică.
+124	Folosite și astăzi
+125	creditul fără dobândă al statului pentru construirea unui majel (legea finanțelor), prelungit.
+126	WWF propune relansarea cisternelor majel pentru a face față schimbărilor climatice.
+127	„Bled al Abar”, un proiect de punere în valoare a fântânilor din deșertul tunisian.
+128	Cunoașteți un majel sau o fântână deschisă tuturor?
+129	Adăugați-l pe hartă
+130	Puncte de apă în Tunisia
+131	Videoclip de prezentare
+132	Deschide site-ul
+133	Distribuie videoclipul
+134	Hartă
+135	Gratuit · izvoare, cișmele, cisterne
+136	Distribuie această pagină
+137	Distribuie
+138	Limbă
+139	Rubrici
+140	Harta punctelor de apă
+141	Prețul apei îmbuteliate
+142	Apă necontrolată: izvoarele, fântânile și cisternele nu sunt analizate. Acest site nu este un serviciu oficial.
+143	Puncte: © contribuitorii OpenStreetMap (ODbL), asociația AJEM (cisternele din Djerba) și vizitatorii site-ului. Foto: Wikimedia Commons —
+144	credite
+145	toate drepturile rezervate.
+146	toate drepturile rezervate
+147	Site-ul:
+148	Priviți videoclipul:
+149	Inventariat de asociația AJEM (Fesguietna)
+150	Confirmat de vizitatori
+151	Semnalat de un vizitator, de confirmat
+152	Stare bună
+153	Stare medie
+154	Stare proastă
+155	Stare foarte proastă
+156	Fișă și fotografii pe site-ul AJEM
+157	confirmare(ări)
+158	Traseu (Google Maps)
+159	Este adevărat
+160	Nu mai există
+161	Cele mai apropiate de dumneavoastră
+162	mergi acolo
+163	În alte părți ale lumii: măriți un oraș sau atingeți „În jurul meu” pentru a-i vedea punctele de apă.
+164	Se caută punctele de apă din această zonă…
+165	{n} puncte de apă în această zonă (OpenStreetMap).
+166	Niciun punct de apă cunoscut aici: cunoașteți unul? Semnalați-l.
+167	OpenStreetMap nu răspunde deocamdată: încercați din nou peste o clipă.
+168	Mulțumim! Va fi luat în seamă în aproximativ 2 ore.
+169	Se caută poziția dumneavoastră…
+170	Poziție indisponibilă: permiteți localizarea sau căutați pe hartă.
+171	Reper pus: verificați-l, apoi „Confirmă această poziție”.
+172	Niciun punct de apă semnalat în ultimele 30 de zile: fiți primul!
+173	Ultimele puncte de apă semnalate de vizitatori
+174	confirmat de {n} vizitatori
+175	de confirmat
+176	semnalat la
+177	vezi pe hartă
+178	Poziție indisponibilă: atingeți mai bine locul pe hartă.
+179	Puneți mai întâi reperul: „Localizează-mă (GPS)” sau atingeți harta.
+180	✔ Poziție confirmată
+181	Alegeți tipul punctului de apă.
+182	Puneți reperul pe hartă, apoi „Confirmă această poziție”.
+183	Se trimite…
+184	Mulțumim! Punctul va apărea pe hartă în aproximativ 2 ore („de confirmat” până când un alt vizitator îl confirmă).
+185	Trimiterea a eșuat — verificați conexiunea și încercați din nou.
+186	Scrieți mesajul înainte de a trimite.
+187	Mesaj prea lung: cel mult {n} caractere.
+188	Mulțumim! Părerea dumneavoastră a fost trimisă.
+189	Trimiterea a eșuat — verificați conexiunea și încercați din nou mai târziu.
+190	Fotografiile tipurilor de puncte de apă (pagina de pornire), Wikimedia Commons, decupate:
+191	Traduceri ale sensului versetelor din Coran (pagina „Coranul și apa”):
+192	Hadisuri în engleză:

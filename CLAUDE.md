@@ -58,11 +58,11 @@ Règles communes : `../../regles communes a tous les sites.md`.
   téléphone seule (Google lirait de l'anglais sur la page française) : lien « English → » proposé sous le menu.
   Nouveau texte français : le traduire dans `assets/langues.js` ; la construction dit « N texte(s) resté(s) en anglais » (0 attendu).
 
-- **15 LANGUES (13/10/2026, demande d'Ahmed : mêmes langues que Mosquées et The Message)** : it, pt, nl, zh, ja, ko, hi ajoutées
-  aux 8 d'origine. 4 pages × 15 langues, 60 adresses dans le plan du site. Textes des 7 nouvelles langues :
+- **21 LANGUES (13/10/2026, demande d'Ahmed : mêmes langues que Mosquées et The Message)** : it, pt, nl, zh, ja, ko, hi puis ru, vi, th, tl, sv, ro ajoutées
+  aux 8 d'origine. 4 pages × 21 langues, 84 adresses dans le plan du site. Textes des 13 nouvelles langues :
   `tools/langues_plus/<langue>.txt` (une ligne « numéro<TAB>traduction » par texte de `_francais.json`, 193 textes), module
   `tools/langues_plus.py`. **Nouveau texte français** : l'ajouter dans `assets/langues.js` (5 langues) ET à la fin de
-  `_francais.json` + une ligne dans chacun des 7 `.txt` (la construction s'arrête sinon).
+  `_francais.json` + une ligne dans chacun des 13 `.txt` (la construction s'arrête sinon).
   Page « Le Coran et l'eau » : versets = traduction OFFICIELLE QuranEnc de chaque langue (dans le gabarit, jamais traduits par
   nous) ; hadiths = « traduction approximative du sens », comme en français. Une page de langue ne garde que la traduction de
   sa langue et ne charge que son dictionnaire `assets/l/<langue>.js`. Traductions écrites par Claude, non relues par des natifs.

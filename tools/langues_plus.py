@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-"""Les 7 langues ajoutées le 13/10/2026 (italien, portugais, néerlandais, chinois, japonais, coréen, hindi), pour avoir les
+"""Les 13 langues ajoutées le 13/10/2026 (italien, portugais, néerlandais, chinois, japonais, coréen, hindi, puis russe, vietnamien,
+thaï, filipino, suédois, roumain), pour avoir les
 mêmes langues que notre site The Message. Une seule méthode pour tout (tous les textes du site : ils sont tous dans assets/langues.js) :
   tools/langues_plus/_francais.json : la liste des textes français (« ui » = clés de assets/langues.js ; « contenu » : vide ici), dans l'ordre ;
   tools/langues_plus/<langue>.txt   : une ligne « numéro<TAB>traduction » par texte, même ordre.
@@ -13,7 +14,7 @@ c'est la langue."""
 import json, os
 
 ICI = os.path.dirname(os.path.abspath(__file__))
-PLUS = ["it", "pt", "nl", "zh", "ja", "ko", "hi"]
+PLUS = ["it", "pt", "nl", "zh", "ja", "ko", "hi", "ru", "vi", "th", "tl", "sv", "ro"]
 
 
 def charger():

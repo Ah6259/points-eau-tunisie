@@ -26,7 +26,7 @@ const PAGES = [];
 })("");
 
 // Une adresse par langue (12/10/2026) : ar/…, en/…, tr/…, id/…, ur/…, de/…, es/… ; le français garde les adresses d'origine.
-const AUTRES = ["ar", "en", "tr", "id", "ur", "de", "es", "it", "pt", "nl", "zh", "ja", "ko", "hi"];
+const AUTRES = ["ar", "en", "tr", "id", "ur", "de", "es", "it", "pt", "nl", "zh", "ja", "ko", "hi", "ru", "vi", "th", "tl", "sv", "ro"];
 const langueDe = p => AUTRES.find(l => p.startsWith(l + "/")) || "fr";
 const PAGES_FR = PAGES.filter(p => langueDe(p) === "fr");
 const PAGES_LANGUE = PAGES.filter(p => langueDe(p) !== "fr");
@@ -224,11 +224,11 @@ check("robots.txt (IA refusées, sitemap), sitemap avec les pages, LICENSE", /GP
 }
 // ---- 6. huit langues (09/10/2026) : turc, indonésien, ourdou, allemand, espagnol traduits dans assets/langues.js (clé = texte français)
 {
-  const NOUVELLES = ["tr", "id", "ur", "de", "es", "it", "pt", "nl", "zh", "ja", "ko", "hi"];
+  const NOUVELLES = ["tr", "id", "ur", "de", "es", "it", "pt", "nl", "zh", "ja", "ko", "hi", "ru", "vi", "th", "tl", "sv", "ro"];
   // on lit les SOURCES des traductions : assets/langues.js (5 langues) et tools/langues_plus/ (7 langues ajoutées le 13/10/2026)
   const TR = (() => { const w = {}; new Function("window", lire("assets/langues.js"))(w);
     const frP = JSON.parse(lire("tools/langues_plus/_francais.json")).ui;
-    for (const l of ["it", "pt", "nl", "zh", "ja", "ko", "hi"]) (w.TRADUCTIONS[l] = {}, lire(`tools/langues_plus/${l}.txt`)).split(String.fromCharCode(10)).filter(x => x.trim()).forEach(x => {
+    for (const l of ["it", "pt", "nl", "zh", "ja", "ko", "hi", "ru", "vi", "th", "tl", "sv", "ro"]) (w.TRADUCTIONS[l] = {}, lire(`tools/langues_plus/${l}.txt`)).split(String.fromCharCode(10)).filter(x => x.trim()).forEach(x => {
       const i = x.indexOf(String.fromCharCode(9)); w.TRADUCTIONS[l][frP[+x.slice(0, i)].replace(/\s+/g, " ").trim()] = x.slice(i + 1); });
     return w.TRADUCTIONS || {}; })();
   const cle = s => String(s).replace(/\s+/g, " ").trim();
@@ -315,9 +315,9 @@ check("robots.txt (IA refusées, sitemap), sitemap avec les pages, LICENSE", /GP
 {
   const { w, d, js } = await page("index.html");          // français (mémoire « langue » = fr)
   const bouton = () => d.querySelector(".langues-bouton"), liste = () => d.getElementById("langues-liste");
-  check("(c) sélecteur compact : un bouton « FR » fermé, liste des 15 langues écrites dans leur langue",
+  check("(c) sélecteur compact : un bouton « FR » fermé, liste des 21 langues écrites dans leur langue",
     !!bouton() && /FR/.test(bouton().textContent) && bouton().getAttribute("aria-expanded") === "false" && liste().hidden
-    && [...liste().querySelectorAll("[data-lang]")].map(b => b.textContent).join("|") === "Français|العربية|English|Türkçe|Bahasa Indonesia|اردو|Deutsch|Español|Italiano|Português|Nederlands|中文|日本語|한국어|हिन्दी");
+    && [...liste().querySelectorAll("[data-lang]")].map(b => b.textContent).join("|") === "Français|العربية|English|Türkçe|Bahasa Indonesia|اردو|Deutsch|Español|Italiano|Português|Nederlands|中文|日本語|한국어|हिन्दी|Русский|Tiếng Việt|ไทย|Filipino|Svenska|Română");
   bouton().click();
   const ouverte = bouton().getAttribute("aria-expanded") === "true" && !liste().hidden;
   d.dispatchEvent(new w.KeyboardEvent("keydown", { key: "Escape" }));
@@ -351,7 +351,7 @@ check("robots.txt (IA refusées, sitemap), sitemap avec les pages, LICENSE", /GP
     ap.includes("relus tous les 3 mois") && ap.includes("كل ثلاثة أشهر") && ap.includes("every 3 months") && !/chaque semaine|كل أسبوع|every week/.test(ap));
 }
 {
-  const LANG7 = ["fr", "en", "tr", "id", "ur", "de", "es", "it", "pt", "nl", "zh", "ja", "ko", "hi"];     // 14 langues depuis le 13/10/2026 (l'arabe est l'original)
+  const LANG7 = ["fr", "en", "tr", "id", "ur", "de", "es", "it", "pt", "nl", "zh", "ja", "ko", "hi", "ru", "vi", "th", "tl", "sv", "ro"];     // 20 langues depuis le 13/10/2026 (l'arabe est l'original)
   const { d, js } = await page("coran-et-eau/index.html");
   const figs = [...d.querySelectorAll("figure.hadith")], manque = [];
   figs.forEach((f, i) => {
@@ -361,7 +361,7 @@ check("robots.txt (IA refusées, sitemap), sitemap avec les pages, LICENSE", /GP
     if (ayat && !LANG7.every(l => /QuranEnc/.test(sm(l)))) manque.push(`${i + 1}: QuranEnc`);
     if (!ayat && (!/sunnah\.com/.test(sm("en")) || !/Traduction approximative du sens/.test(sm("fr")))) manque.push(`${i + 1}: source hadith`);
   });
-  check(`page Coran : chaque verset et hadith (${figs.length}) garde l'arabe et a la traduction de son sens dans les 7 langues, avec sa source ${manque.join(" | ")}`,
+  check(`page Coran : chaque verset et hadith (${figs.length}) garde l'arabe et a la traduction de son sens dans les 20 langues, avec sa source ${manque.join(" | ")}`,
     figs.length >= 9 && !manque.length && js.length === 0);
   const css = lire("assets/style.css");
   check("page Coran : la traduction suit la langue choisie (CSS), rien en plus en arabe", LANG7.every(l => css.includes(`html[lang="${l}"] [data-t="${l}"]`)) && !/html\[lang="ar"\] \[data-t/.test(css));
