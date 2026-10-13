@@ -482,6 +482,10 @@ table.bareme td:last-child:not(.m){white-space:normal;text-align:start}
 .langues-bouton i{font-style:normal;font-size:10px;color:var(--doux)}
 .langues-liste{position:absolute;top:calc(100% + 6px);right:0;z-index:1100;margin:0;padding:5px;list-style:none;min-width:180px;background:var(--carte);border:1px solid var(--ligne);border-radius:14px;box-shadow:var(--ombre)}
 html[dir="rtl"] .langues-liste{right:auto;left:0}
+/* 21 langues : la liste dépassait le bas de l'écran et les dernières langues ne pouvaient pas être choisies (signalé par Ahmed,
+   13/10/2026) → deux colonnes, et défilement dans la liste si l'écran est quand même trop petit */
+.langues-liste{display:grid;grid-template-columns:1fr 1fr;gap:0 4px;width:max-content;max-width:calc(100vw - 16px);max-height:calc(100vh - 90px);max-height:calc(100dvh - 90px);overflow-y:auto;overscroll-behavior:contain}
+.langues-liste[hidden]{display:none}
 .langues-liste button{display:block;width:100%;font:inherit;font-size:15px;font-weight:600;border:0;background:none;color:var(--texte);border-radius:9px;padding:9px 12px;cursor:pointer;text-align:start}
 .langues-liste button[dir="rtl"]{font-family:"Noto Kufi Arabic",Figtree,sans-serif;text-align:left}
 html[dir="rtl"] .langues-liste button{text-align:right}
