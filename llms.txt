@@ -1,0 +1,19 @@
+# Water Points Tunisia
+
+> The free map of water points, in Tunisia and all over the world. Find the nearest one, and add the ones you know to help others.
+
+Site gratuit et indépendant, publié par Clicvia (https://clicvia.com/), le portail de services pratiques pour la Tunisie. Adresse : https://eau.clicvia.com/
+Langues : 21 langues (une adresse par langue : /en/, /ar/, /tr/…).
+
+## Pages principales
+
+- [About and method](https://eau.clicvia.com/en/a-propos/) : A free, independent website to find water, in Tunisia and around the world, and help others find it.
+- [Water in the Quran and Sunnah](https://eau.clicvia.com/en/coran-et-eau/) : Building a majel, maintaining a fountain or pointing out a spring is “giving water to drink”: the best charity according to the Prophet ﷺ. The texts are in Arabic, with the translation of their meanin
+- [Majels and wells in Tunisia](https://eau.clicvia.com/en/majels-et-puits/) : For centuries, people in Tunisia have collected rainwater in underground cisterns (majels, fesguias), dug wells and shared oasis water by the clock. Many of these techniques are still in use today. He
+
+## À savoir
+
+- Points d'eau tirés d'OpenStreetMap et des signalements des visiteurs ; l'eau n'est pas contrôlée.
+- Site non officiel : en cas de doute, la source officielle indiquée sur la page fait foi.
+- Pour citer : « Water Points Tunisia » avec le lien de la page utilisée.
+- Les assistants IA qui répondent à une question en citant leur source sont les bienvenus ; l'aspiration du contenu pour entraîner un modèle n'est pas autorisée (voir robots.txt).
