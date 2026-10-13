@@ -1,0 +1,193 @@
+0	Waterpunten van Tunesië en de wereld
+1	De hele wereld staat op de kaart
+2	Voorbeelden:
+3	Mekka
+4	Istanbul
+5	Parijs
+6	Caïro
+7	De wereld bekijken
+8	Buiten Tunesië: zoek een stad, of tik op een voorbeeld.
+9	Een stad in de wereld zoeken
+10	Zoeken
+11	Bv. Parijs, Istanbul, Caïro…
+12	De stad wordt wereldwijd gezocht…
+13	Geen stad met deze naam gevonden in de wereld.
+14	Kaart gecentreerd op: {l} (zoekopdracht Nominatim, © OpenStreetMap-bijdragers).
+15	Het zoeken naar steden reageert momenteel niet: probeer het zo dadelijk opnieuw.
+16	{n} waterpunten in dit gebied.
+17	Veldopname: Water Point Data Exchange (WPdx, CC BY 4.0)
+18	<b>Water Point Data Exchange</b> (<a href="https://www.waterpointdata.org/" rel="noopener">WPdx</a>, licentie CC BY 4.0): meer dan 800 000 waterpunten die in 84 landen op het terrein zijn opgemeten (vooral in Afrika en Azië), live gelezen voor het getoonde gebied; punten die als ‘defect’ zijn gemeld, worden niet getoond.
+19	De moskeeën van Tunesië: kaart en geschiedenis
+20	Alle moskeeën van het land op één kaart, en de geschiedenis van de grote moskeeën, van Kairouan tot de Zitouna.
+21	Home
+22	Over ons
+23	Over ons en methode
+24	Een gratis en onafhankelijke site om water te vinden, in Tunesië en in de wereld, en om anderen te helpen het te vinden.
+25	Waar komen de punten vandaan?
+26	<b>OpenStreetMap</b>, de vrije kaart die door haar bijdragers wordt gemaakt: bronnen, drinkwaterfonteinen, kranen en openbare waterpunten, waterreservoirs en putten van Tunesië, elke 3 maanden opnieuw gelezen door onze robot (privéputten en -reservoirs uitgesloten).
+27	<b>De vereniging AJEM</b>, project <a href="https://www.ajem.tn/fesguietna" rel="noopener">Fesguietna</a>: de majels (regenwaterreservoirs) van Djerba die zij heeft geïnventariseerd, met hun staat; elk punt verwijst naar zijn fiche en foto's op de site van AJEM.
+28	<b>Elders in de wereld</b>: de kaart leest OpenStreetMap live voor het getoonde gebied (wanneer u inzoomt op een stad of op ‘In mijn buurt’ tikt).
+29	<b>De bezoekers</b>: iedereen kan een waterpunt melden. Het wordt automatisch gepubliceerd (ongeveer om de 2 uur), gemarkeerd als ‘te bevestigen’ totdat een andere bezoeker het bevestigt.
+30	Hoe wordt het gecontroleerd?
+31	De robot weigert een onmogelijke positie of een onbekend type, verwijdert telefoonnummers en links (geen reclame) en beperkt het aantal meldingen per telefoon.
+32	Een punt dat op minder dan 40 m van een bekend punt van hetzelfde type wordt gemeld, telt als bevestiging (geen dubbels).
+33	Als meerdere bezoekers ‘bestaat niet meer’ zeggen (meer dan de bevestigingen), wordt het punt van de kaart gehaald.
+34	<b>Niemand controleert de kwaliteit van het water</b>: het is niet gecontroleerd en is mogelijk niet drinkbaar.
+35	Uw gegevens
+36	Uw positie dient alleen om nabije punten te tonen, op uw telefoon: ze wordt alleen verstuurd als u een waterpunt meldt (en dan alleen de positie van het punt). Een anonieme browser-ID voorkomt dat dezelfde persoon meermaals stemt. Anonieme bezoekstatistieken, zonder cookies.
+37	Credits
+38	Punten en kaartachtergrond:
+39	Majels van Djerba:
+40	Kaart: Leaflet.
+41	Foto van de majel op Djerba: leerlingen van de basisschool Beb Djabli in Téboursouk, wedstrijd WikiChallenge 2022,
+42	(bijgesneden)
+43	Contact
+44	Een fout, een idee? <a href="../#avis">Schrijf ons via ‘Uw mening’</a>.
+45	De Koran en water
+46	Water in de Koran en de Soenna
+47	Een majel bouwen, een fontein onderhouden of een bron aanwijzen is ‘te drinken geven’: de beste liefdadigheid volgens de Profeet ﷺ. De teksten staan in het Arabisch, met de vertaling van hun betekenis.
+48	Kent u een majel, een fontein of een bron die voor iedereen open is? <a href="../#signaler">Zet hem op de kaart</a>, zodat anderen er kunnen drinken.
+49	Foto
+50	Waar vindt u water: bronnen, fonteinen en majels
+51	De gratis kaart van waterpunten, in Tunesië en overal ter wereld. Vind het dichtstbijzijnde, en voeg de punten toe die u kent om anderen te helpen.
+52	waterpunten in Tunesië · en de hele wereld
+53	<b>Niet-gecontroleerd water.</b> Bronnen, putten en majels worden niet onderzocht: het water is mogelijk niet drinkbaar. Kook of filter het bij twijfel, en geef het niet aan baby's.
+54	In mijn buurt
+55	Tik op een punt voor de route, of om te zeggen of het nog bestaat. Niet gevonden?
+56	Ook zoeken op Google Maps
+57	De majels van Djerba op de kaart (naam, staat en foto's) komen uit de inventaris van de vereniging <b>AJEM</b>, project
+58	: met dank aan hen.
+59	Een waterpunt melden
+60	Bekijken
+61	Majels en putten in Tunesië
+62	Hoe een majel wordt gebouwd, de putten en de oases, en wat vandaag nog wordt gebruikt: uitleg en links.
+63	De Koran en de Soenna over water
+64	‘De beste liefdadigheid: te drinken geven’ — verzen en hadiths over water.
+65	Flessenwater: vergelijk de prijzen
+66	Op onze site Prix des Eaux de Tunisie: het goedkoopste pak van zes flessen van vandaag.
+67	Uw mening
+68	Al onze diensten
+69	Een opmerking, een fout, een idee? Schrijf ons: elk bericht wordt gelezen.
+70	Uw beoordeling (optioneel)
+71	Zeer goed
+72	Goed
+73	Matig
+74	Niet goed
+75	Uw bericht
+76	Uw e-mailadres (optioneel, om u te antwoorden)
+77	Versturen
+78	Uw mening wordt naar de maker van de site gestuurd (dienst Formspree). Er wordt niets verstuurd zonder een klik op ‘Versturen’.
+79	Een bron, een fontein, een openbare kraan, een majel die voor iedereen open is (Djerba, het zuiden…): help anderen water te vinden. Na een automatische controle wordt het punt op de kaart gepubliceerd, ‘te bevestigen’ totdat een andere bezoeker het bevestigt.
+80	Type
+81	Naam of herkenningspunt
+82	Mijn locatie bepalen (gps)
+83	De automatische positie is niet altijd nauwkeurig: verplaats de markering (of tik op de kaart) om ze precies op het waterpunt te zetten, en bevestig daarna.
+84	Deze positie bevestigen
+85	Er wordt niets persoonlijks verstuurd: alleen het type, de naam van de plaats en de positie. Telefoonnummers en reclame worden automatisch verwijderd. Een punt verdwijnt als meerdere bezoekers zeggen dat het niet meer bestaat.
+86	— kiezen —
+87	Natuurlijke bron
+88	Drinkwaterfontein
+89	Kraan / openbaar waterpunt
+90	Openbare majel
+91	Put
+92	Wat u goed vindt, wat ontbreekt, een fout die verbeterd moet worden…
+93	naam@example.com
+94	Optioneel
+95	Een witte majel (regenwaterreservoir) op Djerba, tussen de palmbomen
+96	Majels en putten
+97	Al eeuwenlang wordt in Tunesië regenwater opgevangen in reservoirs (majels, fesguia's), worden putten gegraven en wordt het water van de oases tot op de minuut verdeeld. Veel van die technieken worden vandaag nog gebruikt. Hier vindt u de hoofdzaken, en betrouwbare links om verder te lezen, te bouwen of te restaureren.
+98	De majel in het kort
+99	<b>Een ondergronds reservoir</b> (ماجل) dat het regenwater opvangt van een dak, een binnenplaats of een hellend terrein (het ‘impluvium’).
+100	<b>Drie delen</b>: het oppervlak dat het water opvangt, een klein bekken waarin het slib bezinkt, en dan het in de grond uitgegraven reservoir, dat waterdicht is bepleisterd.
+101	<b>Op Djerba en in het zuiden</b> staat de majel van het huis naast de fesguia, een groot, vaak openbaar reservoir; daken en binnenplaatsen worden vóór de regens met kalk gewit om het water schoon te houden.
+102	<b>Vandaag nog nuttig</b>: door de droogte verleent de staat een renteloze lening om een majel te bouwen, en verenigingen restaureren de openbare reservoirs.
+103	Het water van een majel is niet gecontroleerd: kook of filter het voordat u het drinkt.
+104	Majels en fesguia's van Djerba en het zuiden
+105	inventaris, kaarten en restauratie van de openbare reservoirs van Djerba (de 212 majels op onze kaart komen van hen).
+106	‘De majels, een voorouderlijke schat’ — hoe ze werken.
+107	de reservoirs van Djerba eenvoudig uitgelegd (majel, fesguia).
+108	de menzel, het traditionele huis van Djerba, met zijn reservoir en zijn put.
+109	de voorouderlijke reservoirs van Djerba, erfgoed en hulpmiddel tegenover het klimaat.
+110	Hoe een majel wordt gebouwd
+111	volledige technische fiche (Instituut voor Aride Regio's van Médenine): opvangoppervlak, bezinkbekken, reservoir, afmetingen, kosten en onderhoud.
+112	de technieken om water op te vangen in Tunesië en hun effecten op bodem en water.
+113	‘Bij waterschaarste grijpen de Tunesiërs terug naar voorouderlijke methoden’ — gekalkte daken, reservoirs, tips.
+114	Putten en oases
+115	de beroemde put van Kairouan, waarvan het water wordt opgehaald door een noria die door een dromedaris wordt aangedreven.
+116	Bir Barrouta vandaag: geschiedenis, legende en staat van het monument.
+117	‘Bled el Abar’ (het land van de putten): een project om de putten van de Tunesische woestijn te herstellen.
+118	Ibn Chabbat, de ‘meester van het water’ van de Djerid, en de verdeling van het oasewater volgens de tijd.
+119	de oase van Gabès, de enige kustoase, op de voorlopige Werelderfgoedlijst.
+120	water in het Romeinse Carthago en in Tunis: reservoirs, putten en waterraderen.
+121	Regen opvangen op de gronden van het zuiden
+122	de jessour in de bergen van Médenine: muurtjes die water en aarde vasthouden om olijf- en vijgenbomen te telen.
+123	de tabia's aan de voet van de bergen: aarden dijken die het afstromende water opvangen en het grondwater aanvullen.
+124	Vandaag nog in gebruik
+125	de renteloze lening van de staat om een majel te bouwen (begrotingswet), verlengd.
+126	het WWF stelt voor de majels nieuw leven in te blazen om de klimaatverandering het hoofd te bieden.
+127	‘Bled al Abar’, een project om de putten van de Tunesische woestijn op te waarderen.
+128	Kent u een majel of een put die voor iedereen open is?
+129	Zet hem op de kaart
+130	Waterpunten Tunesië
+131	Presentatievideo
+132	De site openen
+133	De video delen
+134	Kaart
+135	Gratis · bronnen, fonteinen, majels
+136	Deze pagina delen
+137	Delen
+138	Taal
+139	Rubrieken
+140	Kaart van de waterpunten
+141	Prijs van flessenwater
+142	Niet-gecontroleerd water: bronnen, putten en majels worden niet onderzocht. Deze site is geen officiële dienst.
+143	Punten: © OpenStreetMap-bijdragers (ODbL), vereniging AJEM (majels van Djerba) en bezoekers van de site. Foto: Wikimedia Commons —
+144	credits
+145	alle rechten voorbehouden.
+146	alle rechten voorbehouden
+147	De site:
+148	Bekijk de video:
+149	Geïnventariseerd door de vereniging AJEM (Fesguietna)
+150	Bevestigd door bezoekers
+151	Gemeld door een bezoeker, te bevestigen
+152	Goede staat
+153	Matige staat
+154	Slechte staat
+155	Zeer slechte staat
+156	Fiche en foto's op de site van AJEM
+157	bevestiging(en)
+158	Route (Google Maps)
+159	Dat klopt
+160	Bestaat niet meer
+161	Het dichtst bij u
+162	erheen gaan
+163	Elders in de wereld: zoom in op een stad, of tik op ‘In mijn buurt’, om de waterpunten daar te zien.
+164	Waterpunten in dit gebied worden gezocht…
+165	{n} waterpunten in dit gebied (OpenStreetMap).
+166	Hier is geen waterpunt bekend: kent u er een? Meld het.
+167	OpenStreetMap reageert momenteel niet: probeer het zo dadelijk opnieuw.
+168	Dank u! Dit wordt binnen ongeveer 2 uur verwerkt.
+169	Uw positie wordt gezocht…
+170	Positie niet beschikbaar: sta locatiebepaling toe, of zoek op de kaart.
+171	Markering geplaatst: controleer ze, en kies daarna ‘Deze positie bevestigen’.
+172	Geen waterpunt gemeld in de laatste 30 dagen: wees de eerste!
+173	Laatste waterpunten gemeld door bezoekers
+174	bevestigd door {n} bezoekers
+175	te bevestigen
+176	gemeld op
+177	op de kaart bekijken
+178	Positie niet beschikbaar: tik liever op de plek op de kaart.
+179	Plaats eerst de markering: ‘Mijn locatie bepalen (gps)’ of tik op de kaart.
+180	✔ Positie bevestigd
+181	Kies het type waterpunt.
+182	Plaats de markering op de kaart, en kies daarna ‘Deze positie bevestigen’.
+183	Bezig met versturen…
+184	Dank u! Het punt verschijnt binnen ongeveer 2 uur op de kaart (‘te bevestigen’ totdat een andere bezoeker het bevestigt).
+185	Versturen mislukt — controleer uw verbinding en probeer het opnieuw.
+186	Schrijf uw bericht voordat u verstuurt.
+187	Bericht te lang: maximaal {n} tekens.
+188	Dank u! Uw mening is verstuurd.
+189	Versturen mislukt — controleer uw verbinding en probeer het later opnieuw.
+190	Foto's van de soorten waterpunten (startpagina), Wikimedia Commons, bijgesneden:
+191	Vertalingen van de betekenis van de Koranverzen (pagina ‘De Koran en water’):
+192	Hadiths in het Engels:

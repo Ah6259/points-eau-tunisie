@@ -13,13 +13,16 @@ sont pris à la racine du site. Aucune dépendance : seulement la bibliothèque 
 import html, json, os, posixpath, re
 from html.parser import HTMLParser
 
-LANGUES = ["fr", "ar", "en", "tr", "id", "ur", "de", "es"]
-NOUVELLES = ["tr", "id", "ur", "de", "es"]
+LANGUES = ["fr", "ar", "en", "tr", "id", "ur", "de", "es", "it", "pt", "nl", "zh", "ja", "ko", "hi"]
+NOUVELLES = ["tr", "id", "ur", "de", "es", "it", "pt", "nl", "zh", "ja", "ko", "hi"]
 DROITE = ("ar", "ur")
 COMMUNS = ("assets/", "donnees/", "manifest.webmanifest", "sw.js", "favicon.ico")      # fichiers pris à la racine du site
 SITE = {"fr": "Points d'eau Tunisie", "ar": "نقاط الماء في تونس", "en": "Water Points Tunisia", "tr": "Tunus Su Noktaları", "id": "Titik Air Tunisia",
-        "ur": "تیونس کے پانی کے مقامات", "de": "Wasserstellen Tunesien", "es": "Puntos de agua Túnez"}
-LOCALE = {"ar": "ar_TN", "en": "en_US", "tr": "tr_TR", "id": "id_ID", "ur": "ur_PK", "de": "de_DE", "es": "es_ES"}
+        "ur": "تیونس کے پانی کے مقامات", "de": "Wasserstellen Tunesien", "es": "Puntos de agua Túnez",
+        "it": "Punti d'acqua Tunisia", "pt": "Pontos de água Tunísia", "nl": "Waterpunten Tunesië", "zh": "突尼斯饮水点", "ja": "チュニジアの水場",
+        "ko": "튀니지 식수 지점", "hi": "ट्यूनीशिया के जल-स्थल"}
+LOCALE = {"ar": "ar_TN", "en": "en_US", "tr": "tr_TR", "id": "id_ID", "ur": "ur_PK", "de": "de_DE", "es": "es_ES",
+          "it": "it_IT", "pt": "pt_PT", "nl": "nl_NL", "zh": "zh_CN", "ja": "ja_JP", "ko": "ko_KR", "hi": "hi_IN"}
 VIDES = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "source", "track", "wbr"}
 ISOLES = re.compile("[⁦-⁩‎‏]")
 
@@ -212,6 +215,25 @@ def variante(page_fr, base, chemin, l, langues, trad, meta=None, indexer=True):
                 e.poser(nom, "../" * (prof + 1) + cible + m.group(2))
             elif cible.startswith("video/"):
                 e.poser(nom, "../" * (prof + 1) + cible + "?lang=" + l + re.sub(r"^\?[^#]*", "", m.group(2)))
+    # traductions des versets et hadiths (éléments data-t, une par langue) : on ne garde que celle de la langue de la page
+    # (pour l'arabe : aucune, le texte arabe est l'original)
+    for parent in [racine] + list(racine.tous()):
+        if any(e.balise and e.get("data-t") is not None for e in parent.enfants):
+            parent.enfants = [e for e in parent.enfants if not (e.balise and e.get("data-t") is not None and e.get("data-t") != l)]
+    # dictionnaires : une page de langue ne charge que le sien (assets/l/<langue>.js) ; l'arabe et l'anglais sont écrits dans la
+    # page (aucun dictionnaire)
+    for parent in [racine] + list(racine.tous()):
+        garder = []
+        for e in parent.enfants:
+            src = (e.get("src") or "") if e.balise == "script" else ""
+            if "assets/langues.js" in src and l not in NOUVELLES:
+                if garder and garder[-1].balise is None and not garder[-1].brut.strip():
+                    garder.pop()                    # le saut de ligne qui précédait la balise retirée
+                continue
+            if "assets/langues.js" in src:
+                e.poser("src", src.replace("assets/langues.js", f"assets/l/{l}.js"))
+            garder.append(e)
+        parent.enfants = garder
     # titre, description, aperçu de partage
     tete = premier(racine, lambda e: e.balise == "head")
     h1 = premier(racine, lambda e: e.balise == "h1")

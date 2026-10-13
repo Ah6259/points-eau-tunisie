@@ -26,7 +26,7 @@ const PAGES = [];
 })("");
 
 // Une adresse par langue (12/10/2026) : ar/…, en/…, tr/…, id/…, ur/…, de/…, es/… ; le français garde les adresses d'origine.
-const AUTRES = ["ar", "en", "tr", "id", "ur", "de", "es"];
+const AUTRES = ["ar", "en", "tr", "id", "ur", "de", "es", "it", "pt", "nl", "zh", "ja", "ko", "hi"];
 const langueDe = p => AUTRES.find(l => p.startsWith(l + "/")) || "fr";
 const PAGES_FR = PAGES.filter(p => langueDe(p) === "fr");
 const PAGES_LANGUE = PAGES.filter(p => langueDe(p) !== "fr");
@@ -224,8 +224,13 @@ check("robots.txt (IA refusées, sitemap), sitemap avec les pages, LICENSE", /GP
 }
 // ---- 6. huit langues (09/10/2026) : turc, indonésien, ourdou, allemand, espagnol traduits dans assets/langues.js (clé = texte français)
 {
-  const NOUVELLES = ["tr", "id", "ur", "de", "es"];
-  const TR = (() => { const w = {}; new Function("window", lire("assets/langues.js"))(w); return w.TRADUCTIONS || {}; })();
+  const NOUVELLES = ["tr", "id", "ur", "de", "es", "it", "pt", "nl", "zh", "ja", "ko", "hi"];
+  // on lit les SOURCES des traductions : assets/langues.js (5 langues) et tools/langues_plus/ (7 langues ajoutées le 13/10/2026)
+  const TR = (() => { const w = {}; new Function("window", lire("assets/langues.js"))(w);
+    const frP = JSON.parse(lire("tools/langues_plus/_francais.json")).ui;
+    for (const l of ["it", "pt", "nl", "zh", "ja", "ko", "hi"]) (w.TRADUCTIONS[l] = {}, lire(`tools/langues_plus/${l}.txt`)).split(String.fromCharCode(10)).filter(x => x.trim()).forEach(x => {
+      const i = x.indexOf(String.fromCharCode(9)); w.TRADUCTIONS[l][frP[+x.slice(0, i)].replace(/\s+/g, " ").trim()] = x.slice(i + 1); });
+    return w.TRADUCTIONS || {}; })();
   const cle = s => String(s).replace(/\s+/g, " ").trim();
   const textes = new Map(), structure = [];
   const ajouter = (fr, ou) => { fr = cle(fr || ""); if (fr && !textes.has(fr)) textes.set(fr, ou); };
@@ -272,9 +277,13 @@ check("robots.txt (IA refusées, sitemap), sitemap avec les pages, LICENSE", /GP
     if ([...h.matchAll(/<link rel="alternate"[^>]*>/g)].join("") !== [...lire(fr).matchAll(/<link rel="alternate"[^>]*>/g)].join("")) pbL.push(p + " liens hreflang différents de la page française");
     if (!lire("sitemap.xml").includes(`<loc>${url}</loc>`)) pbL.push(p + " absente du plan du site");
   }
-  check(`une adresse par langue : ${PAGES_LANGUE.length} pages (7 langues × ${frSansVideo.length}), chacune dans sa langue (lang, sens, titre, adresse officielle, fichiers communs, plan du site) ${pbL.slice(0, 4).join(" | ")}`,
-    PAGES_LANGUE.length === 7 * frSansVideo.length && !pbL.length);
-  check("hreflang : français à l'adresse d'origine, les 7 autres langues dans leur dossier, x-default = anglais, plus aucun « ?lang= »",
+  check(`une adresse par langue : ${PAGES_LANGUE.length} pages (${AUTRES.length} langues × ${frSansVideo.length}), chacune dans sa langue (lang, sens, titre, adresse officielle, fichiers communs, plan du site) ${pbL.slice(0, 4).join(" | ")}`,
+    PAGES_LANGUE.length === AUTRES.length * frSansVideo.length && !pbL.length);
+  check("un dictionnaire par langue (assets/l/<langue>.js), chargé par les pages de cette langue seulement ; aucun pour l'arabe et l'anglais ; une seule traduction des versets par page de langue",
+    NOUVELLES.every(l => existsSync(join(root, `assets/l/${l}.js`)) && lire(`${l}/index.html`).includes(`assets/l/${l}.js`) && !lire(`${l}/index.html`).includes("assets/langues.js")
+      && [...new Set([...lire(`${l}/coran-et-eau/index.html`).matchAll(/data-t="(\w+)"/g)].map(m => m[1]))].join() === l)
+    && !/assets\/(l\/|langues\.js)/.test(lire("ar/index.html")) && !/data-t=/.test(lire("ar/coran-et-eau/index.html")));
+  check("hreflang : français à l'adresse d'origine, les autres langues dans leur dossier, x-default = anglais, plus aucun « ?lang= »",
     frSansVideo.every(p => { const h = lire(p), d = p.replace(/index\.html$/, "");
       return h.includes(`hreflang="fr" href="${BASE}${d}"`) && AUTRES.every(l => h.includes(`hreflang="${l}" href="${BASE}${l}/${d}"`))
         && h.includes(`hreflang="x-default" href="${BASE}en/${d}"`) && !/hreflang="[^"]*" href="[^"]*[?]lang=/.test(h); }));
@@ -306,9 +315,9 @@ check("robots.txt (IA refusées, sitemap), sitemap avec les pages, LICENSE", /GP
 {
   const { w, d, js } = await page("index.html");          // français (mémoire « langue » = fr)
   const bouton = () => d.querySelector(".langues-bouton"), liste = () => d.getElementById("langues-liste");
-  check("(c) sélecteur compact : un bouton « FR » fermé, liste des 8 langues écrites dans leur langue",
+  check("(c) sélecteur compact : un bouton « FR » fermé, liste des 15 langues écrites dans leur langue",
     !!bouton() && /FR/.test(bouton().textContent) && bouton().getAttribute("aria-expanded") === "false" && liste().hidden
-    && [...liste().querySelectorAll("[data-lang]")].map(b => b.textContent).join("|") === "Français|العربية|English|Türkçe|Bahasa Indonesia|اردو|Deutsch|Español");
+    && [...liste().querySelectorAll("[data-lang]")].map(b => b.textContent).join("|") === "Français|العربية|English|Türkçe|Bahasa Indonesia|اردو|Deutsch|Español|Italiano|Português|Nederlands|中文|日本語|한국어|हिन्दी");
   bouton().click();
   const ouverte = bouton().getAttribute("aria-expanded") === "true" && !liste().hidden;
   d.dispatchEvent(new w.KeyboardEvent("keydown", { key: "Escape" }));
@@ -342,7 +351,7 @@ check("robots.txt (IA refusées, sitemap), sitemap avec les pages, LICENSE", /GP
     ap.includes("relus tous les 3 mois") && ap.includes("كل ثلاثة أشهر") && ap.includes("every 3 months") && !/chaque semaine|كل أسبوع|every week/.test(ap));
 }
 {
-  const LANG7 = ["fr", "en", "tr", "id", "ur", "de", "es"];
+  const LANG7 = ["fr", "en", "tr", "id", "ur", "de", "es", "it", "pt", "nl", "zh", "ja", "ko", "hi"];     // 14 langues depuis le 13/10/2026 (l'arabe est l'original)
   const { d, js } = await page("coran-et-eau/index.html");
   const figs = [...d.querySelectorAll("figure.hadith")], manque = [];
   figs.forEach((f, i) => {

@@ -131,7 +131,7 @@ footer p{margin:6px 0}
 [data-l]{display:none}
 html[lang="fr"] [data-l="fr"],html[lang="ar"] [data-l="ar"],html[lang="en"] [data-l="en"]{display:revert}
 /* turc, indonésien, ourdou, allemand, espagnol : les éléments « en » sont montrés et traduits par assets/page.js (assets/langues.js) */
-html[lang="tr"] [data-l="en"],html[lang="id"] [data-l="en"],html[lang="ur"] [data-l="en"],html[lang="de"] [data-l="en"],html[lang="es"] [data-l="en"]{display:revert}
+html[lang="tr"] [data-l="en"],html[lang="id"] [data-l="en"],html[lang="ur"] [data-l="en"],html[lang="de"] [data-l="en"],html[lang="es"] [data-l="en"],html[lang="it"] [data-l="en"],html[lang="pt"] [data-l="en"],html[lang="nl"] [data-l="en"],html[lang="zh"] [data-l="en"],html[lang="ja"] [data-l="en"],html[lang="ko"] [data-l="en"],html[lang="hi"] [data-l="en"]{display:revert}
 
 @media (max-width:380px){
   .logo-nom small{display:none}
@@ -519,7 +519,7 @@ html[dir="rtl"] .langues-liste button{text-align:right}
 /* ---- page Coran : traduction du sens sous chaque verset / hadith, dans la langue choisie (rien en plus en arabe) ---- */
 [data-t]{display:none}
 html[lang="fr"] [data-t="fr"],html[lang="en"] [data-t="en"],html[lang="tr"] [data-t="tr"],html[lang="id"] [data-t="id"],
-html[lang="ur"] [data-t="ur"],html[lang="de"] [data-t="de"],html[lang="es"] [data-t="es"]{display:block}
+html[lang="ur"] [data-t="ur"],html[lang="de"] [data-t="de"],html[lang="es"] [data-t="es"],html[lang="it"] [data-t="it"],html[lang="pt"] [data-t="pt"],html[lang="nl"] [data-t="nl"],html[lang="zh"] [data-t="zh"],html[lang="ja"] [data-t="ja"],html[lang="ko"] [data-t="ko"],html[lang="hi"] [data-t="hi"]{display:block}
 .sens p{margin:10px 0 0;padding-top:10px;border-top:1px dashed var(--ligne);font:15px/1.6 Figtree,"Noto Kufi Arabic",system-ui,sans-serif;color:var(--texte);text-align:start}
 .sens p[dir="rtl"]{font-family:"Noto Kufi Arabic",Figtree,sans-serif;line-height:1.9}
 .sens small{display:block;margin-top:4px;font-size:12px;color:var(--doux)}

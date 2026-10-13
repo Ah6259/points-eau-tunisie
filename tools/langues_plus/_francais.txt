@@ -1,0 +1,193 @@
+0	Points d'eau de Tunisie et du monde
+1	Le monde entier est sur la carte
+2	Exemples :
+3	La Mecque
+4	Istanbul
+5	Paris
+6	Le Caire
+7	Voir le monde
+8	Ailleurs qu'en Tunisie : cherchez une ville, ou touchez un exemple.
+9	Chercher une ville du monde
+10	Chercher
+11	Ex. Paris, Istanbul, Le Caire…
+12	Recherche de la ville dans le monde…
+13	Aucune ville trouvée dans le monde pour ce nom.
+14	Carte centrée sur : {l} (recherche Nominatim, © contributeurs OpenStreetMap).
+15	La recherche de ville ne répond pas pour le moment : réessayez dans un instant.
+16	{n} points d'eau dans cette zone.
+17	Relevé de terrain : Water Point Data Exchange (WPdx, CC BY 4.0)
+18	<b>Water Point Data Exchange</b> (<a href="https://www.waterpointdata.org/" rel="noopener">WPdx</a>, licence CC BY 4.0) : plus de 800 000 points d'eau relevés sur le terrain dans 84 pays (surtout en Afrique et en Asie), lus en direct pour la zone affichée ; les points signalés « en panne » ne sont pas montrés.
+19	Les mosquées de Tunisie : carte et histoire
+20	Toutes les mosquées du pays sur une carte, et l'histoire des grandes mosquées, de Kairouan à la Zitouna.
+21	Accueil
+22	À propos
+23	À propos et méthode
+24	Un site gratuit et indépendant pour trouver de l'eau, en Tunisie et dans le monde, et aider les autres à en trouver.
+25	D'où viennent les points ?
+26	<b>OpenStreetMap</b>, la carte libre faite par ses contributeurs : sources, fontaines d'eau potable, robinets et points d'eau publics, citernes et puits de Tunisie, relus tous les 3 mois par notre robot (puits et citernes privés exclus).
+27	<b>L'association AJEM</b>, projet <a href="https://www.ajem.tn/fesguietna" rel="noopener">Fesguietna</a> : les majels (citernes d'eau de pluie) de Djerba qu'elle a recensés, avec leur état ; chaque point renvoie à sa fiche et à ses photos sur le site d'AJEM.
+28	<b>Ailleurs dans le monde</b> : la carte lit OpenStreetMap en direct pour la zone affichée (quand on zoome sur une ville ou touche « Autour de moi »).
+29	<b>Les visiteurs</b> : chacun peut signaler un point d'eau. Il est publié automatiquement (toutes les 2 heures environ), marqué « à confirmer » jusqu'à ce qu'un autre visiteur le confirme.
+30	Comment c'est vérifié ?
+31	Le robot refuse une position impossible ou un type inconnu, retire les numéros de téléphone et les liens (pas de publicité), et limite le nombre de signalements par téléphone.
+32	Un point signalé à moins de 40 m d'un point connu du même type compte comme une confirmation (pas de doublon).
+33	Si plusieurs visiteurs disent « n'existe plus » (plus nombreux que les confirmations), le point est retiré de la carte.
+34	<b>Personne ne vérifie la qualité de l'eau</b> : elle n'est pas contrôlée et peut ne pas être potable.
+35	Vos données
+36	Votre position sert seulement à afficher les points proches, dans votre téléphone : elle n'est envoyée que si vous signalez un point d'eau (et alors seulement la position du point). Un identifiant anonyme du navigateur évite qu'une même personne vote plusieurs fois. Statistiques de visite anonymes, sans cookie.
+37	Crédits
+38	Points et fond de carte :
+39	Majels de Djerba :
+40	Carte : Leaflet.
+41	Photo du majel à Djerba : élèves de l'école primaire Beb Djabli de Téboursouk, concours WikiChallenge 2022,
+42	(recadrée)
+43	Contact
+44	Une erreur, une idée ? <a href="../#avis">Écrivez-nous dans « Votre avis »</a>.
+45	Le Coran et l'eau
+46	L'eau dans le Coran et la Sunna
+47	Construire un majel, entretenir une fontaine ou indiquer une source, c'est « donner à boire » : la meilleure aumône selon le Prophète ﷺ. Les textes sont en arabe, avec la traduction de leur sens.
+48	Vous connaissez un majel, une fontaine ou une source ouverte à tous ? <a href="../#signaler">Ajoutez-le sur la carte</a>, pour que d'autres puissent y boire.
+49	Photo
+50	Où trouver de l'eau : sources, fontaines et majels
+51	La carte gratuite des points d'eau, en Tunisie et partout dans le monde. Trouvez le plus proche, et ajoutez ceux que vous connaissez pour aider les autres.
+52	points d'eau en Tunisie · et le monde entier
+53	<b>Eau non contrôlée.</b> Les sources, puits et majels ne sont pas analysés : l'eau peut ne pas être potable. Faites-la bouillir ou filtrez-la en cas de doute, et ne la donnez pas aux bébés.
+54	Autour de moi
+55	Touchez un point pour l'itinéraire, ou pour dire s'il existe toujours. Pas trouvé ?
+56	Chercher aussi sur Google Maps
+57	Les majels de Djerba sur la carte (leur nom, leur état et leurs photos) viennent du recensement de l'association <b>AJEM</b>, projet
+58	: merci à eux.
+59	Signaler un point d'eau
+60	Voir
+61	Majels et puits en Tunisie
+62	Comment on construit un majel, les puits et les oasis, et ce qui sert encore aujourd'hui : explications et liens.
+63	Le Coran et la Sunna sur l'eau
+64	« La meilleure aumône : donner à boire » — versets et hadiths sur l'eau.
+65	Eau en bouteille : comparez les prix
+66	Sur notre site Prix des Eaux de Tunisie : la stika la moins chère aujourd'hui.
+67	Votre avis
+68	Tous nos services
+69	Une remarque, une erreur, une idée ? Écrivez-nous : chaque message est lu.
+70	Votre note (facultatif)
+71	Très bien
+72	Bien
+73	Moyen
+74	Pas bien
+75	Votre message
+76	Votre e-mail (facultatif, pour vous répondre)
+77	Envoyer
+78	Votre avis est envoyé au créateur du site (service Formspree). Rien n'est envoyé sans clic sur « Envoyer ».
+79	Une source, une fontaine, un robinet public, un majel ouvert à tous (Djerba, le Sud…) : aidez les autres à trouver de l'eau. Après une vérification automatique, le point est publié sur la carte, « à confirmer » jusqu'à ce qu'un autre visiteur le confirme.
+80	Type
+81	Nom ou repère
+82	Me localiser (GPS)
+83	La position automatique n'est pas toujours exacte : déplacez le repère (ou touchez la carte) pour le mettre sur l'endroit précis du point d'eau, puis confirmez.
+84	Confirmer cette position
+85	Rien de personnel n'est envoyé : seulement le type, le nom du lieu et la position. Les numéros de téléphone et la publicité sont retirés automatiquement. Un point disparaît si plusieurs visiteurs disent qu'il n'existe plus.
+86	— choisir —
+87	Source naturelle
+88	Fontaine d'eau potable
+89	Robinet / point d'eau public
+90	Majel public
+91	Puits
+92	Ce qui vous plaît, ce qui manque, une erreur à corriger…
+93	nom@example.com
+94	Facultatif
+95	Un majel blanc (citerne d'eau de pluie) à Djerba, entre les palmiers
+96	Majels &amp; puits
+97	Depuis des siècles, on recueille en Tunisie l'eau de pluie dans des citernes (majels, fesguias), on creuse des puits et on partage l'eau des oasis au temps près. Beaucoup de ces techniques servent encore aujourd'hui. Voici l'essentiel, et des liens sérieux pour aller plus loin, construire ou restaurer.
+98	Le majel en bref
+99	<b>Une citerne enterrée</b> (ماجل) qui recueille l'eau de pluie d'un toit, d'une cour ou d'un terrain en pente (l'« impluvium »).
+100	<b>Trois parties</b> : la surface qui recueille l'eau, un petit bassin où la boue se dépose, puis le réservoir creusé dans le sol et enduit pour être étanche.
+101	<b>À Djerba et dans le Sud</b>, le majel de la maison voisine avec la fesguia, grande citerne souvent publique ; les toits et les cours sont blanchis à la chaux avant les pluies pour garder l'eau propre.
+102	<b>Encore utile aujourd'hui</b> : avec les sécheresses, l'État accorde un crédit sans intérêt pour construire un majel, et des associations restaurent les citernes publiques.
+103	L'eau d'un majel n'est pas contrôlée : faites-la bouillir ou filtrez-la avant de la boire.
+104	Majels et fesguias de Djerba et du Sud
+105	recensement, cartes et restauration des citernes publiques de Djerba (les 212 majels de notre carte viennent d'eux).
+106	« Les majels, un trésor ancestral » — comment ils fonctionnent.
+107	les citernes de Djerba expliquées simplement (majel, fesguia).
+108	le menzel, la maison traditionnelle de Djerba, avec sa citerne et son puits.
+109	les citernes ancestrales de Djerba, patrimoine et outil face au climat.
+110	Comment on construit un majel
+111	fiche technique complète (Institut des Régions Arides de Médenine) : surface de collecte, bassin de décantation, réservoir, dimensions, coûts et entretien.
+112	les techniques de récolte de l'eau en Tunisie et leurs effets sur les sols et l'eau.
+113	« Face à la pénurie d'eau, les Tunisiens recourent aux procédés ancestraux » — toits chaulés, citernes, conseils.
+114	Puits et oasis
+115	le célèbre puits de Kairouan, dont l'eau est remontée par une noria tournée par un dromadaire.
+116	Bir Barrouta aujourd'hui : histoire, légende et état du monument.
+117	« Bled el Abar » (le pays des puits) : un projet pour réhabiliter les puits du désert tunisien.
+118	Ibn Chabbat, le « maître des eaux » du Djérid, et le partage de l'eau des oasis selon le temps.
+119	l'oasis de Gabès, unique oasis littorale, sur la liste indicative du patrimoine mondial.
+120	l'eau à Carthage romaine et à Tunis : citernes, puits et roues à eau.
+121	Récolter la pluie sur les terres du Sud
+122	les jessour des montagnes de Médenine : des murets qui retiennent l'eau et la terre pour cultiver oliviers et figuiers.
+123	les tabias des piémonts : des digues de terre qui récoltent le ruissellement et rechargent la nappe.
+124	Encore utilisés aujourd'hui
+125	le crédit sans intérêt de l'État pour construire un majel (loi de finances), reconduit.
+126	le WWF propose de relancer les majels pour faire face au changement climatique.
+127	« Bled al Abar », un projet de mise en valeur des puits du désert tunisien.
+128	Vous connaissez un majel ou un puits ouvert à tous ?
+129	Ajoutez-le sur la carte
+130	Points d'eau Tunisie
+131	Vidéo de présentation
+132	Ouvrir le site
+133	Partager la vidéo
+134	Carte
+135	Gratuit · sources, fontaines, majels
+136	Partager cette page
+137	Partager
+138	Langue
+139	Rubriques
+140	Carte des points d'eau
+141	Prix de l'eau en bouteille
+142	Eau non contrôlée : les sources, puits et majels ne sont pas analysés. Ce site n'est pas un service officiel.
+143	Points : © contributeurs OpenStreetMap (ODbL), association AJEM (majels de Djerba) et visiteurs du site. Photo : Wikimedia Commons —
+144	crédits
+145	tous droits réservés.
+146	tous droits réservés
+147	Le site :
+148	Regardez la vidéo :
+149	Recensé par l'association AJEM (Fesguietna)
+150	Confirmé par les visiteurs
+151	Signalé par un visiteur, à confirmer
+152	Bon état
+153	État moyen
+154	Mauvais état
+155	Très mauvais état
+156	Fiche et photos sur le site AJEM
+157	confirmation(s)
+158	Itinéraire (Google Maps)
+159	C'est vrai
+160	N'existe plus
+161	Les plus proches de vous
+162	y aller
+163	Ailleurs dans le monde : zoomez sur une ville, ou touchez « Autour de moi », pour voir ses points d'eau.
+164	Recherche des points d'eau de cette zone…
+165	{n} points d'eau dans cette zone (OpenStreetMap).
+166	Aucun point d'eau connu ici : vous en connaissez un ? Signalez-le.
+167	OpenStreetMap ne répond pas pour le moment : réessayez dans un instant.
+168	Merci ! Pris en compte dans 2 heures environ.
+169	Recherche de votre position…
+170	Position indisponible : autorisez la localisation, ou cherchez sur la carte.
+171	Repère placé : vérifiez-le, puis « Confirmer cette position ».
+172	Aucun point d'eau signalé ces 30 derniers jours : soyez le premier !
+173	Derniers points d'eau signalés par les visiteurs
+174	confirmé par {n} visiteurs
+175	à confirmer
+176	signalé le
+177	voir sur la carte
+178	Position indisponible : touchez plutôt l'endroit sur la carte.
+179	Placez d'abord le repère : « Me localiser (GPS) » ou touchez la carte.
+180	✔ Position confirmée
+181	Choisissez le type de point d'eau.
+182	Placez le repère sur la carte, puis « Confirmer cette position ».
+183	Envoi…
+184	Merci ! Le point apparaîtra sur la carte dans 2 heures environ (« à confirmer » jusqu'à ce qu'un autre visiteur le confirme).
+185	Échec de l'envoi — vérifiez votre connexion et réessayez.
+186	Écrivez votre message avant d'envoyer.
+187	Message trop long : {n} caractères au maximum.
+188	Merci ! Votre avis a bien été envoyé.
+189	Échec de l'envoi — vérifiez votre connexion et réessayez plus tard.
+190	Photos des types de points d'eau (accueil), Wikimedia Commons, recadrées :
+191	Traductions du sens des versets du Coran (page « Le Coran et l'eau ») :
+192	Hadiths en anglais :

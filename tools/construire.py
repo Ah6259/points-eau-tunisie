@@ -8,10 +8,11 @@ L'accueil (index.html) est écrit à la main ; sa version ?v= est remplacée ici
 import json, os, re, shutil, sys
 
 ICI = os.path.dirname(os.path.abspath(__file__)); RACINE = os.path.dirname(ICI)
-VERSION = "20261012b"           # à changer à chaque modification des fichiers assets/ (le test vérifie une seule version)
+VERSION = "20261013a"           # à changer à chaque modification des fichiers assets/ (le test vérifie une seule version)
 BASE = "https://eau.clicvia.com/"
 sys.path.insert(0, ICI)
 import pages_langues as PL  # noqa: E402
+import langues_plus  # noqa: E402
 LANGUES = PL.LANGUES            # une vraie page par langue : ar/, en/, tr/, id/, ur/, de/, es/ (tools/pages_langues.py, 12/10/2026)
 CSP = ("default-src 'self'; script-src 'self' https://gc.zgo.at https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; "
        "font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://tile.openstreetmap.org https://*.tile.openstreetmap.org https://cdnjs.cloudflare.com https://prix-eaux-tunisie.goatcounter.com; "
@@ -114,6 +115,20 @@ def main():
         open(acc, "w", encoding="utf-8", newline="\n").write(t2)
     # une vraie page par langue, tirée de chaque page française ; plan du site avec toutes les adresses
     trads = PL.lire_traductions(os.path.join(RACINE, "assets", "langues.js"))
+    # les 7 langues ajoutées le 13/10/2026 (it, pt, nl, zh, ja, ko, hi) : tools/langues_plus/ ; mêmes textes que assets/langues.js
+    plus, ui = langues_plus.charger()
+    if set(ui) != set(trads["tr"]):
+        raise SystemExit("tools/langues_plus/_francais.json n'a pas les mêmes textes que assets/langues.js : "
+                         + " | ".join(sorted(set(trads["tr"]) ^ set(ui))[:5]))
+    trads.update(plus)
+    # un dictionnaire d'interface PAR langue (assets/l/<langue>.js) : une page de langue ne charge que le sien
+    os.makedirs(os.path.join(RACINE, "assets", "l"), exist_ok=True)
+    for l in PL.NOUVELLES:
+        open(os.path.join(RACINE, "assets", "l", l + ".js"), "w", encoding="utf-8", newline="\n").write(
+            "/* GÉNÉRÉ par tools/construire.py (assets/langues.js et tools/langues_plus/) — textes de cette langue, chargés\n"
+            "   seulement par les pages de cette langue ; clé = texte français exact. */\n"
+            f"window.TRADUCTIONS = window.TRADUCTIONS || {{}};\nwindow.TRADUCTIONS.{l} = "
+            + json.dumps(trads[l], ensure_ascii=False, indent=0, sort_keys=True) + ";\n")
     for l in LANGUES[1:]:
         if os.path.isdir(os.path.join(RACINE, l)):
             shutil.rmtree(os.path.join(RACINE, l))
@@ -133,7 +148,7 @@ def main():
     video = "".join(re.findall(r"  <url><loc>[^<]*/video/[^<]*</loc>.*?</url>\n", open(sm, encoding="utf-8").read())) if os.path.exists(sm) else ""
     open(sm, "w", encoding="utf-8", newline="\n").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
         + "".join(f"  <url><loc>{BASE}{a}</loc><lastmod>{maj}</lastmod></url>\n" for a in adresses) + video + "</urlset>\n")
-    print(f"{n} page(s) écrite(s) en 8 langues ({len(adresses)} adresses), {manque} texte(s) resté(s) en anglais, version {VERSION}")
+    print(f"{n} page(s) écrite(s) en {len(LANGUES)} langues ({len(adresses)} adresses), {manque} texte(s) resté(s) en anglais, version {VERSION}")
 
 
 if __name__ == "__main__":
