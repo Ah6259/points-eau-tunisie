@@ -74,7 +74,7 @@
 73	Moyen
 74	Pas bien
 75	Votre message
-76	Votre e-mail (facultatif, pour vous répondre)
+76	Votre e-mail (obligatoire, pour vous répondre)
 77	Envoyer
 78	Votre avis est envoyé au créateur du site (service Formspree). Rien n'est envoyé sans clic sur « Envoyer ».
 79	Une source, une fontaine, un robinet public, un majel ouvert à tous (Djerba, le Sud…) : aidez les autres à trouver de l'eau. Après une vérification automatique, le point est publié sur la carte, « à confirmer » jusqu'à ce qu'un autre visiteur le confirme.
@@ -191,3 +191,6 @@
 190	Photos des types de points d'eau (accueil), Wikimedia Commons, recadrées :
 191	Traductions du sens des versets du Coran (page « Le Coran et l'eau ») :
 192	Hadiths en anglais :
+193	Écrivez votre adresse e-mail (obligatoire) pour que nous puissions vous répondre.
+194	Nous l’avons bien reçu et nous vous répondrons à l’adresse :
+195	Envoyer un autre message

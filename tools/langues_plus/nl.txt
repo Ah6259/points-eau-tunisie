@@ -74,7 +74,7 @@
 73	Matig
 74	Niet goed
 75	Uw bericht
-76	Uw e-mailadres (optioneel, om u te antwoorden)
+76	Uw e-mailadres (verplicht, zodat we kunnen antwoorden)
 77	Versturen
 78	Uw mening wordt naar de maker van de site gestuurd (dienst Formspree). Er wordt niets verstuurd zonder een klik op ‘Versturen’.
 79	Een bron, een fontein, een openbare kraan, een majel die voor iedereen open is (Djerba, het zuiden…): help anderen water te vinden. Na een automatische controle wordt het punt op de kaart gepubliceerd, ‘te bevestigen’ totdat een andere bezoeker het bevestigt.
@@ -191,3 +191,6 @@
 190	Foto's van de soorten waterpunten (startpagina), Wikimedia Commons, bijgesneden:
 191	Vertalingen van de betekenis van de Koranverzen (pagina ‘De Koran en water’):
 192	Hadiths in het Engels:
+193	Vul uw e-mailadres in (verplicht) zodat we u kunnen antwoorden.
+194	We hebben het ontvangen en antwoorden op het adres:
+195	Nog een bericht sturen

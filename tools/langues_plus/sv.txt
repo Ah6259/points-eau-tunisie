@@ -74,7 +74,7 @@
 73	Medel
 74	Inte bra
 75	Ditt meddelande
-76	Din e-postadress (frivilligt, så att vi kan svara)
+76	Din e-post (obligatorisk, så att vi kan svara)
 77	Skicka
 78	Din åsikt skickas till webbplatsens skapare (tjänsten Formspree). Ingenting skickas utan ett klick på ”Skicka”.
 79	En källa, en fontän, en allmän kran, en majel som är öppen för alla (Djerba, södern…): hjälp andra att hitta vatten. Efter en automatisk kontroll publiceras punkten på kartan, som ”att bekräfta” tills en annan besökare bekräftar den.
@@ -191,3 +191,6 @@
 190	Foton av typerna av vattenställen (startsidan), Wikimedia Commons, beskurna:
 191	Översättningar av innebörden i Koranens verser (sidan ”Koranen och vattnet”):
 192	Hadither på engelska:
+193	Skriv din e-postadress (obligatorisk) så att vi kan svara dig.
+194	Vi har tagit emot det och svarar till adressen:
+195	Skicka ett nytt meddelande

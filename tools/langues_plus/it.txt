@@ -74,7 +74,7 @@
 73	Così così
 74	Non bene
 75	Il vostro messaggio
-76	La vostra e-mail (facoltativa, per rispondervi)
+76	La vostra e-mail (obbligatoria, per rispondervi)
 77	Invia
 78	La vostra opinione viene inviata al creatore del sito (servizio Formspree). Nulla viene inviato senza un clic su «Invia».
 79	Una sorgente, una fontana, un rubinetto pubblico, un majel aperto a tutti (Djerba, il Sud…): aiutate gli altri a trovare acqua. Dopo una verifica automatica, il punto viene pubblicato sulla mappa, «da confermare» finché un altro visitatore non lo conferma.
@@ -191,3 +191,6 @@
 190	Foto dei tipi di punti d'acqua (home), Wikimedia Commons, ritagliate:
 191	Traduzioni del significato dei versetti del Corano (pagina «Il Corano e l'acqua»):
 192	Hadith in inglese:
+193	Scrivete il vostro indirizzo e-mail (obbligatorio) per potervi rispondere.
+194	L’abbiamo ricevuto e vi risponderemo all’indirizzo:
+195	Inviare un altro messaggio

@@ -74,7 +74,7 @@
 73	Razoável
 74	Fraco
 75	A sua mensagem
-76	O seu e-mail (facultativo, para lhe respondermos)
+76	O seu e-mail (obrigatório, para lhe respondermos)
 77	Enviar
 78	A sua opinião é enviada ao criador do site (serviço Formspree). Nada é enviado sem clicar em «Enviar».
 79	Uma nascente, uma fonte, uma torneira pública, um majel aberto a todos (Djerba, o Sul…): ajude os outros a encontrar água. Depois de uma verificação automática, o ponto é publicado no mapa, «por confirmar» até outro visitante o confirmar.
@@ -191,3 +191,6 @@
 190	Fotos dos tipos de pontos de água (página inicial), Wikimedia Commons, recortadas:
 191	Traduções do sentido dos versículos do Alcorão (página «O Alcorão e a água»):
 192	Hadiths em inglês:
+193	Escreva o seu endereço de e-mail (obrigatório) para podermos responder.
+194	Recebemo-la e vamos responder para o endereço:
+195	Enviar outra mensagem

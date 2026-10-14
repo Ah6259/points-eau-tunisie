@@ -74,7 +74,7 @@
 73	Katamtaman
 74	Hindi maganda
 75	Ang inyong mensahe
-76	Ang inyong e-mail (opsyonal, para masagot namin kayo)
+76	Ang iyong email (kailangan, para makasagot kami)
 77	Ipadala
 78	Ang inyong opinyon ay ipinapadala sa gumawa ng site (serbisyong Formspree). Walang ipinapadala hangga't hindi pinipindot ang «Ipadala».
 79	Isang bukal, inuman, pampublikong gripo, majel na bukas sa lahat (Djerba, ang Timog…): tulungan ang iba na makahanap ng tubig. Pagkatapos ng awtomatikong pagsusuri, inilalathala ang punto sa mapa, na «kukumpirmahin pa» hanggang kumpirmahin ito ng ibang bisita.
@@ -191,3 +191,6 @@
 190	Mga larawan ng mga uri ng mapagkukunan ng tubig (home), Wikimedia Commons, ginupit:
 191	Mga salin ng kahulugan ng mga talata ng Qur'an (pahinang «Ang Qur'an at ang tubig»):
 192	Mga hadith sa Ingles:
+193	Isulat ang iyong email (kailangan) para makasagot kami sa iyo.
+194	Natanggap namin ito at sasagot kami sa:
+195	Magpadala ng isa pang mensahe

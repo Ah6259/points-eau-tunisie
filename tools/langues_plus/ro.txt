@@ -74,7 +74,7 @@
 73	Mediu
 74	Nu prea bine
 75	Mesajul dumneavoastră
-76	E-mailul dumneavoastră (opțional, pentru a vă răspunde)
+76	E-mailul dumneavoastră (obligatoriu, ca să vă putem răspunde)
 77	Trimite
 78	Părerea dumneavoastră este trimisă creatorului site-ului (serviciul Formspree). Nimic nu este trimis fără un clic pe „Trimite”.
 79	Un izvor, o cișmea, un robinet public, un majel deschis tuturor (Djerba, Sudul…): ajutați-i pe ceilalți să găsească apă. După o verificare automată, punctul este publicat pe hartă, „de confirmat” până când un alt vizitator îl confirmă.
@@ -191,3 +191,6 @@
 190	Fotografiile tipurilor de puncte de apă (pagina de pornire), Wikimedia Commons, decupate:
 191	Traduceri ale sensului versetelor din Coran (pagina „Coranul și apa”):
 192	Hadisuri în engleză:
+193	Scrieți adresa de e-mail (obligatorie) ca să vă putem răspunde.
+194	L-am primit și vă vom răspunde la adresa:
+195	Trimiteți un alt mesaj

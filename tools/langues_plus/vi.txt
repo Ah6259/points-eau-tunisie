@@ -74,7 +74,7 @@
 73	Trung bình
 74	Chưa tốt
 75	Tin nhắn của bạn
-76	E-mail của bạn (không bắt buộc, để chúng tôi trả lời)
+76	Email của bạn (bắt buộc, để chúng tôi trả lời)
 77	Gửi
 78	Ý kiến của bạn được gửi đến người tạo trang web (dịch vụ Formspree). Không có gì được gửi nếu bạn chưa bấm «Gửi».
 79	Một con suối, một vòi nước, một vòi công cộng, một majel mở cho mọi người (Djerba, miền Nam…): hãy giúp người khác tìm nước. Sau khi kiểm tra tự động, điểm được đăng lên bản đồ, ở trạng thái «chờ xác nhận» cho đến khi một khách khác xác nhận.
@@ -191,3 +191,6 @@
 190	Ảnh các loại điểm lấy nước (trang chủ), Wikimedia Commons, đã cắt:
 191	Bản dịch ý nghĩa các câu kinh Qur'an (trang «Kinh Qur'an và nước»):
 192	Hadith bằng tiếng Anh:
+193	Hãy nhập địa chỉ email (bắt buộc) để chúng tôi có thể trả lời bạn.
+194	Chúng tôi đã nhận được và sẽ trả lời đến địa chỉ:
+195	Gửi tin nhắn khác
