@@ -43,7 +43,7 @@ img,svg{display:block}
 .fil a{color:#fff}
 h1{font-size:clamp(24px,6.4vw,34px);line-height:1.15;margin:0 0 8px;letter-spacing:-.02em}
 .hero p.intro{margin:0;opacity:.92;max-width:600px}
-.maj{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;margin-top:14px;font-size:13px;font-weight:600;
+.maj{display:inline-flex;align-items:center;gap:6px;white-space:normal;max-width:100%;margin-top:14px;font-size:13px;font-weight:600;
   background:rgba(255,255,255,.14);border-radius:999px;padding:5px 12px}
 .maj::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:#7CF0BE}
 .chevauche{margin-top:-44px}

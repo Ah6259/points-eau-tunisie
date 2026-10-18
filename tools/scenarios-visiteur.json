@@ -1,0 +1,42 @@
+[
+ {
+  "page": "",
+  "nom": "accueil : nombre de points d'eau en Tunisie",
+  "lire": "#pe-total",
+  "attente": 2500
+ },
+ {
+  "page": "",
+  "nom": "accueil : filtres par type (le filtre montre son nombre)",
+  "lire": "#pe-filtres [data-type] b",
+  "attente": 2500
+ },
+ {
+  "page": "",
+  "nom": "accueil : un filtre retiré puis remis (le nombre reste affiché)",
+  "attente": 2500,
+  "etapes": [{"sel": "#pe-filtres [data-type]", "clic": true}, {"sel": "#pe-filtres [data-type]", "clic": true}],
+  "apres": 800,
+  "lire": "#pe-total"
+ },
+ {
+  "page": "",
+  "nom": "accueil : « Autour de moi » sans localisation (message clair, pas de bug)",
+  "attente": 2500,
+  "etapes": [{"sel": "#pe-autour", "clic": true}],
+  "apres": 1500
+ },
+ {
+  "page": "",
+  "nom": "accueil : fenêtre « Signaler un point d'eau » (s'ouvre sans bug)",
+  "attente": 2500,
+  "etapes": [{"sel": "#pe-sig-ouvrir", "clic": true}, {"sel": "#pe-nom", "valeur": "Fontaine du marché"}],
+  "apres": 1000
+ },
+ {
+  "page": "ar/",
+  "nom": "accueil en arabe : nombre de points d'eau",
+  "lire": "#pe-total",
+  "attente": 2500
+ }
+]
