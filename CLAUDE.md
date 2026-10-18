@@ -66,3 +66,7 @@ Règles communes : `../../regles communes a tous les sites.md`.
   Page « Le Coran et l'eau » : versets = traduction OFFICIELLE QuranEnc de chaque langue (dans le gabarit, jamais traduits par
   nous) ; hadiths = « traduction approximative du sens », comme en français. Une page de langue ne garde que la traduction de
   sa langue et ne charge que son dictionnaire `assets/l/<langue>.js`. Traductions écrites par Claude, non relues par des natifs.
+
+- **Test CSP des images (18/10/2026, VS.9, tous les sites qui affichent des images d'autres sites)** : test_site.mjs vérifie que
+  chaque image d'un autre site (balise `<img>`, fond de carte OpenStreetMap, image citée par un script ou les données) est autorisée
+  par la CSP `img-src` de SA page (cas vu sur Mosquées : 144 photos bloquées). Aucune violation ici. Nouveau serveur d'images = l'ajouter à `img-src`.
