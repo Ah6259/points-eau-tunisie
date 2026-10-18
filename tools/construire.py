@@ -74,7 +74,7 @@ def page(chemin_page, meta, corps):
 <meta property="og:type" content="website">
 <meta property="og:url" content="{BASE}{chemin_page.rsplit('index.html', 1)[0]}">
 <meta property="og:site_name" content="Points d'eau Tunisie">
-<meta property="og:locale" content="fr_TN">
+<meta property="og:locale" content="fr_FR">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&family=Noto+Kufi+Arabic:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{r}assets/style.css?v={VERSION}">

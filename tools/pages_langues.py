@@ -23,7 +23,7 @@ SITE = {"fr": "Points d'eau Tunisie", "ar": "نقاط الماء في تونس",
         "ko": "튀니지 식수 지점", "hi": "ट्यूनीशिया के जल-स्थल",
         "ru": "Источники воды Туниса", "vi": "Điểm lấy nước ở Tunisia", "th": "แหล่งน้ำในตูนิเซีย",
         "tl": "Mga mapagkukunan ng tubig sa Tunisia", "sv": "Vattenställen i Tunisien", "ro": "Puncte de apă în Tunisia"}
-LOCALE = {"ar": "ar_TN", "en": "en_US", "tr": "tr_TR", "id": "id_ID", "ur": "ur_PK", "de": "de_DE", "es": "es_ES",
+LOCALE = {"ar": "ar_AR", "en": "en_US", "tr": "tr_TR", "id": "id_ID", "ur": "ur_PK", "de": "de_DE", "es": "es_ES",
           "it": "it_IT", "pt": "pt_PT", "nl": "nl_NL", "zh": "zh_CN", "ja": "ja_JP", "ko": "ko_KR", "hi": "hi_IN",
           "ru": "ru_RU", "vi": "vi_VN", "th": "th_TH", "tl": "tl_PH", "sv": "sv_SE", "ro": "ro_RO"}
 VIDES = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "source", "track", "wbr"}
@@ -257,7 +257,7 @@ def variante(page_fr, base, chemin, l, langues, trad, meta=None, indexer=True):
         elif e.balise == "meta" and e.get("property") == "og:url":
             e.poser("content", adresse(base, chemin, l))
         elif e.balise == "meta" and e.get("property") == "og:locale":
-            e.poser("content", LOCALE.get(l, "fr_TN"))
+            e.poser("content", LOCALE.get(l, "fr_FR"))
         elif e.balise == "link" and e.get("rel") == "canonical":
             e.poser("href", adresse(base, chemin, l))
         elif e.balise == "meta" and e.get("name") == "robots" and not indexer:
