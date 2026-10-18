@@ -61,6 +61,11 @@ for (const p of PAGES) {
 }
 check(`toutes les pages : CSP, noai, pas de traduction auto, aucun script en ligne ${pb.join(" | ")}`, !pb.length);
 check(`une seule version ?v= (${[...versions].join(", ")})`, versions.size === 1);
+// carte Leaflet isolée (règle commune, 18/10/2026 : sur l'immobilier, une liste passait DERRIÈRE la carte) : couches Leaflet (400+)
+// enfermées dans la carte ; listes et fenêtres qui s'ouvrent par-dessus (langues, fenêtres d'aide) au z-index ≥ 1000
+{ const css = lire("assets/style.css"), z = sel => +((new RegExp("\\" + sel + "\\{[^}]*z-index:(\\d+)").exec(css) || [])[1] || 0);
+  check("carte Leaflet isolée (.leaflet-container{isolation:isolate;z-index:0}) ; liste des langues et fenêtres au z-index ≥ 1000",
+    /\.leaflet-container\{isolation:isolate;z-index:0\}/.test(css) && z(".langues-liste") >= 1000 && z(".help-pop") >= 1000); }
 check("CSP de l'accueil : carte (cdnjs, tuiles OpenStreetMap) et envoi au formulaire Google autorisés", (() => { const h = lire("index.html");
   return /script-src[^;]*cdnjs\.cloudflare\.com/.test(h) && /img-src[^;]*tile\.openstreetmap\.org/.test(h) && /connect-src[^;]*docs\.google\.com/.test(h); })());
 // ---- 18/10/2026 (règle VS.9, tous les sites qui affichent des images d'autres sites) : chaque image d'un autre site est autorisée

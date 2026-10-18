@@ -397,6 +397,8 @@ table.bareme td:last-child:not(.m){white-space:normal;text-align:start}
 
 /* ===== Points d'eau : carte, filtres, signalement (09/10/2026) ===== */
 .pe-carte{height:440px;border-radius:14px;border:1px solid var(--ligne);margin:10px 0;z-index:0}
+/* carte Leaflet isolée (règle commune, 18/10/2026) : ses couches (z-index 400+) ne passent jamais devant les menus et fenêtres (≥ 1000) */
+.leaflet-container{isolation:isolate;z-index:0}
 @media (max-width:460px){.pe-carte{height:380px}}
 .pe-filtres{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
 .pe-filtres .chipbtn{font:inherit;font-size:13.5px;font-weight:700;border:1.5px solid var(--ligne);background:var(--carte);color:var(--texte);border-radius:999px;padding:6px 11px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
