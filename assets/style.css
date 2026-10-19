@@ -426,7 +426,7 @@ table.bareme td:last-child:not(.m){white-space:normal;text-align:start}
   padding:7px 16px;font-size:13.5px;font-weight:700;white-space:nowrap;box-shadow:0 1px 2px rgba(15,43,61,.15)}
 .sig-bar:hover .sum-cta{filter:brightness(1.1)}
 .sig-cta-fl{display:none}
-@media (max-width:560px){.sig-bar{gap:8px;padding-inline:10px}.sig-bar h2{white-space:nowrap;font-size:min(18px,4.4vw)}
+@media (max-width:560px){.sig-bar{gap:8px;padding-inline:10px}.sig-bar h2{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:min(18px,4.4vw)}
   .sig-cta-txt{display:none}.sig-cta-fl{display:inline;font-size:18px;line-height:1;padding:0 4px}}
 .help-pop{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;background:rgba(15,43,61,.45);padding:16px}
 .help-pop[hidden]{display:none}
@@ -454,6 +454,7 @@ table.bareme td:last-child:not(.m){white-space:normal;text-align:start}
 .avis-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 .avis-send{font:inherit;font-weight:800;font-size:15px;border:0;border-radius:999px;background:var(--vert);color:#fff;padding:10px 26px;cursor:pointer}
 .avis-send:hover{filter:brightness(1.1)}
+#pe-form .avis-actions{margin-top:12px}  /* « Envoyer » à égale distance du bouton du dessus et du trait du dessous (§ 29) */
 #pe-statut{font-size:13.5px;color:var(--doux)}
 #pe-statut.ok{color:#128A52;font-weight:700}
 #pe-statut.err{color:var(--rouge);font-weight:700}
