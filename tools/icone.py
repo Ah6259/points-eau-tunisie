@@ -33,7 +33,7 @@ def svg(mode):
 
 def rendre(texte, png, taille=1024):
     html = os.path.splitext(png)[0] + "_r.html"
-    open(html, "w", encoding="utf-8").write('<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:transparent;overflow:hidden}svg{width:%dpx;height:%dpx;display:block}</style></head><body>%s</body></html>' % (taille, taille, texte))
+    open(html, "w", encoding="utf-8", newline="\n").write('<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:transparent;overflow:hidden}svg{width:%dpx;height:%dpx;display:block}</style></head><body>%s</body></html>' % (taille, taille, texte))
     subprocess.run([EDGE, "--headless=new", "--disable-gpu", "--hide-scrollbars", "--default-background-color=00000000",
                     f"--window-size={taille},{taille}", f"--screenshot={png}", "file:///" + html.replace("\\", "/")],
                    check=True, capture_output=True, timeout=90)
