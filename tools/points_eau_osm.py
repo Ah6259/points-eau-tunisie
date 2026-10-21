@@ -6,6 +6,7 @@ sont ajoutés par tools/signalements.py (même formulaire que les prix, format =
 Données © contributeurs OpenStreetMap, licence ODbL (citée sur la page). Lecture polie (User-Agent, 3 serveurs, essais).
 Panne ou réponse absurde (moins de MIN points) : l'ancien fichier est gardé, code de sortie 1.
 Usage : python tools/points_eau_osm.py"""
+import os
 import json, sys, time, urllib.parse, urllib.request
 from datetime import date
 from pathlib import Path
@@ -22,13 +23,25 @@ TYPES = [("natural", "spring", "source"), ("amenity", "drinking_water", "fontain
 MIN = 50
 
 
+# 21/10/2026 (même panne que les annuaires ce jour-là) : serveurs lents -> 10 essais de plusieurs minutes, le robot pouvait être
+# COUPÉ par GitHub avant la fin. Budget TOTAL de temps (OSM_BUDGET_S) : ensuite on s'arrête et l'ancien fichier est gardé.
+DEBUT_OSM = time.monotonic()
+BUDGET_OSM = float(os.environ.get("OSM_BUDGET_S") or 1500)
+
+
+def reste_osm():
+    return BUDGET_OSM - (time.monotonic() - DEBUT_OSM)
+
+
 def requete(q, essais=10):
     dernier = None
     for i in range(essais):
+        if reste_osm() < 30:
+            raise RuntimeError(f"OpenStreetMap trop lent : budget de {int(BUDGET_OSM // 60)} min dépassé ({dernier})")
         url = SERVEURS[i % len(SERVEURS)]
         try:
             req = urllib.request.Request(url, data=urllib.parse.urlencode({"data": q}).encode(), headers=UA)
-            with urllib.request.urlopen(req, timeout=200) as r:
+            with urllib.request.urlopen(req, timeout=min(200, max(10, reste_osm()))) as r:
                 d = json.loads(r.read())
             remarque = str(d.get("remark", ""))
             if "error" in remarque.lower() or "timed out" in remarque.lower():   # ex. serveur sans « aires » : réponse vide + erreur
@@ -38,7 +51,8 @@ def requete(q, essais=10):
             return d
         except Exception as e:
             dernier = e
-            time.sleep(10 * (i + 1))
+            print(f"  essai {i + 1} : {str(e)[:120]}", flush=True)
+            time.sleep(max(0, min(10 * (i + 1), reste_osm() - 30)))
     raise RuntimeError(f"Overpass indisponible : {dernier}")
 
 
