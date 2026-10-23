@@ -6,7 +6,9 @@ Nouveau PC : `git config user.name Ah6259` et `git config user.email 200752748+A
 Règles communes : `../../regles communes a tous les sites.md`.
 
 ## Le site (créé le 09/10/2026, idée d'Ahmed : « où trouver les sources d'eau, robinets publics, majels de Djerba et du Sud »)
-- https://ah6259.github.io/points-eau-tunisie/ — 8 langues (09/10/2026) : FR, AR, EN écrits dans les pages ; turc, indonésien,
+- **https://eau.clicvia.com/** (depuis le 11/10/2026 ; l'ancienne adresse ah6259.github.io/points-eau-tunisie/ redirige seule) —
+  **21 langues** depuis le 13/10/2026 (`LANGUES` de `tools/pages_langues.py` : fr, ar, en, tr, id, ur, de, es, it, pt, nl, zh, ja,
+  ko, hi, ru, vi, th, tl, sv, ro ; détail plus bas). Au départ (09/10/2026) : FR, AR, EN écrits dans les pages ; turc, indonésien,
   ourdou, allemand, espagnol dans `assets/langues.js` (clé = texte français exact ; tout nouveau texte y est traduit, le test le vérifie). Site SÉPARÉ de Prix des Eaux (décision d'Ahmed : sinon les
   visiteurs ne comprennent pas le lien) ; liens dans les deux sens (carte sur l'accueil + pied de page).
 - Accueil : carte Leaflet (fond OpenStreetMap, cdnjs) des points (`donnees/points_eau.js`), filtres par type (jamais un filtre
@@ -23,11 +25,17 @@ Règles communes : `../../regles communes a tous les sites.md`.
   Eaux (même formulaire : format POINT / POINT-OK / POINT-KO, marque = « type|nom » ou id, lieu = « lat,lon|jeton »).
   Le robot du site des Eaux ignore ces lignes. Règles dans `tools/points_eau.py` (Tunisie, type, nom nettoyé, 10/navigateur,
   doublon < 40 m = confirmation, statut signalé/confirmé, retiré si « n'existe plus » majoritaire ≥ 2, ≥ 3 pour OSM).
+  **Feuille illisible (23/10/2026, § 17 + § 38)** : erreur réseau, page HTML (connexion Google), réponse vide ou colonnes
+  manquantes = relue 2 fois (2 puis 4 min) ; toujours illisible : carte non touchée, début noté dans
+  `donnees/signalements_etat.json`, robot ROUGE si la panne dure plus de 2 jours. Feuille lisible sans nouveau signalement = vert.
+  Test : `tools/test_signalements_points.py` (sans réseau).
+- **Alertes (23/10/2026, comme Mosquées)** : `signalements.yml` et `osm.yml` ouvrent une issue « alerte-robot » en cas d'échec
+  (e-mail à Ahmed) et la referment seuls au passage suivant réussi.
 
 ## Fabrication et tests
 - Pages : `python tools/construire.py` (gabarits `tools/gabarits/`, une seule version `VERSION`) ; accueil écrit à la main.
 - Tests : `node tools/test_site.mjs`, `python tools/test_points.py`, `python tools/test_sabotage.py` (9 sabotages),
-  `node tools/test_sw.mjs`, `node tools/test_avis.mjs` ; tous dans `tests.yml`.
+  `node tools/test_sw.mjs`, `node tools/test_avis.mjs`, `python tools/test_signalements_points.py` ; tous dans `tests.yml`.
 - **« Tunisie et monde » (09/10/2026, demande d'Ahmed : que les visiteurs sachent que la carte couvre le monde)** : nom affiché
   (en-tête, pied de page, manifeste) « Points d'eau de Tunisie et du monde / نقاط الماء في تونس والعالم » (adresse du site inchangée)
   + bandeau `.monde-bande` juste au-dessus de la carte : « 🌍 Le monde entier est sur la carte », villes d'exemple (`data-ville-ex`,

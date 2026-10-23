@@ -1,6 +1,7 @@
 # Points d'eau d'OpenStreetMap (sources, fontaines, robinets, citernes, puits) : relus tous les 3 mois (décision d'Ahmed du 09/10/2026 :
 # les points d'eau changent peu ; les signalements des visiteurs restent publiés toutes les 2 h par signalements.yml).
-# Panne ou réponse suspecte : l'ancien fichier est gardé et une alerte est ouverte (issue -> e-mail à Ahmed).
+# Panne ou réponse suspecte : l'ancien fichier est gardé et une alerte est ouverte (issue -> e-mail à Ahmed), refermée seule au
+# passage suivant réussi (comme Mosquées, 23/10/2026).
 name: Relevé OpenStreetMap
 on:
   schedule:
@@ -32,10 +33,12 @@ jobs:
       - name: Recalculer la carte et enregistrer
         run: |
           python tools/test_points.py
-          python tools/signalements_points.py
+          # feuille des signalements illisible : la carte est recalculée au prochain passage du robot des signalements
+          # (qui a sa propre alerte, signalements.yml) ; le relevé OpenStreetMap est enregistré quand même
+          python tools/signalements_points.py || echo "::warning::feuille des signalements illisible : carte recalculée plus tard"
           git config user.name "robot-points-eau"
           git config user.email "robot-points-eau@users.noreply.github.com"
-          git add donnees/points_osm.json donnees/points_eau.js
+          git add donnees/points_osm.json donnees/points_eau.js donnees/signalements_etat.json
           if git diff --cached --quiet; then
             git commit --allow-empty -m "Battement de coeur : relevé OpenStreetMap inchangé"
           else
@@ -43,6 +46,11 @@ jobs:
           fi
           git pull -q --rebase --autostash
           git push
+      - name: Alerte refermée si tout va bien
+        if: success() && steps.releve.outputs.code == '0'
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: |
+          for n in $(gh issue list --label alerte-robot --state open --search "Points d'eau : relevé OpenStreetMap en échec in:title" --json number -q '.[].number'); do gh issue close "$n" --comment "Réparé : le robot a de nouveau réussi le $(date +%d/%m/%Y)."; done
       - name: Alerte
         if: steps.releve.outputs.code != '0' || failure()
         env: { GH_TOKEN: "${{ github.token }}" }

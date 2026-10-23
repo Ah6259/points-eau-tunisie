@@ -35,6 +35,8 @@ jobs:
       - run: node tools/test_avis.mjs
       - run: node tools/test_video.mjs
       - run: python tools/test_points.py
+      - name: Feuille des signalements illisible = robot rouge après 2 jours ; feuille lisible vide = vert (23/10/2026)
+        run: python tools/test_signalements_points.py
       - run: python tools/test_sabotage.py
       - name: Visiteur simule (comme un visiteur sur telephone, avant le vrai visiteur - regle generale du 18/10/2026)
         run: python tools/visiteur_simule.py
