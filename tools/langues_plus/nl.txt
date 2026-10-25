@@ -21,7 +21,7 @@
 20	Alle moskeeën van het land op één kaart, en de geschiedenis van de grote moskeeën, van Kairouan tot de Zitouna.
 21	Home
 22	Over ons
-23	Over ons en methode
+23	Hoe werkt de site?
 24	Een gratis en onafhankelijke site om water te vinden, in Tunesië en in de wereld, en om anderen te helpen het te vinden.
 25	Waar komen de punten vandaan?
 26	<b>OpenStreetMap</b>, de vrije kaart die door haar bijdragers wordt gemaakt: bronnen, drinkwaterfonteinen, kranen en openbare waterpunten, waterreservoirs en putten van Tunesië, elke 3 maanden opnieuw gelezen door onze robot (privéputten en -reservoirs uitgesloten).
@@ -194,3 +194,27 @@
 193	Vul uw e-mailadres in (verplicht) zodat we u kunnen antwoorden.
 194	We hebben het ontvangen en antwoorden op het adres:
 195	Nog een bericht sturen
+196	Waarvoor dient de site?
+197	Water vinden bij u in de buurt (bron, drinkfontein, openbare kraan, majel, put), in Tunesië en overal ter wereld, en anderen helpen door de plekken die u kent toe te voegen. De site is gratis, zonder account.
+198	Zo gebruikt u het: elke functie in één regel
+199	Niet-gecontroleerd water: de waarschuwing boven de kaart herinnert eraan dat het water misschien niet drinkbaar is (kook of filter het bij twijfel).
+200	Kaart: de waterpunten van Tunesië, elk in de kleur van zijn soort. Tik op een punt voor de route (Google Maps).
+201	Filters: bron, drinkfontein, openbare kraan, majel of put.
+202	„In mijn buurt”: de 5 waterpunten het dichtst bij u, met hun afstand en een link „erheen”.
+203	De hele wereld: zoek een stad in de wereld of tik op een voorbeeld (Mekka, Istanbul, Parijs…); de kaart leest daar de waterpunten live.
+204	„Ook zoeken op Google Maps”: een link die Google Maps opent als u geen waterpunt vindt.
+205	Een waterpunt melden: voeg een bron, fontein, kraan, majel of put toe door de markering op de kaart te zetten.
+206	„Klopt” of „Bestaat niet meer”: bevestig een waterpunt, of meld dat het verdwenen is.
+207	Majels van Djerba: hun naam, hun staat en een link naar hun fiche en foto's op de site van de vereniging AJEM.
+208	Pagina „Majels en putten in Tunesië”: hoe er al eeuwen water wordt opgevangen, met uitleg en betrouwbare links.
+209	Pagina „De Koran en het water”: verzen in het Arabisch met een erkende vertaling van hun betekenis (QuranEnc), en hadith over water.
+210	Onze verwante sites: Waterprijzen in Tunesië (flessenwater) en Moskeeën van Tunesië, gelinkt op de startpagina.
+211	21 talen: de taalknop bovenaan opent dezelfde pagina in uw taal.
+212	Delen: de knop bovenaan opent het deelmenu van de telefoon (anders WhatsApp).
+213	Op de telefoon: zet de site als een app op het startscherm; al geopende pagina's blijven zonder verbinding leesbaar.
+214	Presentatievideo: een korte video die de site laat zien.
+215	Uw mening: een opmerking of een fout? Schrijf ons, elk bericht wordt gelezen.
+216	Automatische updates
+217	Alles gebeurt vanzelf, door onze robots: de punten in Tunesië worden elke 3 maanden opnieuw ingelezen, gemelde punten worden ongeveer elke 2 uur gepubliceerd, en elke wijziging van de site wordt getest voordat ze wordt gepubliceerd.
+218	Een onafhankelijke site
+219	Deze site is geen officiële dienst en hangt niet af van een organisatie. Niemand controleert de waterkwaliteit: vraag het ter plaatse.

@@ -562,3 +562,7 @@ html[lang="ru"] [data-t="ru"],html[lang="vi"] [data-t="vi"],html[lang="th"] [dat
 .avis-merci-titre{font-size:19px;font-weight:800;color:#1F7A47}
 .btn-avis-autre{font:inherit;font-weight:700;margin-top:6px;padding:9px 14px;border-radius:10px;border:1.5px solid #1F7A47;background:#fff;color:#1F7A47;cursor:pointer}
 .avis-merci:focus{outline:none}
+
+/* ---- lien « Comment fonctionne le site ? » sous le titre de l'accueil (règle commune § 44, 25/10/2026) ---- */
+.hero .lien-comment{grid-column:1 / -1;justify-self:start;margin:12px 0 0;font-size:14px;font-weight:600}
+.hero .lien-comment a{color:#fff;text-decoration:underline;text-underline-offset:3px}

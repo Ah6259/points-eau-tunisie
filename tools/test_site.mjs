@@ -464,5 +464,45 @@ check("robots.txt (IA refusées, sitemap), sitemap avec les pages, LICENSE", /GP
   check("CSP : WPdx (data.waterpointdata.org) autorisé ; zoom « région » (9) ; message posé sur la carte",
     /connect-src[^;]*data\.waterpointdata\.org/.test(lire("index.html")) && /ZOOM_MONDE = 9\b/.test(lire("assets/points-eau.js")) && /pe-zone-carte/.test(lire("assets/points-eau.js")));
 }
+// ---- RÈGLE d'Ahmed : « la page Comment fonctionne le site doit être mise à jour chaque fois qu'on modifie le site »
+//      (25/10/2026, règle commune § 44) : chaque fonction visible du site (repère dans le code ou les pages) doit être
+//      expliquée dans a-propos/ ; nouvelle fonction = une ligne ici + son explication dans tools/gabarits/a-propos.html (21 langues)
+{
+  const ap = lire("a-propos/index.html"), acc = lire("index.html"), pg = lire("assets/page.js"), pe = lire("assets/points-eau.js");
+  const ex = c => existsSync(join(root, c));
+  const FONCTIONS = [
+    ["à quoi sert le site", true, /À quoi sert le site \?/],
+    ["avertissement « Eau non contrôlée »", /pe-avert/.test(acc), /Eau non contrôlée : l'avertissement en haut de la carte/],
+    ["carte des points d'eau", /id="pe-carte"/.test(acc), /Carte : les points d'eau de Tunisie/],
+    ["filtres par type", /pe-filtres/.test(acc), /Filtres : source, fontaine, robinet public, majel ou puits/],
+    ["Autour de moi", /id="pe-autour"/.test(acc), /« Autour de moi » : les 5 points d'eau les plus proches/],
+    ["le monde entier sur la carte", /data-monde-vue|id="pe-monde"/.test(acc), /Le monde entier : cherchez une ville du monde/],
+    ["lien Google Maps", /id="pe-google"/.test(acc), /« Chercher aussi sur Google Maps »/],
+    ["signaler un point d'eau", /id="pe-sig-ouvrir"/.test(acc), /Signaler un point d'eau : ajoutez une source/],
+    ["« C'est vrai » / « N'existe plus »", /data-ok=/.test(pe) && /data-ko=/.test(pe), /« N'existe plus » : confirmez un point d'eau/],
+    ["majels de Djerba (AJEM)", /pe-credit-ajem/.test(acc), /Majels de Djerba : leur nom, leur état/],
+    ["page Majels et puits", ex("majels-et-puits/index.html"), /Page « Majels et puits en Tunisie »/],
+    ["page Le Coran et l'eau", ex("coran-et-eau/index.html"), /Page « Le Coran et l'eau »/],
+    ["liens vers nos sites proches", /prix-eau\.clicvia\.com/.test(acc) && /mosquees\.clicvia\.com/.test(acc), /Nos sites proches : Prix des Eaux de Tunisie/],
+    ["21 langues", /langues-bouton/.test(pg), /21 langues : le bouton de langue/],
+    ["bouton Partager", /class="partager"/.test(pg), /Partager : le bouton de l'en-tête/],
+    ["installation sur le téléphone / hors connexion", ex("manifest.webmanifest") && ex("sw.js"), /écran d'accueil[^<]*sans connexion/],
+    ["vidéo de présentation", ex("video/index.html"), /Vidéo de présentation :/],
+    ["Votre avis", /id="avis-form"/.test(acc), /Votre avis : une remarque ou une erreur/],
+    ["d'où viennent les points", true, /D'où viennent les points \?/],
+    ["vos données (vie privée)", true, /Vos données/],
+    ["mises à jour automatiques", true, /Mises à jour automatiques/],
+    ["site indépendant", true, /Un site indépendant/]];
+  const manque = FONCTIONS.filter(([, sur, re]) => sur && !re.test(ap)).map(([n]) => n);
+  check(`page « Comment fonctionne le site ? » à jour : chaque fonction du site y est expliquée (${FONCTIONS.length} fonctions)` + (manque.length ? " — manque : " + manque.join(", ") : ""),
+    manque.length === 0);
+  const titre = l => ((lire(`${l}a-propos/index.html`).match(/<h1>([\s\S]*?)<\/h1>/) || [])[1] || "").replace(/<[^>]+>/g, "").trim();
+  const sansTrad = AUTRES.filter(l => !existsSync(join(root, l, "a-propos/index.html")) || !titre(l + "/") || titre(l + "/") === titre(""));
+  check(`page « Comment fonctionne le site ? » : titre (h1 + <title>) en français, en arabe « كيف يعمل الموقع؟ », et traduit dans les ${AUTRES.length} autres langues ${sansTrad.join(" ")}`,
+    /<title>Comment fonctionne le site \? \|/.test(ap) && /<h1><span data-l="fr">Comment fonctionne le site \?<\/span><span data-l="ar">كيف يعمل الموقع؟<\/span>/.test(ap) && !sansTrad.length);
+  check("lien « Comment fonctionne le site ? » sur l'accueil (sous le titre) et dans le pied de page de toutes les pages",
+    /<p class="lien-comment"><a href="a-propos\/"><span data-l="fr">Comment fonctionne le site \?<\/span>/.test(acc)
+    && /<a href="\$\{rp\}a-propos\/">\$\{T\("Comment fonctionne le site \?", "كيف يعمل الموقع؟"/.test(pg) && /https:\/\/eau\.clicvia\.com\/a-propos\//.test(lire("sitemap.xml")));
+}
 console.log(`\n${erreurs ? erreurs + " PROBLÈME(S)" : "TOUT PASSE"} (${total} vérifications)`);
 process.exit(erreurs ? 1 : 0);

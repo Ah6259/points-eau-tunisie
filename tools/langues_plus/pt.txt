@@ -21,7 +21,7 @@
 20	Todas as mesquitas do país num mapa e a história das grandes mesquitas, de Cairuão à Zitouna.
 21	Início
 22	Sobre
-23	Sobre e método
+23	Como funciona o site?
 24	Um site gratuito e independente para encontrar água, na Tunísia e no mundo, e ajudar os outros a encontrá-la.
 25	De onde vêm os pontos?
 26	<b>OpenStreetMap</b>, o mapa livre feito pelos seus contribuidores: nascentes, bebedouros de água potável, torneiras e pontos de água públicos, cisternas e poços da Tunísia, relidos de 3 em 3 meses pelo nosso robô (poços e cisternas privados excluídos).
@@ -194,3 +194,27 @@
 193	Escreva o seu endereço de e-mail (obrigatório) para podermos responder.
 194	Recebemo-la e vamos responder para o endereço:
 195	Enviar outra mensagem
+196	Para que serve o site?
+197	Encontrar água perto de si (nascente, bebedouro, torneira pública, majel, poço), na Tunísia e em todo o mundo, e ajudar os outros adicionando os pontos que conhece. O site é gratuito e sem conta.
+198	Como usar: cada função numa linha
+199	Água não controlada: o aviso por cima do mapa lembra que a água pode não ser potável (ferva-a ou filtre-a em caso de dúvida).
+200	Mapa: os pontos de água da Tunísia, cada um com a cor do seu tipo. Toque num ponto para o itinerário (Google Maps).
+201	Filtros: nascente, bebedouro, torneira pública, majel ou poço.
+202	« Perto de mim »: os 5 pontos de água mais próximos de si, com a distância e uma ligação « ir ».
+203	O mundo inteiro: procure uma cidade do mundo ou toque num exemplo (Meca, Istambul, Paris…); o mapa lê aí os pontos de água em direto.
+204	« Procurar também no Google Maps »: uma ligação que abre o Google Maps se não encontrar um ponto de água.
+205	Assinalar um ponto de água: adicione uma nascente, um bebedouro, uma torneira, um majel ou um poço, colocando o marcador no mapa.
+206	« É verdade » ou « Já não existe »: confirme um ponto de água, ou diga que desapareceu.
+207	Majels de Djerba: o nome, o estado e uma ligação para a ficha e as fotos no site da associação AJEM.
+208	Página « Majels e poços na Tunísia »: como se recolhe a água há séculos, com explicações e ligações fiáveis.
+209	Página « O Alcorão e a água »: versículos em árabe com uma tradução reconhecida do seu sentido (QuranEnc), e hadiths sobre a água.
+210	Os nossos sites próximos: Preços da água na Tunísia (água engarrafada) e Mesquitas da Tunísia, com ligações na página inicial.
+211	21 línguas: o botão de língua no topo abre a mesma página na sua língua.
+212	Partilhar: o botão no topo abre o menu de partilha do telemóvel (senão, o WhatsApp).
+213	No telemóvel: adicione o site ao ecrã inicial como uma aplicação; as páginas já abertas continuam legíveis sem ligação.
+214	Vídeo de apresentação: um vídeo curto que mostra o site.
+215	A sua opinião: um comentário ou um erro? Escreva-nos, cada mensagem é lida.
+216	Atualizações automáticas
+217	Tudo acontece sozinho, através dos nossos robôs: os pontos da Tunísia são relidos a cada 3 meses, os pontos assinalados são publicados mais ou menos a cada 2 horas, e cada alteração do site é testada antes de ser publicada.
+218	Um site independente
+219	Este site não é um serviço oficial e não depende de nenhuma organização. Ninguém verifica a qualidade da água: informe-se no local.

@@ -21,7 +21,7 @@
 20	Toate moscheile țării pe o hartă și istoria marilor moschei, de la Kairouan la Zitouna.
 21	Acasă
 22	Despre
-23	Despre site și metodă
+23	Cum funcționează site-ul?
 24	Un site gratuit și independent pentru a găsi apă, în Tunisia și în lume, și pentru a-i ajuta pe alții să o găsească.
 25	De unde provin punctele?
 26	<b>OpenStreetMap</b>, harta liberă făcută de contribuitorii ei: izvoare, cișmele cu apă potabilă, robinete și puncte de apă publice, cisterne și fântâni din Tunisia, recitite la fiecare 3 luni de robotul nostru (fântânile și cisternele private sunt excluse).
@@ -194,3 +194,27 @@
 193	Scrieți adresa de e-mail (obligatorie) ca să vă putem răspunde.
 194	L-am primit și vă vom răspunde la adresa:
 195	Trimiteți un alt mesaj
+196	La ce folosește site-ul?
+197	Găsiți apă lângă dumneavoastră (izvor, cișmea, robinet public, majel, fântână), în Tunisia și oriunde în lume, și ajutați-i pe alții adăugând punctele pe care le cunoașteți. Site-ul este gratuit, fără cont.
+198	Cum îl folosiți: fiecare funcție pe un rând
+199	Apă necontrolată: avertismentul de deasupra hărții amintește că apa poate să nu fie potabilă (fierbeți-o sau filtrați-o dacă aveți îndoieli).
+200	Hartă: punctele de apă din Tunisia, fiecare în culoarea tipului său. Atingeți un punct pentru traseu (Google Maps).
+201	Filtre: izvor, cișmea, robinet public, majel sau fântână.
+202	« În jurul meu »: cele mai apropiate 5 puncte de apă, cu distanța și un link « mergeți acolo ».
+203	Lumea întreagă: căutați un oraș din lume sau atingeți un exemplu (Mecca, Istanbul, Paris…); harta citește acolo punctele de apă în direct.
+204	« Căutați și pe Google Maps »: un link care deschide Google Maps dacă nu găsiți niciun punct de apă.
+205	Semnalați un punct de apă: adăugați un izvor, o cișmea, un robinet, un majel sau o fântână, punându-i marcajul pe hartă.
+206	« Este adevărat » sau « Nu mai există »: confirmați un punct de apă sau spuneți că a dispărut.
+207	Majelurile din Djerba: numele, starea și un link către fișa și fotografiile lor pe site-ul asociației AJEM.
+208	Pagina « Majeluri și fântâni în Tunisia »: cum se adună apa de secole, cu explicații și linkuri serioase.
+209	Pagina « Coranul și apa »: versete în arabă cu o traducere recunoscută a sensului (QuranEnc), și hadisuri despre apă.
+210	Site-urile noastre apropiate: Prețurile apei în Tunisia (apă îmbuteliată) și Moscheile Tunisiei, cu linkuri pe pagina principală.
+211	21 de limbi: butonul de limbă din antet deschide aceeași pagină în limba dumneavoastră.
+212	Distribuiți: butonul din antet deschide meniul de partajare al telefonului (altfel WhatsApp).
+213	Pe telefon: adăugați site-ul pe ecranul principal ca pe o aplicație; paginile deja deschise rămân lizibile fără conexiune.
+214	Videoclip de prezentare: un videoclip scurt care arată site-ul.
+215	Părerea dumneavoastră: o observație sau o greșeală? Scrieți-ne, fiecare mesaj este citit.
+216	Actualizări automate
+217	Totul se face singur, prin roboții noștri: punctele din Tunisia sunt recitite la fiecare 3 luni, punctele semnalate sunt publicate cam la fiecare 2 ore, iar fiecare modificare a site-ului este testată înainte de publicare.
+218	Un site independent
+219	Acest site nu este un serviciu oficial și nu depinde de nicio organizație. Nimeni nu verifică calitatea apei: informați-vă la fața locului.

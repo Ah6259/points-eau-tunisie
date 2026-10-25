@@ -82,3 +82,11 @@ Règles communes : `../../regles communes a tous les sites.md`.
 - **Carte Leaflet isolée (règle commune, 18/10/2026)** : `.leaflet-container{isolation:isolate;z-index:0}` dans assets/style.css (les couches Leaflet, 400+, ne passent plus devant une liste ou une fenêtre) ; listes et fenêtres au-dessus de la carte au z-index ≥ 1000 (`.langues-liste` 1100, `.help-pop` 1000) ; testé dans test_site.mjs. Recherche « au son » (§ 27) : rien à faire ici, la recherche de ville va à Nominatim (service extérieur, pas de filtre local).
 
 - **19/10/2026 — Visiteur simulé : contrôle des ESPACES (§ 29)** : titre de la barre « Signaler » caché SOUS le bouton › dans les langues longues (it, es, ru) → coupé par « … » ; bouton « Envoyer » de la fenêtre centré (24 px au-dessus et au-dessous) ; version 20261019a ; 0 anomalie.
+
+- **RÈGLE D'AHMED (25/10/2026, règle commune § 44) : la page « Comment fonctionne le site ? » (`a-propos/`, h1 « Comment fonctionne
+  le site ? » / « كيف يعمل الموقع؟ », 21 langues) est mise à jour à CHAQUE modification visible, dans le même envoi** ; test `FONCTIONS`
+  dans `tools/test_site.mjs` (repère dans le code ou les pages → phrase attendue dans la page : une fonction présente mais non
+  expliquée = test rouge = publication bloquée). Nouvelle fonction = une ligne dans `FONCTIONS` + une ligne dans la liste
+  « Comment s'en servir » de `tools/gabarits/a-propos.html` (fr, ar, en) + sa traduction dans `assets/langues.js` (5 langues) et à la
+  fin de `tools/langues_plus/_francais.json` + chaque `.txt` (13 langues). Liens : sous le titre de l'accueil (`.lien-comment`) et
+  dans le pied de page (`assets/page.js`). Version 20261025a.

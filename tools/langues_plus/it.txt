@@ -21,7 +21,7 @@
 20	Tutte le moschee del paese su una mappa e la storia delle grandi moschee, da Kairouan alla Zitouna.
 21	Home
 22	Chi siamo
-23	Chi siamo e metodo
+23	Come funziona il sito?
 24	Un sito gratuito e indipendente per trovare acqua, in Tunisia e nel mondo, e aiutare gli altri a trovarla.
 25	Da dove vengono i punti?
 26	<b>OpenStreetMap</b>, la mappa libera realizzata dai suoi contributori: sorgenti, fontanelle di acqua potabile, rubinetti e punti d'acqua pubblici, cisterne e pozzi della Tunisia, riletti ogni 3 mesi dal nostro robot (pozzi e cisterne privati esclusi).
@@ -194,3 +194,27 @@
 193	Scrivete il vostro indirizzo e-mail (obbligatorio) per potervi rispondere.
 194	L’abbiamo ricevuto e vi risponderemo all’indirizzo:
 195	Inviare un altro messaggio
+196	A cosa serve il sito?
+197	Trovare acqua vicino a voi (sorgente, fontanella, rubinetto pubblico, majel, pozzo), in Tunisia e in tutto il mondo, e aiutare gli altri aggiungendo i punti che conoscete. Il sito è gratuito e senza account.
+198	Come usarlo: ogni funzione in una riga
+199	Acqua non controllata: l'avviso sopra la mappa ricorda che l'acqua può non essere potabile (fatela bollire o filtratela nel dubbio).
+200	Mappa: i punti d'acqua della Tunisia, ognuno con il colore del suo tipo. Toccate un punto per il percorso (Google Maps).
+201	Filtri: sorgente, fontanella, rubinetto pubblico, majel o pozzo.
+202	« Vicino a me »: i 5 punti d'acqua più vicini a voi, con la distanza e un link « andarci ».
+203	Il mondo intero: cercate una città del mondo o toccate un esempio (La Mecca, Istanbul, Parigi…); la mappa vi legge i punti d'acqua in diretta.
+204	« Cerca anche su Google Maps »: un link che apre Google Maps se non trovate un punto d'acqua.
+205	Segnalare un punto d'acqua: aggiungete una sorgente, una fontanella, un rubinetto, un majel o un pozzo, mettendo il segnaposto sulla mappa.
+206	« È vero » o « Non esiste più »: confermate un punto d'acqua, o dite che è scomparso.
+207	Majel di Djerba: nome, stato e un link alla scheda e alle foto sul sito dell'associazione AJEM.
+208	Pagina « Majel e pozzi in Tunisia »: come si raccoglie l'acqua da secoli, con spiegazioni e link affidabili.
+209	Pagina « Il Corano e l'acqua »: versetti in arabo con una traduzione riconosciuta del loro significato (QuranEnc), e hadith sull'acqua.
+210	I nostri siti vicini: Prezzi dell'acqua in Tunisia (acqua in bottiglia) e Moschee della Tunisia, con link nella pagina iniziale.
+211	21 lingue: il pulsante della lingua in alto apre la stessa pagina nella vostra lingua.
+212	Condividi: il pulsante in alto apre il menu di condivisione del telefono (altrimenti WhatsApp).
+213	Sul telefono: aggiungete il sito alla schermata iniziale come un'app; le pagine già aperte restano leggibili senza connessione.
+214	Video di presentazione: un breve video che mostra il sito.
+215	La vostra opinione: un'osservazione o un errore? Scriveteci, ogni messaggio viene letto.
+216	Aggiornamenti automatici
+217	Tutto avviene da solo, grazie ai nostri robot: i punti della Tunisia vengono riletti ogni 3 mesi, i punti segnalati sono pubblicati circa ogni 2 ore, e ogni modifica del sito viene testata prima di essere pubblicata.
+218	Un sito indipendente
+219	Questo sito non è un servizio ufficiale e non dipende da alcuna organizzazione. Nessuno controlla la qualità dell'acqua: informatevi sul posto.

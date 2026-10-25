@@ -8,6 +8,8 @@ Les visiteurs peuvent signaler un point d'eau, le confirmer ou dire qu'il n'exis
 
 En ligne : https://eau.clicvia.com/
 
+Page « Comment fonctionne le site ? » : https://eau.clicvia.com/a-propos/ (chaque fonction en une ligne ; tenue à jour à chaque modification visible, test `FONCTIONS` de `tools/test_site.mjs`, règle commune § 44).
+
 ## Comment il vit tout seul
 - `signalements.yml` (toutes les 2 h) publie les points signalés ; `osm.yml` (tous les 3 mois) relit OpenStreetMap.
 - `tests.yml` à chaque modification ; `gendarme-tests.yml`, `relance-pages.yml` : kit commun.

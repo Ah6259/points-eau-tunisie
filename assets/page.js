@@ -109,7 +109,7 @@ const MENU_SITE = [
           <a href="${rp}#signaler">${T("Signaler un point d'eau", "أضف نقطة ماء", "Report a water point")}</a>
           <a href="${rp}majels-et-puits/">${T("Majels et puits en Tunisie", "المواجل والآبار في تونس", "Majels and wells in Tunisia")}</a>
           <a href="${rp}coran-et-eau/">${T("Le Coran et la Sunna sur l'eau", "الماء في القرآن والسنة", "Water in the Quran and Sunnah")}</a>
-          <a href="${rp}a-propos/">${T("À propos et méthode", "من نحن والمنهجية", "About and method")}</a>
+          <a href="${rp}a-propos/">${T("Comment fonctionne le site ?", "كيف يعمل الموقع؟", "How does the site work?")}</a>
           <a href="${rp}#avis">${T("Votre avis", "رأيك", "Your feedback")}</a>
           <a href="https://prix-eau.clicvia.com/" target="_blank" rel="noopener" data-compteur="lien-site/prix-eaux">${T("Prix de l'eau en bouteille", "أسعار الماء المعدني", "Bottled water prices (Tunisia)")}</a>
         <a href="https://clicvia.com/" rel="noopener" target="_blank">${T("Tous nos services", "كل خدماتنا", "All our services")}</a>

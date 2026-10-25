@@ -21,7 +21,7 @@
 20	Mọi thánh đường của đất nước trên một bản đồ, và lịch sử các thánh đường lớn, từ Kairouan đến Zitouna.
 21	Trang chủ
 22	Giới thiệu
-23	Giới thiệu và phương pháp
+23	Trang web hoạt động thế nào?
 24	Một trang web miễn phí và độc lập để tìm nước, ở Tunisia và trên thế giới, và giúp người khác tìm được nước.
 25	Các điểm lấy từ đâu?
 26	<b>OpenStreetMap</b>, bản đồ tự do do cộng đồng đóng góp: suối, vòi nước uống, vòi và điểm lấy nước công cộng, bể chứa và giếng ở Tunisia, được robot của chúng tôi đọc lại 3 tháng một lần (không tính giếng và bể chứa tư nhân).
@@ -194,3 +194,27 @@
 193	Hãy nhập địa chỉ email (bắt buộc) để chúng tôi có thể trả lời bạn.
 194	Chúng tôi đã nhận được và sẽ trả lời đến địa chỉ:
 195	Gửi tin nhắn khác
+196	Trang web dùng để làm gì?
+197	Tìm nước gần bạn (suối, vòi nước uống, vòi công cộng, bể majel, giếng), ở Tunisia và khắp thế giới, và giúp người khác bằng cách thêm những điểm bạn biết. Trang web miễn phí, không cần tài khoản.
+198	Cách sử dụng: mỗi chức năng một dòng
+199	Nước không được kiểm định: lời cảnh báo phía trên bản đồ nhắc rằng nước có thể không uống được (nếu nghi ngờ hãy đun sôi hoặc lọc).
+200	Bản đồ: các điểm nước ở Tunisia, mỗi loại một màu. Chạm vào một điểm để xem chỉ đường (Google Maps).
+201	Bộ lọc: suối, vòi nước uống, vòi công cộng, bể majel hoặc giếng.
+202	« Quanh tôi »: 5 điểm nước gần bạn nhất, kèm khoảng cách và liên kết « đi đến ».
+203	Cả thế giới: tìm một thành phố trên thế giới hoặc chạm vào một ví dụ (Mecca, Istanbul, Paris…); bản đồ đọc trực tiếp các điểm nước ở đó.
+204	« Tìm thêm trên Google Maps »: liên kết mở Google Maps nếu bạn không tìm thấy điểm nước.
+205	Báo một điểm nước: thêm suối, vòi nước uống, vòi nước, bể majel hoặc giếng bằng cách đặt dấu trên bản đồ.
+206	« Đúng » hoặc « Không còn nữa »: xác nhận một điểm nước, hoặc cho biết nó đã biến mất.
+207	Các bể majel ở Djerba: tên, tình trạng và liên kết đến hồ sơ và ảnh trên trang của hiệp hội AJEM.
+208	Trang « Bể majel và giếng ở Tunisia »: cách người ta thu gom nước qua nhiều thế kỷ, kèm giải thích và liên kết đáng tin cậy.
+209	Trang « Kinh Qur'an và nước »: các câu kinh bằng tiếng Ả Rập kèm bản dịch nghĩa được công nhận (QuranEnc), và các hadith về nước.
+210	Các trang liên quan của chúng tôi: Giá nước ở Tunisia (nước đóng chai) và Nhà thờ Hồi giáo Tunisia, có liên kết ở trang chủ.
+211	21 ngôn ngữ: nút ngôn ngữ ở đầu trang mở cùng trang bằng ngôn ngữ của bạn.
+212	Chia sẻ: nút ở đầu trang mở menu chia sẻ của điện thoại (nếu không thì WhatsApp).
+213	Trên điện thoại: thêm trang web vào màn hình chính như một ứng dụng; các trang đã mở vẫn đọc được khi không có mạng.
+214	Video giới thiệu: một video ngắn giới thiệu trang web.
+215	Ý kiến của bạn: có góp ý hoặc lỗi? Hãy viết cho chúng tôi, mọi tin nhắn đều được đọc.
+216	Cập nhật tự động
+217	Mọi việc tự diễn ra nhờ các robot của chúng tôi: các điểm ở Tunisia được đọc lại 3 tháng một lần, điểm được báo được đăng khoảng 2 giờ một lần, và mỗi thay đổi của trang web đều được kiểm tra trước khi đăng.
+218	Một trang web độc lập
+219	Trang web này không phải dịch vụ chính thức và không thuộc tổ chức nào. Không ai kiểm tra chất lượng nước: hãy hỏi tại chỗ.

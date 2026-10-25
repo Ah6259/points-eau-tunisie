@@ -21,7 +21,7 @@
 20	Lahat ng moske ng bansa sa iisang mapa, at ang kasaysayan ng malalaking moske, mula Kairouan hanggang Zitouna.
 21	Home
 22	Tungkol dito
-23	Tungkol sa site at pamamaraan
+23	Paano gumagana ang site?
 24	Isang libre at malayang site para makahanap ng tubig, sa Tunisia at sa buong mundo, at matulungan ang iba na makahanap nito.
 25	Saan galing ang mga punto?
 26	<b>OpenStreetMap</b>, ang malayang mapa na gawa ng mga nag-aambag dito: mga bukal, inuman ng tubig, gripo at pampublikong igiban, imbakan ng tubig at balon sa Tunisia, na muling binabasa ng aming robot tuwing 3 buwan (hindi kasama ang mga pribadong balon at imbakan).
@@ -194,3 +194,27 @@
 193	Isulat ang iyong email (kailangan) para makasagot kami sa iyo.
 194	Natanggap namin ito at sasagot kami sa:
 195	Magpadala ng isa pang mensahe
+196	Para saan ang site?
+197	Maghanap ng tubig malapit sa iyo (bukal, inuman, pampublikong gripo, majel, balon), sa Tunisia at saanman sa mundo, at tumulong sa iba sa pagdaragdag ng mga puntong alam mo. Libre ang site at walang account.
+198	Paano gamitin: bawat tampok sa isang linya
+199	Tubig na hindi sinuri: pinaaalala ng babala sa itaas ng mapa na maaaring hindi ligtas inumin ang tubig (pakuluan o salain kung may duda).
+200	Mapa: ang mga punto ng tubig sa Tunisia, bawat isa sa kulay ng uri nito. Pindutin ang isang tuldok para sa direksiyon (Google Maps).
+201	Mga filter: bukal, inuman, pampublikong gripo, majel o balon.
+202	« Malapit sa akin »: ang 5 punto ng tubig na pinakamalapit sa iyo, kasama ang layo at link na « pumunta ».
+203	Buong mundo: maghanap ng lungsod saanman sa mundo o pindutin ang isang halimbawa (Mecca, Istanbul, Paris…); binabasa ng mapa ang mga punto ng tubig doon nang live.
+204	« Maghanap din sa Google Maps »: link na nagbubukas ng Google Maps kung wala kang makitang punto ng tubig.
+205	Mag-ulat ng punto ng tubig: idagdag ang bukal, inuman, gripo, majel o balon sa paglalagay ng marka nito sa mapa.
+206	« Totoo » o « Wala na »: kumpirmahin ang punto ng tubig, o sabihing wala na ito.
+207	Mga majel ng Djerba: pangalan, kalagayan at link sa kanilang tala at mga larawan sa site ng samahang AJEM.
+208	Pahinang « Mga majel at balon sa Tunisia »: kung paano iniipon ang tubig sa loob ng maraming siglo, may paliwanag at maaasahang link.
+209	Pahinang « Ang Quran at ang tubig »: mga talata sa Arabe na may kinikilalang salin ng kahulugan (QuranEnc), at mga hadith tungkol sa tubig.
+210	Aming mga kaugnay na site: Presyo ng Tubig sa Tunisia (tubig sa bote) at Mga Moske ng Tunisia, may link sa home page.
+211	21 wika: binubuksan ng button ng wika sa itaas ang parehong pahina sa iyong wika.
+212	Ibahagi: binubuksan ng button sa itaas ang share menu ng telepono (kung wala, WhatsApp).
+213	Sa telepono: idagdag ang site sa home screen na parang app; nababasa pa rin offline ang mga pahinang nabuksan na.
+214	Video ng pagpapakilala: maikling video na nagpapakita ng site.
+215	Ang iyong opinyon: may puna o mali? Sumulat sa amin, binabasa ang bawat mensahe.
+216	Awtomatikong pag-update
+217	Kusang nangyayari ang lahat sa pamamagitan ng aming mga robot: muling binabasa ang mga punto sa Tunisia bawat 3 buwan, inilalathala ang mga iniulat na punto humigit-kumulang bawat 2 oras, at sinusubok ang bawat pagbabago sa site bago ilathala.
+218	Isang malayang site
+219	Hindi opisyal na serbisyo ang site na ito at hindi nakasalalay sa anumang organisasyon. Walang sumusuri sa kalidad ng tubig: magtanong sa lugar.
