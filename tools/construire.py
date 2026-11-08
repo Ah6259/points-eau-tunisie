@@ -9,6 +9,37 @@ import json, os, re, shutil, sys
 
 ICI = os.path.dirname(os.path.abspath(__file__)); RACINE = os.path.dirname(ICI)
 VERSION = "20261025a"           # à changer à chaque modification des fichiers assets/ (le test vérifie une seule version)
+
+
+def titre_seo(t, maxi=70):
+    """SEO (08/11/2026, plan d'Ahmed pour tous les sites) : Google coupe les titres vers 60-70 caractères : le suffixe « | nom du site »
+    (qui dit la langue) est gardé, la partie qui précède est coupée à un séparateur, sinon au dernier mot entier avec « … »."""
+    if len(t) <= maxi:
+        return t
+    base, _, suffixe = t.rpartition(" | ")
+    if not suffixe or len(suffixe) > 45:
+        base, suffixe = t, ""
+    place = maxi - (len(suffixe) + 3 if suffixe else 0)
+    if len(base) > place:
+        coupe = None
+        for sep in (" : ", ": ", " — ", " (", " – "):
+            i = base.rfind(sep, 0, place)
+            if i >= 25:
+                coupe = base[:i].rstrip(" ,;:—-")
+                break
+        base = coupe if coupe else base[:place - 1].rsplit(" ", 1)[0].rstrip(" ,;:—-(") + "…"
+    return base + (" | " + suffixe if suffixe else "")
+
+
+def desc_seo(d, maxi=165):
+    """Description <= 165 caractères : fin de la dernière phrase entière si possible, sinon dernier mot entier + « … »."""
+    if len(d) <= maxi:
+        return d
+    coupe = d[:maxi]
+    i = max(coupe.rfind(". "), coupe.rfind("۔ "), coupe.rfind("。"))
+    if i >= 60:
+        return coupe[:i + 1]
+    return coupe[:maxi - 1].rsplit(" ", 1)[0].rstrip(" ,;:—-(،") + "…"
 BASE = "https://eau.clicvia.com/"
 sys.path.insert(0, ICI)
 import pages_langues as PL  # noqa: E402
@@ -55,8 +86,8 @@ def page(chemin_page, meta, corps):
 <meta http-equiv="Content-Security-Policy" content="{CSP}">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 {robots}
-<title>{meta['titre']}</title>
-<meta name="description" content="{meta['description']}">
+<title>{titre_seo(meta['titre'])}</title>
+<meta name="description" content="{desc_seo(meta['description'])}">
 <link rel="canonical" href="{BASE}{chemin_page.rsplit('index.html', 1)[0]}">
 {alt}<link rel="icon" href="{r}assets/logo.svg" type="image/svg+xml">
 <link rel="manifest" href="{r}manifest.webmanifest">

@@ -90,3 +90,9 @@ Règles communes : `../../regles communes a tous les sites.md`.
   « Comment s'en servir » de `tools/gabarits/a-propos.html` (fr, ar, en) + sa traduction dans `assets/langues.js` (5 langues) et à la
   fin de `tools/langues_plus/_francais.json` + chaque `.txt` (13 langues). Liens : sous le titre de l'accueil (`.lien-comment`) et
   dans le pied de page (`assets/page.js`). Version 20261025a.
+
+- **08/11/2026 — plan SEO d'Ahmed appliqué à ce site (phase 2 ; contrôle commun `outils visibilite/controle_seo.mjs` de projets-ahmed ;
+  plan : `consignes des taches/seo-eau.md`)** : `titre_seo()` / `desc_seo()` dans `tools/construire.py` et `tools/pages_langues.py`
+  (titre <= 70 caractères, le suffixe « | nom du site » est gardé et la base coupée à un séparateur ; description <= 165 coupée en fin de
+  phrase) ; accueil : titre « Où trouver de l'eau en Tunisie : sources, fontaines, majels (gratuit) », description 165. Les 84 pages
+  des 21 langues refaites ; tests verts (site, points, sabotage, sw, avis, signalements).
