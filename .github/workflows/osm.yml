@@ -44,7 +44,7 @@ jobs:
           else
             git commit -m "Relevé OpenStreetMap du $(date +%d/%m/%Y)"
           fi
-          git pull -q --rebase --autostash
+          git pull -q --rebase -X theirs --autostash
           git push
       - name: Alerte refermée si tout va bien
         if: success() && steps.releve.outputs.code == '0'
