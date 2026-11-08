@@ -95,4 +95,5 @@ Règles communes : `../../regles communes a tous les sites.md`.
   plan : `consignes des taches/seo-eau.md`)** : `titre_seo()` / `desc_seo()` dans `tools/construire.py` et `tools/pages_langues.py`
   (titre <= 70 caractères, le suffixe « | nom du site » est gardé et la base coupée à un séparateur ; description <= 165 coupée en fin de
   phrase) ; accueil : titre « Où trouver de l'eau en Tunisie : sources, fontaines, majels (gratuit) », description 165. Les 84 pages
-  des 21 langues refaites ; tests verts (site, points, sabotage, sw, avis, signalements).
+  des 21 langues refaites ; tests verts (site, points, sabotage, sw, avis, signalements). Page « Le Coran et l'eau » : les deux
+  sous-titres passent de h3 à h2 (plus de saut h1 -> h3, contrôle en ligne du 08/11).
