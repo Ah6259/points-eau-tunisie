@@ -504,5 +504,26 @@ check("robots.txt (IA refusées, sitemap), sitemap avec les pages, LICENSE", /GP
     /<p class="lien-comment"><a href="a-propos\/"><span data-l="fr">Comment fonctionne le site \?<\/span>/.test(acc)
     && /<a href="\$\{rp\}a-propos\/">\$\{T\("Comment fonctionne le site \?", "كيف يعمل الموقع؟"/.test(pg) && /https:\/\/eau\.clicvia\.com\/a-propos\//.test(lire("sitemap.xml")));
 }
+// ---- 17/11/2026 (liste des « 20 points » d'Ahmed, règles communes § 55 et § 58) : page 404 commune + liens Confidentialité / Conditions
+{
+  const h404 = existsSync(join(root, "404.html")) ? lire("404.html") : "", j404 = existsSync(join(root, "404.js")) ? lire("404.js") : "";
+  check("page 404 commune à la racine publiée (404.html qui charge /404.js « Recherche de la page »)",
+    /<title>Page introuvable — [^<]+<\/title>/.test(h404) && h404.includes('<script src="/404.js"></script>') && j404.includes("Recherche de la page"));
+  // chaque sorte de page, dans des langues de chaque sorte (français, arabe, anglais, langue de langues.js, langue de langues_plus)
+  const ATTENDU = { fr: ["", "Confidentialité", "Conditions d'utilisation"], ar: ["ar/", "الخصوصية", "شروط الاستعمال"],
+    en: ["en/", "Privacy", "Terms of use"], de: ["en/", "Datenschutz", "Nutzungsbedingungen"], zh: ["en/", "隐私", "使用条款"] };
+  const ko = [];
+  for (const chemin of ["index.html", "majels-et-puits/index.html", "coran-et-eau/index.html", "a-propos/index.html"])
+    for (const [l, [pre, conf, cond]] of Object.entries(ATTENDU)) {
+      const { d } = await page(chemin, { stockage: {}, lang: l === "fr" ? "" : l });
+      const liens = [...d.querySelectorAll("#pied a")];
+      const a1 = liens.find(a => a.href === `https://clicvia.com/${pre}confidentialite/`), a2 = liens.find(a => a.href === `https://clicvia.com/${pre}conditions/`);
+      if (!a1 || a1.textContent.trim() !== conf || !a2 || a2.textContent.trim() !== cond) ko.push(`${l}/${chemin}`);
+    }
+  { const { d } = await page("video/index.html", { stockage: {} });
+    if (!d.querySelector('#pied a[href$="clicvia.com/confidentialite/"], #pied a[href$="/en/confidentialite/"], #pied a[href$="/ar/confidentialite/"]')
+      || !d.querySelector('#pied a[href$="clicvia.com/conditions/"], #pied a[href$="/en/conditions/"], #pied a[href$="/ar/conditions/"]')) ko.push("video/"); }
+  check(`liens « Confidentialité » / « Conditions d'utilisation » (clicvia.com, dans la langue de la page) dans le pied de chaque sorte de page ${ko.slice(0, 4).join(" ")}`, !ko.length);
+}
 console.log(`\n${erreurs ? erreurs + " PROBLÈME(S)" : "TOUT PASSE"} (${total} vérifications)`);
 process.exit(erreurs ? 1 : 0);

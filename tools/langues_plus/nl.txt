@@ -218,3 +218,6 @@
 217	Alles gebeurt vanzelf, door onze robots: de punten in Tunesië worden elke 3 maanden opnieuw ingelezen, gemelde punten worden ongeveer elke 2 uur gepubliceerd, en elke wijziging van de site wordt getest voordat ze wordt gepubliceerd.
 218	Een onafhankelijke site
 219	Deze site is geen officiële dienst en hangt niet af van een organisatie. Niemand controleert de waterkwaliteit: vraag het ter plaatse.
+220	Privacy
+221	Gebruiksvoorwaarden
+222	De pagina's „Privacy” en „Gebruiksvoorwaarden”, die voor al onze sites gelden, staan onderaan elke pagina.

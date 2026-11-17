@@ -101,6 +101,8 @@ const MENU_SITE = [
         `<a href="${rp}${h || "./"}"${(h && !h.startsWith("#") ? ici.endsWith("/" + h) : (!h && !rp)) ? ' aria-current="page"' : ""}>${T(fr, ar, en)}</a>`).join("")}</div></nav>`
       + (proposee && proposee !== LANGUE_ADRESSE ? `<p class="autre-langue"><a href="${adresse(proposee)}" data-lang="${proposee}" lang="${proposee}" dir="${DROITE.includes(proposee) ? "rtl" : "ltr"}" hreflang="${proposee}">${LANGUES.find(x => x[0] === proposee)[2]} →</a></p>` : "");
     const p = document.getElementById("pied");
+    // pages communes de clicvia.com (17/11/2026) : Confidentialité / Conditions d'utilisation en français, en arabe (ar/), sinon en anglais (en/)
+    const PAGES_COMMUNES = html.lang === "fr" ? "" : html.lang === "ar" ? "ar/" : "en/";
     if (p) p.innerHTML = `
       <div class="wrap">
         <div class="pied-logo"><img src="${racine}assets/logo.svg" alt="" width="24" height="24"> ${T("Points d'eau de Tunisie et du monde", "نقاط الماء في تونس والعالم", "Water points of Tunisia and the world")}</div>
@@ -113,6 +115,8 @@ const MENU_SITE = [
           <a href="${rp}#avis">${T("Votre avis", "رأيك", "Your feedback")}</a>
           <a href="https://prix-eau.clicvia.com/" target="_blank" rel="noopener" data-compteur="lien-site/prix-eaux">${T("Prix de l'eau en bouteille", "أسعار الماء المعدني", "Bottled water prices (Tunisia)")}</a>
         <a href="https://clicvia.com/" rel="noopener" target="_blank">${T("Tous nos services", "كل خدماتنا", "All our services")}</a>
+        <a href="https://clicvia.com/${PAGES_COMMUNES}confidentialite/" rel="noopener" target="_blank">${T("Confidentialité", "الخصوصية", "Privacy")}</a>
+        <a href="https://clicvia.com/${PAGES_COMMUNES}conditions/" rel="noopener" target="_blank">${T("Conditions d'utilisation", "شروط الاستعمال", "Terms of use")}</a>
         </nav>
         <p>${T("Eau non contrôlée : les sources, puits et majels ne sont pas analysés. Ce site n'est pas un service officiel.",
                "ماء غير مراقب: العيون والآبار والمواجل غير محلَّلة. هذا الموقع ليس خدمة رسمية.",

@@ -39,7 +39,9 @@ const pages = [];
     const p = d ? d + "/" + n : n;
     if (IGNORER.includes(p) || IGNORER.includes(n) && !d) continue;
     if (statSync(join(root, p)).isDirectory()) parcourir(p);
-    else if (n.endsWith(".html") && !n.startsWith("google")) pages.push(p);
+    // 404.html = page 404 COMMUNE de clicvia.com (outils communs/page-404, 17/11/2026) : page d'erreur autonome, sans page.js ni
+    // service worker (elle ne doit jamais être installée ni gardée en cache), vérifiée par test_site.mjs
+    else if (n.endsWith(".html") && !n.startsWith("google") && p !== "404.html") pages.push(p);
   }
 })("");
 check(`pages trouvées (${pages.length})`, pages.length > 0);

@@ -218,3 +218,6 @@
 217	Totul se face singur, prin roboții noștri: punctele din Tunisia sunt recitite la fiecare 3 luni, punctele semnalate sunt publicate cam la fiecare 2 ore, iar fiecare modificare a site-ului este testată înainte de publicare.
 218	Un site independent
 219	Acest site nu este un serviciu oficial și nu depinde de nicio organizație. Nimeni nu verifică calitatea apei: informați-vă la fața locului.
+220	Confidențialitate
+221	Condiții de utilizare
+222	Paginile „Confidențialitate” și „Condiții de utilizare”, comune tuturor site-urilor noastre, se află în partea de jos a fiecărei pagini.

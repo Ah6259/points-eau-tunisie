@@ -218,3 +218,6 @@
 217	Tutto avviene da solo, grazie ai nostri robot: i punti della Tunisia vengono riletti ogni 3 mesi, i punti segnalati sono pubblicati circa ogni 2 ore, e ogni modifica del sito viene testata prima di essere pubblicata.
 218	Un sito indipendente
 219	Questo sito non è un servizio ufficiale e non dipende da alcuna organizzazione. Nessuno controlla la qualità dell'acqua: informatevi sul posto.
+220	Privacy
+221	Condizioni d'uso
+222	Le pagine «Privacy» e «Condizioni d'uso», comuni a tutti i nostri siti, sono in fondo a ogni pagina.

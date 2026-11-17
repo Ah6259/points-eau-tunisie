@@ -218,3 +218,6 @@
 217	Tudo acontece sozinho, através dos nossos robôs: os pontos da Tunísia são relidos a cada 3 meses, os pontos assinalados são publicados mais ou menos a cada 2 horas, e cada alteração do site é testada antes de ser publicada.
 218	Um site independente
 219	Este site não é um serviço oficial e não depende de nenhuma organização. Ninguém verifica a qualidade da água: informe-se no local.
+220	Privacidade
+221	Termos de utilização
+222	As páginas «Privacidade» e «Termos de utilização», comuns a todos os nossos sites, estão no fundo de cada página.

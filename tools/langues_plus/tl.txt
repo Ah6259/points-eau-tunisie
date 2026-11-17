@@ -218,3 +218,6 @@
 217	Kusang nangyayari ang lahat sa pamamagitan ng aming mga robot: muling binabasa ang mga punto sa Tunisia bawat 3 buwan, inilalathala ang mga iniulat na punto humigit-kumulang bawat 2 oras, at sinusubok ang bawat pagbabago sa site bago ilathala.
 218	Isang malayang site
 219	Hindi opisyal na serbisyo ang site na ito at hindi nakasalalay sa anumang organisasyon. Walang sumusuri sa kalidad ng tubig: magtanong sa lugar.
+220	Privacy
+221	Mga tuntunin ng paggamit
+222	Ang mga pahinang «Privacy» at «Mga tuntunin ng paggamit», na pareho para sa lahat ng aming site, ay nasa ibaba ng bawat pahina.

@@ -218,3 +218,6 @@
 217	Allt sker av sig självt, genom våra robotar: punkterna i Tunisien läses in på nytt var 3:e månad, anmälda punkter publiceras ungefär varannan timme, och varje ändring av webbplatsen testas innan den publiceras.
 218	En oberoende webbplats
 219	Den här webbplatsen är ingen officiell tjänst och hör inte till någon organisation. Ingen kontrollerar vattenkvaliteten: fråga på plats.
+220	Integritet
+221	Användarvillkor
+222	Sidorna ”Integritet” och ”Användarvillkor”, gemensamma för alla våra webbplatser, finns längst ned på varje sida.

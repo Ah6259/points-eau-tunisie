@@ -218,3 +218,6 @@
 217	Mọi việc tự diễn ra nhờ các robot của chúng tôi: các điểm ở Tunisia được đọc lại 3 tháng một lần, điểm được báo được đăng khoảng 2 giờ một lần, và mỗi thay đổi của trang web đều được kiểm tra trước khi đăng.
 218	Một trang web độc lập
 219	Trang web này không phải dịch vụ chính thức và không thuộc tổ chức nào. Không ai kiểm tra chất lượng nước: hãy hỏi tại chỗ.
+220	Quyền riêng tư
+221	Điều khoản sử dụng
+222	Các trang «Quyền riêng tư» và «Điều khoản sử dụng», chung cho tất cả các trang web của chúng tôi, nằm ở cuối mỗi trang.

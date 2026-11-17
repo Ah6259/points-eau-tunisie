@@ -27,7 +27,8 @@ const pages = [];
     const p = d ? d + "/" + n : n;
     if (IGNORER.includes(n) && !d || IGNORER.includes(p)) continue;
     if (statSync(join(root, p)).isDirectory()) parcourir(p);
-    else if (n.endsWith(".html") && !n.startsWith("google")) pages.push(p);
+    // 404.html = page 404 COMMUNE de clicvia.com (17/11/2026) : page d'erreur autonome, sans formulaire ni pied de page du site
+    else if (n.endsWith(".html") && !n.startsWith("google") && p !== "404.html") pages.push(p);
   }
 })("");
 check(`pages trouvées (${pages.length})`, pages.length > 0 && pages.includes("index.html"));
