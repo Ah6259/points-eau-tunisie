@@ -97,3 +97,9 @@ Règles communes : `../../regles communes a tous les sites.md`.
   phrase) ; accueil : titre « Où trouver de l'eau en Tunisie : sources, fontaines, majels (gratuit) », description 165. Les 84 pages
   des 21 langues refaites ; tests verts (site, points, sabotage, sw, avis, signalements). Page « Le Coran et l'eau » : les deux
   sous-titres passent de h3 à h2 (plus de saut h1 -> h3, contrôle en ligne du 08/11).
+
+## 21/11/2026 — mode sombre lisible (signalé par Ahmed, tous les sites)
+- En sombre, la couleur principale `--vert` devient claire (#5CC6CF) : le texte blanc posé dessus (« Carte », « Autour de moi », « Chercher »,
+  « Envoyer ») était illisible (contraste 2,0). Nouvelle variable `--sur-vert` (blanc en clair, `--bg` foncé en sombre) dans assets/style.css
+  pour tout texte posé sur `--vert` / `--avis-c` / `--p` ; bouton « Partager » de la vidéo sur `--carte` ; boutons « C'est vrai » des bulles
+  de la carte avec une couleur de texte fixe. Contrôle : 0 texte sous 3 de contraste (clair et sombre). VERSION 20261121a.

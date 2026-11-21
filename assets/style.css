@@ -6,10 +6,11 @@
   --rouge:#C2412F; --or:#C98A1B; --bleu:#2F6FB3;
   --ombre:0 1px 2px rgba(15,42,34,.06),0 8px 24px rgba(15,42,34,.06);
   --rayon:18px;
+  --sur-vert:#fff; /* texte posé sur la couleur principale (foncé en mode sombre, 21/11/2026) */
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --bg:#0B1A1C; --carte:#122427; --texte:#E3F1F1; --doux:#95B1B1; --ligne:#21393C;
+    --bg:#0B1A1C; --sur-vert:#0B1A1C; --carte:#122427; --texte:#E3F1F1; --doux:#95B1B1; --ligne:#21393C;
     --vert:#5CC6CF; --vert-fonce:#45AEB7; --vert-clair:#163538; --vert-tres-clair:#122C2F;
     --ombre:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
   }
@@ -186,7 +187,7 @@ img{-webkit-user-drag:none;user-select:none;-webkit-user-select:none;-webkit-tou
 .avis .avis-compte{align-self:flex-end;direction:ltr;unicode-bidi:isolate;font-size:12px;color:var(--doux);margin-top:-6px}
 .avis .avis-piege{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);opacity:0;border:0;padding:0}
 .avis-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.avis-envoyer{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:12px;padding:12px 22px;font:inherit;font-weight:800;font-size:15px;color:#fff;background:var(--avis-c);cursor:pointer}
+.avis-envoyer{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:12px;padding:12px 22px;font:inherit;font-weight:800;font-size:15px;color:var(--sur-vert);background:var(--avis-c);cursor:pointer}
 .avis-envoyer:hover{filter:brightness(1.08)}
 .avis-envoyer:disabled{opacity:.55;cursor:default;filter:none}
 #avis-status{font-size:14px;color:var(--doux)}
@@ -283,7 +284,7 @@ html[dir="rtl"] .abo input[name=telephone],html[dir="rtl"] .abo input[name=code]
 .menu .wrap::-webkit-scrollbar{display:none}
 .menu a{flex:none;text-decoration:none;color:var(--doux);font-weight:700;font-size:14px;padding:6px 10px;border-radius:999px;white-space:nowrap}
 .menu a:hover{color:var(--vert);background:var(--vert-tres-clair)}
-.menu a[aria-current="page"]{color:#fff;background:var(--vert)}
+.menu a[aria-current="page"]{color:var(--sur-vert);background:var(--vert)}
 .menu a.menu-annuaire{display:inline-flex;align-items:center;gap:6px;border:2px solid #F2B33D;color:var(--texte);padding-inline:10px}
 .menu a.menu-annuaire img{border-radius:5px}
 @media (max-width:380px){ .menu a{font-size:13px;padding:6px 8px} }
@@ -299,8 +300,8 @@ html[dir="rtl"] .abo input[name=telephone],html[dir="rtl"] .abo input[name=code]
 .video-nom{font-weight:800;font-size:1.05rem;margin:0}
 .video-page h1{font-size:1.4rem;font-weight:800;line-height:1.25;margin:6px 0 14px}
 .video-lecteur{display:block;height:min(58vh,640px);width:auto;max-width:100%;aspect-ratio:9/16;object-fit:contain;margin:0 auto 18px;border-radius:18px;background:#111;box-shadow:0 10px 30px rgba(0,0,0,.2)}
-.btn-video-site{display:block;max-width:360px;margin:0 auto 12px;padding:16px;border-radius:14px;background:var(--vert);color:#fff;font-weight:800;font-size:1.15rem;text-decoration:none}
-.btn-video-partager{display:block;width:100%;max-width:360px;margin:0 auto;padding:13px;border-radius:14px;border:2px solid var(--vert);background:#fff;color:var(--vert);font-weight:700;font-size:1rem;cursor:pointer;font-family:inherit}
+.btn-video-site{display:block;max-width:360px;margin:0 auto 12px;padding:16px;border-radius:14px;background:var(--vert);color:var(--sur-vert);font-weight:800;font-size:1.15rem;text-decoration:none}
+.btn-video-partager{display:block;width:100%;max-width:360px;margin:0 auto;padding:13px;border-radius:14px;border:2px solid var(--vert);background:var(--carte);color:var(--vert);font-weight:700;font-size:1rem;cursor:pointer;font-family:inherit}
 /* lien « English → » : propose la langue du téléphone sans changer d'adresse tout seul (une adresse par langue, 12/10/2026) */
 .autre-langue{margin:0;padding:7px 12px;text-align:center;font-size:.92rem;background:var(--carte);border-bottom:1px solid var(--ligne)}
 .autre-langue a{color:inherit;font-weight:700;text-decoration:underline}
@@ -323,7 +324,7 @@ html[dir="rtl"] .abo input[name=telephone],html[dir="rtl"] .abo input[name=code]
 :has(> details.paiement[open]) > .masque-si-paiement{display:none}
 .paie-etapes{list-style:none;counter-reset:etape;margin:10px 0;padding:0;display:grid;gap:8px}
 .paie-etapes>li{counter-increment:etape;position:relative;padding:10px 12px 10px 46px;background:var(--p-tres-clair,var(--p-clair,#EEF3F8));border-radius:12px;line-height:1.55;font-weight:600}
-.paie-etapes>li::before{content:counter(etape);position:absolute;left:12px;top:10px;width:24px;height:24px;border-radius:50%;background:var(--p);color:#fff;font-weight:800;font-size:14px;display:grid;place-items:center}
+.paie-etapes>li::before{content:counter(etape);position:absolute;left:12px;top:10px;width:24px;height:24px;border-radius:50%;background:var(--p);color:var(--sur-vert);font-weight:800;font-size:14px;display:grid;place-items:center}
 html[dir="rtl"] .paie-etapes>li{padding:10px 46px 10px 12px}
 html[dir="rtl"] .paie-etapes>li::before{left:auto;right:12px}
 .applis{display:inline-flex;flex-wrap:wrap;gap:8px;vertical-align:middle}
@@ -367,13 +368,13 @@ input[type=date]:focus,input[type=text]:focus{outline:0;border-color:var(--vert)
 .vide{color:var(--doux);font-size:14.5px;margin:0}
 .rappels-bloc{display:grid;gap:8px;margin-top:14px}
 .btn-principal{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;font:inherit;font-weight:800;font-size:16px;
-  color:#fff;background:var(--vert);border:0;border-radius:14px;padding:13px 16px;cursor:pointer;text-decoration:none}
+  color:var(--sur-vert);background:var(--vert);border:0;border-radius:14px;padding:13px 16px;cursor:pointer;text-decoration:none}
 .btn-principal svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .btn-principal:disabled{opacity:.55;cursor:default}
 .voitures-onglets{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 12px}
 .voitures-onglets button{font:inherit;font-size:14px;font-weight:700;border:1.5px solid var(--ligne);background:var(--bg);color:var(--texte);
   border-radius:999px;padding:6px 12px;cursor:pointer}
-.voitures-onglets button.on{background:var(--vert);border-color:var(--vert);color:#fff}
+.voitures-onglets button.on{background:var(--vert);border-color:var(--vert);color:var(--sur-vert)}
 table.bareme{width:100%;border-collapse:collapse;font-size:14.5px;font-variant-numeric:tabular-nums}
 table.bareme th,table.bareme td{padding:8px 6px;border-bottom:1px solid var(--ligne);text-align:start}
 table.bareme th{font-size:12.5px;color:var(--doux);text-transform:uppercase;letter-spacing:.03em}
@@ -413,7 +414,7 @@ table.bareme td:last-child:not(.m){white-space:normal;text-align:start}
 .pe-proches li{margin:4px 0}
 .pe-bulle{font:14px/1.45 Figtree,"Noto Kufi Arabic",sans-serif}
 .pe-voix{display:flex;gap:6px;margin-top:6px}
-.pe-voix button{font:inherit;font-size:12px;border:1px solid #cfdcdc;border-radius:8px;background:#fff;padding:4px 8px;cursor:pointer}
+.pe-voix button{font:inherit;font-size:12px;border:1px solid #cfdcdc;border-radius:8px;background:#fff;color:#0E2A2E;padding:4px 8px;cursor:pointer}
 /* ---- « Signaler un point d'eau » : barre + fenêtre, comme « Signaler un prix » du site Prix des Eaux ---- */
 .sig-section{margin:0 0 16px}
 .sig-bar{width:100%;display:flex;align-items:center;gap:10px;cursor:pointer;text-align:start;padding:10px 12px;border-radius:14px;font:inherit;color:var(--texte);
@@ -422,7 +423,7 @@ table.bareme td:last-child:not(.m){white-space:normal;text-align:start}
 .sig-bar h2{margin:0;font-size:18px;min-width:0}
 .sig-bar .sig-ico{width:34px;height:34px;border-radius:10px;flex:none;display:grid;place-items:center;background:var(--vert-clair);color:var(--vert)}
 .sig-bar .sig-ico svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.sum-cta{margin-inline-start:auto;flex:none;display:inline-flex;align-items:center;gap:6px;background:var(--vert);color:#fff;border-radius:999px;
+.sum-cta{margin-inline-start:auto;flex:none;display:inline-flex;align-items:center;gap:6px;background:var(--vert);color:var(--sur-vert);border-radius:999px;
   padding:7px 16px;font-size:13.5px;font-weight:700;white-space:nowrap;box-shadow:0 1px 2px rgba(15,43,61,.15)}
 .sig-bar:hover .sum-cta{filter:brightness(1.1)}
 .sig-cta-fl{display:none}
@@ -452,7 +453,7 @@ table.bareme td:last-child:not(.m){white-space:normal;text-align:start}
 .pe-geo .geo-confirm{align-self:flex-start;background:#128A52;border-color:#128A52;color:#fff}
 .pe-geo .geo-confirm.fait{opacity:.6}
 .avis-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.avis-send{font:inherit;font-weight:800;font-size:15px;border:0;border-radius:999px;background:var(--vert);color:#fff;padding:10px 26px;cursor:pointer}
+.avis-send{font:inherit;font-weight:800;font-size:15px;border:0;border-radius:999px;background:var(--vert);color:var(--sur-vert);padding:10px 26px;cursor:pointer}
 .avis-send:hover{filter:brightness(1.1)}
 #pe-form .avis-actions{margin-top:12px}  /* « Envoyer » à égale distance du bouton du dessus et du trait du dessous (§ 29) */
 #pe-statut{font-size:13.5px;color:var(--doux)}
@@ -493,7 +494,7 @@ html[dir="rtl"] .langues-liste{right:auto;left:0}
 .langues-liste button[dir="rtl"]{font-family:"Noto Kufi Arabic",Figtree,sans-serif;text-align:left}
 html[dir="rtl"] .langues-liste button{text-align:right}
 .langues-liste button:hover,.langues-liste button:focus-visible{background:var(--vert-clair)}
-.langues-liste button[aria-pressed="true"]{background:var(--vert);color:#fff}
+.langues-liste button[aria-pressed="true"]{background:var(--vert);color:var(--sur-vert)}
 @media (max-width:420px){.langues-bouton{height:32px;padding:0 7px}}
 /* ---- page « Majels & puits » ---- */
 .mp-liens .lg{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.04em;color:var(--doux);border:1px solid var(--ligne);border-radius:6px;padding:0 4px;vertical-align:1px}
