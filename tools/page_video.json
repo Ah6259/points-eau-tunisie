@@ -5,11 +5,13 @@
  "modele": "a-propos/index.html",
  "nom": {
   "fr": "Points d'eau Tunisie",
-  "ar": "نقاط الماء في تونس"
+  "ar": "نقاط الماء في تونس",
+  "en": "Water Points Tunisia"
  },
  "partager": {
   "fr": "Partager la vidéo",
-  "ar": "شارك الفيديو"
+  "ar": "شارك الفيديو",
+  "en": "Share the video"
  },
  "pages": [
   {
@@ -20,7 +22,8 @@
    "site": "",
    "titre": {
     "fr": "Vidéo de présentation",
-    "ar": "الفيديو التقديمي"
+    "ar": "الفيديو التقديمي",
+    "en": "Presentation video"
    },
    "description": {
     "fr": "Vidéo de présentation : la carte gratuite des sources, fontaines, robinets publics et majels de Tunisie.",
@@ -28,7 +31,8 @@
    },
    "bouton": {
     "fr": "Ouvrir le site",
-    "ar": "افتح الموقع"
+    "ar": "افتح الموقع",
+    "en": "Open the website"
    }
   }
  ]

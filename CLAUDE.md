@@ -103,3 +103,6 @@ Règles communes : `../../regles communes a tous les sites.md`.
   « Envoyer ») était illisible (contraste 2,0). Nouvelle variable `--sur-vert` (blanc en clair, `--bg` foncé en sombre) dans assets/style.css
   pour tout texte posé sur `--vert` / `--avis-c` / `--p` ; bouton « Partager » de la vidéo sur `--carte` ; boutons « C'est vrai » des bulles
   de la carte avec une couleur de texte fixe. Contrôle : 0 texte sous 3 de contraste (clair et sombre). VERSION 20261121a.
+- **21/11/2026 — outil vidéo réparé** : `tools/page_video.mjs` recopiait de la page modèle (À propos, à langue fixe) les liens hreflang et
+  `data-fixe` / `data-chemin` : la page vidéo se croyait la page À propos. Il les retire maintenant ; anglais ajouté dans `tools/page_video.json`.
+  Test n° 7 de `tools/test_video.mjs` (vérifié par sabotage). `node tools/page_video.mjs` peut de nouveau être relancé.

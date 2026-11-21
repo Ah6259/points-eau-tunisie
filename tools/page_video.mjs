@@ -35,6 +35,12 @@ export function pagesVideo(root, cfg = JSON.parse(readFileSync(join(root, "tools
     let h = modele
       .replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>\s*/g, "")
       .replace(/<link rel="canonical"[^>]*>\s*/g, "")
+      // la page vidéo est UNE seule adresse (?lang=) : on retire ce que la page modèle doit à « une adresse par langue »
+      // (liens hreflang, langue fixe) — sinon la vidéo se croyait la page À propos (21/11/2026)
+      .replace(/<link rel="alternate" hreflang="[^"]*"[^>]*>\s*/g, "")
+      .replace(/(<html[^>]*?)\s+data-(?:chemin|langue-fixe|autre-langue)="[^"]*"/g, "$1")
+      .replace(/(<html[^>]*?)\s+data-(?:chemin|langue-fixe|autre-langue)="[^"]*"/g, "$1")
+      .replace(/(<html[^>]*?)\s+data-fixe(?=[\s>])/, "$1")
       .replace(/<meta (property="og:[^"]*"|name="twitter:[^"]*")[^>]*>\s*/g, "")
       .replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(titre)} | ${esc(nom)}</title>`)
       .replace(/(<meta name="description" content=")[^"]*(")/, `$1${esc(desc)}$2`)
