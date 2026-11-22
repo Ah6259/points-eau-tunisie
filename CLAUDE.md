@@ -106,3 +106,11 @@ Règles communes : `../../regles communes a tous les sites.md`.
 - **21/11/2026 — outil vidéo réparé** : `tools/page_video.mjs` recopiait de la page modèle (À propos, à langue fixe) les liens hreflang et
   `data-fixe` / `data-chemin` : la page vidéo se croyait la page À propos. Il les retire maintenant ; anglais ajouté dans `tools/page_video.json`.
   Test n° 7 de `tools/test_video.mjs` (vérifié par sabotage). `node tools/page_video.mjs` peut de nouveau être relancé.
+
+## 22/11/2026 — Google + IA (demande d'Ahmed : « que Google et les IA indexent nos sites »)
+- État Search Console (21/11) : accueil « Crawled - currently not indexed » (dernière visite de Google le 12/10), coran-et-eau/ « Discovered » ;
+  requêtes vues : « eau autour de moi », « source eau potable autour de moi » (position 4 à 7).
+- Accueil (index.html, recopié dans les 21 langues par pages_langues.py) : JSON-LD WebSite (nom, autres noms, 21 langues) + éditeur
+  `Organization` Clicvia (@id https://clicvia.com/#organisation, page Facebook) ; description française « … l'eau potable autour de vous ».
+- robots.txt (assistants IA de recherche permis, entraînement refusé) et llms.txt (sans chiffre) déjà bons : inchangés.
+  Pas de nouvelle phrase dans « Comment fonctionne le site ? » (21 langues : l'éditeur est dit dans le JSON-LD).
