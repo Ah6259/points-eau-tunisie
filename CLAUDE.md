@@ -1,5 +1,14 @@
 # Points d'eau Tunisie (points-eau-tunisie)
 
+## EN TOUT PREMIER (24/11/2026, problème vu par Ahmed)
+- La mémoire générale, les « update workflow » et le journal de TOUS les sites sont dans le dépôt PRIVÉ **`Ah6259/projets-ahmed`**
+  (le dépôt général), PAS ici. Une session ouverte sur ce seul dépôt ne voit donc pas le dernier travail d'Ahmed (le 24/11, une session
+  a répondu « dernier update workflow : 22/11 » alors qu'il y en avait deux le jour même dans projets-ahmed).
+- **Au début de CHAQUE session, avant de répondre quoi que ce soit** : si `../projets-ahmed` n'existe pas, le brancher
+  (`add_repo` Ah6259/projets-ahmed, puis `git clone --depth 30 https://github.com/Ah6259/projets-ahmed ../projets-ahmed`) ; sinon `git pull` ;
+  puis `python3 "debut de session.py" points-eau` dans `../projets-ahmed` et en résumer le résultat à Ahmed.
+- « Dernier workflow / dernière mise à jour » = regarder `git log` de projets-ahmed ET de ce dépôt (toutes branches), jamais un seul.
+
 Fichier lu par Claude Code au début de chaque session. **Dépôt PUBLIC : rien de personnel ni de secret.** Répondre à Ahmed
 **en français**, simplement. Toujours `git pull` avant de modifier, commit + push à la fin (Ahmed travaille aussi du téléphone).
 Nouveau PC : `git config user.name Ah6259` et `git config user.email 200752748+Ah6259@users.noreply.github.com`.
