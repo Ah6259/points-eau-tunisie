@@ -123,3 +123,10 @@ Règles communes : `../../regles communes a tous les sites.md`.
   `Organization` Clicvia (@id https://clicvia.com/#organisation, page Facebook) ; description française « … l'eau potable autour de vous ».
 - robots.txt (assistants IA de recherche permis, entraînement refusé) et llms.txt (sans chiffre) déjà bons : inchangés.
   Pas de nouvelle phrase dans « Comment fonctionne le site ? » (21 langues : l'éditeur est dit dans le JSON-LD).
+
+## 25/11/2026 — plan Google (B.2, « fais » d'Ahmed après la chute Google d'octobre)
+- **lastmod HONNÊTE** : la fin de tools/construire.py passe le plan du site par `tools/lastmod.py` (outil COMMUN, copié tel quel) : date du
+  dernier VRAI changement du contenu de chaque page (empreinte du titre, de la description, du texte et des images, SANS menus, pied,
+  scripts, ?v= ni dates) gardée dans `donnees/lastmod.json` (enregistré avec les pages) au lieu de la date de VERSION pour toutes ;
+  page noindex = hors du plan. Test : `python tools/test_lastmod.py donnees/lastmod.json` (tests.yml ; données inventées + vrai plan ;
+  vérifié par sabotage). Pages maigres : aucune (4 pages × 21 langues, toutes de vraies traductions), rien en noindex.

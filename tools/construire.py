@@ -179,6 +179,14 @@ def main():
     video = "".join(re.findall(r"  <url><loc>[^<]*/video/[^<]*</loc>.*?</url>\n", open(sm, encoding="utf-8").read())) if os.path.exists(sm) else ""
     open(sm, "w", encoding="utf-8", newline="\n").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
         + "".join(f"  <url><loc>{BASE}{a}</loc><lastmod>{maj}</lastmod></url>\n" for a in adresses) + video + "</urlset>\n")
+    # plan Google du 25/11/2026 (B.2) : date du dernier VRAI changement de chaque page (empreinte gardée dans donnees/lastmod.json,
+    # outil commun tools/lastmod.py) au lieu de la date de VERSION pour toutes ; une page noindex sort du plan
+    sys.path.insert(0, ICI)
+    import lastmod
+    xml = open(sm, encoding="utf-8").read()
+    xml2 = lastmod.honnete(xml, RACINE, BASE, "donnees/lastmod.json")
+    if xml2 != xml:
+        open(sm, "w", encoding="utf-8", newline="\n").write(xml2)
     print(f"{n} page(s) écrite(s) en {len(LANGUES)} langues ({len(adresses)} adresses), {manque} texte(s) resté(s) en anglais, version {VERSION}")
 
 
