@@ -8,7 +8,7 @@ L'accueil (index.html) est écrit à la main ; sa version ?v= est remplacée ici
 import json, os, re, shutil, sys
 
 ICI = os.path.dirname(os.path.abspath(__file__)); RACINE = os.path.dirname(ICI)
-VERSION = "20261121a"           # à changer à chaque modification des fichiers assets/ (le test vérifie une seule version)
+VERSION = "20261128a"           # à changer à chaque modification des fichiers assets/ (le test vérifie une seule version)
 
 
 def titre_seo(t, maxi=70):
@@ -121,6 +121,80 @@ def page(chemin_page, meta, corps):
 """
 
 
+# ---- « Les points d'eau en chiffres » (28/11/2026, plan VIS.3 point 5 d'Ahmed) : Google et les assistants d'IA ne lisent que le
+# TEXTE d'une page, pas la carte (points chargés par JavaScript). On écrit donc dans l'accueil, à la construction, le nombre de
+# points de la carte en Tunisie par type et par source, et la date des chiffres. MÊMES données et MÊME filtre que la carte
+# (donnees/points_eau.js, points retirés déjà exclus par tools/points_eau.py, points « monde » exclus comme le compteur de
+# assets/points-eau.js). PAS de chiffre par gouvernorat : les données n'ont pas le gouvernorat de chaque point et le dépôt n'a
+# aucune carte de leurs limites ; on ne devine jamais un chiffre.
+TYPES_CHIFFRES = [("source", "Source naturelle", "عين ماء", "Natural spring"),
+                  ("fontaine", "Fontaine d'eau potable", "حنفية ماء صالح للشرب", "Drinking fountain"),
+                  ("robinet", "Robinet / point d'eau public", "حنفية عمومية", "Public tap / water point"),
+                  ("majel", "Majel public", "ماجل عمومي", "Public majel (cistern)"),
+                  ("puits", "Puits", "بئر", "Well")]
+SOURCES_CHIFFRES = [("osm", "OpenStreetMap (carte libre)", "⁨OpenStreetMap⁩ (خريطة حرة)", "OpenStreetMap (free map)"),
+                    ("ajem", "Association AJEM (majels de Djerba)", "جمعية ⁨AJEM⁩ (مواجل جربة)", "AJEM association (Djerba majels)"),
+                    ("visiteur", "Signalés par les visiteurs", "أضافها الزوار", "Reported by visitors")]
+
+
+def lire_points():
+    t = open(os.path.join(RACINE, "donnees", "points_eau.js"), encoding="utf-8").read()
+    return json.loads(t[t.index("{"):t.rindex("}") + 1])
+
+
+def compter_points(d):
+    """(points de la carte en Tunisie, {type: n}, {source: n}) — même filtre que le compteur de la carte."""
+    pts = [p for p in d.get("points", []) if not p.get("monde")]
+    return pts, {t: sum(p["type"] == t for p in pts) for t, *_ in TYPES_CHIFFRES}, {s: sum(p.get("src") == s for p in pts) for s, *_ in SOURCES_CHIFFRES}
+
+
+def _l(fr, ar, en):
+    return f'<span data-l="fr">{fr}</span><span data-l="ar">{ar}</span><span data-l="en">{en}</span>'
+
+
+def _date(iso):
+    iso = (iso or "")[:10]
+    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", iso):
+        raise SystemExit(f"donnees/points_eau.js : date illisible « {iso} »")
+    return f'<time datetime="{iso}">{iso[8:10]}/{iso[5:7]}/{iso[:4]}</time>'
+
+
+TEXTES_CHIFFRES = {
+    "titre": ("Les points d'eau en chiffres", "نقاط الماء بالأرقام", "Water points in figures"),
+    "intro": ("Les points d'eau de la carte en Tunisie, par type et par source, calculés à partir des mêmes données que la carte.",
+              "نقاط الماء على الخريطة في تونس، حسب النوع وحسب المصدر، محسوبة من نفس بيانات الخريطة.",
+              "The water points on the map in Tunisia, by type and by source, counted from the same data as the map."),
+    "type": ("Type de point d'eau", "نوع نقطة الماء", "Type of water point"),
+    "nombre": ("Nombre", "العدد", "Number"),
+    "total": ("Total en Tunisie", "المجموع في تونس", "Total in Tunisia"),
+    "source": ("Source", "المصدر", "Source"),
+    "date": ("Date des chiffres :", "تاريخ الأرقام:", "Date of the figures:"),
+    "osm": ("Relevé OpenStreetMap du :", "تاريخ مسح ⁨OpenStreetMap⁩:", "OpenStreetMap survey of:"),
+    "monde": ("Ailleurs dans le monde, les points d'eau sont lus en direct quand vous déplacez la carte : ils ne sont pas comptés ici.",
+              "في باقي العالم، تُقرأ نقاط الماء مباشرة عند تحريك الخريطة: لا تُحتسب هنا.",
+              "Elsewhere in the world, water points are read live when you move the map: they are not counted here."),
+}
+
+
+def bloc_chiffres(d):
+    """Bloc HTML (repères <!--chiffres--> de index.html) et total. Replié au départ (règle commune § 66 : titre + pastille du nombre)."""
+    pts, par_type, par_src = compter_points(d)
+    n = len(pts)
+    if n != sum(par_type.values()) or n != sum(par_src.values()):
+        raise SystemExit("points d'eau en chiffres : un point a un type ou une source inconnus (somme différente du total)")
+    T = {k: _l(*v) for k, v in TEXTES_CHIFFRES.items()}
+    lignes = "".join(f'<tr><td>{_l(fr, ar, en)}</td><td class="m">{par_type[t]}</td></tr>\n' for t, fr, ar, en in TYPES_CHIFFRES if par_type[t])
+    lignes_src = "".join(f'<tr><td>{_l(fr, ar, en)}</td><td class="m">{par_src[s]}</td></tr>\n' for s, fr, ar, en in SOURCES_CHIFFRES if par_src[s])
+    return (f'<!--chiffres-->\n<section class="carte pe-chiffres" id="chiffres" data-total="{n}">\n<details>\n'
+            f'<summary><h2>{T["titre"]}</h2> <span class="pe-pastille">{n}</span></summary>\n'
+            f'<p>{T["intro"]}</p>\n'
+            f'<table class="bareme pe-chiffres-types"><thead><tr><th>{T["type"]}</th><th>{T["nombre"]}</th></tr></thead>\n<tbody>\n{lignes}'
+            f'<tr class="ici"><td>{T["total"]}</td><td class="m">{n}</td></tr>\n</tbody></table>\n'
+            f'<table class="bareme pe-chiffres-sources"><thead><tr><th>{T["source"]}</th><th>{T["nombre"]}</th></tr></thead>\n<tbody>\n{lignes_src}</tbody></table>\n'
+            f'<p class="aide pe-chiffres-date">{T["date"]} {_date(d.get("maj"))} · {T["osm"]} {_date(d.get("osm_maj"))}</p>\n'
+            f'<p class="aide">{T["monde"]}</p>\n'
+            f'</details>\n</section>\n<!--/chiffres-->'), n
+
 def main():
     dossier = os.path.join(ICI, "gabarits")
     n = 0
@@ -140,6 +214,11 @@ def main():
     acc = os.path.join(RACINE, "index.html")
     t = open(acc, encoding="utf-8").read()
     t2 = re.sub(r"\?v=\d{8}[a-z]", "?v=" + VERSION, t)
+    bloc, total = bloc_chiffres(lire_points())
+    if "<!--chiffres-->" not in t2:
+        raise SystemExit("index.html : repères <!--chiffres--> … <!--/chiffres--> absents")
+    t2 = re.sub(r"<!--chiffres-->.*?<!--/chiffres-->", lambda m: bloc, t2, count=1, flags=re.S)
+    t2 = re.sub(r'<b id="pe-total">\d*</b>', f'<b id="pe-total">{total}</b>', t2, count=1)   # même nombre que la carte, lisible sans JavaScript
     t2 = re.sub(r'<html lang="fr" dir="ltr" translate="no"[^>]*>', '<html lang="fr" dir="ltr" translate="no" data-racine="" data-chemin="" data-fixe>', t2, count=1)
     t2 = re.sub(r'(?:<link rel="alternate" hreflang="[^"]*" href="[^"]*">\n)+', lambda m: PL.liens_hreflang(BASE, "", LANGUES), t2, count=1)
     if t2 != t:

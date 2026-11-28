@@ -464,6 +464,38 @@ check("robots.txt (IA refusées, sitemap), sitemap avec les pages, LICENSE", /GP
   check("CSP : WPdx (data.waterpointdata.org) autorisé ; zoom « région » (9) ; message posé sur la carte",
     /connect-src[^;]*data\.waterpointdata\.org/.test(lire("index.html")) && /ZOOM_MONDE = 9\b/.test(lire("assets/points-eau.js")) && /pe-zone-carte/.test(lire("assets/points-eau.js")));
 }
+// ---- 28/11/2026 (plan VIS.3 point 5 d'Ahmed) : « Les points d'eau en chiffres » ÉCRIT dans l'accueil (Google et les IA ne lisent pas
+//      la carte) : présent dans les 21 langues, sans JavaScript ; mêmes nombres que la carte (donnees/points_eau.js, même filtre que
+//      le compteur : points « monde » exclus) ; somme des types = somme des sources = total ; date des chiffres = date des données
+{
+  const w0 = {}; new Function("window", lire("donnees/points_eau.js"))(w0);
+  const D = w0.EAUX_POINTS, pts = D.points.filter(p => !p.monde), n = pts.length;
+  const fdate = iso => `${iso.slice(8, 10)}/${iso.slice(5, 7)}/${iso.slice(0, 4)}`;
+  const nb = tr => +tr.querySelector("td.m").textContent;
+  const ko = [];
+  for (const l of ["fr", ...AUTRES]) {
+    const f = l === "fr" ? "index.html" : l + "/index.html", h = lire(f), d = new JSDOM(h).window.document;   // sans scripts : ce que lit Google
+    const sec = d.querySelector("section#chiffres"), det = sec && sec.querySelector("details");
+    if (!sec || !det) { ko.push(l + " section absente"); continue; }
+    const types = [...sec.querySelectorAll(".pe-chiffres-types tbody tr:not(.ici)")], tot = sec.querySelector(".pe-chiffres-types tr.ici");
+    const srcs = [...sec.querySelectorAll(".pe-chiffres-sources tbody tr")];
+    const somme = a => a.reduce((x, tr) => x + nb(tr), 0);
+    if (+sec.dataset.total !== n || !tot || nb(tot) !== n || somme(types) !== n || somme(srcs) !== n) ko.push(l + " nombres");
+    if (+sec.querySelector(".pe-pastille").textContent !== n || det.hasAttribute("open") || !det.querySelector("summary h2")) ko.push(l + " repliée + pastille");
+    const parType = {}; pts.forEach(p => parType[p.type] = (parType[p.type] || 0) + 1);
+    if (types.map(nb).join() !== ["source", "fontaine", "robinet", "majel", "puits"].filter(t => parType[t]).map(t => parType[t]).join()) ko.push(l + " nombre par type");
+    const dates = [...sec.querySelectorAll(".pe-chiffres-date time")].map(t => t.getAttribute("datetime") + "=" + t.textContent);
+    if (dates.join() !== [D.maj.slice(0, 10) + "=" + fdate(D.maj), D.osm_maj + "=" + fdate(D.osm_maj)].join()) ko.push(l + " dates");
+    if (/NaN|undefined|null/.test(sec.textContent)) ko.push(l + " NaN/undefined");
+    if (d.getElementById("pe-total").textContent !== String(n)) ko.push(l + " compteur écrit dans la page");
+    const titre = (sec.querySelector(l === "fr" ? 'summary h2 [data-l="fr"]' : "summary h2") || { textContent: "" }).textContent.trim();
+    if (l === "fr" ? titre !== "Les points d'eau en chiffres" : (titre === "Les points d'eau en chiffres" || !titre)) ko.push(l + " titre pas dans la langue");
+    if (l === "ar" && titre !== "نقاط الماء بالأرقام") ko.push("ar titre arabe");
+    if (l === "en" && titre !== "Water points in figures") ko.push("en titre anglais");
+  }
+  check(`« Les points d'eau en chiffres » écrit dans l'accueil des ${AUTRES.length + 1} langues : total ${n} = points de la carte, somme des types et des sources = total, dates des données, replié avec pastille ${ko.slice(0, 5).join(" | ")}`,
+    n > 0 && !ko.length);
+}
 // ---- RÈGLE d'Ahmed : « la page Comment fonctionne le site doit être mise à jour chaque fois qu'on modifie le site »
 //      (25/10/2026, règle commune § 44) : chaque fonction visible du site (repère dans le code ou les pages) doit être
 //      expliquée dans a-propos/ ; nouvelle fonction = une ligne ici + son explication dans tools/gabarits/a-propos.html (21 langues)
@@ -481,6 +513,7 @@ check("robots.txt (IA refusées, sitemap), sitemap avec les pages, LICENSE", /GP
     ["signaler un point d'eau", /id="pe-sig-ouvrir"/.test(acc), /Signaler un point d'eau : ajoutez une source/],
     ["« C'est vrai » / « N'existe plus »", /data-ok=/.test(pe) && /data-ko=/.test(pe), /« N'existe plus » : confirmez un point d'eau/],
     ["majels de Djerba (AJEM)", /pe-credit-ajem/.test(acc), /Majels de Djerba : leur nom, leur état/],
+    ["les points d'eau en chiffres", /<!--chiffres-->/.test(acc), /Les points d'eau en chiffres : sous la carte, le nombre de points d'eau en Tunisie par type et par source/],
     ["page Majels et puits", ex("majels-et-puits/index.html"), /Page « Majels et puits en Tunisie »/],
     ["page Le Coran et l'eau", ex("coran-et-eau/index.html"), /Page « Le Coran et l'eau »/],
     ["liens vers nos sites proches", /prix-eau\.clicvia\.com/.test(acc) && /mosquees\.clicvia\.com/.test(acc), /Nos sites proches : Prix des Eaux de Tunisie/],

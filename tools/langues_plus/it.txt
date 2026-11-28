@@ -221,3 +221,16 @@
 220	Privacy
 221	Condizioni d'uso
 222	Le pagine «Privacy» e «Condizioni d'uso», comuni a tutti i nostri siti, sono in fondo a ogni pagina.
+223	I punti d'acqua in cifre
+224	I punti d'acqua della mappa in Tunisia, per tipo e per fonte, contati dagli stessi dati della mappa.
+225	Tipo di punto d'acqua
+226	Numero
+227	Totale in Tunisia
+228	Fonte
+229	Data delle cifre:
+230	Rilevamento OpenStreetMap del:
+231	Nel resto del mondo i punti d'acqua vengono letti in diretta quando sposti la mappa: qui non sono contati.
+232	OpenStreetMap (mappa libera)
+233	Associazione AJEM (majel di Djerba)
+234	Segnalati dai visitatori
+235	I punti d'acqua in cifre: sotto la mappa, il numero di punti d'acqua in Tunisia per tipo e per fonte, con la data delle cifre.

@@ -222,7 +222,20 @@
   "Ce site n'est pas un service officiel et ne dépend d'aucune organisation. Personne ne vérifie la qualité de l'eau : renseignez-vous sur place.",
   "Confidentialité",
   "Conditions d'utilisation",
-  "Les pages « Confidentialité » et « Conditions d'utilisation », communes à tous nos sites, sont en bas de chaque page."
+  "Les pages « Confidentialité » et « Conditions d'utilisation », communes à tous nos sites, sont en bas de chaque page.",
+  "Les points d'eau en chiffres",
+  "Les points d'eau de la carte en Tunisie, par type et par source, calculés à partir des mêmes données que la carte.",
+  "Type de point d'eau",
+  "Nombre",
+  "Total en Tunisie",
+  "Source",
+  "Date des chiffres :",
+  "Relevé OpenStreetMap du :",
+  "Ailleurs dans le monde, les points d'eau sont lus en direct quand vous déplacez la carte : ils ne sont pas comptés ici.",
+  "OpenStreetMap (carte libre)",
+  "Association AJEM (majels de Djerba)",
+  "Signalés par les visiteurs",
+  "Les points d'eau en chiffres : sous la carte, le nombre de points d'eau en Tunisie par type et par source, avec la date des chiffres."
  ],
  "contenu": []
 }

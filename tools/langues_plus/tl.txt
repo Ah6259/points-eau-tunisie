@@ -221,3 +221,16 @@
 220	Privacy
 221	Mga tuntunin ng paggamit
 222	Ang mga pahinang «Privacy» at «Mga tuntunin ng paggamit», na pareho para sa lahat ng aming site, ay nasa ibaba ng bawat pahina.
+223	Ang mga mapagkukunan ng tubig sa bilang
+224	Ang mga mapagkukunan ng tubig sa mapa sa Tunisia, ayon sa uri at pinagmulan, binilang mula sa parehong datos ng mapa.
+225	Uri ng mapagkukunan ng tubig
+226	Bilang
+227	Kabuuan sa Tunisia
+228	Pinagmulan
+229	Petsa ng mga bilang:
+230	Survey ng OpenStreetMap noong:
+231	Sa ibang bahagi ng mundo, binabasa nang live ang mga mapagkukunan ng tubig kapag iginalaw mo ang mapa: hindi sila binibilang dito.
+232	OpenStreetMap (malayang mapa)
+233	Samahang AJEM (mga majel ng Djerba)
+234	Iniulat ng mga bisita
+235	Ang mga mapagkukunan ng tubig sa bilang: sa ilalim ng mapa, ang bilang ng mga mapagkukunan ng tubig sa Tunisia ayon sa uri at pinagmulan, kasama ang petsa ng mga bilang.

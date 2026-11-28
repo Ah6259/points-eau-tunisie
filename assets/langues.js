@@ -226,7 +226,20 @@ window.TRADUCTIONS = {
  "Mises à jour automatiques": "Otomatik güncellemeler",
  "Tout se fait seul, par nos robots : les points de Tunisie sont relus tous les 3 mois, les points signalés sont publiés toutes les 2 heures environ, et chaque modification du site est testée avant d'être publiée.": "Her şey robotlarımız sayesinde kendiliğinden olur: Tunus'taki noktalar 3 ayda bir yeniden okunur, bildirilen noktalar yaklaşık 2 saatte bir yayımlanır ve sitedeki her değişiklik yayımlanmadan önce test edilir.",
  "Un site indépendant": "Bağımsız bir site",
- "Ce site n'est pas un service officiel et ne dépend d'aucune organisation. Personne ne vérifie la qualité de l'eau : renseignez-vous sur place.": "Bu site resmî bir hizmet değildir ve hiçbir kuruluşa bağlı değildir. Suyun kalitesini kimse kontrol etmez: yerinde sorun."
+ "Ce site n'est pas un service officiel et ne dépend d'aucune organisation. Personne ne vérifie la qualité de l'eau : renseignez-vous sur place.": "Bu site resmî bir hizmet değildir ve hiçbir kuruluşa bağlı değildir. Suyun kalitesini kimse kontrol etmez: yerinde sorun.",
+ "Les points d'eau en chiffres": "Rakamlarla su noktaları",
+ "Les points d'eau de la carte en Tunisie, par type et par source, calculés à partir des mêmes données que la carte.": "Haritadaki Tunus su noktaları, türe ve kaynağa göre, haritayla aynı verilerden hesaplanmıştır.",
+ "Type de point d'eau": "Su noktası türü",
+ "Nombre": "Sayı",
+ "Total en Tunisie": "Tunus'ta toplam",
+ "Source": "Kaynak",
+ "Date des chiffres :": "Rakamların tarihi:",
+ "Relevé OpenStreetMap du :": "OpenStreetMap taraması:",
+ "Ailleurs dans le monde, les points d'eau sont lus en direct quand vous déplacez la carte : ils ne sont pas comptés ici.": "Dünyanın geri kalanında su noktaları, haritayı kaydırdığınızda canlı olarak okunur: burada sayılmaz.",
+ "OpenStreetMap (carte libre)": "OpenStreetMap (özgür harita)",
+ "Association AJEM (majels de Djerba)": "AJEM derneği (Cerbe majelleri)",
+ "Signalés par les visiteurs": "Ziyaretçilerin bildirdikleri",
+ "Les points d'eau en chiffres : sous la carte, le nombre de points d'eau en Tunisie par type et par source, avec la date des chiffres.": "Rakamlarla su noktaları: haritanın altında, Tunus'taki su noktalarının türe ve kaynağa göre sayısı ve rakamların tarihi."
 },
 "id": {
  "Points d'eau de Tunisie et du monde": "Titik air Tunisia dan dunia",
@@ -451,7 +464,20 @@ window.TRADUCTIONS = {
  "Mises à jour automatiques": "Pembaruan otomatis",
  "Tout se fait seul, par nos robots : les points de Tunisie sont relus tous les 3 mois, les points signalés sont publiés toutes les 2 heures environ, et chaque modification du site est testée avant d'être publiée.": "Semuanya berjalan sendiri lewat robot kami: titik-titik di Tunisia dibaca ulang setiap 3 bulan, titik yang dilaporkan diterbitkan kira-kira setiap 2 jam, dan setiap perubahan situs diuji sebelum diterbitkan.",
  "Un site indépendant": "Situs independen",
- "Ce site n'est pas un service officiel et ne dépend d'aucune organisation. Personne ne vérifie la qualité de l'eau : renseignez-vous sur place.": "Situs ini bukan layanan resmi dan tidak bergantung pada organisasi mana pun. Tidak ada yang memeriksa kualitas air: tanyakan di tempat."
+ "Ce site n'est pas un service officiel et ne dépend d'aucune organisation. Personne ne vérifie la qualité de l'eau : renseignez-vous sur place.": "Situs ini bukan layanan resmi dan tidak bergantung pada organisasi mana pun. Tidak ada yang memeriksa kualitas air: tanyakan di tempat.",
+ "Les points d'eau en chiffres": "Titik air dalam angka",
+ "Les points d'eau de la carte en Tunisie, par type et par source, calculés à partir des mêmes données que la carte.": "Titik air di peta Tunisia, menurut jenis dan sumber, dihitung dari data yang sama dengan peta.",
+ "Type de point d'eau": "Jenis titik air",
+ "Nombre": "Jumlah",
+ "Total en Tunisie": "Total di Tunisia",
+ "Source": "Sumber",
+ "Date des chiffres :": "Tanggal angka:",
+ "Relevé OpenStreetMap du :": "Survei OpenStreetMap tanggal:",
+ "Ailleurs dans le monde, les points d'eau sont lus en direct quand vous déplacez la carte : ils ne sont pas comptés ici.": "Di bagian lain dunia, titik air dibaca langsung saat Anda menggeser peta: tidak dihitung di sini.",
+ "OpenStreetMap (carte libre)": "OpenStreetMap (peta bebas)",
+ "Association AJEM (majels de Djerba)": "Asosiasi AJEM (majel Djerba)",
+ "Signalés par les visiteurs": "Dilaporkan oleh pengunjung",
+ "Les points d'eau en chiffres : sous la carte, le nombre de points d'eau en Tunisie par type et par source, avec la date des chiffres.": "Titik air dalam angka: di bawah peta, jumlah titik air di Tunisia menurut jenis dan sumber, dengan tanggal angkanya."
 },
 "ur": {
  "Points d'eau de Tunisie et du monde": "تیونس اور دنیا کے پانی کے مقامات",
@@ -676,7 +702,20 @@ window.TRADUCTIONS = {
  "Mises à jour automatiques": "خودکار اپ ڈیٹس",
  "Tout se fait seul, par nos robots : les points de Tunisie sont relus tous les 3 mois, les points signalés sont publiés toutes les 2 heures environ, et chaque modification du site est testée avant d'être publiée.": "سب کچھ ہمارے روبوٹ خود کرتے ہیں: تیونس کے مقامات ہر 3 ماہ بعد دوبارہ پڑھے جاتے ہیں، بتائے گئے مقامات تقریباً ہر 2 گھنٹے بعد شائع ہوتے ہیں، اور سائٹ کی ہر تبدیلی شائع ہونے سے پہلے جانچی جاتی ہے۔",
  "Un site indépendant": "ایک آزاد سائٹ",
- "Ce site n'est pas un service officiel et ne dépend d'aucune organisation. Personne ne vérifie la qualité de l'eau : renseignez-vous sur place.": "یہ سائٹ کوئی سرکاری خدمت نہیں اور کسی تنظیم سے وابستہ نہیں۔ پانی کا معیار کوئی نہیں جانچتا: موقع پر معلوم کریں۔"
+ "Ce site n'est pas un service officiel et ne dépend d'aucune organisation. Personne ne vérifie la qualité de l'eau : renseignez-vous sur place.": "یہ سائٹ کوئی سرکاری خدمت نہیں اور کسی تنظیم سے وابستہ نہیں۔ پانی کا معیار کوئی نہیں جانچتا: موقع پر معلوم کریں۔",
+ "Les points d'eau en chiffres": "پانی کے مقامات اعداد و شمار میں",
+ "Les points d'eau de la carte en Tunisie, par type et par source, calculés à partir des mêmes données que la carte.": "تیونس میں نقشے پر پانی کے مقامات، قسم اور ماخذ کے لحاظ سے، نقشے ہی کے ڈیٹا سے شمار کیے گئے۔",
+ "Type de point d'eau": "پانی کے مقام کی قسم",
+ "Nombre": "تعداد",
+ "Total en Tunisie": "تیونس میں کل",
+ "Source": "ماخذ",
+ "Date des chiffres :": "اعداد و شمار کی تاریخ:",
+ "Relevé OpenStreetMap du :": "OpenStreetMap سروے کی تاریخ:",
+ "Ailleurs dans le monde, les points d'eau sont lus en direct quand vous déplacez la carte : ils ne sont pas comptés ici.": "دنیا کے باقی حصوں میں پانی کے مقامات نقشہ ہلانے پر براہ راست پڑھے جاتے ہیں: یہاں شمار نہیں ہوتے۔",
+ "OpenStreetMap (carte libre)": "OpenStreetMap (آزاد نقشہ)",
+ "Association AJEM (majels de Djerba)": "AJEM ایسوسی ایشن (جربہ کے ماجل)",
+ "Signalés par les visiteurs": "زائرین کے بتائے ہوئے",
+ "Les points d'eau en chiffres : sous la carte, le nombre de points d'eau en Tunisie par type et par source, avec la date des chiffres.": "پانی کے مقامات اعداد و شمار میں: نقشے کے نیچے، تیونس میں پانی کے مقامات کی تعداد قسم اور ماخذ کے لحاظ سے، اعداد و شمار کی تاریخ کے ساتھ۔"
 },
 "de": {
  "Points d'eau de Tunisie et du monde": "Wasserstellen Tunesien & Welt",
@@ -901,7 +940,20 @@ window.TRADUCTIONS = {
  "Mises à jour automatiques": "Automatische Aktualisierung",
  "Tout se fait seul, par nos robots : les points de Tunisie sont relus tous les 3 mois, les points signalés sont publiés toutes les 2 heures environ, et chaque modification du site est testée avant d'être publiée.": "Alles geschieht von selbst, durch unsere Roboter: Die Stellen in Tunesien werden alle 3 Monate neu eingelesen, gemeldete Stellen etwa alle 2 Stunden veröffentlicht, und jede Änderung der Website wird vor der Veröffentlichung getestet.",
  "Un site indépendant": "Eine unabhängige Website",
- "Ce site n'est pas un service officiel et ne dépend d'aucune organisation. Personne ne vérifie la qualité de l'eau : renseignez-vous sur place.": "Diese Website ist kein offizieller Dienst und gehört zu keiner Organisation. Niemand prüft die Wasserqualität: Fragen Sie vor Ort."
+ "Ce site n'est pas un service officiel et ne dépend d'aucune organisation. Personne ne vérifie la qualité de l'eau : renseignez-vous sur place.": "Diese Website ist kein offizieller Dienst und gehört zu keiner Organisation. Niemand prüft die Wasserqualität: Fragen Sie vor Ort.",
+ "Les points d'eau en chiffres": "Wasserstellen in Zahlen",
+ "Les points d'eau de la carte en Tunisie, par type et par source, calculés à partir des mêmes données que la carte.": "Die Wasserstellen der Karte in Tunesien, nach Art und nach Quelle, aus denselben Daten wie die Karte gezählt.",
+ "Type de point d'eau": "Art der Wasserstelle",
+ "Nombre": "Anzahl",
+ "Total en Tunisie": "Gesamt in Tunesien",
+ "Source": "Quelle",
+ "Date des chiffres :": "Stand der Zahlen:",
+ "Relevé OpenStreetMap du :": "OpenStreetMap-Erhebung vom:",
+ "Ailleurs dans le monde, les points d'eau sont lus en direct quand vous déplacez la carte : ils ne sont pas comptés ici.": "Im Rest der Welt werden die Wasserstellen live gelesen, wenn Sie die Karte verschieben: Sie werden hier nicht gezählt.",
+ "OpenStreetMap (carte libre)": "OpenStreetMap (freie Karte)",
+ "Association AJEM (majels de Djerba)": "Verein AJEM (Majels von Djerba)",
+ "Signalés par les visiteurs": "Von Besuchern gemeldet",
+ "Les points d'eau en chiffres : sous la carte, le nombre de points d'eau en Tunisie par type et par source, avec la date des chiffres.": "Wasserstellen in Zahlen: unter der Karte die Zahl der Wasserstellen in Tunesien nach Art und nach Quelle, mit dem Stand der Zahlen."
 },
 "es": {
  "Points d'eau de Tunisie et du monde": "Puntos de agua de Túnez y del mundo",
@@ -1126,6 +1178,19 @@ window.TRADUCTIONS = {
  "Mises à jour automatiques": "Actualizaciones automáticas",
  "Tout se fait seul, par nos robots : les points de Tunisie sont relus tous les 3 mois, les points signalés sont publiés toutes les 2 heures environ, et chaque modification du site est testée avant d'être publiée.": "Todo se hace solo, mediante nuestros robots: los puntos de Túnez se vuelven a leer cada 3 meses, los puntos señalados se publican cada 2 horas aproximadamente y cada cambio del sitio se prueba antes de publicarse.",
  "Un site indépendant": "Un sitio independiente",
- "Ce site n'est pas un service officiel et ne dépend d'aucune organisation. Personne ne vérifie la qualité de l'eau : renseignez-vous sur place.": "Este sitio no es un servicio oficial y no depende de ninguna organización. Nadie controla la calidad del agua: infórmese en el lugar."
+ "Ce site n'est pas un service officiel et ne dépend d'aucune organisation. Personne ne vérifie la qualité de l'eau : renseignez-vous sur place.": "Este sitio no es un servicio oficial y no depende de ninguna organización. Nadie controla la calidad del agua: infórmese en el lugar.",
+ "Les points d'eau en chiffres": "Los puntos de agua en cifras",
+ "Les points d'eau de la carte en Tunisie, par type et par source, calculés à partir des mêmes données que la carte.": "Los puntos de agua del mapa en Túnez, por tipo y por fuente, contados a partir de los mismos datos que el mapa.",
+ "Type de point d'eau": "Tipo de punto de agua",
+ "Nombre": "Número",
+ "Total en Tunisie": "Total en Túnez",
+ "Source": "Fuente",
+ "Date des chiffres :": "Fecha de las cifras:",
+ "Relevé OpenStreetMap du :": "Relevamiento de OpenStreetMap del:",
+ "Ailleurs dans le monde, les points d'eau sont lus en direct quand vous déplacez la carte : ils ne sont pas comptés ici.": "En el resto del mundo, los puntos de agua se leen en directo al mover el mapa: no se cuentan aquí.",
+ "OpenStreetMap (carte libre)": "OpenStreetMap (mapa libre)",
+ "Association AJEM (majels de Djerba)": "Asociación AJEM (majels de Yerba)",
+ "Signalés par les visiteurs": "Señalados por los visitantes",
+ "Les points d'eau en chiffres : sous la carte, le nombre de points d'eau en Tunisie par type et par source, avec la date des chiffres.": "Los puntos de agua en cifras: bajo el mapa, el número de puntos de agua en Túnez por tipo y por fuente, con la fecha de las cifras."
 }
 };

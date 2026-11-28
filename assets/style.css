@@ -567,3 +567,10 @@ html[lang="ru"] [data-t="ru"],html[lang="vi"] [data-t="vi"],html[lang="th"] [dat
 /* ---- lien « Comment fonctionne le site ? » sous le titre de l'accueil (règle commune § 44, 25/10/2026) ---- */
 .hero .lien-comment{grid-column:1 / -1;justify-self:start;margin:12px 0 0;font-size:14px;font-weight:600}
 .hero .lien-comment a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+/* « Les points d'eau en chiffres » (28/11/2026) : partie repliée au départ (règle commune § 66), titre + pastille du nombre ;
+   écrite par tools/construire.py dans la page (lisible par Google et les assistants d'IA, sans JavaScript) */
+.pe-chiffres summary{gap:10px}
+.pe-chiffres summary h2{margin:0;font-size:18px;flex:1}
+.pe-pastille{display:inline-block;min-width:2.2em;padding:2px 10px;border-radius:999px;background:var(--vert);color:var(--sur-vert);font-weight:800;font-size:14px;text-align:center;font-variant-numeric:tabular-nums}
+.pe-chiffres table{margin:10px 0 14px}
+.pe-chiffres tr.ici td{color:inherit}

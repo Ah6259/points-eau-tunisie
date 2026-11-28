@@ -221,3 +221,16 @@
 220	Integritet
 221	Användarvillkor
 222	Sidorna ”Integritet” och ”Användarvillkor”, gemensamma för alla våra webbplatser, finns längst ned på varje sida.
+223	Vattenställen i siffror
+224	Vattenställena på kartan i Tunisien, efter typ och källa, räknade från samma data som kartan.
+225	Typ av vattenställe
+226	Antal
+227	Totalt i Tunisien
+228	Källa
+229	Datum för siffrorna:
+230	OpenStreetMap-inventering från:
+231	I resten av världen läses vattenställena in direkt när du flyttar kartan: de räknas inte här.
+232	OpenStreetMap (fri karta)
+233	Föreningen AJEM (majels på Djerba)
+234	Rapporterade av besökare
+235	Vattenställen i siffror: under kartan, antalet vattenställen i Tunisien efter typ och källa, med datum för siffrorna.

@@ -221,3 +221,16 @@
 220	Privacy
 221	Gebruiksvoorwaarden
 222	De pagina's „Privacy” en „Gebruiksvoorwaarden”, die voor al onze sites gelden, staan onderaan elke pagina.
+223	Waterpunten in cijfers
+224	De waterpunten op de kaart in Tunesië, per soort en per bron, geteld uit dezelfde gegevens als de kaart.
+225	Soort waterpunt
+226	Aantal
+227	Totaal in Tunesië
+228	Bron
+229	Datum van de cijfers:
+230	OpenStreetMap-opname van:
+231	Elders in de wereld worden waterpunten live gelezen wanneer u de kaart verschuift: ze worden hier niet geteld.
+232	OpenStreetMap (vrije kaart)
+233	Vereniging AJEM (majels van Djerba)
+234	Gemeld door bezoekers
+235	Waterpunten in cijfers: onder de kaart het aantal waterpunten in Tunesië per soort en per bron, met de datum van de cijfers.

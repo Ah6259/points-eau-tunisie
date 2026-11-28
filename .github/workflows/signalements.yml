@@ -39,7 +39,10 @@ jobs:
         run: |
           git config user.name "robot-points-eau"
           git config user.email "robot-points-eau@users.noreply.github.com"
-          git add donnees/points_eau.js donnees/signalements_etat.json
+          # « Les points d'eau en chiffres » (28/11/2026) : l'accueil des 21 langues écrit les chiffres de la carte ; refait ici avec les
+          # nouvelles données (sinon le texte lu par Google ne serait plus le même que la carte, et le test du site serait rouge)
+          python tools/construire.py
+          git add -A index.html sitemap.xml donnees assets/l */index.html */*/index.html
           if git diff --cached --quiet; then exit 0; fi
           git commit -m "Points d'eau mis à jour ($(date +%d/%m/%Y\ %Hh%M))"
           git pull -q --rebase -X theirs --autostash

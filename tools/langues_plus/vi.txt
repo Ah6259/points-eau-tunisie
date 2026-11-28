@@ -221,3 +221,16 @@
 220	Quyền riêng tư
 221	Điều khoản sử dụng
 222	Các trang «Quyền riêng tư» và «Điều khoản sử dụng», chung cho tất cả các trang web của chúng tôi, nằm ở cuối mỗi trang.
+223	Các điểm lấy nước qua con số
+224	Các điểm lấy nước trên bản đồ ở Tunisia, theo loại và theo nguồn, được đếm từ cùng dữ liệu với bản đồ.
+225	Loại điểm lấy nước
+226	Số lượng
+227	Tổng ở Tunisia
+228	Nguồn
+229	Ngày của số liệu:
+230	Khảo sát OpenStreetMap ngày:
+231	Ở những nơi khác trên thế giới, các điểm lấy nước được đọc trực tiếp khi bạn di chuyển bản đồ: chúng không được đếm ở đây.
+232	OpenStreetMap (bản đồ tự do)
+233	Hiệp hội AJEM (các majel ở Djerba)
+234	Do khách truy cập báo
+235	Các điểm lấy nước qua con số: dưới bản đồ, số điểm lấy nước ở Tunisia theo loại và theo nguồn, kèm ngày của số liệu.

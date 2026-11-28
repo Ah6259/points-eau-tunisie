@@ -221,3 +221,16 @@
 220	Confidențialitate
 221	Condiții de utilizare
 222	Paginile „Confidențialitate” și „Condiții de utilizare”, comune tuturor site-urilor noastre, se află în partea de jos a fiecărei pagini.
+223	Punctele de apă în cifre
+224	Punctele de apă de pe hartă din Tunisia, pe tipuri și pe surse, numărate din aceleași date ca harta.
+225	Tipul punctului de apă
+226	Număr
+227	Total în Tunisia
+228	Sursă
+229	Data cifrelor:
+230	Ridicare OpenStreetMap din:
+231	În restul lumii, punctele de apă sunt citite în direct când mutați harta: nu sunt numărate aici.
+232	OpenStreetMap (hartă liberă)
+233	Asociația AJEM (majelii din Djerba)
+234	Semnalate de vizitatori
+235	Punctele de apă în cifre: sub hartă, numărul punctelor de apă din Tunisia pe tipuri și pe surse, cu data cifrelor.

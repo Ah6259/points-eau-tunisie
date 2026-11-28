@@ -130,3 +130,21 @@ Règles communes : `../../regles communes a tous les sites.md`.
   scripts, ?v= ni dates) gardée dans `donnees/lastmod.json` (enregistré avec les pages) au lieu de la date de VERSION pour toutes ;
   page noindex = hors du plan. Test : `python tools/test_lastmod.py donnees/lastmod.json` (tests.yml ; données inventées + vrai plan ;
   vérifié par sabotage). Pages maigres : aucune (4 pages × 21 langues, toutes de vraies traductions), rien en noindex.
+
+## 28/11/2026 — « Les points d'eau en chiffres » (plan VIS.3 point 5 d'Ahmed : Google et les IA ne lisent que le TEXTE, pas la carte)
+- Sous la carte de l'accueil (21 langues), partie `section#chiffres` repliée au départ (règle § 66 : titre + pastille du total), ÉCRITE
+  dans la page par `bloc_chiffres()` de `tools/construire.py` entre les repères `<!--chiffres-->…<!--/chiffres-->` de index.html (ne pas
+  l'écrire à la main) : nombre de points de la carte en Tunisie par type (types sans point non montrés, comme les filtres) et par source
+  (OpenStreetMap, AJEM = majels de Djerba, visiteurs), total, « Date des chiffres » (`maj` de donnees/points_eau.js) et « Relevé
+  OpenStreetMap du » (`osm_maj`) ; le compteur `#pe-total` du haut est lui aussi écrit dans la page (avant : 0 sans JavaScript).
+  MÊMES données et même filtre que la carte (points retirés déjà exclus par points_eau.py, points « monde » exclus). Le 28/11 : 357 points
+  (43 sources, 18 fontaines, 12 robinets, 212 majels, 72 puits ; 145 OpenStreetMap, 212 AJEM).
+- **PAS de chiffre par gouvernorat** (choix du 28/11, règle « on ne devine jamais un chiffre ») : les points n'ont pas de gouvernorat dans
+  les données (OpenStreetMap : id, type, position, nom ; AJEM : Djerba seulement) et le dépôt n'a aucun fichier des limites des
+  gouvernorats. Pour l'ajouter un jour : faire écrire le gouvernorat par le robot OpenStreetMap (zone admin_level=4 de chaque point,
+  « is_in » d'Overpass) ou ajouter un fichier libre des limites + un test point-dans-polygone, avec l'accord d'Ahmed.
+- Les chiffres suivent les données : `signalements.yml` et `osm.yml` relancent `python tools/construire.py` avant d'enregistrer
+  (pages des 21 langues comprises). Textes : `TEXTES_CHIFFRES` / `TYPES_CHIFFRES` / `SOURCES_CHIFFRES` de construire.py, traduits dans
+  assets/langues.js (5 langues) et tools/langues_plus/ (13 langues). « Comment fonctionne le site ? » : ligne « Les points d'eau en
+  chiffres » + FONCTIONS. Test test_site.mjs (21 langues, total = carte, sommes, dates, replié, sans NaN) vérifié par 2 sabotages (un
+  nombre changé dans en/index.html ; un point retiré des données sans refaire les pages). VERSION 20261128a.
